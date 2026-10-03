@@ -1,0 +1,21 @@
+name: Fix HaNakh Direct Links
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python patch_hanakh_external.py
+      - run: |
+          grep -q '95 מתוך 126' index.html
+          grep -q 'https://www.youtube.com/watch?v=dMfyog_Z5EA' index.html
+          grep -q 'https://www.youtube.com/watch?v=vme74pRb8j8' index.html
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fix blocked HaNakh embeds with direct links"
+          git push
