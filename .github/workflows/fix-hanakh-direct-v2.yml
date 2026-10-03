@@ -1,0 +1,21 @@
+name: Fix HaNakh Direct Links V2
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -c 'from pathlib import Path;from functools import reduce;p=Path("index.html");s=p.read_text(encoding="utf-8");ids=["dMfyog_Z5EA","oW0h-AwPhg4","KhbZVQ_xfPA","xJnDGKQvVCY","7WdCmDoBh1Q","DTN-sy0m7mg","oe3LNfZAzPw","lIms7HsGYQc","nKKjVOKhtLs","Wb7dZIf6kME","K0RVwNlTXpk","4QuUq6MTPFM","RUKgFr9tgzo","jUk9haofFbk","IhWO_NlxSkY","xVTOTk-pSJQ","0u4Dk9uy0Wg","bsLZc-RrKwE","LozAQ9gq91c","ofDCMQdoP8A","vme74pRb8j8"];note="פתיחה ישירה ביוטיוב — בעל הסרטון חסם הטמעה באתרים אחרים";s=reduce(lambda a,v:a.replace(f' ''"yt":"{v}","url": ull,"embed": ull,"note":""'\'',f' ''"yt": ull,"url":"https://www.youtube.com/watch?v={v}","embed": ull,"note":"{note}"'\''),ids,s);s=s.replace(' ''116 מתוך 126 פריטים ניתנים להפעלה בתוך האתר. כל 21/21 פרקי "הנ״ך הבהיר" מוטמעים כעת ישירות בנגן; 10 מקורות חיצוניים מסומנים במפורש.'\'',' ''95 מתוך 126 פריטים ניתנים להפעלה בתוך האתר. כל 21/21 פרקי "הנ״ך הבהיר" נפתחים כעת ישירות בסרטון המדויק ביוטיוב, משום שבעל הסרטונים חסם הטמעה באתרים אחרים; 31 מקורות חיצוניים מסומנים במפורש.'\'');p.write_text(s,encoding="utf-8")'
+      - run: |
+          grep -q '95 מתוך 126' index.html
+          grep -q 'https://www.youtube.com/watch?v=dMfyog_Z5EA' index.html
+          grep -q 'https://www.youtube.com/watch?v=vme74pRb8j8' index.html
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fix blocked HaNakh embeds with direct links"
+          git push
