@@ -13,17 +13,17 @@ ids = {
 }
 
 for ch, vid in ids.items():
-    title = f'הנ״ך הבהיר — שופטים פרק {ch}'
-    marker = f'{{"ch":"{ch}","title":"{title}","type":"base","yt":'
+ title = f'הנ״ך הבהיר — שופטים פרק {ch}'
+ marker = f'{{"ch":"{ch}","title":"{title}","type":"base","yt":'
     start = s.find(marker)
     if start &lt; 0:
         raise SystemExit(f"Missing chapter {ch}")
     end = s.find("}", start)
     obj = s[start:end+1]
     obj = re.sub(r'"yt":(?:null|"[^"]*")', '"yt":null', obj, count=1)
-    obj = re.sub(r'"url":(?:null|"[^"]*")', f'"url":"https://www.youtube.com/watch?v={vid}"', obj, count=1)
-    obj = re.sub(r'"note":"[^"]*"', '"note":"פתיחה ישירה ביוטיוב — בעל הסרטון חסם הטמעה באתרים אחרים"', obj, count=1)
-    s = s[:start] + obj + s[end+1:]
+ obj = re.sub(r'"url":(?:null|"[^"]*")', f'"url":"https://www.youtube.com/watch?v={vid}"', obj, count=1)
+ obj = re.sub(r'"note":"[^"]*"', '"note":"פתיחה ישירה ביוטיוב — בעל הסרטון חסם הטמעה באתרים אחרים"', obj, count=1)
+ s = s[:start] + obj + s[end+1:]
 
 s = s.replace(
 '116 מתוך 126 פריטים ניתנים להפעלה בתוך האתר. כל 21/21 פרקי "הנ״ך הבהיר" מוטמעים כעת ישירות בנגן; 10 מקורות חיצוניים מסומנים במפורש.',
