@@ -86,33 +86,48 @@ jobs:
                   play(x);
                 },{id:item.yt});
                 const started=Date.now();
-                while(Date.now()-started<9000){
-                  status=await page.evaluate(()=>{
+                let playingSince=0;
+                while(Date.now()-started<11000){
+                  const probe=await page.evaluate(()=>{
                     const overlay=document.getElementById('ph');
                     const text=(overlay?.innerText||'').trim();
                     if(overlay && !overlay.classList.contains('hide')){
-                      if(text.includes('לא מאפשרים להטמיע')) return 'ERR:150';
-                      if(text.includes('שגיאה 153')) return 'ERR:153';
-                      if(text.includes('הוסר')||text.includes('פרטי')||text.includes('אינו זמין')) return 'ERR:100';
-                      if(text.includes('YouTube לא הצליח')) return 'ERR:OTHER';
+                      if(text.includes('לא מאפשרים להטמיע')) return {kind:'ERR',status:'ERR:150'};
+                      if(text.includes('שגיאה 153')) return {kind:'ERR',status:'ERR:153'};
+                      if(text.includes('הוסר')||text.includes('פרטי')||text.includes('אינו זמין')) return {kind:'ERR',status:'ERR:100'};
+                      if(text.includes('YouTube לא הצליח')) return {kind:'ERR',status:'ERR:OTHER'};
                     }
                     try{
                       if(ytPlayer && typeof ytPlayer.getPlayerState==='function'){
-                        const st=ytPlayer.getPlayerState();
-                        if([0,1,2,3,5].includes(st)) return 'OK:'+st;
+                        return {kind:'STATE',state:ytPlayer.getPlayerState()};
                       }
                     }catch(e){}
-                    return 'WAIT';
+                    return {kind:'WAIT'};
                   });
-                  if(status!=='WAIT') break;
-                  await page.waitForTimeout(400);
+                  if(probe.kind==='ERR'){ status=probe.status; break; }
+                  if(probe.kind==='STATE' && probe.state===1){
+                    if(!playingSince) playingSince=Date.now();
+                    if(Date.now()-playingSince>=1800){ status='OK:PLAYING'; break; }
+                  }else{
+                    playingSince=0;
+                  }
+                  await page.waitForTimeout(350);
+                }
+                if(status==='TIMEOUT'){
+                  status=await page.evaluate(()=>{
+                    const text=(document.getElementById('ph')?.innerText||'').trim();
+                    if(text.includes('לא מאפשרים להטמיע')) return 'ERR:150';
+                    if(text.includes('שגיאה 153')) return 'ERR:153';
+                    if(text.includes('הוסר')||text.includes('פרטי')||text.includes('אינו זמין')) return 'ERR:100';
+                    return 'NO_PLAY';
+                  });
                 }
               }catch(e){
                 status='BROWSER:'+String(e).replace(/\s+/g,' ').slice(0,160);
               }
               results.push({kind:'youtube',...item,status});
               console.log(['CHECK_YT',item.ch,item.yt,status,item.title].join('\t'));
-              if(status.startsWith('ERR:')||status==='TIMEOUT'||status.startsWith('BROWSER:')){
+              if(status!=='OK:PLAYING'){
                 bad.push({kind:'youtube',...item,status});
               }
             }
