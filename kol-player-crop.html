@@ -6,11 +6,11 @@
 <title>נגן קול הלשון — חיתוך נקי</title>
 <style>
 :root{
-  --crop-top:165px;
+  --crop-top:178px;
   /* לפי התצוגה האמיתית בדפדפן של בר:
      נגן קול הלשון במובייל נמוך משמעותית מ-16:9.
      אנחנו חותכים בדיוק בגובה הנגן, במקום להמשיך אל תוכן העמוד שמתחתיו. */
-  --player-ratio:2.94;
+  --player-ratio:3.06;
 }
 *{box-sizing:border-box}
 body{margin:0;background:#070b12;color:#f7f9fc;font-family:Arial,sans-serif}
@@ -31,9 +31,9 @@ h1{font-size:clamp(24px,5vw,34px);margin:10px 0 14px}
 }
 .playerShell iframe{
  position:absolute;
- left:0;
+ left:-1.5%;
  top:calc(-1 * var(--crop-top));
- width:100%;
+ width:103%;
  height:900px;
  border:0;
  display:block;
@@ -42,8 +42,8 @@ h1{font-size:clamp(24px,5vw,34px);margin:10px 0 14px}
 .caption{margin-top:12px;color:#c5cfdd;font-size:14px;line-height:1.45}
 .full{display:block;margin-top:14px;padding:15px;border-radius:14px;background:#fff;color:#111;text-decoration:none;text-align:center;font-weight:800}
 @media(min-width:850px){
-  :root{--crop-top:150px;--player-ratio:2.58}
-  .playerShell{height:310px}
+  :root{--crop-top:162px;--player-ratio:2.72}
+  .playerShell{height:294px}
 }
 </style>
 </head>
@@ -59,6 +59,6 @@ h1{font-size:clamp(24px,5vw,34px);margin:10px 0 14px}
  referrerpolicy="strict-origin-when-cross-origin"
  scrolling="no"></iframe>
 </div>
-<div class="caption">אם כאן אתה רואה רק את אזור הווידאו, בלי הכותרת הלבנה שמתחתיו — זה החיתוך הנכון. תיקנתי במיוחד את גובה המובייל: קודם min-height הכריח מסגרת גבוהה מדי.</div>
+<div class="caption">כיוונון חדש: הווידאו מוזז מעט למעלה, חלון החיתוך קצר יותר כדי שלא ייכנס לבן מלמטה, ויש זום קטן לרוחב כדי להגיע לקצוות.</div>
 <a class="full" href="https://www.kolhalashon.com/he/regularSite/playShiur/31472614/-1/0/false" target="_blank" rel="noopener">פתח במקור — גיבוי</a>
 </main></body></html>
