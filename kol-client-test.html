@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>בדיקת מקור רשמי — קול הלשון</title>
+<style>
+body{margin:0;background:#070b12;color:#f7f9fc;font-family:Arial,sans-serif}.w{max-width:900px;margin:auto;padding:14px}h1{font-size:26px}.box{background:#101722;border:1px solid #26354a;border-radius:16px;padding:14px;margin:12px 0;line-height:1.5}.ok{border-color:#2e7d5b;background:#10231c}.bad{border-color:#8a4242;background:#2b1518}.wait{border-color:#66582a}.frame{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}.frame iframe,.frame video{width:100%;height:100%;border:0}.tiny{font-size:13px;color:#b8c2d2;overflow-wrap:anywhere}.btn{display:block;background:#fff;color:#111;border:0;border-radius:12px;padding:14px;text-align:center;font-weight:800;text-decoration:none;margin:10px 0}
+</style></head><body><div class="w">
+<h1>בדיקת מקור רשמי — הנ״ך הבהיר</h1>
+<div class="box">העמוד הזה לא משנה את האתר הראשי. הוא בודק אם הדפדפן שלך יכול להגיע ישירות לנגן/וידאו הרשמי של קול הלשון בלי YouTube.</div>
+<div id="api" class="box wait"><b>1. API הרשמי של קול הלשון</b><div id="apiText">בודק אוטומטית…</div></div>
+<div id="discover" class="box wait"><b>2. חיפוש סדרת שופטים של הרב רפאל נוסבוים</b><div id="discoverText">ממתין ל‑API…</div></div>
+<div id="videoBox" class="box wait"><b>3. בדיקת וידאו מקורי של קול הלשון</b><div id="videoText">ממתין לזיהוי קובץ…</div><div class="frame" id="videoHost" style="display:none"></div></div>
+<div class="box"><b>4. עמוד קול הלשון הרשמי בתוך iframe — בדיקת תאימות</b>
+<div class="frame"><iframe src="https://www.kolhalashon.com/he/regularSite/playShiur/31472614/-1/0/false" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+<div class="tiny">זהו פרק יהושע ידוע של אותו רב, רק כדי לבדוק אם קול הלשון מאפשרים למסגר את הנגן הרשמי.</div></div>
+<div class="box"><b>5. GlatTube — ערוץ קול הלשון</b>
+<div class="frame"><iframe src="https://glat.tube/category/13218" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+<div class="tiny">אם כאן מופיע GlatTube ולא מסך חסימה, יש לנו מסלול נוסף.</div></div>
+<a class="btn" href="https://glat.tube/category/13218" target="_blank" rel="noopener">פתח GlatTube במקור</a>
+</div>
+<script>
+const KH='https://www.kolhalashon.com/api/';
+const $=id=>document.getElementById(id);
+function nonce(){let n='';while(n.length<7)n+=Math.random().toString(36).slice(2);return 'Bearer '+n.slice(0,7)}
+function state(id,ok,txt){const el=$(id);el.classList.remove('wait','ok','bad');el.classList.add(ok?'ok':'bad');$(id+'Text').innerHTML=txt}
+async function tryFetch(path,opts={}){
+ const attempts=[
+   {name:'simple',headers:{accept:'application/json, text/plain, */*'}},
+   {name:'nonce',headers:{accept:'application/json, text/plain, */*','authorization-site-key':nonce()}}
+ ];
+ let errors=[];
+ for(const a of attempts){
+  try{
+   const r=await fetch(KH+path,{...opts,mode:'cors',headers:{...a.headers,...(opts.headers||{})}});
+   const t=await r.text(); let body;try{body=JSON.parse(t)}catch{body=t}
+   if(r.ok)return {ok:true,status:r.status,body,method:a.name};
+   errors.push(a.name+': HTTP '+r.status+' '+String(t).slice(0,120));
+  }catch(e){errors.push(a.name+': '+e.message)}
+ }
+ return {ok:false,errors};
+}
+async function run(){
+ const known=await tryFetch('TblShiurimLists/WebSite_GetShiurDetails/31472614');
+ if(!known.ok){state('api',false,'❌ הדפדפן לא הצליח לקרוא את ה‑API ישירות.<br><span class="tiny">'+known.errors.join('<br>')+'</span>');state('discover',false,'לא ניתן לבצע גילוי אוטומטי מהדפדפן הזה.');state('videoBox',false,'לא ממשיכים לנגן בלי מקור מאומת.');return}
+ state('api',true,'✅ API נגיש ישירות מהדפדפן ('+known.method+', HTTP '+known.status+').');
+ const search=await tryFetch('Search/WebSite_GetSearchItems/'+encodeURIComponent('רפאל נוסבוים')+'/-1/1/5000');
+ if(!search.ok||!Array.isArray(search.body)){state('discover',false,'❌ החיפוש נכשל. '+(search.errors||[]).join(' | '));return}
+ const rav=search.body.find(x=>x.SearchItemType===2&&/רפאל.*נוסבוים|נוסבוים.*רפאל/.test((x.SearchItemTextHebrew||'')+' '+(x.SearchItemTextEnglish||'')));
+ if(!rav){state('discover',false,'❌ ה‑API עבד אבל הרב רפאל נוסבוים לא זוהה בתוצאות.');return}
+ const payload={QueryType:-1,LangID:-1,MasechetID:-1,DafNo:-1,MasechetIDY:-1,DafNoY:-1,MoedID:-1,ParashaID:-1,EnglishDisplay:true,MasechetIDYOz:-1,DafNoYOz:-1,FromRow:0,NumOfRows:2000,PrefferedLanguage:-1,SearchOrder:7,FiltersArray:[],GeneralID:Number(rav.SearchItemId),FilterSwitch:'1'.repeat(111),activefilterType:'all'};
+ const list=await tryFetch('Search/WebSite_GetRavShiurim/',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
+ if(!list.ok||!Array.isArray(list.body)){state('discover',false,'❌ נמצא הרב, אבל רשימת השיעורים נחסמה. '+(list.errors||[]).join(' | '));return}
+ const hits=list.body.filter(x=>/שופטים/.test((x.TitleHebrew||'')+' '+(x.MainTopicHebrew||'')+' '+(x.CatDesc1||'')+' '+(x.CatDesc2||'')));
+ window.KH_HITS=hits;
+ state('discover',hits.length>=21,'נמצא הרב: <b>'+rav.SearchItemTextHebrew+'</b><br>נמצאו <b>'+hits.length+'</b> רשומות שקשורות לשופטים.<br><span class="tiny">'+hits.slice(0,30).map(x=>(x.FileId||x.FileID)+' — '+(x.TitleHebrew||'')).join('<br>')+'</span>');
+ const candidate=hits.find(x=>(x.FileId||x.FileID)&&((x.HasVideo!==false)||(x.VideoSize)||(x.HdVideoSize)))||hits.find(x=>x.FileId||x.FileID);
+ if(!candidate){state('videoBox',false,'❌ לא נמצא FileId לבדיקה.');return}
+ const id=candidate.FileId||candidate.FileID;
+ for(const type of [2,3]){
+  const tok=await tryFetch('files/GetPlayToken/'+id+'/'+type);
+  if(!tok.ok)continue;
+  const token=typeof tok.body==='string'?tok.body:(tok.body?.token||'');
+  if(!token)continue;
+  const src=KH+'files/GetFileToPlay/'+id+'/'+type+'/'+encodeURIComponent(token);
+  const v=document.createElement('video');v.controls=true;v.playsInline=true;v.preload='metadata';v.src=src;
+  v.onloadedmetadata=()=>state('videoBox',true,'✅ נמצא וידאו רשמי של קול הלשון! FileId '+id+', mediaType '+type+'.');
+  v.onerror=()=>state('videoBox',false,'⚠️ התקבל token אבל תגית הווידאו לא הצליחה לנגן. FileId '+id+', mediaType '+type+'.');
+  $('videoHost').style.display='block';$('videoHost').replaceChildren(v);v.load();return;
+ }
+ state('videoBox',false,'❌ נמצאו שיעורי שופטים, אבל לא התקבל token וידאו לבדיקה.');
+}
+run().catch(e=>{state('api',false,'❌ '+e.message);state('discover',false,'הבדיקה נעצרה.');state('videoBox',false,'הבדיקה נעצרה.');});
+</script></body></html>
