@@ -7,39 +7,33 @@ on:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
-      - name: Probe official pages
+      - name: Search indexed official lesson URLs
         run: |
           python3 - <<'PY'
-          import requests,re,json
-          H={'User-Agent':'Mozilla/5.0 (Linux; Android 16) AppleWebKit/537.36 Chrome/141.0 Mobile Safari/537.36','Accept-Language':'he-IL,he;q=0.9,en;q=0.7'}
-          urls=[
-            'https://www.kolhalashon.com/he/regularSite/playShiur/31472614/-1/0/false',
-            'https://www.kolhalashon.com/new/Media/PlayShiur.aspx?FileName=31470116&Video=True',
-            'https://glat.tube/category/13218'
-          ]
-          for u in urls:
-            print('\n===',u,'===')
+          import requests,re,html,urllib.parse,time
+          H={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/141.0 Safari/537.36'}
+          chapters=['א','ב','ג','ד','ה','ו','ז','ח','ט','י','יא','יב','יג','יד','טו','טז','יז','יח','יט','כ','כא']
+          for ch in chapters:
+            q=f'"פרק {ch}, שופטים" "רפאל נוסבוים"'
+            u='https://www.google.com/search?num=20&q='+urllib.parse.quote(q)
             try:
-              r=requests.get(u,headers=H,timeout=25,allow_redirects=True)
-              print('STATUS',r.status_code,'FINAL',r.url,'LEN',len(r.text))
-              print('XFRAME',r.headers.get('x-frame-options'),'CSP',r.headers.get('content-security-policy'))
-              title=re.search(r'<title[^>]*>(.*?)</title>',r.text,re.I|re.S)
-              print('TITLE',re.sub('<.*?>','',title.group(1)).strip() if title else '')
-              print('BLOCKED',bool(re.search(r'just a moment|cf-chl|security verification',r.text,re.I)))
-              print('HREFS')
-              for m in re.finditer(r'<a\\b[^>]*href=["\\\']([^"\\\']+)["\\\'][^>]*>(.*?)</a>',r.text,re.I|re.S):
-                href=m.group(1)
-                txt=re.sub(r'<[^>]+>',' ',m.group(2))
-                txt=re.sub(r'\\s+',' ',txt).strip()
-                if re.search(r'שופטים|יהושע|נוסבוים|playShiur|video|playlist',txt+' '+href,re.I):
-                  print(json.dumps({'href':href,'text':txt},ensure_ascii=False))
-              print('SNIPS')
+              r=requests.get(u,headers=H,timeout=20)
+              print('\nCHAPTER',ch,'STATUS',r.status_code,'LEN',len(r.text))
+              links=[]
+              for m in re.finditer(r'https?://[^"&<> ]+',html.unescape(r.text)):
+                x=m.group(0)
+                if 'kolhalashon.com' in x or 'glat.tube' in x:
+                  x=x.split('&')[0]
+                  if x not in links: links.append(x)
+              for x in links[:20]: print('RESULT',x)
+              # also print snippets around exact title
               plain=re.sub(r'<[^>]+>',' ',r.text)
-              plain=re.sub(r'\\s+',' ',plain)
-              for key in ['שופטים','יהושע','רפאל נוסבוים','31472614']:
-                i=plain.find(key)
-                if i>=0: print(key,plain[max(0,i-500):i+1800])
-            except Exception as e: print('ERR',repr(e))
+              plain=html.unescape(re.sub(r'\s+',' ',plain))
+              for key in [f'פרק {ch}, שופטים','נוסבוים','kolhalashon']:
+                pos=plain.find(key)
+                if pos>=0: print('SNIP',plain[max(0,pos-250):pos+900])
+              time.sleep(.5)
+            except Exception as e: print('ERR',ch,repr(e))
           PY
