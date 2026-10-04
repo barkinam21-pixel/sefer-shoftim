@@ -1,0 +1,50 @@
+name: YouTube embed control test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/youtube-control.yml"
+
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install --no-save playwright-core@latest
+      - name: Test official IFrame API sample video
+        run: |
+          cat > control.mjs <<'JS'
+          import http from 'http';
+          import { chromium } from 'playwright-core';
+
+          const id='M7lc1UVf-VE';
+          const html=`<!doctype html><meta charset="utf-8"><title>WAIT</title>
+          <div id="p"></div><script src="https://www.youtube.com/iframe_api"><\/script>
+          <script>
+          let done=false; const finish=s=>{if(!done){done=true;document.title=s}};
+          window.onYouTubeIframeAPIReady=()=>new YT.Player('p',{
+            videoId:'${id}',
+            playerVars:{autoplay:1,playsinline:1,origin:location.origin},
+            events:{
+              onReady:e=>{try{e.target.mute();e.target.playVideo()}catch(_){}},
+              onStateChange:e=>{if(e.data===1)finish('OK:PLAYING')},
+              onError:e=>finish('ERR:'+e.data)
+            }
+          });
+          setTimeout(()=>finish('TIMEOUT'),12000);
+          <\/script>`;
+          const server=http.createServer((q,r)=>{r.writeHead(200,{'content-type':'text/html'});r.end(html)});
+          await new Promise(r=>server.listen(4173,'127.0.0.1',r));
+          const browser=await chromium.launch({channel:'chrome',headless:true,args:['--autoplay-policy=no-user-gesture-required']});
+          const page=await browser.newPage();
+          await page.goto('http://127.0.0.1:4173/');
+          await page.waitForFunction(()=>document.title!=='WAIT',null,{timeout:15000});
+          const status=await page.title();
+          console.log('CONTROL_STATUS='+status);
+          await browser.close(); server.close();
+          if(status!=='OK:PLAYING') process.exit(2);
+          JS
+          node control.mjs
