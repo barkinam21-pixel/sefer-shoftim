@@ -1,4 +1,4 @@
-name: Guard HaNakh HaBahir direct embeds
+name: Guard HaNakh HaBahir availability
 
 on:
   push:
@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify all 21 chapters use the cosmos direct-iframe path
+      - name: Verify all 21 chapters stay truthful and directly reachable
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import json
+          import json, re
 
           s = Path("index.html").read_text(encoding="utf-8")
           a = s.index("const DATA=") + len("const DATA=")
@@ -31,26 +31,19 @@ jobs:
               errors.append(f"Expected 21 HaNakh chapters, found {len(items)}")
 
           for x in items:
-              if not x.get("yt"):
-                  errors.append(f'{x["title"]}: missing YouTube id')
-              if not x.get("directYT"):
-                  errors.append(f'{x["title"]}: not routed through directYT cosmos method')
+              if x.get("yt") or x.get("embed"):
+                  errors.append(f'{x["title"]}: must not be counted as embedded while the owner blocks embeds')
               url = x.get("url") or ""
               if not url.startswith("https://www.youtube.com/watch?v="):
-                  errors.append(f'{x["title"]}: missing YouTube fallback URL')
-
-          required = [
-              "https://www.youtube-nocookie.com/embed/",
-              "widget_referrer=",
-              "referrerPolicy='strict-origin-when-cross-origin'"
-          ]
-          for token in required:
-              if token not in s:
-                  errors.append(f"Missing direct iframe requirement: {token}")
+                  errors.append(f'{x["title"]}: missing direct chapter URL')
+              if not x.get("thumbYT"):
+                  errors.append(f'{x["title"]}: missing thumbnail id')
+              if "חסם ניגון בתוך אתרים אחרים" not in (x.get("note") or ""):
+                  errors.append(f'{x["title"]}: missing truthful embed-blocked note')
 
           if errors:
               print("\n".join(errors))
               raise SystemExit(1)
 
-          print("All 21 HaNakh HaBahir chapters are routed through the direct privacy-enhanced iframe method with fallback.")
+          print("All 21 HaNakh HaBahir chapters remain in chronology with thumbnails and direct URLs, without falsely claiming an internal embed.")
           PY
