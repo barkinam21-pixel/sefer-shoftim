@@ -11,82 +11,105 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - name: Install yt-dlp
-        run: python3 -m pip install --disable-pip-version-check yt-dlp
-      - name: Audit every YouTube-backed item
+      - name: Install browser driver
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          from concurrent.futures import ThreadPoolExecutor, as_completed
-          import json, re, subprocess
+          google-chrome --version
+          npm install --no-save playwright-core@latest
+      - name: Test every YouTube embed in a real browser
+        run: |
+          cat > /tmp/audit-embeds.mjs <<'JS'
+          import fs from 'fs';
+          import http from 'http';
+          import { chromium } from 'playwright-core';
 
-          s = Path("index.html").read_text(encoding="utf-8")
-          a = s.index("const DATA=") + len("const DATA=")
-          b = s.index(";let filter=", a)
-          data = json.loads(s[a:b])
+          const html = fs.readFileSync('index.html','utf8');
+          const m = html.match(/const DATA=(\{.*?\});let filter=/s);
+          if (!m) throw new Error('DATA not found');
+          const data = JSON.parse(m[1]);
+          const items = data.items.filter(x => x.yt);
 
-          rows = []
-          for i, x in enumerate(data["items"], 1):
-              vid = x.get("yt")
-              url = x.get("url") or ""
-              if not vid:
-                  m = re.search(r'(?:youtube\.com/watch\?v=|youtu\.be/)([A-Za-z0-9_-]{11})', url)
-                  if m:
-                      vid = m.group(1)
-              if vid:
-                  rows.append((i, x.get("ch",""), x.get("title",""), vid, bool(x.get("yt"))))
+          const testPage = `<!doctype html>
+          <meta charset="utf-8">
+          <title>WAIT</title>
+          <div id="p"></div>
+          <script src="https://www.youtube.com/iframe_api"><\/script>
+          <script>
+          const id=new URLSearchParams(location.search).get('v');
+          let done=false;
+          const finish=(s)=>{if(!done){done=true;document.title=s}};
+          window.onYouTubeIframeAPIReady=()=>{
+            const p=new YT.Player('p',{
+              width:'640',height:'360',videoId:id,
+              playerVars:{autoplay:1,playsinline:1,rel:0,origin:location.origin},
+              events:{
+                onReady:e=>{
+                  try{e.target.mute();e.target.playVideo()}catch(_){}
+                  setTimeout(()=>{
+                    if(done)return;
+                    let st=-99;
+                    try{st=e.target.getPlayerState()}catch(_){}
+                    if([-1,0,1,2,3,5].includes(st)) finish('OK:'+st);
+                    else finish('UNKNOWN:'+st);
+                  },5000);
+                },
+                onStateChange:e=>{
+                  if([0,1,2,3,5].includes(e.data)) finish('OK:'+e.data);
+                },
+                onError:e=>finish('ERR:'+e.data)
+              }
+            });
+          };
+          setTimeout(()=>finish('TIMEOUT'),12000);
+          <\/script>`;
 
-          def check(row):
-              idx, ch, title, vid, marked = row
-              cmd = [
-                  "yt-dlp", "--skip-download", "--no-warnings", "--ignore-no-formats-error",
-                  "--print", "%(id)s\t%(availability)s\t%(playable_in_embed)s\t%(title)s",
-                  f"https://www.youtube.com/watch?v={vid}"
-              ]
-              try:
-                  p = subprocess.run(cmd, text=True, capture_output=True, timeout=35)
-              except subprocess.TimeoutExpired:
-                  return row, "timeout", "", "", 124
-              out = (p.stdout or "").strip().splitlines()
-              line = out[-1] if out else ""
-              parts = line.split("\t")
-              availability = parts[1].strip() if len(parts) >= 2 else ""
-              embed = parts[2].strip().lower() if len(parts) >= 3 else ""
-              return row, "", availability, embed, p.returncode
+          const server=http.createServer((req,res)=>{
+            res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
+            res.end(testPage);
+          });
+          await new Promise(r=>server.listen(4173,'127.0.0.1',r));
 
-          bad = []
-          unknown = []
-          print(f"AUDIT_COUNT={len(rows)}")
-          with ThreadPoolExecutor(max_workers=10) as ex:
-              futs = {ex.submit(check, row): row for row in rows}
-              for fut in as_completed(futs):
-                  row, err, availability, embed, rc = fut.result()
-                  idx, ch, title, vid, marked = row
-                  ok = embed in ("true","yes","1")
-                  state = "OK" if ok else ("TIMEOUT" if err else "BAD")
-                  print(f"CHECK\t{idx}\t{ch}\t{vid}\tmarked={marked}\tavailability={availability}\tembed={embed or 'unknown'}\t{state}\t{title}")
-                  if marked and not ok:
-                      reason = err or f"availability={availability}, playable_in_embed={embed or 'unknown'}, rc={rc}"
-                      bad.append((idx,ch,title,vid,reason))
-                  if not marked and ok:
-                      unknown.append((idx,ch,title,vid,"external_but_embeddable"))
+          const browser=await chromium.launch({channel:'chrome',headless:true,args:['--autoplay-policy=no-user-gesture-required']});
+          let next=0;
+          const bad=[];
+          const results=[];
 
-          print("\n=== BROKEN_MARKED_EMBEDS ===")
-          if bad:
-              for row in sorted(bad):
-                  print("\t".join(map(str,row)))
-              print(f"BROKEN_COUNT={len(bad)}")
-          else:
-              print("NONE")
+          async function worker(n){
+            const page=await browser.newPage();
+            while(true){
+              const idx=next++;
+              if(idx>=items.length)break;
+              const x=items[idx];
+              try{
+                await page.goto('http://127.0.0.1:4173/?v='+encodeURIComponent(x.yt),{waitUntil:'domcontentloaded',timeout:20000});
+                await page.waitForFunction(()=>/^(OK|ERR|TIMEOUT|UNKNOWN):?/.test(document.title),null,{timeout:15000});
+                const status=await page.title();
+                results.push({idx,chapter:x.ch,title:x.title,id:x.yt,status});
+                console.log('CHECK\t'+(idx+1)+'\t'+x.ch+'\t'+x.yt+'\t'+status+'\t'+x.title);
+                if(status.startsWith('ERR:')||status==='TIMEOUT'||status.startsWith('UNKNOWN:')){
+                  bad.push({idx,chapter:x.ch,title:x.title,id:x.yt,status});
+                }
+              }catch(e){
+                const status='BROWSER:'+String(e).replace(/\s+/g,' ').slice(0,180);
+                results.push({idx,chapter:x.ch,title:x.title,id:x.yt,status});
+                bad.push({idx,chapter:x.ch,title:x.title,id:x.yt,status});
+                console.log('CHECK\t'+(idx+1)+'\t'+x.ch+'\t'+x.yt+'\t'+status+'\t'+x.title);
+              }
+            }
+            await page.close();
+          }
 
-          print("\n=== EXTERNAL_YOUTUBE_THAT_CAN_EMBED ===")
-          if unknown:
-              for row in sorted(unknown):
-                  print("\t".join(map(str,row)))
-              print(f"EMBEDDABLE_EXTERNAL_COUNT={len(unknown)}")
-          else:
-              print("NONE")
+          console.log('AUDIT_COUNT='+items.length);
+          await Promise.all(Array.from({length:8},(_,i)=>worker(i)));
+          await browser.close();
+          server.close();
 
-          if bad:
-              raise SystemExit(2)
-          PY
+          results.sort((a,b)=>a.idx-b.idx);
+          bad.sort((a,b)=>a.idx-b.idx);
+          console.log('\n=== BROKEN_MARKED_EMBEDS ===');
+          if(!bad.length) console.log('NONE');
+          else for(const x of bad) console.log([x.idx+1,x.chapter,x.title,x.id,x.status].join('\t'));
+          console.log('BROKEN_COUNT='+bad.length);
+          fs.writeFileSync('/tmp/embed-audit.json',JSON.stringify({results,bad},null,2));
+          if(bad.length) process.exit(2);
+          JS
+          node /tmp/audit-embeds.mjs
