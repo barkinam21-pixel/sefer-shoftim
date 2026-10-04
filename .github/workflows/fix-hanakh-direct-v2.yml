@@ -1,4 +1,4 @@
-name: Guard HaNakh HaBahir embeds
+name: Guard HaNakh HaBahir direct embeds
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify blocked HaNakh videos stay external
+      - name: Verify all 21 chapters use the cosmos direct-iframe path
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -31,15 +31,26 @@ jobs:
               errors.append(f"Expected 21 HaNakh chapters, found {len(items)}")
 
           for x in items:
-              if x.get("yt"):
-                  errors.append(f'{x["title"]}: blocked YouTube embed was re-enabled')
+              if not x.get("yt"):
+                  errors.append(f'{x["title"]}: missing YouTube id')
+              if not x.get("directYT"):
+                  errors.append(f'{x["title"]}: not routed through directYT cosmos method')
               url = x.get("url") or ""
               if not url.startswith("https://www.youtube.com/watch?v="):
-                  errors.append(f'{x["title"]}: missing direct YouTube fallback')
+                  errors.append(f'{x["title"]}: missing YouTube fallback URL')
+
+          required = [
+              "https://www.youtube-nocookie.com/embed/",
+              "widget_referrer=",
+              "referrerPolicy='strict-origin-when-cross-origin'"
+          ]
+          for token in required:
+              if token not in s:
+                  errors.append(f"Missing direct iframe requirement: {token}")
 
           if errors:
               print("\n".join(errors))
               raise SystemExit(1)
 
-          print("All 21 HaNakh HaBahir chapters are correctly marked as external fallbacks.")
+          print("All 21 HaNakh HaBahir chapters are routed through the direct privacy-enhanced iframe method with fallback.")
           PY
