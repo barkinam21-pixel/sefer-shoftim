@@ -1,4 +1,4 @@
-name: Query ShiurPod mirror for Nussbaum Judges
+name: Query Kol Halashon legacy API for Nussbaum Judges
 on:
   push:
     branches: [hanakh-crop-final]
@@ -7,22 +7,62 @@ on:
 jobs:
   query:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 8
     steps:
-      - name: Extract YouTube description source links directly
+      - name: Search legacy API with official referer
         run: |
           python3 - <<'PY'
-          import requests,re,json
-          h={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/141 Safari/537.36','Accept-Language':'he-IL,he;q=0.9,en;q=0.7'}
-          for vid in ['dMfyog_Z5EA','xJnDGKQvVCY','4QuUq6MTPFM','vme74pRb8j8']:
-            t=requests.get('https://www.youtube.com/watch?v='+vid,headers=h,timeout=25).text
-            print('\n===',vid,'===')
-            for key in ['shortDescription','description','ownerChannelName']:
-              p='"'+key+'":'
-              i=t.find(p)
-              print(key,'POS',i)
-              if i>=0:
-                sn=t[i:i+18000]
-                print('SNIP',sn[:18000])
-                break
+          import requests,json,re
+          base='https://www2.kolhalashon.com:444/api/'
+          H={
+            'Referer':'https://www2.kolhalashon.com/',
+            'Origin':'https://www2.kolhalashon.com',
+            'User-Agent':'Mozilla/5.0',
+            'Accept':'application/json, text/plain, */*'
+          }
+          s=requests.Session()
+          q='רפאל נוסבוים'
+          u=base+'Search/WebSite_GetSearchItems/'+requests.utils.quote(q,safe='')+'/-1/1/50'
+          r=s.get(u,headers=H,timeout=30)
+          print('SEARCH_STATUS',r.status_code,'LEN',len(r.text),'TYPE',r.headers.get('content-type'))
+          print('SEARCH_BODY',r.text[:30000])
+          data=[]
+          try:data=r.json()
+          except: pass
+          ids=[]
+          if isinstance(data,list):
+            for x in data:
+              blob=json.dumps(x,ensure_ascii=False)
+              if 'נוסבוים' in blob:
+                print('SEARCH_MATCH',blob)
+                for k in ['SearchItemId','SearchItemID','RavID','Id','ID']:
+                  if x.get(k) is not None:
+                    try: ids.append(int(x[k]))
+                    except: pass
+          ids=list(dict.fromkeys(ids))
+          print('CANDIDATE_IDS',ids)
+          for rid in ids:
+            payload={
+              'RavID':rid,
+              'FromRow':0,
+              'NumOfRows':3000,
+              'OrderBy':7,
+              'PrefferedLanguage':0,
+              'FiltersArray':[]
+            }
+            rr=s.post(base+'Search/WebSite_GetRavShiurim/',headers={**H,'Content-Type':'application/json'},json=payload,timeout=60)
+            print('\nRAV',rid,'STATUS',rr.status_code,'LEN',len(rr.text))
+            try: arr=rr.json()
+            except Exception:
+              print(rr.text[:5000]); continue
+            print('RAV_TYPE',type(arr).__name__,'COUNT',len(arr) if isinstance(arr,list) else '?')
+            if isinstance(arr,list):
+              hits=[]
+              for x in arr:
+                blob=json.dumps(x,ensure_ascii=False)
+                if 'שופטים' in blob or 'Shoftim' in blob or 'Judges' in blob:
+                  hits.append(x)
+              print('JUDGES_HITS',len(hits))
+              for x in hits[:200]:
+                print('HIT',json.dumps(x,ensure_ascii=False))
           PY
