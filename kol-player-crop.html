@@ -5,31 +5,51 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>נגן קול הלשון — חיתוך נקי</title>
 <style>
-:root{--crop-top:165px}
+:root{
+  --crop-top:165px;
+  /* לפי התצוגה האמיתית בדפדפן של בר:
+     נגן קול הלשון במובייל נמוך משמעותית מ-16:9.
+     אנחנו חותכים בדיוק בגובה הנגן, במקום להמשיך אל תוכן העמוד שמתחתיו. */
+  --player-ratio:2.82;
+}
 *{box-sizing:border-box}
 body{margin:0;background:#070b12;color:#f7f9fc;font-family:Arial,sans-serif}
 .wrap{max-width:920px;margin:auto;padding:14px}
 h1{font-size:clamp(24px,5vw,34px);margin:10px 0 14px}
 .note{background:#122034;border:1px solid #2d4563;border-radius:16px;padding:14px;line-height:1.5;margin-bottom:14px}
-.playerShell{position:relative;width:100%;aspect-ratio:16/9;background:#000;border:1px solid #27364b;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px #0008}
+.playerShell{
+ position:relative;
+ width:100%;
+ height:calc((100vw - 28px) / var(--player-ratio));
+ max-height:320px;
+ min-height:185px;
+ background:#000;
+ border:1px solid #27364b;
+ border-radius:18px;
+ overflow:hidden;
+ box-shadow:0 14px 40px #0008;
+}
 .playerShell iframe{
  position:absolute;
  left:0;
  top:calc(-1 * var(--crop-top));
  width:100%;
- height:calc(100% + var(--crop-top));
+ height:900px;
  border:0;
  display:block;
  background:#000;
 }
 .caption{margin-top:12px;color:#c5cfdd;font-size:14px;line-height:1.45}
 .full{display:block;margin-top:14px;padding:15px;border-radius:14px;background:#fff;color:#111;text-decoration:none;text-align:center;font-weight:800}
-@media(min-width:850px){:root{--crop-top:150px}}
+@media(min-width:850px){
+  :root{--crop-top:150px;--player-ratio:2.45}
+  .playerShell{height:320px}
+}
 </style>
 </head>
 <body><main class="wrap">
 <h1>ניסוי — רק הווידאו של קול הלשון</h1>
-<div class="note">אותו מקור רשמי שעבד אצלך, אבל התצוגה נחתכת לחלון הווידאו בלבד. לא הורדתי ולא העתקתי את הסרטון — זה עדיין הנגן הרשמי של קול הלשון בתוך iframe.</div>
+<div class="note">אותו מקור רשמי שעבד אצלך. הפעם המסגרת עצמה נגמרת בדיוק במקום שבו נגמר נגן הווידאו, כדי שלא יופיע תוכן העמוד שמתחתיו. זה עדיין הנגן הרשמי של קול הלשון בתוך iframe.</div>
 <div class="playerShell">
 <iframe
  src="https://www.kolhalashon.com/he/regularSite/playShiur/31472614/-1/0/false"
@@ -39,6 +59,6 @@ h1{font-size:clamp(24px,5vw,34px);margin:10px 0 14px}
  referrerpolicy="strict-origin-when-cross-origin"
  scrolling="no"></iframe>
 </div>
-<div class="caption">אם כאן אתה רואה רק את הווידאו עצמו (בלי הלוגו/התפריט הכחול של קול הלשון), זה הפתרון שניישם על פרקי הנ״ך הבהיר.</div>
+<div class="caption">אם כאן אתה רואה רק את אזור הווידאו, בלי הכותרת הלבנה שמתחתיו — זה החיתוך הנכון שניישם על פרקי הנ״ך הבהיר.</div>
 <a class="full" href="https://www.kolhalashon.com/he/regularSite/playShiur/31472614/-1/0/false" target="_blank" rel="noopener">פתח במקור — גיבוי</a>
 </main></body></html>
