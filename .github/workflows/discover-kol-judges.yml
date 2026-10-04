@@ -9,28 +9,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Search indexed official lesson URLs via Bing
+      - name: Read source links from the 21 official YouTube pages
         run: |
           python3 - <<'PY'
-          import requests,re,html,urllib.parse,time
-          H={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/141.0 Safari/537.36'}
-          chapters=['א','ב','ג','ד','ה','ו','ז','ח','ט','י','יא','יב','יג','יד','טו','טז','יז','יח','יט','כ','כא']
-          for ch in chapters:
-            q=f'"פרק {ch}, שופטים" "רפאל נוסבוים"'
-            u='https://www.bing.com/search?count=30&q='+urllib.parse.quote(q)
-            r=requests.get(u,headers=H,timeout=20)
-            print('\nCHAPTER',ch,'STATUS',r.status_code,'LEN',len(r.text))
-            found=[]
-            for m in re.finditer(r'<li class="b_algo".*?</li>',r.text,re.I|re.S):
-              block=m.group(0)
-              mm=re.search(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>',block,re.I|re.S)
-              if not mm: continue
-              href=html.unescape(mm.group(1)); title=re.sub(r'<[^>]+>',' ',mm.group(2))
-              title=html.unescape(re.sub(r'\s+',' ',title)).strip()
-              sn=re.search(r'<p>(.*?)</p>',block,re.I|re.S)
-              snip=html.unescape(re.sub(r'<[^>]+>',' ',sn.group(1))) if sn else ''
-              if 'kolhalashon' in href or 'glat.tube' in href or 'נוסבוים' in title+snip or 'שופטים' in title+snip:
-                found.append((href,title,re.sub(r'\s+',' ',snip).strip()))
-            for x in found[:10]: print('RESULT',repr(x))
+          import requests,re,json,html,time
+          H={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/141.0 Safari/537.36','Accept-Language':'he-IL,he;q=0.9,en;q=0.7'}
+          vids=['dMfyog_Z5EA','oW0h-AwPhg4','KhbZVQ_xfPA','xJnDGKQvVCY','7WdCmDoBh1Q','DTN-sy0m7mg','oe3LNfZAzPw','lIms7HsGYQc','nKKjVOKhtLs','Wb7dZIf6kME','K0RVwNlTXpk','4QuUq6MTPFM','RUKgFr9tgzo','jUk9haofFbk','IhWO_NlxSkY','xVTOTk-pSJQ','0u4Dk9uy0Wg','bsLZc-RrKwE','LozAQ9gq91c','ofDCMQdoP8A','vme74pRb8j8']
+          for n,v in enumerate(vids,1):
+            u='https://www.youtube.com/watch?v='+v
+            try:
+              r=requests.get(u,headers=H,timeout=25)
+              t=r.text
+              print('\nCH',n,'VID',v,'STATUS',r.status_code,'LEN',len(t))
+              # URLs encoded normally or JSON escaped in YouTube initial data
+              dec=html.unescape(t).replace('\\u0026','&').replace('\\/','/')
+              urls=[]
+              for m in re.finditer(r'https?://[^"\\s<>]+',dec):
+                x=m.group(0).rstrip('.,);]')
+                if 'kolhalashon' in x.lower() or 'glat.tube' in x.lower():
+                  if x not in urls: urls.append(x)
+              for x in urls[:20]: print('SOURCE',x[:1000])
+              for pat in ['shortDescription','פרק '+str(n),'שופטים','נוסבוים']:
+                i=dec.find(pat)
+                if i>=0: print('SNIP',dec[max(0,i-300):i+1800].replace('\\n',' ')[:2200])
+            except Exception as e: print('ERR',repr(e))
             time.sleep(.3)
           PY
