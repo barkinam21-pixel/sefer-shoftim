@@ -15,47 +15,76 @@ jobs:
         run: |
           google-chrome --version
           npm install --no-save playwright-core@latest
-      - name: Test every embed on the live production site
+      - name: Test every embed on the matching live production version
         run: |
           cat > audit-live.mjs <<'JS'
           import fs from 'fs';
           import { chromium } from 'playwright-core';
 
           const SITE='https://shoftim-v3.vercel.app/';
+          const localHtml=fs.readFileSync('index.html','utf8');
+          const localMatch=localHtml.match(/const DATA=(\{.*?\});let filter=/s);
+          if(!localMatch) throw new Error('Local DATA not found');
+          const expected=JSON.parse(localMatch[1]);
+          const expectedTotal=expected.items.length;
+          const expectedYt=expected.items.filter(x=>x.yt).length;
+          const expectedEmbed=expected.items.filter(x=>x.embed).length;
+
           const browser=await chromium.launch({
             channel:'chrome',
             headless:true,
             args:['--autoplay-policy=no-user-gesture-required']
           });
 
+          // Wait for Vercel's canonical production alias to serve this commit's data.
           const seed=await browser.newPage();
-          await seed.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
-          await seed.waitForFunction(()=>typeof DATA!=='undefined' && Array.isArray(DATA.items),null,{timeout:15000});
-          const items=await seed.evaluate(()=>DATA.items.filter(x=>x.yt).map(x=>({
-            ch:x.ch,title:x.title,id:x.yt
+          let matched=false;
+          for(let n=0;n<30;n++){
+            await seed.goto(SITE+'?audit='+Date.now(),{waitUntil:'domcontentloaded',timeout:30000});
+            try{
+              const live=await seed.evaluate(()=>({
+                total:DATA.items.length,
+                yt:DATA.items.filter(x=>x.yt).length,
+                embed:DATA.items.filter(x=>x.embed).length
+              }));
+              console.log('LIVE_VERSION',JSON.stringify(live),'EXPECTED',JSON.stringify({
+                total:expectedTotal,yt:expectedYt,embed:expectedEmbed
+              }));
+              if(live.total===expectedTotal && live.yt===expectedYt && live.embed===expectedEmbed){
+                matched=true; break;
+              }
+            }catch(e){}
+            await seed.waitForTimeout(3000);
+          }
+          if(!matched) throw new Error('Live production never matched this commit');
+
+          await seed.waitForFunction(()=>window.YT && YT.Player && typeof play==='function',null,{timeout:20000});
+          const liveItems=await seed.evaluate(()=>DATA.items.map(x=>({
+            ch:x.ch,title:x.title,yt:x.yt||null,embed:x.embed||null
           })));
           await seed.close();
 
-          let next=0;
+          const ytItems=liveItems.filter(x=>x.yt);
+          const frameItems=liveItems.filter(x=>x.embed);
           const results=[];
           const bad=[];
 
-          async function worker(){
+          let nextYt=0;
+          async function ytWorker(){
             const page=await browser.newPage();
             await page.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
             await page.waitForFunction(()=>window.YT && YT.Player && typeof play==='function',null,{timeout:20000});
             while(true){
-              const idx=next++;
-              if(idx>=items.length) break;
-              const item=items[idx];
+              const idx=nextYt++;
+              if(idx>=ytItems.length) break;
+              const item=ytItems[idx];
+              let status='TIMEOUT';
               try{
                 await page.evaluate(({id})=>{
                   const x=DATA.items.find(y=>y.yt===id);
                   if(!x) throw new Error('item missing');
                   play(x);
-                },{id:item.id});
-
-                let status='TIMEOUT';
+                },{id:item.yt});
                 const started=Date.now();
                 while(Date.now()-started<9000){
                   status=await page.evaluate(()=>{
@@ -78,28 +107,69 @@ jobs:
                   if(status!=='WAIT') break;
                   await page.waitForTimeout(400);
                 }
-                results.push({...item,idx,status});
-                console.log(['CHECK',idx+1,item.ch,item.id,status,item.title].join('\t'));
-                if(status.startsWith('ERR:')||status==='TIMEOUT') bad.push({...item,idx,status});
               }catch(e){
-                const status='BROWSER:'+String(e).replace(/\s+/g,' ').slice(0,160);
-                results.push({...item,idx,status});
-                bad.push({...item,idx,status});
-                console.log(['CHECK',idx+1,item.ch,item.id,status,item.title].join('\t'));
+                status='BROWSER:'+String(e).replace(/\s+/g,' ').slice(0,160);
+              }
+              results.push({kind:'youtube',...item,status});
+              console.log(['CHECK_YT',item.ch,item.yt,status,item.title].join('\t'));
+              if(status.startsWith('ERR:')||status==='TIMEOUT'||status.startsWith('BROWSER:')){
+                bad.push({kind:'youtube',...item,status});
               }
             }
             await page.close();
           }
 
-          console.log('AUDIT_COUNT='+items.length);
-          await Promise.all(Array.from({length:8},()=>worker()));
+          let nextFrame=0;
+          async function frameWorker(){
+            const page=await browser.newPage();
+            await page.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
+            await page.waitForFunction(()=>typeof play==='function',null,{timeout:15000});
+            while(true){
+              const idx=nextFrame++;
+              if(idx>=frameItems.length) break;
+              const item=frameItems[idx];
+              let status='FRAME_TIMEOUT';
+              try{
+                await page.evaluate(({embed})=>{
+                  const x=DATA.items.find(y=>y.embed===embed);
+                  if(!x) throw new Error('item missing');
+                  play(x);
+                },{embed:item.embed});
+                await page.waitForTimeout(3500);
+                const info=await page.evaluate(()=>({
+                  src:document.querySelector('#playerHost iframe')?.src||'',
+                  count:document.querySelectorAll('#playerHost iframe').length
+                }));
+                const childUrls=page.frames().map(f=>f.url());
+                const wanted=new URL(item.embed);
+                const loaded=childUrls.some(u=>{
+                  try{
+                    const z=new URL(u);
+                    return z.hostname===wanted.hostname && z.href!=='about:blank';
+                  }catch(e){return false}
+                });
+                status=(info.count===1 && info.src===item.embed && loaded)?'OK:FRAME':'ERR:FRAME';
+              }catch(e){
+                status='BROWSER:'+String(e).replace(/\s+/g,' ').slice(0,160);
+              }
+              results.push({kind:'iframe',...item,status});
+              console.log(['CHECK_FRAME',item.ch,item.embed,status,item.title].join('\t'));
+              if(status!=='OK:FRAME') bad.push({kind:'iframe',...item,status});
+            }
+            await page.close();
+          }
+
+          console.log('AUDIT_YT_COUNT='+ytItems.length);
+          console.log('AUDIT_FRAME_COUNT='+frameItems.length);
+          await Promise.all([
+            ...Array.from({length:6},()=>ytWorker()),
+            ...Array.from({length:2},()=>frameWorker())
+          ]);
           await browser.close();
 
-          results.sort((a,b)=>a.idx-b.idx);
-          bad.sort((a,b)=>a.idx-b.idx);
-          console.log('\n=== BROKEN_MARKED_EMBEDS ===');
+          console.log('\n=== BROKEN_EMBEDS ===');
           if(!bad.length) console.log('NONE');
-          else for(const x of bad) console.log([x.idx+1,x.ch,x.title,x.id,x.status].join('\t'));
+          else for(const x of bad) console.log([x.kind,x.ch,x.title,x.yt||x.embed,x.status].join('\t'));
           console.log('BROKEN_COUNT='+bad.length);
           fs.writeFileSync('embed-audit-live.json',JSON.stringify({site:SITE,results,bad},null,2));
           if(bad.length) process.exit(2);
