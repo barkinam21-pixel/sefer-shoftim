@@ -15,101 +15,93 @@ jobs:
         run: |
           google-chrome --version
           npm install --no-save playwright-core@latest
-      - name: Test every YouTube embed in a real browser
+      - name: Test every embed on the live production site
         run: |
-          cat > audit-embeds.mjs <<'JS'
+          cat > audit-live.mjs <<'JS'
           import fs from 'fs';
-          import http from 'http';
           import { chromium } from 'playwright-core';
 
-          const html = fs.readFileSync('index.html','utf8');
-          const m = html.match(/const DATA=(\{.*?\});let filter=/s);
-          if (!m) throw new Error('DATA not found');
-          const data = JSON.parse(m[1]);
-          const items = data.items.filter(x => x.yt);
-
-          const testPage = `<!doctype html>
-          <meta charset="utf-8">
-          <title>WAIT</title>
-          <div id="p"></div>
-          <script src="https://www.youtube.com/iframe_api"><\/script>
-          <script>
-          const id=new URLSearchParams(location.search).get('v');
-          let done=false;
-          const finish=(s)=>{if(!done){done=true;document.title=s}};
-          window.onYouTubeIframeAPIReady=()=>{
-            const p=new YT.Player('p',{
-              width:'640',height:'360',videoId:id,
-              playerVars:{autoplay:1,playsinline:1,rel:0,origin:location.origin},
-              events:{
-                onReady:e=>{
-                  try{e.target.mute();e.target.playVideo()}catch(_){}
-                  setTimeout(()=>{
-                    if(done)return;
-                    let st=-99;
-                    try{st=e.target.getPlayerState()}catch(_){}
-                    if([-1,0,1,2,3,5].includes(st)) finish('OK:'+st);
-                    else finish('UNKNOWN:'+st);
-                  },5000);
-                },
-                onStateChange:e=>{
-                  if([0,1,2,3,5].includes(e.data)) finish('OK:'+e.data);
-                },
-                onError:e=>finish('ERR:'+e.data)
-              }
-            });
-          };
-          setTimeout(()=>finish('TIMEOUT'),12000);
-          <\/script>`;
-
-          const server=http.createServer((req,res)=>{
-            res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
-            res.end(testPage);
+          const SITE='https://shoftim-v3.vercel.app/';
+          const browser=await chromium.launch({
+            channel:'chrome',
+            headless:true,
+            args:['--autoplay-policy=no-user-gesture-required']
           });
-          await new Promise(r=>server.listen(4173,'127.0.0.1',r));
 
-          const browser=await chromium.launch({channel:'chrome',headless:true,args:['--autoplay-policy=no-user-gesture-required']});
+          const seed=await browser.newPage();
+          await seed.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
+          await seed.waitForFunction(()=>typeof DATA!=='undefined' && Array.isArray(DATA.items),null,{timeout:15000});
+          const items=await seed.evaluate(()=>DATA.items.filter(x=>x.yt).map(x=>({
+            ch:x.ch,title:x.title,id:x.yt
+          })));
+          await seed.close();
+
           let next=0;
-          const bad=[];
           const results=[];
+          const bad=[];
 
-          async function worker(n){
+          async function worker(){
             const page=await browser.newPage();
+            await page.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
+            await page.waitForFunction(()=>window.YT && YT.Player && typeof play==='function',null,{timeout:20000});
             while(true){
               const idx=next++;
-              if(idx>=items.length)break;
-              const x=items[idx];
+              if(idx>=items.length) break;
+              const item=items[idx];
               try{
-                await page.goto('http://127.0.0.1:4173/?v='+encodeURIComponent(x.yt),{waitUntil:'domcontentloaded',timeout:20000});
-                await page.waitForFunction(()=>/^(OK|ERR|TIMEOUT|UNKNOWN):?/.test(document.title),null,{timeout:15000});
-                const status=await page.title();
-                results.push({idx,chapter:x.ch,title:x.title,id:x.yt,status});
-                console.log('CHECK\t'+(idx+1)+'\t'+x.ch+'\t'+x.yt+'\t'+status+'\t'+x.title);
-                if(status.startsWith('ERR:')||status==='TIMEOUT'||status.startsWith('UNKNOWN:')){
-                  bad.push({idx,chapter:x.ch,title:x.title,id:x.yt,status});
+                await page.evaluate(({id})=>{
+                  const x=DATA.items.find(y=>y.yt===id);
+                  if(!x) throw new Error('item missing');
+                  play(x);
+                },{id:item.id});
+
+                let status='TIMEOUT';
+                const started=Date.now();
+                while(Date.now()-started<9000){
+                  status=await page.evaluate(()=>{
+                    const overlay=document.getElementById('ph');
+                    const text=(overlay?.innerText||'').trim();
+                    if(overlay && !overlay.classList.contains('hide')){
+                      if(text.includes('לא מאפשרים להטמיע')) return 'ERR:150';
+                      if(text.includes('שגיאה 153')) return 'ERR:153';
+                      if(text.includes('הוסר')||text.includes('פרטי')||text.includes('אינו זמין')) return 'ERR:100';
+                      if(text.includes('YouTube לא הצליח')) return 'ERR:OTHER';
+                    }
+                    try{
+                      if(ytPlayer && typeof ytPlayer.getPlayerState==='function'){
+                        const st=ytPlayer.getPlayerState();
+                        if([0,1,2,3,5].includes(st)) return 'OK:'+st;
+                      }
+                    }catch(e){}
+                    return 'WAIT';
+                  });
+                  if(status!=='WAIT') break;
+                  await page.waitForTimeout(400);
                 }
+                results.push({...item,idx,status});
+                console.log(['CHECK',idx+1,item.ch,item.id,status,item.title].join('\t'));
+                if(status.startsWith('ERR:')||status==='TIMEOUT') bad.push({...item,idx,status});
               }catch(e){
-                const status='BROWSER:'+String(e).replace(/\s+/g,' ').slice(0,180);
-                results.push({idx,chapter:x.ch,title:x.title,id:x.yt,status});
-                bad.push({idx,chapter:x.ch,title:x.title,id:x.yt,status});
-                console.log('CHECK\t'+(idx+1)+'\t'+x.ch+'\t'+x.yt+'\t'+status+'\t'+x.title);
+                const status='BROWSER:'+String(e).replace(/\s+/g,' ').slice(0,160);
+                results.push({...item,idx,status});
+                bad.push({...item,idx,status});
+                console.log(['CHECK',idx+1,item.ch,item.id,status,item.title].join('\t'));
               }
             }
             await page.close();
           }
 
           console.log('AUDIT_COUNT='+items.length);
-          await Promise.all(Array.from({length:8},(_,i)=>worker(i)));
+          await Promise.all(Array.from({length:8},()=>worker()));
           await browser.close();
-          server.close();
 
           results.sort((a,b)=>a.idx-b.idx);
           bad.sort((a,b)=>a.idx-b.idx);
           console.log('\n=== BROKEN_MARKED_EMBEDS ===');
           if(!bad.length) console.log('NONE');
-          else for(const x of bad) console.log([x.idx+1,x.chapter,x.title,x.id,x.status].join('\t'));
+          else for(const x of bad) console.log([x.idx+1,x.ch,x.title,x.id,x.status].join('\t'));
           console.log('BROKEN_COUNT='+bad.length);
-          fs.writeFileSync('embed-audit.json',JSON.stringify({results,bad},null,2));
+          fs.writeFileSync('embed-audit-live.json',JSON.stringify({site:SITE,results,bad},null,2));
           if(bad.length) process.exit(2);
           JS
-          node audit-embeds.mjs
+          node audit-live.mjs
