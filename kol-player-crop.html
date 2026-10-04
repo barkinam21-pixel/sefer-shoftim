@@ -6,11 +6,11 @@
 <title>נגן קול הלשון — חיתוך נקי</title>
 <style>
 :root{
-  --crop-top:178px;
+  --crop-top:170px;
   /* לפי התצוגה האמיתית בדפדפן של בר:
      נגן קול הלשון במובייל נמוך משמעותית מ-16:9.
      אנחנו חותכים בדיוק בגובה הנגן, במקום להמשיך אל תוכן העמוד שמתחתיו. */
-  --player-ratio:3.06;
+  --player-ratio:3.22;
 }
 *{box-sizing:border-box}
 body{margin:0;background:#070b12;color:#f7f9fc;font-family:Arial,sans-serif}
@@ -31,10 +31,12 @@ h1{font-size:clamp(24px,5vw,34px);margin:10px 0 14px}
 }
 .playerShell iframe{
  position:absolute;
- left:-1.5%;
+ left:-4%;
  top:calc(-1 * var(--crop-top));
- width:103%;
- height:900px;
+ width:108%;
+ height:940px;
+ transform:scale(1.035);
+ transform-origin:top center;
  border:0;
  display:block;
  background:#000;
@@ -42,8 +44,8 @@ h1{font-size:clamp(24px,5vw,34px);margin:10px 0 14px}
 .caption{margin-top:12px;color:#c5cfdd;font-size:14px;line-height:1.45}
 .full{display:block;margin-top:14px;padding:15px;border-radius:14px;background:#fff;color:#111;text-decoration:none;text-align:center;font-weight:800}
 @media(min-width:850px){
-  :root{--crop-top:162px;--player-ratio:2.72}
-  .playerShell{height:294px}
+  :root{--crop-top:156px;--player-ratio:2.82}
+  .playerShell{height:286px}
 }
 </style>
 </head>
@@ -59,6 +61,6 @@ h1{font-size:clamp(24px,5vw,34px);margin:10px 0 14px}
  referrerpolicy="strict-origin-when-cross-origin"
  scrolling="no"></iframe>
 </div>
-<div class="caption">כיוונון חדש: הווידאו מוזז מעט למעלה, חלון החיתוך קצר יותר כדי שלא ייכנס לבן מלמטה, ויש זום קטן לרוחב כדי להגיע לקצוות.</div>
+<div class="caption">כיוונון FULL-BLEED: הנגן מגיע לקצוות המסך, ה-iframe עושה overscan לכל הכיוונים, והחיתוך קצר מספיק כדי שלא יופיע לבן מלמטה.</div>
 <a class="full" href="https://www.kolhalashon.com/he/regularSite/playShiur/31472614/-1/0/false" target="_blank" rel="noopener">פתח במקור — גיבוי</a>
 </main></body></html>
