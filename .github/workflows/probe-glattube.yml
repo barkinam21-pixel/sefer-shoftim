@@ -1,0 +1,36 @@
+name: Probe GlatTube HaNakh
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/probe-glattube.yml"
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch GlatTube Judges playlist
+        run: |
+          python3 - <<'PY'
+          import urllib.request, re, json, html
+          url='https://glat.tube/category/13218'
+          req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'})
+          body=urllib.request.urlopen(req,timeout=30).read().decode('utf-8','replace')
+          print('STATUS_BODY_LEN',len(body))
+          print('HAS_HANAKH', 'הנ&quot;ך הבהיר - שופטים' in body or 'הנ"ך הבהיר - שופטים' in body)
+          ids=['dMfyog_Z5EA','oW0h-AwPhg4','KhbZVQ_xfPA','xJnDGKQvVCY','7WdCmDoBh1Q','DTN-sy0m7mg','oe3LNfZAzPw','lIms7HsGYQc','nKKjVOKhtLs','Wb7dZIf6kME','K0RVwNlTXpk','4QuUq6MTPFM','RUKgFr9tgzo','jUk9haofFbk','IhWO_NlxSkY','xVTOTk-pSJQ','0u4Dk9uy0Wg','bsLZc-RrKwE','LozAQ9gq91c','ofDCMQdoP8A','vme74pRb8j8']
+          for vid in ids:
+              print('YTID',vid,'FOUND',vid in body)
+          links=sorted(set(re.findall(r'https?://[^"\'<> ]+|/video/[^"\'<> ]+',body)))
+          print('LINK_COUNT',len(links))
+          for x in links[:400]:
+              if '/video/' in x or '13218' in x or 'han' in x.lower():
+                  print('LINK',html.unescape(x)[:500])
+          # Surface lines mentioning the playlist or known IDs.
+          for line in body.splitlines():
+              if 'הנ' in line and 'שופטים' in line:
+                  print('MATCHLINE',html.unescape(line)[:3000])
+              if any(v in line for v in ids):
+                  print('IDLINE',html.unescape(line)[:3000])
+          PY
