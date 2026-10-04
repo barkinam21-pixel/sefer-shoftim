@@ -8,7 +8,7 @@ on:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Install yt-dlp
@@ -17,7 +17,8 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import json, re, subprocess, sys
+          from concurrent.futures import ThreadPoolExecutor, as_completed
+          import json, re, subprocess
 
           s = Path("index.html").read_text(encoding="utf-8")
           a = s.index("const DATA=") + len("const DATA=")
@@ -32,44 +33,60 @@ jobs:
                   m = re.search(r'(?:youtube\.com/watch\?v=|youtu\.be/)([A-Za-z0-9_-]{11})', url)
                   if m:
                       vid = m.group(1)
-              if not vid:
-                  continue
-              rows.append((i, x.get("ch",""), x.get("title",""), vid, bool(x.get("yt"))))
+              if vid:
+                  rows.append((i, x.get("ch",""), x.get("title",""), vid, bool(x.get("yt"))))
 
-          bad = []
-          print(f"AUDIT_COUNT={len(rows)}")
-          for idx, ch, title, vid, marked_embedded in rows:
-              url = f"https://www.youtube.com/watch?v={vid}"
+          def check(row):
+              idx, ch, title, vid, marked = row
               cmd = [
                   "yt-dlp", "--skip-download", "--no-warnings", "--ignore-no-formats-error",
-                  "--print", "%(id)s\t%(availability)s\t%(playable_in_embed)s\t%(title)s", url
+                  "--print", "%(id)s\t%(availability)s\t%(playable_in_embed)s\t%(title)s",
+                  f"https://www.youtube.com/watch?v={vid}"
               ]
               try:
-                  p = subprocess.run(cmd, text=True, capture_output=True, timeout=45)
+                  p = subprocess.run(cmd, text=True, capture_output=True, timeout=35)
               except subprocess.TimeoutExpired:
-                  line = "TIMEOUT"
-                  if marked_embedded:
-                      bad.append((idx, ch, title, vid, "timeout"))
-                  print(f"CHECK\t{idx}\t{ch}\t{vid}\tmarked={marked_embedded}\tTIMEOUT\t{title}")
-                  continue
-
+                  return row, "timeout", "", "", 124
               out = (p.stdout or "").strip().splitlines()
               line = out[-1] if out else ""
               parts = line.split("\t")
-              embed = parts[2].strip().lower() if len(parts) >= 3 else ""
               availability = parts[1].strip() if len(parts) >= 2 else ""
-              ok = embed in ("true", "yes", "1")
-              print(f"CHECK\t{idx}\t{ch}\t{vid}\tmarked={marked_embedded}\tavailability={availability}\tembed={embed or 'unknown'}\t{title}")
-              if marked_embedded and not ok:
-                  reason = f"availability={availability}, playable_in_embed={embed or 'unknown'}, rc={p.returncode}"
-                  bad.append((idx, ch, title, vid, reason))
+              embed = parts[2].strip().lower() if len(parts) >= 3 else ""
+              return row, "", availability, embed, p.returncode
+
+          bad = []
+          unknown = []
+          print(f"AUDIT_COUNT={len(rows)}")
+          with ThreadPoolExecutor(max_workers=10) as ex:
+              futs = {ex.submit(check, row): row for row in rows}
+              for fut in as_completed(futs):
+                  row, err, availability, embed, rc = fut.result()
+                  idx, ch, title, vid, marked = row
+                  ok = embed in ("true","yes","1")
+                  state = "OK" if ok else ("TIMEOUT" if err else "BAD")
+                  print(f"CHECK\t{idx}\t{ch}\t{vid}\tmarked={marked}\tavailability={availability}\tembed={embed or 'unknown'}\t{state}\t{title}")
+                  if marked and not ok:
+                      reason = err or f"availability={availability}, playable_in_embed={embed or 'unknown'}, rc={rc}"
+                      bad.append((idx,ch,title,vid,reason))
+                  if not marked and ok:
+                      unknown.append((idx,ch,title,vid,"external_but_embeddable"))
 
           print("\n=== BROKEN_MARKED_EMBEDS ===")
-          if not bad:
-              print("NONE")
-          else:
-              for row in bad:
+          if bad:
+              for row in sorted(bad):
                   print("\t".join(map(str,row)))
               print(f"BROKEN_COUNT={len(bad)}")
+          else:
+              print("NONE")
+
+          print("\n=== EXTERNAL_YOUTUBE_THAT_CAN_EMBED ===")
+          if unknown:
+              for row in sorted(unknown):
+                  print("\t".join(map(str,row)))
+              print(f"EMBEDDABLE_EXTERNAL_COUNT={len(unknown)}")
+          else:
+              print("NONE")
+
+          if bad:
               raise SystemExit(2)
           PY
