@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Search indexed official lesson URLs
+      - name: Search indexed official lesson URLs via Bing
         run: |
           python3 - <<'PY'
           import requests,re,html,urllib.parse,time
@@ -17,23 +17,20 @@ jobs:
           chapters=['א','ב','ג','ד','ה','ו','ז','ח','ט','י','יא','יב','יג','יד','טו','טז','יז','יח','יט','כ','כא']
           for ch in chapters:
             q=f'"פרק {ch}, שופטים" "רפאל נוסבוים"'
-            u='https://www.google.com/search?num=20&q='+urllib.parse.quote(q)
-            try:
-              r=requests.get(u,headers=H,timeout=20)
-              print('\nCHAPTER',ch,'STATUS',r.status_code,'LEN',len(r.text))
-              links=[]
-              for m in re.finditer(r'https?://[^"&<> ]+',html.unescape(r.text)):
-                x=m.group(0)
-                if 'kolhalashon.com' in x or 'glat.tube' in x:
-                  x=x.split('&')[0]
-                  if x not in links: links.append(x)
-              for x in links[:20]: print('RESULT',x)
-              # also print snippets around exact title
-              plain=re.sub(r'<[^>]+>',' ',r.text)
-              plain=html.unescape(re.sub(r'\s+',' ',plain))
-              for key in [f'פרק {ch}, שופטים','נוסבוים','kolhalashon']:
-                pos=plain.find(key)
-                if pos>=0: print('SNIP',plain[max(0,pos-250):pos+900])
-              time.sleep(.5)
-            except Exception as e: print('ERR',ch,repr(e))
+            u='https://www.bing.com/search?count=30&q='+urllib.parse.quote(q)
+            r=requests.get(u,headers=H,timeout=20)
+            print('\nCHAPTER',ch,'STATUS',r.status_code,'LEN',len(r.text))
+            found=[]
+            for m in re.finditer(r'<li class="b_algo".*?</li>',r.text,re.I|re.S):
+              block=m.group(0)
+              mm=re.search(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>',block,re.I|re.S)
+              if not mm: continue
+              href=html.unescape(mm.group(1)); title=re.sub(r'<[^>]+>',' ',mm.group(2))
+              title=html.unescape(re.sub(r'\s+',' ',title)).strip()
+              sn=re.search(r'<p>(.*?)</p>',block,re.I|re.S)
+              snip=html.unescape(re.sub(r'<[^>]+>',' ',sn.group(1))) if sn else ''
+              if 'kolhalashon' in href or 'glat.tube' in href or 'נוסבוים' in title+snip or 'שופטים' in title+snip:
+                found.append((href,title,re.sub(r'\s+',' ',snip).strip()))
+            for x in found[:10]: print('RESULT',repr(x))
+            time.sleep(.3)
           PY
