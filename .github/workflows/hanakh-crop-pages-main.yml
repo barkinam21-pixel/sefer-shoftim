@@ -1,0 +1,55 @@
+name: Publish HaNakh Crop Preview
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/hanakh-crop-pages-main.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: hanakh-crop-pages-main
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout crop preview branch
+        uses: actions/checkout@v4
+        with:
+          ref: hanakh-crop-final
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Prepare only the crop preview
+        run: |
+          mkdir -p _site
+          cp kol-player-crop.html _site/index.html
+          cp kol-player-crop.html _site/kol-player-crop.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
