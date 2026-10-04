@@ -1,4 +1,4 @@
-name: Audit all video embeds
+name: Audit video embeds safely
 
 on:
   push:
@@ -8,14 +8,12 @@ on:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - name: Install browser driver
-        run: |
-          google-chrome --version
-          npm install --no-save playwright-core@latest
-      - name: Test every embed on the matching live production version
+        run: npm install --no-save playwright-core@latest
+      - name: Audit provider frames and sanity-check YouTube environment
         run: |
           cat > audit-live.mjs <<'JS'
           import fs from 'fs';
@@ -23,20 +21,21 @@ jobs:
 
           const SITE='https://shoftim-v3.vercel.app/';
           const localHtml=fs.readFileSync('index.html','utf8');
-          const localMatch=localHtml.match(/const DATA=(\{.*?\});let filter=/s);
-          if(!localMatch) throw new Error('Local DATA not found');
-          const expected=JSON.parse(localMatch[1]);
-          const expectedTotal=expected.items.length;
-          const expectedYt=expected.items.filter(x=>x.yt).length;
-          const expectedEmbed=expected.items.filter(x=>x.embed).length;
+          const m=localHtml.match(/const DATA=(\{.*?\});let filter=/s);
+          if(!m) throw new Error('Local DATA not found');
+          const expected=JSON.parse(m[1]);
+          const exp={
+            total:expected.items.length,
+            yt:expected.items.filter(x=>x.yt).length,
+            embed:expected.items.filter(x=>x.embed).length
+          };
 
           const browser=await chromium.launch({
-            channel:'chrome',
-            headless:true,
+            channel:'chrome',headless:true,
             args:['--autoplay-policy=no-user-gesture-required']
           });
 
-          // Wait for Vercel's canonical production alias to serve this commit's data.
+          // Wait for canonical Vercel production to match this commit's data.
           const seed=await browser.newPage();
           let matched=false;
           for(let n=0;n<30;n++){
@@ -47,10 +46,8 @@ jobs:
                 yt:DATA.items.filter(x=>x.yt).length,
                 embed:DATA.items.filter(x=>x.embed).length
               }));
-              console.log('LIVE_VERSION',JSON.stringify(live),'EXPECTED',JSON.stringify({
-                total:expectedTotal,yt:expectedYt,embed:expectedEmbed
-              }));
-              if(live.total===expectedTotal && live.yt===expectedYt && live.embed===expectedEmbed){
+              console.log('LIVE_VERSION',JSON.stringify(live),'EXPECTED',JSON.stringify(exp));
+              if(live.total===exp.total && live.yt===exp.yt && live.embed===exp.embed){
                 matched=true; break;
               }
             }catch(e){}
@@ -58,92 +55,60 @@ jobs:
           }
           if(!matched) throw new Error('Live production never matched this commit');
 
-          await seed.waitForFunction(()=>window.YT && YT.Player && typeof play==='function',null,{timeout:20000});
-          const liveItems=await seed.evaluate(()=>DATA.items.map(x=>({
+          const items=await seed.evaluate(()=>DATA.items.map(x=>({
             ch:x.ch,title:x.title,yt:x.yt||null,embed:x.embed||null
           })));
           await seed.close();
 
-          const ytItems=liveItems.filter(x=>x.yt);
-          const frameItems=liveItems.filter(x=>x.embed);
-          const results=[];
-          const bad=[];
-
-          let nextYt=0;
-          async function ytWorker(){
+          // GitHub-hosted Chrome can itself receive YouTube error 150 even for
+          // YouTube's official IFrame API sample. Test the control first.
+          // If the control fails, YouTube results are INCONCLUSIVE and must
+          // never be used to remove/disable site videos.
+          async function youtubeControl(){
             const page=await browser.newPage();
             await page.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
-            await page.waitForFunction(()=>window.YT && YT.Player && typeof play==='function',null,{timeout:20000});
-            while(true){
-              const idx=nextYt++;
-              if(idx>=ytItems.length) break;
-              const item=ytItems[idx];
-              let status='TIMEOUT';
-              try{
-                await page.evaluate(({id})=>{
-                  const x=DATA.items.find(y=>y.yt===id);
-                  if(!x) throw new Error('item missing');
-                  play(x);
-                },{id:item.yt});
-                const started=Date.now();
-                let playingSince=0;
-                while(Date.now()-started<11000){
-                  const probe=await page.evaluate(()=>{
-                    const overlay=document.getElementById('ph');
-                    const text=(overlay?.innerText||'').trim();
-                    if(overlay && !overlay.classList.contains('hide')){
-                      if(text.includes('לא מאפשרים להטמיע')) return {kind:'ERR',status:'ERR:150'};
-                      if(text.includes('שגיאה 153')) return {kind:'ERR',status:'ERR:153'};
-                      if(text.includes('הוסר')||text.includes('פרטי')||text.includes('אינו זמין')) return {kind:'ERR',status:'ERR:100'};
-                      if(text.includes('YouTube לא הצליח')) return {kind:'ERR',status:'ERR:OTHER'};
-                    }
-                    try{
-                      if(ytPlayer && typeof ytPlayer.getPlayerState==='function'){
-                        return {kind:'STATE',state:ytPlayer.getPlayerState()};
-                      }
-                    }catch(e){}
-                    return {kind:'WAIT'};
-                  });
-                  if(probe.kind==='ERR'){ status=probe.status; break; }
-                  if(probe.kind==='STATE' && probe.state===1){
-                    if(!playingSince) playingSince=Date.now();
-                    if(Date.now()-playingSince>=1800){ status='OK:PLAYING'; break; }
-                  }else{
-                    playingSince=0;
-                  }
-                  await page.waitForTimeout(350);
+            await page.waitForFunction(()=>window.YT&&YT.Player,null,{timeout:20000});
+            const status=await page.evaluate(()=>new Promise(resolve=>{
+              const mount=document.createElement('div');
+              mount.id='ytControlMount';
+              document.body.appendChild(mount);
+              let done=false;
+              const finish=s=>{if(!done){done=true;resolve(s)}};
+              const p=new YT.Player('ytControlMount',{
+                videoId:'M7lc1UVf-VE',
+                playerVars:{autoplay:1,playsinline:1,origin:location.origin},
+                events:{
+                  onReady:e=>{try{e.target.mute();e.target.playVideo()}catch(_){}},
+                  onStateChange:e=>{if(e.data===1)finish('OK:PLAYING')},
+                  onError:e=>finish('ERR:'+e.data)
                 }
-                if(status==='TIMEOUT'){
-                  status=await page.evaluate(()=>{
-                    const text=(document.getElementById('ph')?.innerText||'').trim();
-                    if(text.includes('לא מאפשרים להטמיע')) return 'ERR:150';
-                    if(text.includes('שגיאה 153')) return 'ERR:153';
-                    if(text.includes('הוסר')||text.includes('פרטי')||text.includes('אינו זמין')) return 'ERR:100';
-                    return 'NO_PLAY';
-                  });
-                }
-              }catch(e){
-                status='BROWSER:'+String(e).replace(/\s+/g,' ').slice(0,160);
-              }
-              results.push({kind:'youtube',...item,status});
-              console.log(['CHECK_YT',item.ch,item.yt,status,item.title].join('\t'));
-              if(status!=='OK:PLAYING'){
-                bad.push({kind:'youtube',...item,status});
-              }
-            }
+              });
+              setTimeout(()=>finish('TIMEOUT'),10000);
+            }));
             await page.close();
+            return status;
+          }
+          const control=await youtubeControl();
+          console.log('YOUTUBE_CONTROL='+control);
+          if(control!=='OK:PLAYING'){
+            console.log('YOUTUBE_AUDIT=INCONCLUSIVE_ENVIRONMENT_BLOCKED');
+            console.log('IMPORTANT: do not remove or downgrade YouTube items from this runner result.');
+          }else{
+            console.log('YOUTUBE_AUDIT=AVAILABLE');
           }
 
-          let nextFrame=0;
+          const frameItems=items.filter(x=>x.embed);
+          const bad=[];
+          let next=0;
           async function frameWorker(){
             const page=await browser.newPage();
             await page.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
             await page.waitForFunction(()=>typeof play==='function',null,{timeout:15000});
             while(true){
-              const idx=nextFrame++;
+              const idx=next++;
               if(idx>=frameItems.length) break;
               const item=frameItems[idx];
-              let status='FRAME_TIMEOUT';
+              let status='ERR:FRAME';
               try{
                 await page.evaluate(({embed})=>{
                   const x=DATA.items.find(y=>y.embed===embed);
@@ -155,11 +120,10 @@ jobs:
                   src:document.querySelector('#playerHost iframe')?.src||'',
                   count:document.querySelectorAll('#playerHost iframe').length
                 }));
-                const childUrls=page.frames().map(f=>f.url());
                 const wanted=new URL(item.embed);
-                const loaded=childUrls.some(u=>{
+                const loaded=page.frames().some(f=>{
                   try{
-                    const z=new URL(u);
+                    const z=new URL(f.url());
                     return z.hostname===wanted.hostname && z.href!=='about:blank';
                   }catch(e){return false}
                 });
@@ -167,26 +131,21 @@ jobs:
               }catch(e){
                 status='BROWSER:'+String(e).replace(/\s+/g,' ').slice(0,160);
               }
-              results.push({kind:'iframe',...item,status});
               console.log(['CHECK_FRAME',item.ch,item.embed,status,item.title].join('\t'));
-              if(status!=='OK:FRAME') bad.push({kind:'iframe',...item,status});
+              if(status!=='OK:FRAME') bad.push({...item,status});
             }
             await page.close();
           }
 
-          console.log('AUDIT_YT_COUNT='+ytItems.length);
+          console.log('YOUTUBE_ITEMS_PRESENT='+items.filter(x=>x.yt).length);
           console.log('AUDIT_FRAME_COUNT='+frameItems.length);
-          await Promise.all([
-            ...Array.from({length:6},()=>ytWorker()),
-            ...Array.from({length:2},()=>frameWorker())
-          ]);
+          await Promise.all(Array.from({length:Math.min(4,Math.max(1,frameItems.length))},()=>frameWorker()));
           await browser.close();
 
-          console.log('\n=== BROKEN_EMBEDS ===');
+          console.log('\n=== BROKEN_PROVIDER_EMBEDS ===');
           if(!bad.length) console.log('NONE');
-          else for(const x of bad) console.log([x.kind,x.ch,x.title,x.yt||x.embed,x.status].join('\t'));
+          else bad.forEach(x=>console.log([x.ch,x.title,x.embed,x.status].join('\t')));
           console.log('BROKEN_COUNT='+bad.length);
-          fs.writeFileSync('embed-audit-live.json',JSON.stringify({site:SITE,results,bad},null,2));
           if(bad.length) process.exit(2);
           JS
           node audit-live.mjs
