@@ -1,0 +1,17 @@
+name: Probe official sources via Vercel
+on:
+  push:
+    branches: [hanakh-retest-official]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Wait for preview alias
+        run: sleep 15
+      - name: Call Vercel server-side source inspector
+        run: |
+          set -e
+          curl -fsSL --retry 4 --retry-delay 3 \
+            https://shoftim-v3-git-hanakh-retest-official-barkinam21-5952s-projects.vercel.app/api/inspect-official \
+            | python3 -m json.tool
