@@ -9,25 +9,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - name: Resolve Nussbaum feed from known Joshua ID
+      - name: Inspect official YouTube metadata for source links
         run: |
           python3 - <<'PY'
-          import requests,re,json
-          H={'User-Agent':'Mozilla/5.0'}
-          base='https://shiurpod.com'
-          for q in ['יהושע פרק טו','יהושע פרק 15','Joshua Chapter 15','פרק טו יהושע']:
-            r=requests.get(base+'/api/episodes/search',params={'q':q,'limit':'100'},headers=H,timeout=25)
-            data=r.json() if r.ok else []
-            print('\nQUERY',q,'STATUS',r.status_code,'COUNT',len(data) if isinstance(data,list) else '?')
-            if isinstance(data,list):
-              for x in data:
-                au=x.get('audioUrl') or ''
-                if '31472614' in au or re.search(r'נוסב|nuss|nusbaum',json.dumps(x,ensure_ascii=False),re.I):
-                  print('MATCH',json.dumps(x,ensure_ascii=False))
-                  fid=x.get('feedId')
-                  if fid:
-                    fr=requests.get(base+f'/api/feeds/{fid}',headers=H,timeout=25)
-                    print('FEED',fr.status_code,fr.text[:5000])
-                    er=requests.get(base+f'/api/feeds/{fid}/episodes',params={'limit':'100','page':'1','sort':'oldest','slim':'1'},headers=H,timeout=25)
-                    print('EPISODES_PAGE1',er.status_code,er.text[:40000])
+          import requests,re,json,html
+          ids=['dMfyog_Z5EA','xJnDGKQvVCY','4QuUq6MTPFM','vme74pRb8j8']
+          h={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/141 Safari/537.36','Accept-Language':'he-IL,he;q=0.9,en;q=0.7'}
+          for vid in ids:
+            u='https://www.youtube.com/watch?v='+vid
+            r=requests.get(u,headers=h,timeout=25)
+            print('\n===',vid,'STATUS',r.status_code,'LEN',len(r.text),'===')
+            # ytInitialPlayerResponse contains videoDetails.shortDescription
+            m=re.search(r'ytInitialPlayerResponse\s*=\s*({.+?});(?:var |</script>)',r.text,re.S)
+            obj=None
+            if m:
+              try: obj=json.loads(m.group(1))
+              except Exception as e: print('JSONERR',e)
+            if not obj:
+              m=re.search(r'"videoDetails":(\{.+?\}),"playerConfig"',r.text,re.S)
+              if m:
+                try: obj={'videoDetails':json.loads(m.group(1))}
+                except: pass
+            vd=(obj or {}).get('videoDetails') or {}
+            print('TITLE',vd.get('title'))
+            print('DESC',vd.get('shortDescription','')[:12000])
+            print('URLS',re.findall(r'https?://[^\s<>"\\]+',vd.get('shortDescription','')))
           PY
