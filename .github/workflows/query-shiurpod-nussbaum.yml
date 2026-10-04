@@ -9,18 +9,37 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - name: Query public catalog mirror
+      - name: Find old Judges video series candidates
         run: |
           python3 - <<'PY'
-          import requests, json, urllib.parse
-          base='https://shiurpod.com/api/search'
-          qs=['רפאל נוסבוים','שופטים','הנך הבהיר','נוסבוים שופטים','Raphael Nussbaum Judges']
+          import requests,re,json
+          base='https://shiurpod.com/api/episodes/search'
+          qs=[
+            'שופטים פרק א','שופטים פרק ב','שופטים פרק ג','שופטים פרק ד',
+            'שופטים פרק ה','שופטים פרק ו','שופטים פרק ז','שופטים פרק ח',
+            'שופטים פרק ט','שופטים פרק י','שופטים פרק יא','שופטים פרק יב',
+            'שופטים פרק יג','שופטים פרק יד','שופטים פרק טו','שופטים פרק טז',
+            'שופטים פרק יז','שופטים פרק יח','שופטים פרק יט','שופטים פרק כ','שופטים פרק כא'
+          ]
+          seen={}
           for q in qs:
-              print('\n=== QUERY',q,'===')
-              try:
-                  r=requests.get(base,params={'q':q,'limit':'100'},timeout=25,headers={'User-Agent':'Mozilla/5.0'})
-                  print('STATUS',r.status_code,'URL',r.url,'TYPE',r.headers.get('content-type'),'LEN',len(r.text))
-                  print(r.text[:40000])
-              except Exception as e:
-                  print('ERR',repr(e))
+            try:
+              r=requests.get(base,params={'q':q,'limit':'100'},timeout=25,headers={'User-Agent':'Mozilla/5.0'})
+              data=r.json() if r.ok else []
+              if isinstance(data,dict): data=data.get('items') or data.get('episodes') or []
+              cand=[]
+              for x in data if isinstance(data,list) else []:
+                au=x.get('audioUrl') or ''
+                m=re.search(r'/(\d+)(?:\D|$)',au)
+                fid=int(m.group(1)) if m else None
+                title=x.get('title',''); fa=x.get('feedAuthor',''); ft=x.get('feedTitle',''); desc=x.get('description','')
+                # Nussbaum's early Neviim series should be in 31.4-31.7m range; keep likely old video catalog + name signals.
+                if (fid and 31400000 <= fid <= 31750000) or re.search(r'נוסב|nuss|nusbaum',title+' '+fa+' '+ft+' '+desc,re.I):
+                  cand.append({'fid':fid,'title':title,'feedTitle':ft,'feedAuthor':fa,'description':desc,'publishedAt':x.get('publishedAt')})
+                  if fid: seen[fid]=cand[-1]
+              print('\nQUERY',q,'CANDIDATES',len(cand))
+              for x in cand[:40]: print(json.dumps(x,ensure_ascii=False))
+            except Exception as e: print('ERR',q,repr(e))
+          print('\nUNIQUE_CANDIDATES',len(seen))
+          for fid,x in sorted(seen.items()): print(json.dumps(x,ensure_ascii=False))
           PY
