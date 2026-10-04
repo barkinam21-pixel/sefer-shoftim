@@ -17,7 +17,7 @@ jobs:
           npm install --no-save playwright-core@latest
       - name: Test every YouTube embed in a real browser
         run: |
-          cat > /tmp/audit-embeds.mjs <<'JS'
+          cat > audit-embeds.mjs <<'JS'
           import fs from 'fs';
           import http from 'http';
           import { chromium } from 'playwright-core';
@@ -109,7 +109,7 @@ jobs:
           if(!bad.length) console.log('NONE');
           else for(const x of bad) console.log([x.idx+1,x.chapter,x.title,x.id,x.status].join('\t'));
           console.log('BROKEN_COUNT='+bad.length);
-          fs.writeFileSync('/tmp/embed-audit.json',JSON.stringify({results,bad},null,2));
+          fs.writeFileSync('embed-audit.json',JSON.stringify({results,bad},null,2));
           if(bad.length) process.exit(2);
           JS
-          node /tmp/audit-embeds.mjs
+          node audit-embeds.mjs
