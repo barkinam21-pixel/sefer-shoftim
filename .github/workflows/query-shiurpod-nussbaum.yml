@@ -9,37 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - name: Find old Judges video series candidates
+      - name: Resolve Nussbaum feed from known Joshua ID
         run: |
           python3 - <<'PY'
           import requests,re,json
-          base='https://shiurpod.com/api/episodes/search'
-          qs=[
-            'שופטים פרק א','שופטים פרק ב','שופטים פרק ג','שופטים פרק ד',
-            'שופטים פרק ה','שופטים פרק ו','שופטים פרק ז','שופטים פרק ח',
-            'שופטים פרק ט','שופטים פרק י','שופטים פרק יא','שופטים פרק יב',
-            'שופטים פרק יג','שופטים פרק יד','שופטים פרק טו','שופטים פרק טז',
-            'שופטים פרק יז','שופטים פרק יח','שופטים פרק יט','שופטים פרק כ','שופטים פרק כא'
-          ]
-          seen={}
-          for q in qs:
-            try:
-              r=requests.get(base,params={'q':q,'limit':'100'},timeout=25,headers={'User-Agent':'Mozilla/5.0'})
-              data=r.json() if r.ok else []
-              if isinstance(data,dict): data=data.get('items') or data.get('episodes') or []
-              cand=[]
-              for x in data if isinstance(data,list) else []:
+          H={'User-Agent':'Mozilla/5.0'}
+          base='https://shiurpod.com'
+          for q in ['יהושע פרק טו','יהושע פרק 15','Joshua Chapter 15','פרק טו יהושע']:
+            r=requests.get(base+'/api/episodes/search',params={'q':q,'limit':'100'},headers=H,timeout=25)
+            data=r.json() if r.ok else []
+            print('\nQUERY',q,'STATUS',r.status_code,'COUNT',len(data) if isinstance(data,list) else '?')
+            if isinstance(data,list):
+              for x in data:
                 au=x.get('audioUrl') or ''
-                m=re.search(r'/(\d+)(?:\D|$)',au)
-                fid=int(m.group(1)) if m else None
-                title=x.get('title',''); fa=x.get('feedAuthor',''); ft=x.get('feedTitle',''); desc=x.get('description','')
-                # Nussbaum's early Neviim series should be in 31.4-31.7m range; keep likely old video catalog + name signals.
-                if (fid and 31400000 <= fid <= 31750000) or re.search(r'נוסב|nuss|nusbaum',title+' '+fa+' '+ft+' '+desc,re.I):
-                  cand.append({'fid':fid,'title':title,'feedTitle':ft,'feedAuthor':fa,'description':desc,'publishedAt':x.get('publishedAt')})
-                  if fid: seen[fid]=cand[-1]
-              print('\nQUERY',q,'CANDIDATES',len(cand))
-              for x in cand[:40]: print(json.dumps(x,ensure_ascii=False))
-            except Exception as e: print('ERR',q,repr(e))
-          print('\nUNIQUE_CANDIDATES',len(seen))
-          for fid,x in sorted(seen.items()): print(json.dumps(x,ensure_ascii=False))
+                if '31472614' in au or re.search(r'נוסב|nuss|nusbaum',json.dumps(x,ensure_ascii=False),re.I):
+                  print('MATCH',json.dumps(x,ensure_ascii=False))
+                  fid=x.get('feedId')
+                  if fid:
+                    fr=requests.get(base+f'/api/feeds/{fid}',headers=H,timeout=25)
+                    print('FEED',fr.status_code,fr.text[:5000])
+                    er=requests.get(base+f'/api/feeds/{fid}/episodes',params={'limit':'100','page':'1','sort':'oldest','slim':'1'},headers=H,timeout=25)
+                    print('EPISODES_PAGE1',er.status_code,er.text[:40000])
           PY
