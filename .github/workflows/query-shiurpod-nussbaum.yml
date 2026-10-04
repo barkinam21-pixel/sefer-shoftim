@@ -1,0 +1,26 @@
+name: Query ShiurPod mirror for Nussbaum Judges
+on:
+  push:
+    branches: [hanakh-crop-final]
+    paths:
+      - ".github/workflows/query-shiurpod-nussbaum.yml"
+jobs:
+  query:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Query public catalog mirror
+        run: |
+          python3 - <<'PY'
+          import requests, json, urllib.parse
+          base='https://shiurpod.com/api/search'
+          qs=['רפאל נוסבוים','שופטים','הנך הבהיר','נוסבוים שופטים','Raphael Nussbaum Judges']
+          for q in qs:
+              print('\n=== QUERY',q,'===')
+              try:
+                  r=requests.get(base,params={'q':q,'limit':'100'},timeout=25,headers={'User-Agent':'Mozilla/5.0'})
+                  print('STATUS',r.status_code,'URL',r.url,'TYPE',r.headers.get('content-type'),'LEN',len(r.text))
+                  print(r.text[:40000])
+              except Exception as e:
+                  print('ERR',repr(e))
+          PY
