@@ -1,4 +1,4 @@
-name: Guard HaNakh HaBahir availability
+name: Guard HaNakh HaBahir direct player
 
 on:
   push:
@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify all 21 chapters stay truthful and directly reachable
+      - name: Verify 21 HaNakh chapters and isolated direct iframe path
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import json, re
+          import json, re, urllib.parse
 
           s = Path("index.html").read_text(encoding="utf-8")
           a = s.index("const DATA=") + len("const DATA=")
@@ -31,19 +31,49 @@ jobs:
               errors.append(f"Expected 21 HaNakh chapters, found {len(items)}")
 
           for x in items:
-              if x.get("yt") or x.get("embed"):
-                  errors.append(f'{x["title"]}: must not be counted as embedded while the owner blocks embeds')
+              if not x.get("yt"):
+                  errors.append(f'{x["title"]}: missing yt id')
+              if x.get("directYT") is not True:
+                  errors.append(f'{x["title"]}: directYT must be true')
+              if x.get("embed"):
+                  errors.append(f'{x["title"]}: must not use provider embed')
               url = x.get("url") or ""
               if not url.startswith("https://www.youtube.com/watch?v="):
-                  errors.append(f'{x["title"]}: missing direct chapter URL')
-              if not x.get("thumbYT"):
-                  errors.append(f'{x["title"]}: missing thumbnail id')
-              if "חסם ניגון בתוך אתרים אחרים" not in (x.get("note") or ""):
-                  errors.append(f'{x["title"]}: missing truthful embed-blocked note')
+                  errors.append(f'{x["title"]}: missing original YouTube fallback')
+              else:
+                  q = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
+                  if (q.get("v") or [None])[0] != x.get("yt"):
+                      errors.append(f'{x["title"]}: fallback URL does not match yt id')
+
+          structural = {
+              "hanakh iframe directly before playerHost":
+                  bool(re.search(r'class="player">.*?<iframe id="hanakhPlayer".*?</iframe><div id="playerHost"', s, re.S)),
+              "dynamic provider host isolated under playerHost":
+                  '<div id="playerHost" class="playerHost"><div id="dynamicPlayerHost" class="dynamicPlayerHost"></div></div>' in s,
+              "direct routing":
+                  'if(x.directYT)playDirectYouTube(x)' in s,
+              "privacy enhanced source":
+                  'https://www.youtube-nocookie.com/embed/' in s,
+              "origin":
+                  "origin='+o" in s,
+              "widget_referrer":
+                  "widget_referrer='+wr" in s,
+              "strict referrer policy":
+                  'referrerpolicy="strict-origin-when-cross-origin"' in s,
+              "fullscreen":
+                  'id="hanakhPlayer"' in s and 'allowfullscreen' in s,
+              "resume":
+                  'id="resumeBtn"' in s and 'shoftim-last-title' in s,
+              "chapter jump":
+                  'id="chapterJump"' in s,
+          }
+          for label, ok in structural.items():
+              if not ok:
+                  errors.append("Structure: " + label)
 
           if errors:
               print("\n".join(errors))
               raise SystemExit(1)
 
-          print("All 21 HaNakh HaBahir chapters remain in chronology with thumbnails and direct URLs, without falsely claiming an internal embed.")
+          print("Guard OK: 21/21 HaNakh chapters use the isolated youtube-nocookie direct iframe path with original YouTube fallback.")
           PY
