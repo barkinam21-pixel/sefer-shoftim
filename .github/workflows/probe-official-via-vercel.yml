@@ -7,11 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Wait for preview alias
-        run: sleep 15
-      - name: Call Vercel server-side source inspector
+      - name: Inspect previous READY preview endpoint
         run: |
-          set -e
-          curl -fsSL --retry 4 --retry-delay 3 \
-            https://shoftim-v3-git-hanakh-retest-official-barkinam21-5952s-projects.vercel.app/api/inspect-official \
-            | python3 -m json.tool
+          set +e
+          U=https://shoftim-v3-nlniamm5e-barkinam21-5952s-projects.vercel.app/api/inspect-official
+          echo "URL=$U"
+          curl -sS -D /tmp/h -o /tmp/b "$U"
+          echo "---- HEADERS ----"
+          cat /tmp/h
+          echo "---- BODY ----"
+          head -c 30000 /tmp/b
+          echo
+          echo "---- END ----"
