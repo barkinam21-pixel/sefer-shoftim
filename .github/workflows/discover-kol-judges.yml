@@ -1,0 +1,45 @@
+name: Discover Kol Halashon Judges source IDs
+on:
+  push:
+    branches: [hanakh-crop-final]
+    paths:
+      - ".github/workflows/discover-kol-judges.yml"
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Probe official pages
+        run: |
+          python3 - <<'PY'
+          import requests,re,json
+          H={'User-Agent':'Mozilla/5.0 (Linux; Android 16) AppleWebKit/537.36 Chrome/141.0 Mobile Safari/537.36','Accept-Language':'he-IL,he;q=0.9,en;q=0.7'}
+          urls=[
+            'https://www.kolhalashon.com/he/regularSite/playShiur/31472614/-1/0/false',
+            'https://www.kolhalashon.com/new/Media/PlayShiur.aspx?FileName=31470116&Video=True',
+            'https://glat.tube/category/13218'
+          ]
+          for u in urls:
+            print('\n===',u,'===')
+            try:
+              r=requests.get(u,headers=H,timeout=25,allow_redirects=True)
+              print('STATUS',r.status_code,'FINAL',r.url,'LEN',len(r.text))
+              print('XFRAME',r.headers.get('x-frame-options'),'CSP',r.headers.get('content-security-policy'))
+              title=re.search(r'<title[^>]*>(.*?)</title>',r.text,re.I|re.S)
+              print('TITLE',re.sub('<.*?>','',title.group(1)).strip() if title else '')
+              print('BLOCKED',bool(re.search(r'just a moment|cf-chl|security verification',r.text,re.I)))
+              print('HREFS')
+              for m in re.finditer(r'<a\\b[^>]*href=["\\\']([^"\\\']+)["\\\'][^>]*>(.*?)</a>',r.text,re.I|re.S):
+                href=m.group(1)
+                txt=re.sub(r'<[^>]+>',' ',m.group(2))
+                txt=re.sub(r'\\s+',' ',txt).strip()
+                if re.search(r'שופטים|יהושע|נוסבוים|playShiur|video|playlist',txt+' '+href,re.I):
+                  print(json.dumps({'href':href,'text':txt},ensure_ascii=False))
+              print('SNIPS')
+              plain=re.sub(r'<[^>]+>',' ',r.text)
+              plain=re.sub(r'\\s+',' ',plain)
+              for key in ['שופטים','יהושע','רפאל נוסבוים','31472614']:
+                i=plain.find(key)
+                if i>=0: print(key,plain[max(0,i-500):i+1800])
+            except Exception as e: print('ERR',repr(e))
+          PY
