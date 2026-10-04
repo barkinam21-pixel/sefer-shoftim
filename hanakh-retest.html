@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>בדיקת הטמעה — הנ״ך הבהיר</title>
+<style>
+body{margin:0;background:#090d14;color:#f7f9fc;font-family:Arial,sans-serif}.w{max-width:900px;margin:auto;padding:14px}h1{font-size:26px}.note{background:#122034;border:1px solid #2d4563;border-radius:14px;padding:14px;line-height:1.5;margin-bottom:14px}.test{background:#101722;border:1px solid #26354a;border-radius:16px;padding:12px;margin:12px 0}.test h2{font-size:19px;margin:4px 0 10px}.frame{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}.frame iframe,.frame #apiPlayer{width:100%;height:100%;border:0}.btn{display:block;margin-top:10px;padding:14px;border-radius:12px;background:#fff;color:#111;text-align:center;text-decoration:none;font-weight:800}
+</style>
+</head>
+<body><div class="w">
+<h1>בדיקת הנ״ך הבהיר — שופטים פרק א׳</h1>
+<div class="note">בדיקה זמנית בלבד. ארבע שיטות רשמיות של YouTube, בלי עקיפת חסימות ובלי שינוי באתר הראשי. אם אחת מהן מנגנת אצלך בפועל — נשתמש בה לכל 21 הפרקים.</div>
+
+<section class="test"><h2>1. iframe רגיל — youtube.com</h2><div class="frame">
+<iframe src="https://www.youtube.com/embed/dMfyog_Z5EA?playsinline=1&rel=0&origin=https%3A%2F%2Fshoftim-v3.vercel.app" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div></section>
+
+<section class="test"><h2>2. Privacy Enhanced — youtube-nocookie.com</h2><div class="frame">
+<iframe src="https://www.youtube-nocookie.com/embed/dMfyog_Z5EA?playsinline=1&rel=0&origin=https%3A%2F%2Fshoftim-v3.vercel.app" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div></section>
+
+<section class="test"><h2>3. YouTube IFrame API הרשמי</h2><div class="frame"><div id="apiPlayer"></div></div><div id="apiStatus" class="note">ממתין לנגן…</div></section>
+
+<section class="test"><h2>4. פלייליסט הנ״ך הבהיר — נגן Playlist רשמי</h2><div class="frame">
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLi7_TRr4YEVgZrp_zMyBlyWBGs1T76_p-&playsinline=1&rel=0&origin=https%3A%2F%2Fshoftim-v3.vercel.app" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div></section>
+
+<a class="btn" href="https://www.youtube.com/watch?v=dMfyog_Z5EA" target="_blank" rel="noopener">פתח את הפרק המקורי ב‑YouTube</a>
+</div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+window.onYouTubeIframeAPIReady=()=>new YT.Player('apiPlayer',{
+ videoId:'dMfyog_Z5EA',
+ playerVars:{playsinline:1,rel:0,origin:location.origin},
+ events:{
+  onReady:()=>document.getElementById('apiStatus').textContent='הנגן נטען — לחץ Play',
+  onStateChange:e=>{if(e.data===1)document.getElementById('apiStatus').textContent='✅ מנגן בפועל'},
+  onError:e=>document.getElementById('apiStatus').textContent='❌ שגיאת YouTube: '+e.data
+ }
+});
+</script></body></html>
