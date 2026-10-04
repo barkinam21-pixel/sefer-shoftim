@@ -1,0 +1,75 @@
+name: Audit all video embeds
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install yt-dlp
+        run: python3 -m pip install --disable-pip-version-check yt-dlp
+      - name: Audit every YouTube-backed item
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, re, subprocess, sys
+
+          s = Path("index.html").read_text(encoding="utf-8")
+          a = s.index("const DATA=") + len("const DATA=")
+          b = s.index(";let filter=", a)
+          data = json.loads(s[a:b])
+
+          rows = []
+          for i, x in enumerate(data["items"], 1):
+              vid = x.get("yt")
+              url = x.get("url") or ""
+              if not vid:
+                  m = re.search(r'(?:youtube\.com/watch\?v=|youtu\.be/)([A-Za-z0-9_-]{11})', url)
+                  if m:
+                      vid = m.group(1)
+              if not vid:
+                  continue
+              rows.append((i, x.get("ch",""), x.get("title",""), vid, bool(x.get("yt"))))
+
+          bad = []
+          print(f"AUDIT_COUNT={len(rows)}")
+          for idx, ch, title, vid, marked_embedded in rows:
+              url = f"https://www.youtube.com/watch?v={vid}"
+              cmd = [
+                  "yt-dlp", "--skip-download", "--no-warnings", "--ignore-no-formats-error",
+                  "--print", "%(id)s\t%(availability)s\t%(playable_in_embed)s\t%(title)s", url
+              ]
+              try:
+                  p = subprocess.run(cmd, text=True, capture_output=True, timeout=45)
+              except subprocess.TimeoutExpired:
+                  line = "TIMEOUT"
+                  if marked_embedded:
+                      bad.append((idx, ch, title, vid, "timeout"))
+                  print(f"CHECK\t{idx}\t{ch}\t{vid}\tmarked={marked_embedded}\tTIMEOUT\t{title}")
+                  continue
+
+              out = (p.stdout or "").strip().splitlines()
+              line = out[-1] if out else ""
+              parts = line.split("\t")
+              embed = parts[2].strip().lower() if len(parts) >= 3 else ""
+              availability = parts[1].strip() if len(parts) >= 2 else ""
+              ok = embed in ("true", "yes", "1")
+              print(f"CHECK\t{idx}\t{ch}\t{vid}\tmarked={marked_embedded}\tavailability={availability}\tembed={embed or 'unknown'}\t{title}")
+              if marked_embedded and not ok:
+                  reason = f"availability={availability}, playable_in_embed={embed or 'unknown'}, rc={p.returncode}"
+                  bad.append((idx, ch, title, vid, reason))
+
+          print("\n=== BROKEN_MARKED_EMBEDS ===")
+          if not bad:
+              print("NONE")
+          else:
+              for row in bad:
+                  print("\t".join(map(str,row)))
+              print(f"BROKEN_COUNT={len(bad)}")
+              raise SystemExit(2)
+          PY
