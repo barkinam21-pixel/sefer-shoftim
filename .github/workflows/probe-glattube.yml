@@ -28,7 +28,8 @@ jobs:
             const u=r.url();
             if(/api|category|playlist|video/i.test(u)) responses.push({status:r.status(),url:u});
           });
-          const res=await page.goto('https://glat.tube/category/13218',{waitUntil:'domcontentloaded',timeout:30000});\n          await page.waitForTimeout(8000);
+          const res=await page.goto('https://glat.tube/category/13218',{waitUntil:'domcontentloaded',timeout:30000});
+          await page.waitForTimeout(8000);
           console.log('HTTP_STATUS',res?.status());
           console.log('TITLE',await page.title());
           console.log('URL',page.url());
