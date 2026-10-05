@@ -1,4 +1,4 @@
-name: Guard HaNakh HaBahir truthful fallback
+name: Guard HaNakh HaBahir availability
 
 on:
   push:
@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify 21 blocked chapters stay visible and truthful
+      - name: Verify all 21 chapters use the official Kol Halashon path truthfully
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import json, urllib.parse
+          import json, urllib.parse, re
 
           s = Path("index.html").read_text(encoding="utf-8")
           a = s.index("const DATA=") + len("const DATA=")
@@ -31,30 +31,51 @@ jobs:
 
           for x in items:
               if x.get("yt") or x.get("embed") or x.get("directYT"):
-                  errors.append(f'{x["title"]}: must not claim an internal embed after the real-browser owner block')
+                  errors.append(f'{x["title"]}: must not be routed back through the owner-blocked YouTube iframe path')
+
+              kol = str(x.get("kol") or "")
               url = x.get("url") or ""
-              if not url.startswith("https://www.youtube.com/watch?v="):
-                  errors.append(f'{x["title"]}: missing exact YouTube source fallback')
+              if not re.fullmatch(r"\d+", kol):
+                  errors.append(f'{x["title"]}: missing Kol Halashon shiur id')
+              expected_prefix = "https://www.kolhalashon.com/he/regularSite/playShiur/"
+              if not url.startswith(expected_prefix):
+                  errors.append(f'{x["title"]}: missing official Kol Halashon player URL')
+              elif kol and f"/{kol}/" not in url:
+                  errors.append(f'{x["title"]}: Kol Halashon shiur id/URL mismatch')
+
+              yt_fallback = x.get("youtubeUrl") or ""
+              if not yt_fallback.startswith("https://www.youtube.com/watch?v="):
+                  errors.append(f'{x["title"]}: missing direct YouTube fallback URL')
               else:
-                  q = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
+                  q = urllib.parse.parse_qs(urllib.parse.urlparse(yt_fallback).query)
                   vid = (q.get("v") or [None])[0]
                   if not vid or x.get("thumbYT") != vid:
-                      errors.append(f'{x["title"]}: thumbnail/source id mismatch')
-              if "חוסם את ההטמעה" not in (x.get("note") or ""):
-                  errors.append(f'{x["title"]}: missing truthful embed-blocked note')
+                      errors.append(f'{x["title"]}: YouTube thumbnail/fallback id mismatch')
+
+              note = x.get("note") or ""
+              if "קול הלשון" not in note or "נגן פנימי" not in note:
+                  errors.append(f'{x["title"]}: missing truthful Kol Halashon internal-player note')
 
           glat = next((x for x in data["items"] if x.get("title") == "הנ״ך הבהיר — הפלייליסט המלא של ספר שופטים"), None)
           if not glat or glat.get("url") != "https://glat.tube/category/13218":
               errors.append("Official GlatTube/Kol Halashon playlist fallback is missing")
 
-          if "filter==='playable'||filter==='external'" not in s:
-              errors.append("Full chronology filter no longer keeps external fallback items visible")
-          if 'id="resumeBtn"' not in s or 'id="chapterJump"' not in s:
-              errors.append("Low-effort navigation controls missing")
+          required = [
+              "const playables=DATA.items.filter(x=>x.yt||x.embed||x.kol)",
+              "function playKol(x)",
+              "if(x.kol)playKol(x)",
+              'id="resumeBtn"',
+              'id="chapterJump"',
+              "/* V6.7 UX polish — CSS-only, no data/player/architecture changes */",
+              "viewport-fit=cover"
+          ]
+          for token in required:
+              if token not in s:
+                  errors.append(f"Required preserved behavior missing: {token}")
 
           if errors:
               print("\n".join(errors))
               raise SystemExit(1)
 
-          print("Guard OK: 21/21 HaNakh chapters remain in chronology as truthful external fallbacks; GlatTube playlist fallback is present.")
+          print("Guard OK: 21/21 HaNakh HaBahir chapters use the official Kol Halashon path, preserve YouTube source fallbacks, and keep V6.7 navigation intact.")
           PY
