@@ -140,6 +140,95 @@ jobs:
           console.log('YOUTUBE_ITEMS_PRESENT='+items.filter(x=>x.yt).length);
           console.log('AUDIT_FRAME_COUNT='+frameItems.length);
           await Promise.all(Array.from({length:Math.min(4,Math.max(1,frameItems.length))},()=>frameWorker()));
+
+          // Deep provider diagnostics: the old audit only proved that an iframe URL
+          // existed. Inspect the loaded provider document/media as well, without
+          // downgrading items solely because headless autoplay is blocked.
+          const deepPage=await browser.newPage();
+          await deepPage.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
+          await deepPage.waitForFunction(()=>typeof play==='function',null,{timeout:15000});
+          for(const item of frameItems){
+            try{
+              await deepPage.evaluate(({embed})=>{
+                const x=DATA.items.find(y=>y.embed===embed);
+                if(x) play(x);
+              },{embed:item.embed});
+              await deepPage.waitForTimeout(1800);
+              const wanted=new URL(item.embed);
+              const fr=deepPage.frames().find(f=>{
+                try{return new URL(f.url()).hostname===wanted.hostname}catch{return false}
+              });
+              let detail={frame:false};
+              if(fr){
+                detail=await fr.evaluate(()=>({
+                  frame:true,
+                  title:document.title||'',
+                  text:(document.body?.innerText||'').replace(/\s+/g,' ').slice(0,260),
+                  videoCount:document.querySelectorAll('video').length,
+                  audioCount:document.querySelectorAll('audio').length,
+                  iframeCount:document.querySelectorAll('iframe').length,
+                  media:Array.from(document.querySelectorAll('video,audio')).slice(0,3).map(m=>({
+                    readyState:m.readyState,networkState:m.networkState,duration:Number.isFinite(m.duration)?m.duration:null,
+                    paused:m.paused,ended:m.ended,error:m.error?{code:m.error.code,message:m.error.message||''}:null
+                  }))
+                }));
+              }
+              console.log('DEEP_FRAME\t'+item.ch+'\t'+item.title+'\t'+JSON.stringify(detail));
+            }catch(e){
+              console.log('DEEP_FRAME_ERR\t'+item.ch+'\t'+item.title+'\t'+String(e).replace(/\s+/g,' ').slice(0,220));
+            }
+          }
+
+          // Probe the approved Kol Halashon iframe for a real completion signal.
+          // We seek the media close to its end inside Playwright and record every
+          // postMessage received by the parent. This tells the site whether a
+          // provider-native ended event can drive auto-next without a blind timer.
+          try{
+            await deepPage.evaluate(()=>{
+              window.__kolMessages=[];
+              window.addEventListener('message',e=>{
+                try{window.__kolMessages.push({origin:e.origin,data:typeof e.data==='string'?e.data:JSON.stringify(e.data)})}
+                catch(_){window.__kolMessages.push({origin:e.origin,data:'[unserializable]'})}
+              });
+              const x=DATA.items.find(y=>y.kol);
+              if(x) play(x);
+            });
+            await deepPage.waitForTimeout(3500);
+            const kolFrame=deepPage.frames().find(f=>/kolhalashon\.com\/.*playShiur\//i.test(f.url()));
+            if(kolFrame){
+              const before=await kolFrame.evaluate(()=>({
+                title:document.title||'',
+                text:(document.body?.innerText||'').replace(/\s+/g,' ').slice(0,300),
+                videos:document.querySelectorAll('video').length,
+                audios:document.querySelectorAll('audio').length,
+                media:Array.from(document.querySelectorAll('video,audio')).map(m=>({
+                  tag:m.tagName,readyState:m.readyState,duration:Number.isFinite(m.duration)?m.duration:null,
+                  currentTime:m.currentTime,paused:m.paused,ended:m.ended
+                })).slice(0,4),
+                scripts:Array.from(document.scripts).map(s=>s.src).filter(Boolean).slice(0,12)
+              }));
+              console.log('KOL_FRAME_BEFORE='+JSON.stringify(before));
+              const seekResult=await kolFrame.evaluate(async()=>{
+                const m=document.querySelector('video,audio');
+                if(!m) return {ok:false,reason:'no-media-element'};
+                try{
+                  m.muted=true;
+                  if(Number.isFinite(m.duration)&&m.duration>2)m.currentTime=Math.max(0,m.duration-1.2);
+                  await m.play();
+                  return {ok:true,duration:m.duration,currentTime:m.currentTime};
+                }catch(e){return {ok:false,reason:String(e)}}
+              });
+              console.log('KOL_SEEK='+JSON.stringify(seekResult));
+              await deepPage.waitForTimeout(3500);
+              console.log('KOL_PARENT_MESSAGES='+JSON.stringify(await deepPage.evaluate(()=>window.__kolMessages||[])));
+              console.log('KOL_PARENT_CURRENT='+JSON.stringify(await deepPage.evaluate(()=>({current,activeTitle:activeItem?.title||'',now:document.getElementById('nowTitle')?.textContent||''}))));
+            }else{
+              console.log('KOL_FRAME_BEFORE={"frame":false}');
+            }
+          }catch(e){
+            console.log('KOL_DIAGNOSTIC_ERR='+String(e).replace(/\s+/g,' ').slice(0,300));
+          }
+          await deepPage.close();
           await browser.close();
 
           console.log('\n=== BROKEN_PROVIDER_EMBEDS ===');
