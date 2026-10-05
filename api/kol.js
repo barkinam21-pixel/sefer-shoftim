@@ -55,6 +55,7 @@ export default async function handler(request){
     if(!token) return json({ok:false,stage:'token',error:'empty-token'},502);
 
     const mediaUrl=KH+'/api/files/GetFileToPlay/'+encodeURIComponent(id)+'/'+type+'/'+encodeURIComponent(token);
+    if(url.searchParams.get('redirect')==='1') return Response.redirect(mediaUrl,307);
     const h=khHeaders('*/*');
     const range=request.headers.get('range');
     if(range)h.range=range;
