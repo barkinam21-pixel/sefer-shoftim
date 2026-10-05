@@ -141,9 +141,8 @@ jobs:
           console.log('AUDIT_FRAME_COUNT='+frameItems.length);
           await Promise.all(Array.from({length:Math.min(4,Math.max(1,frameItems.length))},()=>frameWorker()));
 
-          // Deep provider diagnostics: the old audit only proved that an iframe URL
-          // existed. Inspect the loaded provider document/media as well, without
-          // downgrading items solely because headless autoplay is blocked.
+          // Deep provider diagnostics: distinguish a real provider privacy
+          // rejection from runner-specific security/autoplay restrictions.
           const deepPage=await browser.newPage();
           await deepPage.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
           await deepPage.waitForFunction(()=>typeof play==='function',null,{timeout:15000});
@@ -153,7 +152,7 @@ jobs:
                 const x=DATA.items.find(y=>y.embed===embed);
                 if(x) play(x);
               },{embed:item.embed});
-              await deepPage.waitForTimeout(1800);
+              await deepPage.waitForTimeout(1500);
               const wanted=new URL(item.embed);
               const fr=deepPage.frames().find(f=>{
                 try{return new URL(f.url()).hostname===wanted.hostname}catch{return false}
@@ -163,75 +162,72 @@ jobs:
                 detail=await fr.evaluate(()=>({
                   frame:true,
                   title:document.title||'',
-                  text:(document.body?.innerText||'').replace(/\s+/g,' ').slice(0,260),
+                  text:(document.body?.innerText||'').replace(/\s+/g,' ').slice(0,300),
                   videoCount:document.querySelectorAll('video').length,
                   audioCount:document.querySelectorAll('audio').length,
-                  iframeCount:document.querySelectorAll('iframe').length,
-                  media:Array.from(document.querySelectorAll('video,audio')).slice(0,3).map(m=>({
+                  media:Array.from(document.querySelectorAll('video,audio')).slice(0,2).map(m=>({
                     readyState:m.readyState,networkState:m.networkState,duration:Number.isFinite(m.duration)?m.duration:null,
                     paused:m.paused,ended:m.ended,error:m.error?{code:m.error.code,message:m.error.message||''}:null
                   }))
                 }));
               }
               console.log('DEEP_FRAME\t'+item.ch+'\t'+item.title+'\t'+JSON.stringify(detail));
+              const providerPrivacy=detail.frame && /because of its privacy settings[^.]*cannot be played here|privacy settings, this video cannot be played here/i.test(detail.text||'');
+              if(providerPrivacy) bad.push({...item,status:'ERR:PROVIDER_PRIVACY'});
             }catch(e){
               console.log('DEEP_FRAME_ERR\t'+item.ch+'\t'+item.title+'\t'+String(e).replace(/\s+/g,' ').slice(0,220));
             }
           }
 
-          // Probe the approved Kol Halashon iframe for a real completion signal.
-          // We seek the media close to its end inside Playwright and record every
-          // postMessage received by the parent. This tells the site whether a
-          // provider-native ended event can drive auto-next without a blind timer.
-          try{
-            await deepPage.evaluate(()=>{
-              window.__kolMessages=[];
-              window.addEventListener('message',e=>{
-                try{window.__kolMessages.push({origin:e.origin,data:typeof e.data==='string'?e.data:JSON.stringify(e.data)})}
-                catch(_){window.__kolMessages.push({origin:e.origin,data:'[unserializable]'})}
-              });
-              const x=DATA.items.find(y=>y.kol);
-              if(x) play(x);
-            });
-            await deepPage.waitForTimeout(3500);
-            const kolFrames=deepPage.frames().filter(f=>/kolhalashon\.com/i.test(f.url()));
-            console.log('KOL_FRAME_URLS='+JSON.stringify(deepPage.frames().map(f=>f.url())));
-            const kolFrame=kolFrames[0]||null;
-            console.log('KOL_PARENT_MESSAGES_INITIAL='+JSON.stringify(await deepPage.evaluate(()=>window.__kolMessages||[])));
-            if(kolFrame){
-              const before=await kolFrame.evaluate(()=>({
-                title:document.title||'',
-                text:(document.body?.innerText||'').replace(/\s+/g,' ').slice(0,300),
-                videos:document.querySelectorAll('video').length,
-                audios:document.querySelectorAll('audio').length,
-                media:Array.from(document.querySelectorAll('video,audio')).map(m=>({
-                  tag:m.tagName,readyState:m.readyState,duration:Number.isFinite(m.duration)?m.duration:null,
-                  currentTime:m.currentTime,paused:m.paused,ended:m.ended
-                })).slice(0,4),
-                scripts:Array.from(document.scripts).map(s=>s.src).filter(Boolean).slice(0,12)
-              }));
-              console.log('KOL_FRAME_BEFORE='+JSON.stringify(before));
-              const seekResult=await kolFrame.evaluate(async()=>{
-                const m=document.querySelector('video,audio');
-                if(!m) return {ok:false,reason:'no-media-element'};
-                try{
-                  m.muted=true;
-                  if(Number.isFinite(m.duration)&&m.duration>2)m.currentTime=Math.max(0,m.duration-1.2);
-                  await m.play();
-                  return {ok:true,duration:m.duration,currentTime:m.currentTime};
-                }catch(e){return {ok:false,reason:String(e)}}
-              });
-              console.log('KOL_SEEK='+JSON.stringify(seekResult));
-              await deepPage.waitForTimeout(3500);
-              console.log('KOL_PARENT_MESSAGES='+JSON.stringify(await deepPage.evaluate(()=>window.__kolMessages||[])));
-              console.log('KOL_PARENT_CURRENT='+JSON.stringify(await deepPage.evaluate(()=>({current,activeTitle:activeItem?.title||'',now:document.getElementById('nowTitle')?.textContent||''}))));
-            }else{
-              console.log('KOL_FRAME_BEFORE={"frame":false}');
-              await deepPage.waitForTimeout(2500);
-              console.log('KOL_PARENT_MESSAGES_NOFRAME='+JSON.stringify(await deepPage.evaluate(()=>window.__kolMessages||[])));
+          // Validate every HaNakh chapter against the same official Kol Halashon
+          // signed-media route used by production. Each probe requests only one
+          // byte, so it verifies availability without downloading the videos.
+          const kolItems=expected.items.filter(x=>x.kol);
+          const kolProbeBad=[];
+          for(const x of kolItems){
+            try{
+              const r=await fetch(SITE+'api/kol?id='+encodeURIComponent(x.kol)+'&type=2&directprobe=1',{redirect:'follow'});
+              const j=await r.json();
+              const ok=r.ok && j.ok===true && /^video\/mp4/i.test(j.contentType||'') && (j.status===200||j.status===206);
+              console.log('KOL_PROBE\t'+x.ch+'\t'+x.kol+'\t'+(ok?'OK':'ERR')+'\t'+JSON.stringify(j));
+              if(!ok)kolProbeBad.push({ch:x.ch,title:x.title,embed:'kol:'+x.kol,status:'ERR:KOL_MEDIA'});
+            }catch(e){
+              kolProbeBad.push({ch:x.ch,title:x.title,embed:'kol:'+x.kol,status:'ERR:KOL_PROBE '+String(e).slice(0,120)});
             }
+          }
+          bad.push(...kolProbeBad);
+
+          // End-to-end auto-next: play the first HaNakh item through the actual
+          // native <video>, seek it to the last moment, and require activeItem
+          // to advance. This proves we react to a real HTMLMediaElement ended
+          // event rather than a guessed timer.
+          try{
+            const before=await deepPage.evaluate(()=>{
+              const x=DATA.items.find(y=>y.kol);
+              if(!x)throw new Error('no Kol item');
+              play(x);
+              const v=document.getElementById('kolNative');
+              if(v)v.muted=true;
+              return {title:x.title,index:current};
+            });
+            await deepPage.waitForFunction(()=>{
+              const v=document.getElementById('kolNative');
+              return !!v && v.readyState>=1 && Number.isFinite(v.duration) && v.duration>2;
+            },null,{timeout:30000});
+            const media=await deepPage.evaluate(async()=>{
+              const v=document.getElementById('kolNative');
+              v.muted=true;
+              v.currentTime=Math.max(0,v.duration-0.7);
+              try{await v.play()}catch(e){}
+              return {duration:v.duration,currentTime:v.currentTime,currentSrc:v.currentSrc||v.src};
+            });
+            await deepPage.waitForFunction(({title,index})=>activeItem&&activeItem.title!==title&&current!==index,before,{timeout:12000});
+            const after=await deepPage.evaluate(()=>({title:activeItem?.title||'',index:current,now:document.getElementById('nowTitle')?.textContent||''}));
+            console.log('KOL_AUTO_NEXT=OK\t'+JSON.stringify({before,media,after}));
           }catch(e){
-            console.log('KOL_DIAGNOSTIC_ERR='+String(e).replace(/\s+/g,' ').slice(0,300));
+            const state=await deepPage.evaluate(()=>({title:activeItem?.title||'',index:current,ready:document.getElementById('kolNative')?.readyState||0,duration:document.getElementById('kolNative')?.duration||null,currentTime:document.getElementById('kolNative')?.currentTime||0})).catch(()=>({}));
+            console.log('KOL_AUTO_NEXT=ERR\t'+String(e).replace(/\s+/g,' ').slice(0,240)+'\t'+JSON.stringify(state));
+            bad.push({ch:'הנ״ך',title:'HaNakh native auto-next',embed:'/api/kol',status:'ERR:KOL_AUTO_NEXT'});
           }
           await deepPage.close();
           await browser.close();
