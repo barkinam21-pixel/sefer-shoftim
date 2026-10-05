@@ -55,6 +55,12 @@ export default async function handler(request){
     if(!token) return json({ok:false,stage:'token',error:'empty-token'},502);
 
     const mediaUrl=KH+'/api/files/GetFileToPlay/'+encodeURIComponent(id)+'/'+type+'/'+encodeURIComponent(token);
+    if(url.searchParams.get('directprobe')==='1'){
+      const p=await fetch(mediaUrl,{headers:{range:'bytes=0-0'},redirect:'follow'});
+      const result={ok:p.ok||p.status===206,status:p.status,contentType:p.headers.get('content-type')||'',contentRange:p.headers.get('content-range')||null};
+      try{p.body&&p.body.cancel()}catch(_){}
+      return json(result,result.ok?200:502);
+    }
     if(url.searchParams.get('redirect')==='1') return Response.redirect(mediaUrl,307);
     const h=khHeaders('*/*');
     const range=request.headers.get('range');
