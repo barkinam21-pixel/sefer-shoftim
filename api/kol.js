@@ -64,8 +64,23 @@ export default async function handler(request){
     if(url.searchParams.get('redirect')==='1') return Response.redirect(mediaUrl,307);
     const h=khHeaders('*/*');
     const range=request.headers.get('range');
-    if(range)h.range=range;
-    else if(probe)h.range='bytes=0-0';
+    if(probe){
+      h.range='bytes=0-0';
+    }else{
+      // Keep every serverless response short-lived. Browsers will request the
+      // next Range automatically, so long shiurim do not depend on one function
+      // invocation staying open for the whole video.
+      const CHUNK=4*1024*1024;
+      const m=range&&/^bytes=(\d+)-(\d*)$/i.exec(range);
+      if(m){
+        const start=Number(m[1]);
+        const requestedEnd=m[2]?Number(m[2]):start+CHUNK-1;
+        const end=Math.min(requestedEnd,start+CHUNK-1);
+        h.range='bytes='+start+'-'+end;
+      }else{
+        h.range='bytes=0-'+(CHUNK-1);
+      }
+    }
 
     const media=await fetch(mediaUrl,{headers:h,redirect:'follow'});
     if(!(media.ok||media.status===206)){
