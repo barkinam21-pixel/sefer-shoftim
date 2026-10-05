@@ -194,7 +194,10 @@ jobs:
               if(x) play(x);
             });
             await deepPage.waitForTimeout(3500);
-            const kolFrame=deepPage.frames().find(f=>/kolhalashon\.com\/.*playShiur\//i.test(f.url()));
+            const kolFrames=deepPage.frames().filter(f=>/kolhalashon\.com/i.test(f.url()));
+            console.log('KOL_FRAME_URLS='+JSON.stringify(deepPage.frames().map(f=>f.url())));
+            const kolFrame=kolFrames[0]||null;
+            console.log('KOL_PARENT_MESSAGES_INITIAL='+JSON.stringify(await deepPage.evaluate(()=>window.__kolMessages||[])));
             if(kolFrame){
               const before=await kolFrame.evaluate(()=>({
                 title:document.title||'',
@@ -224,6 +227,8 @@ jobs:
               console.log('KOL_PARENT_CURRENT='+JSON.stringify(await deepPage.evaluate(()=>({current,activeTitle:activeItem?.title||'',now:document.getElementById('nowTitle')?.textContent||''}))));
             }else{
               console.log('KOL_FRAME_BEFORE={"frame":false}');
+              await deepPage.waitForTimeout(2500);
+              console.log('KOL_PARENT_MESSAGES_NOFRAME='+JSON.stringify(await deepPage.evaluate(()=>window.__kolMessages||[])));
             }
           }catch(e){
             console.log('KOL_DIAGNOSTIC_ERR='+String(e).replace(/\s+/g,' ').slice(0,300));
