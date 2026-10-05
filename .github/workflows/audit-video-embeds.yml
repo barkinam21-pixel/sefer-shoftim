@@ -197,13 +197,14 @@ jobs:
           }
           bad.push(...kolProbeBad);
 
-          // End-to-end auto-next: play the first HaNakh item through the actual
-          // native <video>, seek it to the last moment, and require activeItem
-          // to advance. This proves we react to a real HTMLMediaElement ended
-          // event rather than a guessed timer.
+          // End-to-end auto-next: use a smaller verified HaNakh media item for
+          // the browser exercise so CI does not fail merely because chapter 1's
+          // much larger MP4 is slow to expose metadata. We still use the exact
+          // production native <video>, seek to the real end, and require the
+          // active item/index to advance from the HTMLMediaElement ended event.
           try{
             const before=await deepPage.evaluate(()=>{
-              const x=DATA.items.find(y=>y.kol);
+              const x=DATA.items.find(y=>y.kol==='41751223')||DATA.items.find(y=>y.kol);
               if(!x)throw new Error('no Kol item');
               play(x);
               const v=document.getElementById('kolNative');
@@ -213,7 +214,7 @@ jobs:
             await deepPage.waitForFunction(()=>{
               const v=document.getElementById('kolNative');
               return !!v && v.readyState>=1 && Number.isFinite(v.duration) && v.duration>2;
-            },null,{timeout:30000});
+            },null,{timeout:45000});
             const media=await deepPage.evaluate(async()=>{
               const v=document.getElementById('kolNative');
               v.muted=true;
