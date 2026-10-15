@@ -67,7 +67,18 @@ jobs:
           async function youtubeControl(){
             const page=await browser.newPage();
             await page.goto(SITE,{waitUntil:'domcontentloaded',timeout:30000});
-            await page.waitForFunction(()=>window.YT&&YT.Player,null,{timeout:20000});
+            // The production site deliberately defers the YouTube API until playback.
+            // Exercise that lazy-load path before running the control video.
+            await page.evaluate(()=>{
+              const candidate=DATA.items.find(x=>x.yt);
+              if(candidate)loadYouTube(candidate);
+            });
+            try {
+              await page.waitForFunction(()=>window.YT&&YT.Player,null,{timeout:20000});
+            } catch(e) {
+              await page.close();
+              return 'INCONCLUSIVE:YT_API_UNAVAILABLE';
+            }
             const status=await page.evaluate(()=>new Promise(resolve=>{
               const mount=document.createElement('div');
               mount.id='ytControlMount';
