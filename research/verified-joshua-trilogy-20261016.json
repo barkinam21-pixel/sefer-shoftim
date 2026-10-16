@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-16",
+  "status": "RESEARCH_ONLY_NOT_DEPLOYED",
+  "source": "https://bimbam.com/joshua/",
+  "source_access": "Official BimBam publisher's trilogy page lists three embedded YouTube videos; IDs extracted from the actual official iframe links. Playback inside shoftim-v3.vercel.app and YouTube IFrame API error 150/153 remain unverified.",
+  "source_verified": true,
+  "target": "index.html DATA",
+  "items": [
+    {
+      "chapter": "יהושע-ב",
+      "biblical_ref": "יהושע ב׳",
+      "title": "Joshua Part I: Spying — Rahav and the scouts",
+      "yt": "vCJ_MerlHIE",
+      "official_url": "https://bimbam.com/joshua/",
+      "youtube_url": "https://www.youtube.com/watch?v=vCJ_MerlHIE",
+      "official_embed": "https://www.youtube.com/embed/vCJ_MerlHIE",
+      "verified": "publisher iframe src",
+      "in_site_playback": false
+    },
+    {
+      "chapter": "יהושע-ו",
+      "biblical_ref": "יהושע ו׳",
+      "title": "Joshua Part II: The Walls of Jericho",
+      "yt": "mBS3arAAC0w",
+      "official_url": "https://bimbam.com/joshua/",
+      "youtube_url": "https://www.youtube.com/watch?v=mBS3arAAC0w",
+      "official_embed": "https://www.youtube.com/embed/mBS3arAAC0w",
+      "verified": "publisher iframe src",
+      "in_site_playback": false
+    },
+    {
+      "chapter": "יהושע-ז-ח",
+      "biblical_ref": "יהושע ז׳–ח׳",
+      "title": "Joshua Part III: Showdown at Ai",
+      "yt": "kn27THpB99o",
+      "official_url": "https://bimbam.com/joshua/",
+      "youtube_url": "https://www.youtube.com/watch?v=kn27THpB99o",
+      "official_embed": "https://www.youtube.com/embed/kn27THpB99o",
+      "verified": "publisher iframe src",
+      "in_site_playback": false
+    }
+  ],
+  "dedupe": "Compared against current main index.html DATA: no Joshua items and no matching YouTube IDs at verification time.",
+  "constraint": "Do not publish until embed and auto-next checked; maintain Deuteronomy-to-Joshua-to-Judges chronology and do not falsely imply all Joshua chapters have been covered."
+}
