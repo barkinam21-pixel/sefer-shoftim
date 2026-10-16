@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-16",
+  "status": "RESEARCH_ONLY_NOT_PUBLISHED",
+  "base_commit": "63549d530cdbc9532e01e6f19a054314b097b075",
+  "publication_block": "GitHub index.html full-file replacement blocked by OpenAI safety checks. No index.html modification occurred.",
+  "checks": "Official creator YouTube page/title verified with web research; in-site playback and Auto-Next not verified; candidate duplicates absent from DATA at base_commit.",
+  "candidates": [
+    {
+      "chapter": "בראשית-יב-כב",
+      "id": "GsjXmJq55Fw",
+      "title": "BimBam — Lech Lecha: Sarah's Song",
+      "classification": "Jewish / animated music",
+      "url": "https://www.youtube.com/watch?v=GsjXmJq55Fw"
+    },
+    {
+      "chapter": "בראשית-כה-כח",
+      "id": "A1YnXEfE_Q0",
+      "title": "BimBam — Toldot with Y-Love",
+      "classification": "Jewish / rhythmic animation",
+      "url": "https://www.youtube.com/watch?v=A1YnXEfE_Q0"
+    },
+    {
+      "chapter": "בראשית-מד-מז",
+      "id": "UIL7v-76g4c",
+      "title": "BimBam — Vayigash: Joseph's Family Reunion",
+      "classification": "Jewish / animated storytelling",
+      "url": "https://www.youtube.com/watch?v=UIL7v-76g4c"
+    },
+    {
+      "chapter": "שמות-יג-יז",
+      "id": "9wNil8rikr8",
+      "title": "BimBam — Beshalach: Let Them Eat Manna",
+      "classification": "Jewish / humorous animation",
+      "url": "https://www.youtube.com/watch?v=9wNil8rikr8"
+    },
+    {
+      "chapter": "שמות-יח-כ",
+      "id": "jH_aojNJM3E",
+      "title": "BibleProject — Exodus 1–18",
+      "classification": "Christian-perspective book recap",
+      "url": "https://www.youtube.com/watch?v=jH_aojNJM3E"
+    },
+    {
+      "chapter": "שמות-לה-מ",
+      "id": "oNpTha80yyE",
+      "title": "BibleProject — Exodus 19–40",
+      "classification": "Christian-perspective book recap",
+      "url": "https://www.youtube.com/watch?v=oNpTha80yyE"
+    },
+    {
+      "chapter": "ויקרא-כו-כז",
+      "id": "IJ-FekWUZzE",
+      "title": "BibleProject — Leviticus",
+      "classification": "Christian-perspective book recap",
+      "url": "https://www.youtube.com/watch?v=IJ-FekWUZzE"
+    },
+    {
+      "chapter": "במדבר-לג-לו",
+      "id": "tp5MIrMZFqo",
+      "title": "BibleProject — Numbers",
+      "classification": "Christian-perspective book recap",
+      "url": "https://www.youtube.com/watch?v=tp5MIrMZFqo"
+    },
+    {
+      "chapter": "דברים-לג-לד",
+      "id": "q5QEH9bH8AU",
+      "title": "BibleProject — Deuteronomy",
+      "classification": "Christian-perspective book recap",
+      "url": "https://www.youtube.com/watch?v=q5QEH9bH8AU"
+    },
+    {
+      "chapter": "יהושע-ז-ח",
+      "id": "JqOqJlFF_eU",
+      "title": "BibleProject — Joshua",
+      "classification": "Christian-perspective overview of Joshua 1–24; Joshua gaps remain",
+      "url": "https://www.youtube.com/watch?v=JqOqJlFF_eU"
+    }
+  ]
+}
