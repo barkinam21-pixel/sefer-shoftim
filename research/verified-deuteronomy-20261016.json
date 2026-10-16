@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-16",
+  "status": "research-only; not on live site",
+  "target_repo": "barkinam21-pixel/sefer-shoftim",
+  "target": "index.html DATA",
+  "note": "Publishing index.html was denied by the connector safety checks. These sources are official and publicly listed, but actual embedded playback and auto-next must be verified before declaring production success.",
+  "items": [
+    {
+      "id": "6024257",
+      "chapter": "דברים-יא-טז",
+      "title": "ראה: הבחירה והברכות",
+      "style": "שיר ישראלי ואנימציה",
+      "provider": "Vimeo",
+      "owner": "BimBam",
+      "official_url": "https://vimeo.com/6024257",
+      "proposed_embed": "https://player.vimeo.com/video/6024257?autoplay=1&playsinline=1&dnt=1",
+      "source_channel": "https://vimeo.com/channels/animatedtorah",
+      "provider_page_confirmed": true,
+      "embed_playback_verified": false
+    },
+    {
+      "id": "6126325",
+      "chapter": "דברים-טז-כא",
+      "title": "שופטים: צדק צדק תרדוף",
+      "style": "פרשנות יהודית מאוירת",
+      "provider": "Vimeo",
+      "owner": "BimBam",
+      "official_url": "https://vimeo.com/6126325",
+      "proposed_embed": "https://player.vimeo.com/video/6126325?autoplay=1&playsinline=1&dnt=1",
+      "source_channel": "https://vimeo.com/channels/animatedtorah",
+      "provider_page_confirmed": true,
+      "embed_playback_verified": false
+    },
+    {
+      "id": "6243682",
+      "chapter": "דברים-כא-כה",
+      "title": "כי תצא: חמלה כלפי בעלי חיים",
+      "style": "אנימציה עם בעלי חיים",
+      "provider": "Vimeo",
+      "owner": "BimBam",
+      "official_url": "https://vimeo.com/6243682",
+      "proposed_embed": "https://player.vimeo.com/video/6243682?autoplay=1&playsinline=1&dnt=1",
+      "source_channel": "https://vimeo.com/channels/animatedtorah",
+      "provider_page_confirmed": true,
+      "embed_playback_verified": false
+    },
+    {
+      "id": "6440263",
+      "chapter": "דברים-כט-ל",
+      "title": "ניצבים: ובחרת בחיים",
+      "style": "דלתות והומור",
+      "provider": "Vimeo",
+      "owner": "BimBam",
+      "official_url": "https://vimeo.com/6440263",
+      "proposed_embed": "https://player.vimeo.com/video/6440263?autoplay=1&playsinline=1&dnt=1",
+      "source_channel": "https://vimeo.com/channels/animatedtorah",
+      "provider_page_confirmed": true,
+      "embed_playback_verified": false
+    },
+    {
+      "id": "6497956",
+      "chapter": "דברים-לא",
+      "title": "וילך: מים ביאליק",
+      "style": "אנימציה, כתיבת התורה",
+      "provider": "Vimeo",
+      "owner": "BimBam",
+      "official_url": "https://vimeo.com/6497956",
+      "proposed_embed": "https://player.vimeo.com/video/6497956?autoplay=1&playsinline=1&dnt=1",
+      "source_channel": "https://vimeo.com/channels/animatedtorah",
+      "provider_page_confirmed": true,
+      "embed_playback_verified": false
+    },
+    {
+      "id": "6677444",
+      "chapter": "דברים-לב",
+      "title": "האזינו: שירת משה",
+      "style": "סיפור מוזיקלי",
+      "provider": "Vimeo",
+      "owner": "BimBam",
+      "official_url": "https://vimeo.com/6677444",
+      "proposed_embed": "https://player.vimeo.com/video/6677444?autoplay=1&playsinline=1&dnt=1",
+      "source_channel": "https://vimeo.com/channels/animatedtorah",
+      "provider_page_confirmed": true,
+      "embed_playback_verified": false
+    },
+    {
+      "id": "6902373",
+      "chapter": "דברים-לג-לד",
+      "title": "וזאת הברכה: סיום התורה",
+      "style": "סיפור הפרידה ממשה",
+      "provider": "Vimeo",
+      "owner": "BimBam",
+      "official_url": "https://vimeo.com/6902373",
+      "proposed_embed": "https://player.vimeo.com/video/6902373?autoplay=1&playsinline=1&dnt=1",
+      "source_channel": "https://vimeo.com/channels/animatedtorah",
+      "provider_page_confirmed": true,
+      "embed_playback_verified": false
+    }
+  ]
+}
