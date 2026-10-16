@@ -1,0 +1,98 @@
+{
+  "status": "OFFICIAL_VIDEO_PAGES_VERIFIED_NOT_DEPLOYED",
+  "verified_date": "2026-10-16",
+  "branch_source_sha": "25869515ec1d84ed6e8136ddebbad7d49e5a2e26",
+  "note": "These 9 are official BimBam/G-dcast Vimeo channel cartoon episodes (numbers 34-40,42-43), not present in main DATA at 305 items. The official channel and individual public pages were checked, but actual playback in the site's user browser and embed permissions remain unverified. Pinchas (#41) is not in this Vimeo channel; do not invent its ID. Do not publish videos that cannot play in the site.",
+  "videos": [
+    {
+      "chapter": "במדבר-א-ד",
+      "parsha": "Bemidbar",
+      "vimeo_id": 4701634,
+      "url": "https://vimeo.com/4701634",
+      "embed": "https://player.vimeo.com/video/4701634?autoplay=1&playsinline=1&dnt=1",
+      "language": "English",
+      "attribution": "BimBam / G-dcast official",
+      "summary": "Numbers 1–4 census narrated like a news report"
+    },
+    {
+      "chapter": "במדבר-ה-ז",
+      "parsha": "Naso",
+      "vimeo_id": 4935441,
+      "url": "https://vimeo.com/4935441",
+      "embed": "https://player.vimeo.com/video/4935441?autoplay=1&playsinline=1&dnt=1",
+      "language": "English",
+      "attribution": "BimBam / G-dcast official",
+      "summary": "Numbers 5–7 interpretation of sotah, contains sensitive theme"
+    },
+    {
+      "chapter": "במדבר-ח-יב",
+      "parsha": "Behaalotcha",
+      "vimeo_id": 5055911,
+      "url": "https://vimeo.com/5055911",
+      "embed": "https://player.vimeo.com/video/5055911?autoplay=1&playsinline=1&dnt=1",
+      "language": "English",
+      "attribution": "BimBam / G-dcast official",
+      "summary": "Numbers 8–12 musical folk-song animation"
+    },
+    {
+      "chapter": "במדבר-יג-טו",
+      "parsha": "Shelach Lecha",
+      "vimeo_id": 5160161,
+      "url": "https://vimeo.com/5160161",
+      "embed": "https://player.vimeo.com/video/5160161?autoplay=1&playsinline=1&dnt=1",
+      "language": "English",
+      "attribution": "BimBam / G-dcast official",
+      "summary": "Numbers 13–15 spies, courage and fear"
+    },
+    {
+      "chapter": "במדבר-טז-יח",
+      "parsha": "Korach",
+      "vimeo_id": 5263304,
+      "url": "https://vimeo.com/5263304",
+      "embed": "https://player.vimeo.com/video/5263304?autoplay=1&playsinline=1&dnt=1",
+      "language": "English",
+      "attribution": "BimBam / G-dcast official",
+      "summary": "Numbers 16–18 dramatic boxing-match comedy"
+    },
+    {
+      "chapter": "במדבר-יט-כב",
+      "parsha": "Chukat",
+      "vimeo_id": 5311737,
+      "url": "https://vimeo.com/5311737",
+      "embed": "https://player.vimeo.com/video/5311737?autoplay=1&playsinline=1&dnt=1",
+      "language": "English",
+      "attribution": "BimBam / G-dcast official",
+      "summary": "Numbers 19–22 snakes and copper serpent"
+    },
+    {
+      "chapter": "במדבר-כב-כה",
+      "parsha": "Balak",
+      "vimeo_id": 5313764,
+      "url": "https://vimeo.com/5313764",
+      "embed": "https://player.vimeo.com/video/5313764?autoplay=1&playsinline=1&dnt=1",
+      "language": "English",
+      "attribution": "BimBam / G-dcast official",
+      "summary": "Numbers 22–25 donkey speaking and Balaam"
+    },
+    {
+      "chapter": "במדבר-ל-לב",
+      "parsha": "Matot",
+      "vimeo_id": 5564870,
+      "url": "https://vimeo.com/5564870",
+      "embed": "https://player.vimeo.com/video/5564870?autoplay=1&playsinline=1&dnt=1",
+      "language": "English",
+      "attribution": "BimBam / G-dcast official",
+      "summary": "Numbers 30–32 vows; humorous animation"
+    },
+    {
+      "chapter": "במדבר-לג-לו",
+      "parsha": "Masei",
+      "vimeo_id": 5614837,
+      "url": "https://vimeo.com/5614837",
+      "embed": "https://player.vimeo.com/video/5614837?autoplay=1&playsinline=1&dnt=1",
+      "language": "English",
+      "attribution": "BimBam / G-dcast official",
+      "summary": "Numbers 33–36 division of land and Levites"
+    }
+  ]
+}
