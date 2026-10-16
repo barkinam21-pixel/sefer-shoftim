@@ -1,0 +1,88 @@
+{
+  "status": "SOURCE_RESEARCH_ONLY_NOT_LIVE",
+  "verified": "2026-10-16",
+  "source": "BimBam official G-dcast channel https://vimeo.com/channels/animatedtorah (pages 5 and 6). Individual official Vimeo video pages listed within channel and indexed. Embeddability/playback in user's browser NOT YET verified.",
+  "policy": "Do not conflate verified video page with verified playback. Insert only after checking main DATA and actual in-site playback where possible; do not break existing player or rights controls. The older unmerged branch contains YouTube IDs which are NOT confirmed from reliable sources; Vimeo IDs below are directly verified from the official channel.",
+  "videos": [
+    {
+      "chapter": "ויקרא-א-ה",
+      "parsha": "Vayikra",
+      "vimeo_id": 3786926,
+      "url": "https://vimeo.com/3786926",
+      "embed": "https://player.vimeo.com/video/3786926?autoplay=1&dnt=1",
+      "note": "Rachel Kohl Finegold on sacrifices; animation; Jewish interpretation"
+    },
+    {
+      "chapter": "ויקרא-ו-ח",
+      "parsha": "Tzav",
+      "vimeo_id": 3914038,
+      "url": "https://vimeo.com/3914038",
+      "embed": "https://player.vimeo.com/video/3914038?autoplay=1&dnt=1",
+      "note": "Jennifer Joseph on community sacrifice; animation"
+    },
+    {
+      "chapter": "ויקרא-ט-יא",
+      "parsha": "Shemini",
+      "vimeo_id": 4125605,
+      "url": "https://vimeo.com/4125605",
+      "embed": "https://player.vimeo.com/video/4125605?autoplay=1&dnt=1",
+      "note": "DeLeon animated musical about Aaron's sons and kashrut"
+    },
+    {
+      "chapter": "ויקרא-יב-יג",
+      "parsha": "Tazria",
+      "vimeo_id": 4236777,
+      "url": "https://vimeo.com/4236777",
+      "embed": "https://player.vimeo.com/video/4236777?autoplay=1&dnt=1",
+      "note": "Jennifer Traig humorous animated biblical skin afflictions"
+    },
+    {
+      "chapter": "ויקרא-יד-טו",
+      "parsha": "Metzorah",
+      "vimeo_id": 4271567,
+      "url": "https://vimeo.com/4271567",
+      "embed": "https://player.vimeo.com/video/4271567?autoplay=1&dnt=1",
+      "note": "Rabbi Steve Greenberg animated discussion of tzaraat in clothes/houses"
+    },
+    {
+      "chapter": "ויקרא-טז-יח",
+      "parsha": "Acharei Mot",
+      "vimeo_id": 4351429,
+      "url": "https://vimeo.com/4351429",
+      "embed": "https://player.vimeo.com/video/4351429?autoplay=1&dnt=1",
+      "note": "Amichai Lau-Lavie animated Jewish personal interpretation"
+    },
+    {
+      "chapter": "ויקרא-יט-כ",
+      "parsha": "Kedoshim",
+      "vimeo_id": 4406566,
+      "url": "https://vimeo.com/4406566",
+      "embed": "https://player.vimeo.com/video/4406566?autoplay=1&dnt=1",
+      "note": "Elana Jagoda animated rhyming musical about moral laws"
+    },
+    {
+      "chapter": "ויקרא-כא-כד",
+      "parsha": "Emor",
+      "vimeo_id": 4468470,
+      "url": "https://vimeo.com/4468470",
+      "embed": "https://player.vimeo.com/video/4468470?autoplay=1&dnt=1",
+      "note": "Temim Fruchter animated interpretation about speaking up"
+    },
+    {
+      "chapter": "ויקרא-כה",
+      "parsha": "Behar",
+      "vimeo_id": 4569316,
+      "url": "https://vimeo.com/4569316",
+      "embed": "https://player.vimeo.com/video/4569316?autoplay=1&dnt=1",
+      "note": "Emily Freed animated sustainability and land laws"
+    },
+    {
+      "chapter": "ויקרא-כו-כז",
+      "parsha": "Bechukotai",
+      "vimeo_id": 4642431,
+      "url": "https://vimeo.com/4642431",
+      "embed": "https://player.vimeo.com/video/4642431?autoplay=1&dnt=1",
+      "note": "Jeremiah Lockwood animated dark dramatic interpretation of consequences"
+    }
+  ]
+}
