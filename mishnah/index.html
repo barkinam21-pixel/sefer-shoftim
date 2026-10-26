@@ -255,11 +255,13 @@ function listInOrder(){const a=DATA.items.filter(filterOk);return a.length?a:DAT
 function nextMishnahAdjacent(a,b){
  const order=["berakhot","peah","demai","kilayim"];
  const counts={berakhot:STUDY_CHAPTERS.slice(1).map(x=>x.n),peah:[6,8,8,11,8,11,8,9],demai:[4,5,6,7,11,12,8],kilayim:[9,11,7,9]};
- if(a.tractate===b.tractate&&a.chapter===b.chapter)return b.mishnah===a.mishnah+1;
- const lengths=counts[a.tractate];
+ // Early Berakhot entries intentionally have no tractate tag.
+ const ta=a.tractate||"berakhot",tb=b.tractate||"berakhot";
+ if(ta===tb&&a.chapter===b.chapter)return b.mishnah===a.mishnah+1;
+ const lengths=counts[ta];
  if(!lengths||a.mishnah!==lengths[a.chapter-1]||b.mishnah!==1)return false;
- if(a.tractate===b.tractate)return b.chapter===a.chapter+1;
- return order.indexOf(a.tractate)>=0&&order.indexOf(b.tractate)===order.indexOf(a.tractate)+1&&a.chapter===lengths.length&&b.chapter===1;
+ if(ta===tb)return b.chapter===a.chapter+1;
+ return order.indexOf(ta)>=0&&order.indexOf(tb)===order.indexOf(ta)+1&&a.chapter===lengths.length&&b.chapter===1;
 }
 function nextItem(auto){if(!current)return;const id=current.id;if(current.chapterOverviewFor){const first=studyItems().find(x=>x.study.chapter===current.chapterOverviewFor);if(first){selectItem(first.id,true);return;}}if(current.study){const lessons=allStudyItems();const n=lessons.findIndex(z=>z.id===id);if(n>=0&&n<lessons.length-1){const next=lessons[n+1],a=current.study,b=next.study;if(!nextMishnahAdjacent(a,b)){notify("המשנה הבאה עדיין חסרה כסרטון מאומת. אין דילוג אוטומטי על משניות.");return;}selectItem(next.id,true);notify("המשנה הבאה נפתחה לפי סדר המסכת.");return;}notify("סיימת את המשניות הזמינות כרגע ברצף הזה.");return;}const a=listInOrder();let i=a.findIndex(x=>x.id===id);if(i===-1){i=DATA.items.findIndex(x=>x.id===id);if(i>=0){const f=DATA.items.slice(i+1).find(x=>filterOk(x));if(f){selectItem(f.id,!!auto&&!!f.yt);return;}}i=-1;}let n=a[i+1];if(!n){notify("הגעת לסוף המסלול שנבחר. אפשר לעבור אל ׳כל התכנים׳.");return;}selectItem(n.id,canEmbed(n));if(auto&&!canEmbed(n))notify("הסרט הבא אינו ניתן להטמעה. אפשר לפתוח את המקור הרשמי.");}
 document.querySelector(".tools").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;mode=b.dataset.filter;if(!MODE.includes(mode))mode="core";document.querySelectorAll(".filter").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.filter===mode)));render();});
