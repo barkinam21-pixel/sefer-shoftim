@@ -196,7 +196,15 @@ $("peahContinue").addEventListener("click",()=>{const lessons=allStudyItems().fi
 $("studyStart").addEventListener("click",()=>openStudyLesson(studyItems()[0]));
 $("studyResume").addEventListener("click",()=>{const last=getItem(state.last);const all=allStudyItems();openStudyLesson(last&&last.study?last:all.find(x=>!state.seen[x.id])||all[0]);});
 $("totalCount").textContent=String(DATA.items.length);if($("highlightCount"))$("highlightCount").textContent=String(DATA.items.length);
+// Shareable, lightweight video links: ?watch=<existing-item-id> (never autoplay).
+const sharedWatchId=new URLSearchParams(location.search).get("watch");
+const sharedWatchItem=sharedWatchId?getItem(sharedWatchId):null;
+if(sharedWatchItem){
+ mode="all";
+ document.querySelectorAll(".filter").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.filter==="all")));
+}
 render();renderStudy();renderPeah();
-if(state.last&&getItem(state.last))selectItem(state.last,false,true);
+if(sharedWatchItem){selectItem(sharedWatchItem.id,false,false);}
+else if(state.last&&getItem(state.last))selectItem(state.last,false,true);
 </script>
 </body></html>
