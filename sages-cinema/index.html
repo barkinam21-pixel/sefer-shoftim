@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101b21">
+<meta name="description" content="דורות של אור — מסע קולנועי כרונולוגי בעקבות סיפורי חכמי ישראל, התנאים, האמוראים, הראשונים והאחרונים. יצירות חינמיות, בלי שיעורים משעממים.">
+<title>דורות של אור | חכמי ישראל על המסך</title>
+<style>
+:root{color-scheme:dark;--ink:#edf1eb;--muted:#a6b4b3;--gold:#ecc48a;--gold-deep:#bb8f53;--bg:#101b21;--bg2:#16262c;--panel:#192b32;--line:#30444a;--line2:#41535a;--shade:#17252b;--serif:Georgia,"Noto Serif Hebrew","David",serif;--body:Heebo,Arial,"Noto Sans Hebrew",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:radial-gradient(circle at 4% 0,#1b343b 0,transparent 36%),var(--bg);font:16px/1.66 var(--body);color:var(--ink);min-height:100vh}
+body.large{font-size:19px}
+body.locked{overflow:hidden}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #e8bb6d;outline-offset:3px}
+img{max-width:100%}
+::selection{background:#d3a46a;color:#16262c}
+.skip{position:absolute;top:-100px;right:16px;background:var(--gold);color:#142328;padding:8px 12px;z-index:100}.skip:focus{top:10px}
+.container{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+.site-head{position:sticky;top:0;z-index:50;background:rgba(12,24,29,.94);border-bottom:1px solid rgba(236,196,138,.17);backdrop-filter:blur(16px)}
+.head-inner{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;gap:10px;align-items:center;font-weight:800;line-height:1.15;letter-spacing:-.6px}
+.brand-icon{display:grid;place-items:center;width:37px;height:37px;border:1px solid rgba(236,196,138,.6);border-radius:11px;color:var(--gold);background:rgba(236,196,138,.07);font-size:23px}
+.brand small{display:block;color:var(--muted);font-size:11px;font-weight:500;letter-spacing:0;margin-top:3px}
+.head-actions{display:flex;align-items:center;gap:8px}
+.head-actions a,.ghost-btn{border:1px solid var(--line);background:transparent;padding:8px 12px;border-radius:10px;color:var(--ink);font-size:13px}
+.head-actions a:hover,.ghost-btn:hover{border-color:var(--gold-deep)}
+.head-actions .text-size{color:var(--gold);min-width:42px}
+.hero{position:relative;overflow:hidden;padding:72px 0 72px;background:radial-gradient(circle at 80% 46%,rgba(208,159,85,.12) 0,transparent 42%),linear-gradient(125deg,rgba(25,43,50,.48),rgba(12,24,29,.35));border-bottom:1px solid var(--line)}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.24;background-image:radial-gradient(#e6c18d .8px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(90deg,transparent,#000)}
+.hero-wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:52px;align-items:center}
+.eyebrow{display:flex;gap:10px;align-items:center;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1.7px}
+.eyebrow:before{content:"";width:31px;height:1px;background:var(--gold-deep)}
+h1,h2,h3,p{margin:0}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(48px,7vw,91px);line-height:1.14;letter-spacing:-2.3px;margin:17px 0 20px}
+h1 em{display:block;color:var(--gold);font-style:normal}
+.hero-text{max-width:610px;font-size:18px;line-height:1.9;color:#d4dcd8}
+.hero-actions{display:flex;gap:11px;flex-wrap:wrap;align-items:center;margin-top:30px}
+.primary-btn{background:var(--gold);color:#18252a;border:1px solid var(--gold);font-weight:800;padding:12px 24px;border-radius:11px;display:inline-flex;gap:9px;align-items:center;justify-content:center;transition:.2s}
+.primary-btn:hover{background:#f6d7a8;transform:translateY(-2px)}
+.secondary-btn{background:rgba(236,196,138,.04);color:var(--gold);border:1px solid rgba(236,196,138,.35);font-weight:700;padding:12px 18px;border-radius:11px}
+.hero-numbers{display:flex;gap:32px;margin-top:42px;flex-wrap:wrap}
+.hero-numbers .metric strong{display:block;color:var(--ink);font-size:27px;line-height:1.3;font-weight:750;font-variant-numeric:tabular-nums}
+.metric span{font-size:12px;color:var(--muted)}
+.hero-art{height:390px;position:relative;display:grid;place-items:center;min-width:0}
+.orbit{position:absolute;border:1px solid rgba(236,196,138,.16);border-radius:50%;aspect-ratio:1}
+.orbit.one{width:94%;max-width:390px}.orbit.two{width:74%;max-width:306px}.orbit.three{width:52%;max-width:215px}
+.art-center{width:120px;height:120px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#3d4851,#172831);color:var(--gold);font-family:var(--serif);font-size:58px;border:1px solid rgba(236,196,138,.45);box-shadow:0 0 80px rgba(232,181,103,.12)}
+.orbit-tag{position:absolute;background:#1b2e34;border:1px solid rgba(236,196,138,.35);padding:7px 13px;border-radius:40px;color:#e8cc9f;font-size:12px;box-shadow:0 5px 18px #071317}
+.tag-a{top:13%;right:11%}.tag-b{bottom:16%;left:3%}.tag-c{bottom:14%;right:4%}.tag-d{top:24%;left:1%}
+.note-band{background:#1b292e;border-bottom:1px solid var(--line);padding:12px 0;font-size:13px;color:var(--muted)}
+.note-band strong{color:var(--gold)}
+.section-top{margin:55px 0 22px;display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.kicker{font-size:12px;color:var(--gold);font-weight:800;letter-spacing:1.2px}
+.section-top h2,.about h2{font-family:var(--serif);font-size:clamp(29px,4vw,42px);font-weight:700;letter-spacing:-.5px;margin-top:4px}
+.section-top p,.subtext{color:var(--muted);font-size:14px;margin-top:8px}
+.timeline-rail{display:flex;align-items:stretch;gap:9px;overflow-x:auto;scrollbar-width:thin;padding:6px 0 18px}
+.timeline-btn{border:1px solid var(--line);border-radius:13px;min-width:156px;text-align:right;padding:13px 14px;background:linear-gradient(180deg,#1c3037,#17262c);color:var(--ink);display:flex;flex-direction:column;gap:6px}
+.timeline-btn:hover{border-color:var(--gold-deep)}
+.timeline-btn.active{background:rgba(236,196,138,.12);border-color:var(--gold);box-shadow:inset 0 0 0 1px rgba(236,196,138,.15)}
+.timeline-btn .t-icon{color:var(--gold);font-size:20px;line-height:1}
+.timeline-btn b{font-size:14px;line-height:1.3}
+.timeline-btn small{color:var(--muted);font-size:11px}
+.timeline-btn .t-count{margin-top:auto;color:var(--gold);font-size:11px}
+.timeline-all{min-width:130px;justify-content:center}
+.library{padding-bottom:65px}
+.filters{display:flex;gap:11px;flex-wrap:wrap;align-items:center;background:#17282e;border:1px solid var(--line);padding:14px;border-radius:16px;margin:20px 0 24px}
+.search-wrap{position:relative;flex:1 1 240px}
+.search-wrap span{position:absolute;top:50%;right:14px;transform:translateY(-50%);color:var(--gold)}
+.filters input,.filters select{height:43px;color:var(--ink);background:#0f1d22;border:1px solid var(--line2);border-radius:9px;padding:0 14px;max-width:100%}
+.filters input{width:100%;padding-right:40px}
+.filters input::placeholder{color:#92a29e}
+.filters select{min-width:160px;cursor:pointer}
+.check-label{display:inline-flex;align-items:center;gap:6px;padding:7px 5px;color:#d6dfdd;font-size:13px}
+.check-label input{accent-color:#d6aa70;width:18px;height:18px}
+.results-row{display:flex;align-items:center;justify-content:space-between;margin:12px 0 26px;gap:12px}
+.results-row b{color:var(--gold)}
+.results-row button{color:var(--muted);border:0;background:none;text-decoration:underline}
+.era-section{margin-bottom:43px;scroll-margin-top:100px}
+.era-heading{display:flex;align-items:center;gap:14px;margin:0 0 16px}
+.era-line{width:3px;height:47px;background:linear-gradient(var(--gold),transparent);border-radius:3px;flex-shrink:0}
+.era-heading h3{font-size:25px;font-family:var(--serif);font-weight:700}
+.era-heading p{color:var(--muted);font-size:12px}
+.media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.media-card{min-width:0;background:linear-gradient(160deg,#1c2d34,#17272d);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border .2s,transform .2s}
+.media-card:hover{border-color:#977c59;transform:translateY(-2px)}
+.poster{height:170px;position:relative;overflow:hidden;background:radial-gradient(circle at 85% 15%,#4b4b41,transparent 60%),linear-gradient(132deg,#3a3a36,#24353b 60%,#18262b);display:flex;align-items:center;justify-content:center}
+.poster:before{content:"";position:absolute;inset:10px;border:1px solid rgba(236,196,138,.18);border-radius:5px;pointer-events:none}
+.poster:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,24,27,.8),transparent 45%);pointer-events:none}
+.poster img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.67) brightness(.72)}
+.poster .symbol{font-family:var(--serif);font-size:76px;color:rgba(245,204,148,.52);text-shadow:0 8px 40px #111}
+.poster-label{position:absolute;z-index:1;bottom:12px;right:13px;font-size:11px;color:#f1dab1;background:rgba(16,26,30,.85);border:1px solid rgba(236,196,138,.22);padding:4px 9px;border-radius:7px}
+.poster-icon{position:absolute;z-index:1;left:12px;top:12px;border:1px solid rgba(236,196,138,.5);color:var(--gold);background:#17262c;padding:4px 9px;border-radius:8px;font-size:11px}
+.card-body{padding:18px 17px 16px;display:flex;flex-direction:column;flex:1;gap:10px}
+.meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:11px;color:#c3d2ce}
+.meta span{background:#253840;border-radius:5px;padding:3px 7px}
+.card-title{font-family:var(--serif);font-size:21px;line-height:1.35;font-weight:700}
+.figure{color:var(--gold);font-size:12px}
+.desc{color:#bac9c6;font-size:13px;line-height:1.8;flex:1}
+.source{color:#829e9d;font-size:11px}
+.actions{display:flex;gap:8px;margin-top:8px;align-items:center}
+.play-btn{border:0;background:var(--gold);color:#15242a;font-size:13px;font-weight:800;border-radius:9px;min-height:41px;flex:1;padding:8px 12px}
+.play-btn:hover{background:#f3d9ac}
+.play-btn.external{background:#294049;color:var(--ink);border:1px solid #42575d}
+.icon-btn{width:41px;height:41px;border-radius:9px;background:transparent;border:1px solid var(--line2);color:var(--muted);flex:none;font-size:18px}
+.icon-btn.chosen{color:var(--gold);border-color:var(--gold-deep);background:rgba(236,196,138,.1)}
+.checked{color:#a6e4b8!important;border-color:#49765e!important}
+.no-results{background:#192b31;border:1px dashed #496069;text-align:center;border-radius:14px;padding:42px 18px;color:var(--muted);font-size:14px}
+.gap-box{border:1px dashed #496069;border-radius:12px;background:rgba(25,43,49,.45);padding:17px 20px;font-size:13px;color:var(--muted)}
+.gap-box b{color:#dfc5a4}
+.about{border-top:1px solid var(--line);background:#142329;padding:58px 0 70px}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:30px}
+.about p{color:var(--muted);margin-top:15px;font-size:14px;max-width:660px}
+.info-box{border:1px solid #47565a;border-radius:16px;background:#1a2b31;padding:23px;align-self:center}
+.info-box h3{font-size:18px;font-family:var(--serif);color:var(--gold)}
+.info-box p{font-size:13px}
+footer{padding:22px 0;color:#899b99;font-size:12px;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
+footer a{text-decoration:underline}
+.modal[hidden]{display:none}
+.modal{position:fixed;inset:0;z-index:110;background:rgba(3,9,12,.91);padding:12px;display:flex;align-items:center;justify-content:center}
+.modal-shell{width:min(960px,100%);background:#14242a;border:1px solid #556164;border-radius:17px;overflow:hidden;box-shadow:0 20px 90px #020b0e}
+.modal-top{display:flex;gap:12px;justify-content:space-between;align-items:center;padding:12px 16px}
+.modal-top h3{font-size:17px;line-height:1.3}
+.modal-top p{font-size:12px;color:var(--muted)}
+.modal-close{width:40px;height:40px;background:#273a42;color:var(--ink);border:1px solid var(--line2);border-radius:10px;font-size:22px}
+.video-stage{aspect-ratio:16/9;background:#05090a;max-height:75vh}
+.video-stage iframe{width:100%;height:100%;border:0}
+.modal-bottom{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 16px}
+.modal-bottom button,.modal-bottom a{font-size:13px;padding:9px 13px;background:#263941;border:1px solid #496064;color:var(--ink);border-radius:9px}
+.modal-bottom .next{background:var(--gold);border-color:var(--gold);color:#16252a;font-weight:800}
+.modal-bottom .tip{margin-inline-start:auto;color:#99aead;font-size:11px}
+@media(max-width:970px){.hero-wrap{gap:20px}.media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{height:340px}}
+@media(max-width:720px){.container{width:min(100% - 26px,1180px)}.head-inner{min-height:62px}.head-actions a{display:none}.hero{padding:47px 0 35px}.hero-wrap{grid-template-columns:1fr}.hero-art{display:none}h1{font-size:57px}.hero-text{font-size:16px}.hero-numbers{margin-top:30px;gap:24px}.section-top{margin:37px 0 17px}.media-grid{grid-template-columns:1fr}.poster{height:190px}.filters{padding:11px}.filters select{flex:1;min-width:0;width:48%}.filters .check-label{width:auto}.era-heading h3{font-size:23px}.about-grid{grid-template-columns:1fr}.modal{padding:5px}.modal-top{padding:10px}.modal-bottom{padding:10px}.modal-bottom .tip{width:100%;margin:0}.note-band{font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#library">דלג אל הסרטים</a>
+<header class="site-head">
+<div class="container head-inner">
+<a class="brand" href="#top" aria-label="דורות של אור — לדף הבית"><span class="brand-icon" aria-hidden="true">✦</span><span>דורות של אור<small>גדולי ישראל על המסך</small></span></a>
+<nav class="head-actions" aria-label="ניווט ראשי"><a href="#timeline">ציר הזמן</a><a href="#library">הסרטים</a><a href="#about">על הפרויקט</a><button id="sizeButton" class="ghost-btn text-size" type="button" title="הגדל או הקטן טקסט" aria-label="הגדל או הקטן טקסט">אא</button></nav>
+</div>
+</header>
+<main id="top">
+<section class="hero" aria-label="מסע אל גדולי ישראל">
+<div class="container hero-wrap">
+<div>
+<div class="eyebrow">היסטוריה יהודית • קולנוע • סיפורים אמיתיים ואגדות</div>
+<h1>דורות <em>של אור.</em></h1>
+<p class="hero-text">לפגוש את גדולי ישראל דרך הסיפורים, האנשים והאירועים שעיצבו דורות של תורה. מסע צפייה כרונולוגי מהתנאים והאמוראים, דרך הראשונים והאחרונים ועד גדולי המזרח והחסידות — <strong>בלי שיעורים רגילים ובלי תשלום לצפייה בתכנים שבאוסף.</strong></p>
+<div class="hero-actions"><a class="primary-btn" href="#library">▶ התחילו במסע</a><a class="secondary-btn" href="#timeline">לגלות את התקופות ↓</a></div>
+<div class="hero-numbers" aria-label="נתוני האתר"><div class="metric"><strong id="movieCount">—</strong><span>סרטים וסיפורים</span></div><div class="metric"><strong id="eraCount">—</strong><span>תחנות בציר הזמן</span></div><div class="metric"><strong id="embeddedCount">—</strong><span>נגנים בתוך האתר</span></div></div>
+</div>
+<div class="hero-art" aria-hidden="true"><div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div><div class="art-center">אור</div><span class="orbit-tag tag-a">תנאים</span><span class="orbit-tag tag-b">ראשונים</span><span class="orbit-tag tag-c">חסידות</span><span class="orbit-tag tag-d">אמוראים</span></div>
+</div>
+</section>
+<div class="note-band"><div class="container"><strong>לצפייה בחינם ·</strong> נגנים מוטמעים כשזוהה מקור רשמי שמאפשר זאת; סרטים אחרים נפתחים בדף הסרט של היוצר. היסטוריה, אגדה והמחזה אינן אותו דבר.</div></div>
+<section id="timeline" class="container" aria-labelledby="timelineTitle">
+<div class="section-top"><div><div class="kicker">01 / מסע בזמן</div><h2 id="timelineTitle">אלפי שנים, סיפור אחד</h2><p>בחירת תקופה מסננת את הספרייה. תקופות ללא יצירות מאומתות נשארות בציר הזמן ולא ממולאות בשיעורים.</p></div></div>
+<div id="timelineRail" class="timeline-rail" role="group" aria-label="סינון לפי תקופה"></div>
+</section>
+<section id="library" class="library container" aria-labelledby="libraryTitle">
+<div class="section-top"><div><div class="kicker">02 / ספריית הסרטים</div><h2 id="libraryTitle">צופים לפי הדורות</h2><p>הסדר נקבע לפי תקופת החכם או האירוע — לא לפי שנת יציאת הסרט.</p></div><button id="continueButton" class="secondary-btn" type="button" hidden>המשך מהמקום שלי</button></div>
+<div class="filters">
+<label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="חפשו חכם, תקופה, אזור או סרט..." autocomplete="off" aria-label="חיפוש סרטים וחכמים"></label>
+<select id="genreSelect" aria-label="סוג היצירה"><option value="">כל סוגי הסרטים</option><option value="אנימציה עלילתית">אנימציה עלילתית</option><option value="דרמה עם שחקנים">דרמה עם שחקנים</option><option value="דוקומנטרי סיפורי">דוקומנטרי סיפורי</option></select>
+<select id="languageSelect" aria-label="שפת הסרט"><option value="">כל השפות</option><option value="עברית">עברית</option><option value="אנגלית">אנגלית</option></select>
+<label class="check-label"><input id="storyOnly" type="checkbox">עלילה בלבד</label>
+<label class="check-label"><input id="favoritesOnly" type="checkbox">מועדפים בלבד</label>
+<label class="check-label"><input id="unwatchedOnly" type="checkbox">טרם צפיתי</label>
+</div>
+<div class="results-row"><span id="resultsLabel" aria-live="polite">טוען את הספרייה…</span><button id="clearFilters" type="button">נקה סינון</button></div>
+<div id="mediaResults"></div>
+</section>
+<section class="about" id="about" aria-labelledby="aboutTitle">
+<div class="container about-grid">
+<div><div class="kicker">03 / מאחורי המסע</div><h2 id="aboutTitle">לא עוד רשימת שיעורים.</h2><p>כאן נכנסות יצירות וידאו אמיתיות בלבד: סיפורים מצולמים, סרטי אנימציה עלילתיים, סדרות וסרטי תעודה המספרים סיפור. כל יצירה מוצבת בזמן ההיסטורי המתאים לה, עם הבחנה בין מקור, סיפור מסורתי והמחזה אמנותית.</p><p>האתר עצמאי ונבנה במתכונת קלה וחינמית. הסימונים ״צפיתי״ ו״שמירה״ נשמרים בדפדפן שלך בלבד. לא צריך להירשם, לשלם או למסור מידע אישי.</p></div>
+<div class="info-box"><h3>גם התקופות שעדיין חסרות חשובות</h3><p>אנחנו ממשיכים לחפש יצירות סיפוריות על סבוראים, גאונים, ראשוני צפון אפריקה, חכמי בבל ועיראק, יהדות פרס ותימן, פוסקים, מקובלים ואדמו״רים. לא נוסיף שיעור סטטי או קישור שבור רק כדי למלא תקופה.</p><p id="lastUpdated">עדכון קטלוג: —</p></div>
+</div>
+</section>
+</main>
+<footer class="container"><span>© דורות של אור — אינדקס צפייה חינמי, ללא אירוח יצירות מוגנות. כל הזכויות לסרטים שמורות ליוצריהם.</span><span>אתר עצמאי • <a href="https://shoftim-v3.vercel.app/" target="_blank" rel="noopener">אתר שופטים</a></span></footer>
+<div id="playerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="playerTitle" hidden>
+<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="playNext" class="next" type="button">הסרט הבא ←</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם YouTube חוסם הטמעה, ניתן לפתוח את אתר היוצר.</span></div></div>
+</div>
+<script>
+(function(){
+"use strict";
+var library={eras:[],items:[]};
+var state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false};
+var watched=new Set(readArray("sages-watched-v1")),favorites=new Set(readArray("sages-favorites-v1"));
+var activeId=null,lastFocus=null;
+function $(id){return document.getElementById(id)}
+function readArray(k){try{var a=JSON.parse(localStorage.getItem(k)||"[]");return Array.isArray(a)?a:[]}catch(e){return []}}
+function save(k,set){try{localStorage.setItem(k,JSON.stringify(Array.from(set)))}catch(e){}}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function validUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:"#"}catch(e){return "#"}}
+function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(s)}
+function itemsSorted(){return library.items.slice().sort(function(a,b){return a.year-b.year||a.title.localeCompare(b.title,"he")})}
+function selectedItems(){return itemsSorted().filter(function(it){
+if(state.era&&it.era!==state.era)return false;
+if(state.genre&&it.type!==state.genre)return false;
+if(state.language&&it.language!==state.language)return false;
+if(state.story&&it.type==="דוקומנטרי סיפורי")return false;
+if(state.favorites&&!favorites.has(it.id))return false;
+if(state.unwatched&&watched.has(it.id))return false;
+if(state.query){var q=state.query.toLocaleLowerCase("he").trim();var s=[it.title,it.figure,it.description,it.region,it.century,it.source,it.type].join(" ").toLocaleLowerCase("he");if(!s.includes(q))return false}
+return true;
+})}
+function renderTimeline(){
+var pieces=['<button type="button" data-era="" class="timeline-btn timeline-all'+(!state.era?' active':'')+'" aria-pressed="'+(!state.era)+'"><span class="t-icon">∞</span><b>כל התקופות</b><small>מההתחלה ועד היום</small><span class="t-count">'+library.items.length+' יצירות</span></button>'];
+library.eras.forEach(function(era){var count=library.items.filter(function(i){return i.era===era.id}).length;
+pieces.push('<button type="button" data-era="'+esc(era.id)+'" class="timeline-btn'+(state.era===era.id?' active':'')+'" aria-pressed="'+(state.era===era.id)+'"><span class="t-icon" aria-hidden="true">'+esc(era.symbol)+'</span><b>'+esc(era.label)+'</b><small>'+esc(era.range)+'</small><span class="t-count">'+(count?count+' יצירות':'ממשיכים לחפש')+'</span></button>')
+});
+$("timelineRail").innerHTML=pieces.join("");
+}
+function mediaCard(it){
+var isWatched=watched.has(it.id),isFav=favorites.has(it.id),embed=validYoutube(it.youtubeId);
+var poster=embed?'<img loading="lazy" decoding="async" src="https://i.ytimg.com/vi/'+it.youtubeId+'/hqdefault.jpg" alt="" referrerpolicy="no-referrer">':'<span class="symbol" aria-hidden="true">✦</span>';
+return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
+'<div class="poster">'+poster+'<span class="poster-icon">'+(embed?'▶ נגן באתר':'↗ צפייה ביוצר')+'</span><span class="poster-label">'+esc(it.century)+'</span></div>'+
+'<div class="card-body"><div class="meta"><span>'+esc(it.type)+'</span><span>'+esc(it.language)+'</span><span>'+esc(it.region)+'</span></div>'+
+'<h3 class="card-title">'+esc(it.title)+'</h3><p class="figure">'+esc(it.figure)+'</p><p class="desc">'+esc(it.description)+'</p><p class="source">'+esc(it.source)+' • '+esc(it.fiction)+'</p>'+
+'<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'">▶ צפייה באתר</button>':'<a class="play-btn external" href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ צפייה באתר היוצר</a>')+
+'<button class="icon-btn'+(isFav?' chosen':'')+'" type="button" data-favorite="'+esc(it.id)+'" aria-label="'+(isFav?'הסר ממועדפים':'שמור במועדפים')+'" aria-pressed="'+isFav+'" title="מועדפים">'+(isFav?'★':'☆')+'</button>'+
+'<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div></div></article>'}
+function renderCards(){
+var selected=selectedItems(),parts=[];
+$("resultsLabel").innerHTML='נמצאו <b>'+selected.length+'</b> יצירות'+(state.era?' בתקופה שנבחרה':'')+' · '+watched.size+' סומנו כצפיתי';
+library.eras.forEach(function(era){
+if(state.era&&era.id!==state.era)return;
+var sub=selected.filter(function(i){return i.era===era.id});
+if(sub.length===0){
+if(state.era&&!state.query&&!state.genre&&!state.story&&!state.favorites&&!state.unwatched){parts.push('<div class="era-section"><div class="era-heading"><div class="era-line"></div><div><h3>'+esc(era.label)+'</h3><p>'+esc(era.range)+'</p></div></div><div class="gap-box"><b>עדיין אין כאן סרט מאומת וחינמי.</b> אנחנו מחפשים יצירה סיפורית טובה, ולא ממלאים חלל בשיעורים.</div></div>')}
+return;
+}
+parts.push('<section class="era-section"><div class="era-heading"><div class="era-line"></div><div><h3>'+esc(era.label)+'</h3><p>'+esc(era.range)+' · '+esc(era.lead)+'</p></div></div><div class="media-grid">');
+sub.forEach(function(item){parts.push(mediaCard(item))});
+parts.push('</div></section>');
+});
+if(!parts.length)parts.push('<div class="no-results"><strong>לא נמצאה יצירה מתאימה.</strong><p>אפשר להרחיב את הסינון או לבחור תקופה אחרת. לא נוסיף תכנים לא בדוקים רק כדי למלא את הרשימה.</p></div>');
+$("mediaResults").innerHTML=parts.join("");
+renderContinue();
+}
+function renderContinue(){
+var next=itemsSorted().find(function(i){return !watched.has(i.id)});
+$("continueButton").hidden=!next;
+$("continueButton").textContent=next?"המשך: "+(next.title.length>30?next.title.slice(0,30)+"…":next.title):"";
+}
+function refresh(){renderTimeline();renderCards()}
+function toggleWatched(id){if(watched.has(id))watched.delete(id);else watched.add(id);save("sages-watched-v1",watched);renderCards()}
+function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);save("sages-favorites-v1",favorites);renderCards()}
+function openItem(id){var it=library.items.find(function(x){return x.id===id});if(!it)return;
+if(!validYoutube(it.youtubeId)){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
+lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=validUrl(it.url);$("playerModal").hidden=false;document.body.classList.add("locked");
+var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src="https://www.youtube-nocookie.com/embed/"+it.youtubeId+"?autoplay=1&rel=0";$("videoStage").replaceChildren(frame);
+$("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";$("playerClose").focus();
+}
+function closePlayer(){if($("playerModal").hidden)return;$("playerModal").hidden=true;document.body.classList.remove("locked");$("videoStage").replaceChildren();activeId=null;if(lastFocus&&document.contains(lastFocus))lastFocus.focus()}
+function nextFromCurrent(){if(!activeId)return;var seq=itemsSorted(),n=seq.findIndex(function(x){return x.id===activeId});if(n<0)return;watched.add(activeId);save("sages-watched-v1",watched);closePlayer();var following=seq[n+1];if(following)openItem(following.id);else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");renderCards()}
+document.addEventListener("click",function(e){
+var elem=e.target.closest("[data-era]");if(elem){state.era=elem.getAttribute("data-era")||"";refresh();$("library").scrollIntoView({behavior:"smooth"});return}
+elem=e.target.closest("[data-play]");if(elem){openItem(elem.getAttribute("data-play"));return}
+elem=e.target.closest("[data-favorite]");if(elem){toggleFavorite(elem.getAttribute("data-favorite"));return}
+elem=e.target.closest("[data-watched]");if(elem){toggleWatched(elem.getAttribute("data-watched"));return}
+elem=e.target.closest("[data-external]");if(elem){var id=elem.getAttribute("data-external");try{localStorage.setItem("sages-last-opened",id)}catch(ex){}}
+});
+$("searchInput").addEventListener("input",function(e){state.query=e.target.value;renderCards()});
+$("genreSelect").addEventListener("change",function(e){state.genre=e.target.value;renderCards()});
+$("languageSelect").addEventListener("change",function(e){state.language=e.target.value;renderCards()});
+$("storyOnly").addEventListener("change",function(e){state.story=e.target.checked;renderCards()});
+$("favoritesOnly").addEventListener("change",function(e){state.favorites=e.target.checked;renderCards()});
+$("unwatchedOnly").addEventListener("change",function(e){state.unwatched=e.target.checked;renderCards()});
+$("clearFilters").addEventListener("click",function(){state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false};$("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;refresh()});
+$("continueButton").addEventListener("click",function(){var first=itemsSorted().find(function(i){return !watched.has(i.id)});if(first)openItem(first.id)});
+$("playerClose").addEventListener("click",closePlayer);
+$("playerModal").addEventListener("click",function(e){if(e.target===$("playerModal"))closePlayer()});
+$("playNext").addEventListener("click",nextFromCurrent);
+$("markWatched").addEventListener("click",function(){if(activeId){watched.add(activeId);save("sages-watched-v1",watched);$("markWatched").textContent="✓ כבר צפיתי";renderCards()}});
+$("sizeButton").addEventListener("click",function(){var large=!document.body.classList.contains("large");document.body.classList.toggle("large",large);try{localStorage.setItem("sages-large",large?"1":"0")}catch(e){}});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closePlayer()});
+try{if(localStorage.getItem("sages-large")==="1")document.body.classList.add("large")}catch(e){}
+fetch("./catalog.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(function(data){if(!data.eras||!data.items||!Array.isArray(data.items))throw new Error("bad data");library=data;
+$("movieCount").textContent=library.items.length;$("eraCount").textContent=library.eras.length;$("embeddedCount").textContent=library.items.filter(function(i){return validYoutube(i.youtubeId)}).length;
+$("lastUpdated").textContent="עדכון הקטלוג: "+data.updatedAt+" · ללא תכנים בתשלום";refresh();
+}).catch(function(e){$("resultsLabel").textContent="הקטלוג לא נטען";$("mediaResults").innerHTML='<div class="no-results">תקלה בטעינת הספרייה. כדאי לנסות לרענן את הדף.</div>';console.error("Catalog load failure",e)});
+})();
+</script>
+</body>
+</html>
