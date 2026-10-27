@@ -1,0 +1,904 @@
+{
+  "updatedAt": "2026-10-27",
+  "version": 1,
+  "disclaimer": "הסברים תמציתיים ללימוד בלבד, לא פסיקה למעשה. חיבורים שיוחסו לחכם במסורת נבדלים מחיבורים שכתב בעצמו. מידע על ספר איננו הבטחה לזמינותו לקריאה חינם.",
+  "profiles": [
+    {
+      "id": "honi",
+      "name": "חוני המעגל",
+      "mediaIds": [
+        "honi-bimbam"
+      ],
+      "authorship": "לא נותר ספר שחיבר; דבריו וסיפוריו נמסרו במשנה ובגמרא.",
+      "hook": "שנים של בצורת, אדם אחד במעגל ודיון על כוחה של תפילה.",
+      "works": [
+        {
+          "title": "משנה תענית ג, ח",
+          "description": "סיפור המעגל, הגשמים ותגובת שמעון בן שטח.",
+          "url": "https://www.sefaria.org/Mishnah_Taanit.3.8?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "תענית כ״ג ע״א",
+          "description": "סיפור שבעים השנים ועץ החרוב.",
+          "url": "https://www.sefaria.org/Taanit.23a?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "חוני והעולם שהתחלף",
+        "text": "לפי הגמרא, חוני ישן שבעים שנה ומתעורר אל עולם שאין בו מי שמכיר אותו. זהו סיפור תלמודי, לא תיעוד היסטורי.",
+        "url": "https://www.sefaria.org/Taanit.23a?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "תפילה ציבורית וגשמים",
+        "text": "המשנה עוסקת בתפילה על עצירת גשמים וביחסם של חכמים למעשה חוני. אין לייחס לחוני ספר הלכה שחיבר.",
+        "url": "https://www.sefaria.org/Mishnah_Taanit.3.8?lang=he",
+        "type": "משנה"
+      }
+    },
+    {
+      "id": "rybz",
+      "name": "רבן יוחנן בן זכאי",
+      "mediaIds": [
+        "yavneh-bimbam"
+      ],
+      "authorship": "דבריו ותקנותיו במשנה ובתלמוד; לא ידוע על ספר עצמאי שחיבר.",
+      "hook": "חורבן ירושלים הופך לרגע שבו צריך להציל את עתיד התורה.",
+      "works": [
+        {
+          "title": "גיטין נ״ו ע״ב",
+          "description": "סיפור יציאתו מירושלים והבקשה ליבנה וחכמיה.",
+          "url": "https://www.sefaria.org/Gittin.56b?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "משנה ראש השנה ד, א",
+          "description": "תקנת שופר לאחר החורבן.",
+          "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%A0%D7%94%20%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94%20%D7%93%20%D7%90",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "תן לי יבנה וחכמיה",
+        "text": "הגמרא מספרת שרבן יוחנן בן זכאי ביקש להציל את בית המדרש ביבנה בזמן המצור הרומי.",
+        "url": "https://www.sefaria.org/Gittin.56b?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "שופר בראש השנה שחל בשבת",
+        "text": "המשנה מייחסת לרבן יוחנן בן זכאי תקנה לעניין תקיעה לאחר החורבן במקום שיש בו בית דין, לפי התנאים שבמשנה.",
+        "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%A0%D7%94%20%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94%20%D7%93%20%D7%90",
+        "type": "תקנת חכמים"
+      }
+    },
+    {
+      "id": "gamliel",
+      "name": "רבן גמליאל דיבנה",
+      "mediaIds": [
+        "scholars-bimbam"
+      ],
+      "authorship": "נשיא בית המדרש ביבנה; תורתו נשמרה במקורות חז״ל ולא בספר עצמאי.",
+      "hook": "הנהגה מול מחלוקת: האם סמכות יכולה לפגוע בכבוד החכמים?",
+      "works": [
+        {
+          "title": "ברכות כ״ז–כ״ח",
+          "description": "העימות עם רבי יהושע ושינוי הנהגת בית המדרש.",
+          "url": "https://www.sefaria.org/Berakhot.27b?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "ראש השנה ב, ח–ט",
+          "description": "הוויכוח על קביעת החודש.",
+          "url": "https://www.sefaria.org/Mishnah_Rosh_Hashanah.2.8?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "בית המדרש משנה הנהגה",
+        "text": "אחרי עימות עם רבי יהושע, החכמים דנים בהדחת הנשיא ובהשבתו. כך מוצג הסיפור בתלמוד.",
+        "url": "https://www.sefaria.org/Berakhot.27b?lang=he",
+        "type": "סיפור חז״ל"
+      },
+      "idea": {
+        "title": "קביעת ראש חודש",
+        "text": "במשנה מוצגת חשיבות קבלת הכרעת בית הדין בקביעת המועדים גם כשיש מחלוקת בחישוב.",
+        "url": "https://www.sefaria.org/Mishnah_Rosh_Hashanah.2.9?lang=he",
+        "type": "סוגיה הלכתית"
+      }
+    },
+    {
+      "id": "yehoshua",
+      "name": "רבי יהושע בן חנניה",
+      "mediaIds": [
+        "scholars-bimbam"
+      ],
+      "authorship": "דבריו מופיעים במשנה ובתלמוד; אין בידינו ספר שחיבר.",
+      "hook": "החכם שחלק על הנשיא והעדיף לבסוף את אחדות בית הדין.",
+      "works": [
+        {
+          "title": "ברכות כ״ז ע״ב",
+          "description": "רבי יהושע והעימות על תפילת ערבית.",
+          "url": "https://www.sefaria.org/Berakhot.27b?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "ראש השנה ב, ט",
+          "description": "קבלת הכרעת נשיא בית הדין.",
+          "url": "https://www.sefaria.org/Mishnah_Rosh_Hashanah.2.9?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "המקל והמעות ביום הכיפורים",
+        "text": "המשנה מספרת על המפגש בין רבי יהושע לרבן גמליאל ביום שהראשון חישב כיום הכיפורים.",
+        "url": "https://www.sefaria.org/Mishnah_Rosh_Hashanah.2.9?lang=he",
+        "type": "סיפור משנה"
+      },
+      "idea": {
+        "title": "אחדות לוח המועדים",
+        "text": "הסיפור מדגים הכרעה ציבורית בקביעת המועדים, לא ביטול ערך הוויכוח והעיון.",
+        "url": "https://www.sefaria.org/Mishnah_Rosh_Hashanah.2.9?lang=he",
+        "type": "משנה"
+      }
+    },
+    {
+      "id": "eliezer",
+      "name": "רבי אליעזר בן הורקנוס",
+      "mediaIds": [
+        "achnai-bimbam"
+      ],
+      "authorship": "מימרותיו נשמרו בחז״ל; 'פרקי דרבי אליעזר' נושא את שמו במסורת אך נכתב בתקופה מאוחרת ממנו.",
+      "hook": "היחיד מול הרבים — מחלוקת קשה על תנור אחד.",
+      "works": [
+        {
+          "title": "בבא מציעא נ״ט ע״ב",
+          "description": "סוגיית תנורו של עכנאי.",
+          "url": "https://www.sefaria.org/Bava_Metzia.59b?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "אבות ב, י",
+          "description": "כבוד החבר, כעס ותשובה.",
+          "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%A0%D7%94%20%D7%90%D7%91%D7%95%D7%AA%20%D7%91%20%D7%99",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "תנורו של עכנאי",
+        "text": "הגמרא מתארת מחלוקת שבה אותות מופלאים אינם מחליפים דיון והכרעה של בית המדרש.",
+        "url": "https://www.sefaria.org/Bava_Metzia.59b?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "כבודו של חבר",
+        "text": "רבי אליעזר קורא להוקיר את כבוד החבר ולנהוג בריסון כלפי כעס.",
+        "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%A0%D7%94%20%D7%90%D7%91%D7%95%D7%AA%20%D7%91%20%D7%99",
+        "type": "מוסר במשנה"
+      }
+    },
+    {
+      "id": "akiva",
+      "name": "רבי עקיבא",
+      "mediaIds": [
+        "akiva-waiting-for-ewe",
+        "akiva-crowns-bimbam"
+      ],
+      "authorship": "דרשותיו, מימרותיו והלכותיו נמסרו בספרות חז״ל; אין ספר מחבר אישי חתום שלו.",
+      "hook": "סיפור של לימוד מאוחר, מסירות אישית וחיים של בחירה.",
+      "works": [
+        {
+          "title": "נדרים נ׳ ע״א",
+          "description": "אגדת רבי עקיבא ורחל.",
+          "url": "https://www.sefaria.org/Nedarim.50a?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "מנחות כ״ט ע״ב",
+          "description": "משה, כתרי האותיות ובית מדרשו של רבי עקיבא.",
+          "url": "https://www.sefaria.org/Menachot.29b?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "אבות ג, ט״ו",
+          "description": "בחירה מול ידיעה.",
+          "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%A0%D7%94%20%D7%90%D7%91%D7%95%D7%AA%20%D7%92%20%D7%98%D7%95",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "רחל מאמינה בו",
+        "text": "הגמרא מספרת שרחל עודדה את רבי עקיבא לצאת ללמוד חרף העוני והפרידה הארוכה. זהו סיפור חז״ל, לא תיעוד אישי.",
+        "url": "https://www.sefaria.org/Nedarim.50a?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "הכול צפוי והרשות נתונה",
+        "text": "אמרתו באבות מציגה את המתח בין הידיעה האלוהית לבין אחריות האדם לבחירתו.",
+        "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%A0%D7%94%20%D7%90%D7%91%D7%95%D7%AA%20%D7%92%20%D7%98%D7%95",
+        "type": "מחשבת חז״ל"
+      }
+    },
+    {
+      "id": "acher",
+      "name": "אלישע בן אבויה — אחר",
+      "mediaIds": [
+        "acher-bimbam"
+      ],
+      "authorship": "לא נותר חיבור שלו, אך אמירה בשמו נשתמרה במשנה.",
+      "hook": "סיפור על חכם, משבר אמונה ותלמיד שאינו מוותר על תורת רבו.",
+      "works": [
+        {
+          "title": "חגיגה ט״ו",
+          "description": "אגדות אלישע בן אבויה ורבי מאיר.",
+          "url": "https://www.sefaria.org/Chagigah.15a?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "אבות ד, כ",
+          "description": "המשל על לימוד בצעירות ובזקנה.",
+          "url": "https://www.sefaria.org/Mishnah_Avot.4.20?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "תלמידו אינו מוותר",
+        "text": "למרות התרחקותו של אלישע, רבי מאיר המשיך ללמוד ממנו, כפי שמתארת הגמרא.",
+        "url": "https://www.sefaria.org/Chagigah.15b?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "דיו על נייר חדש",
+        "text": "המשנה מייחסת לאלישע משל על למידה בגיל צעיר; זו אמרת חינוך ולא הלכה מחייבת.",
+        "url": "https://www.sefaria.org/Mishnah_Avot.4.20?lang=he",
+        "type": "משל משנה"
+      }
+    },
+    {
+      "id": "rabbi-meir",
+      "name": "רבי מאיר",
+      "mediaIds": [
+        "acher-bimbam"
+      ],
+      "authorship": "מימרותיו והכרעותיו נמסרו בחז״ל ולא בחיבור אישי נפרד.",
+      "hook": "איך אפשר ללמוד תורה מאדם שדעתך אינה נוחה מדרכו?",
+      "works": [
+        {
+          "title": "חגיגה ט״ו ע״ב",
+          "description": "יחס רבי מאיר לאלישע בן אבויה.",
+          "url": "https://www.sefaria.org/Chagigah.15b?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "עירובין י״ג ע״ב",
+          "description": "גדלותו והמורכבות שבהכרעה בהלכה.",
+          "url": "https://www.sefaria.org/Eruvin.13b?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "רימון מצא, תוכו אכל",
+        "text": "הגמרא משתמשת בדימוי הרימון כדי להסביר כיצד רבי מאיר נטל תורה מאלישע בלי ללכת בכל דרכיו.",
+        "url": "https://www.sefaria.org/Chagigah.15b?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "חכמה והכרעה",
+        "text": "הדיון בעירובין מבחין בין חריפות לימודית מרשימה לבין היכולת להכריע להלכה.",
+        "url": "https://www.sefaria.org/Eruvin.13b?lang=he",
+        "type": "ערך לימודי"
+      }
+    },
+    {
+      "id": "rashbi",
+      "name": "רבי שמעון בר יוחאי",
+      "mediaIds": [
+        "rashbi-hidabroot-following-righteous",
+        "cave-bimbam"
+      ],
+      "authorship": "הזוהר מיוחס לרשב״י במסורת; המחקר רואה את התגבשותו בימי הביניים. אין להציגו כחיבור אישי מוסכם.",
+      "hook": "כיצד שבים מעולם המערה אל חיי האדם הפשוט?",
+      "works": [
+        {
+          "title": "שבת ל״ג ע״ב",
+          "description": "סיפור המערה, הבידוד והיציאה.",
+          "url": "https://www.sefaria.org/Shabbat.33b?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "ספר הזוהר",
+          "description": "חיבור קבלי המיוחס לרשב״י במסורת; ייחוס היסטורי שנוי במחלוקת.",
+          "url": "https://www.sefaria.org/Zohar.1a?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "הספרייה הלאומית — סיפור הזוהר",
+          "description": "סקירת שאלת ייחוס חיבור הזוהר.",
+          "url": "https://exhibition.nli.org.il/he/exhibition-items/zohar",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "היציאה מן המערה",
+        "text": "באגדה, רבי שמעון ובנו נדרשים ללמוד מחדש כיצד לראות אנשים העמלים לפרנסתם.",
+        "url": "https://www.sefaria.org/Shabbat.33b?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "תורה וחיי מעשה",
+        "text": "הסיפור מציג מתח בין לימוד מלא לבין חיי העבודה; אין להסיק ממנו הוראה פשוטה להימנע מעבודה.",
+        "url": "https://www.sefaria.org/Shabbat.33b?lang=he",
+        "type": "מסר אגדי"
+      }
+    },
+    {
+      "id": "rebbi",
+      "name": "רבי יהודה הנשיא",
+      "mediaIds": [
+        "rabbi-judah-emperor-secret"
+      ],
+      "authorship": "ערך וסידר את המשנה מתוך מסורות רבות, ולא חיבר בעצמו כל משנה או כל דעה שנזכרת בה.",
+      "hook": "המסורת שבעל־פה מקבלת סדר שיאפשר לה לעבור לדורות.",
+      "works": [
+        {
+          "title": "שישה סדרי משנה",
+          "description": "מפעל עריכה תנאי; נקודת פתיחה במסכת ברכות.",
+          "url": "https://www.sefaria.org/Mishnah_Berakhot.1.1?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "אבות ב, א",
+          "description": "מאמרו על הדרך הישרה.",
+          "url": "https://www.sefaria.org/Mishnah_Avot.2.1?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "עבודה זרה י׳",
+          "description": "סיפורי רבי ואנטונינוס.",
+          "url": "https://www.sefaria.org/Avodah_Zarah.10b?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "רבי ואנטונינוס",
+        "text": "הספרות התלמודית מספרת על קשריהם; עיבודי האנימציה הם המחזה של סיפור מסורתי, לא תיעוד בן הזמן.",
+        "url": "https://www.sefaria.org/Avodah_Zarah.10b?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "איזוהי דרך ישרה?",
+        "text": "רבי מבקש לבחור בדרך שטובה לעושיה ומכובדת בעיני הבריות ולבחון מעשים והשלכות.",
+        "url": "https://www.sefaria.org/Mishnah_Avot.2.1?lang=he",
+        "type": "מוסר במשנה"
+      }
+    },
+    {
+      "id": "r-yohanan",
+      "name": "רבי יוחנן",
+      "mediaIds": [
+        "bromance-bimbam"
+      ],
+      "authorship": "דבריו מופיעים בבבלי ובירושלמי; לא חיבר בעצמו את כל התלמוד הירושלמי.",
+      "hook": "מה חסר בבית מדרש כשנשאר רק מי שמסכים?",
+      "works": [
+        {
+          "title": "בבא מציעא פ״ד ע״א",
+          "description": "היכרותו, מחלוקתו ואבלו על ריש לקיש.",
+          "url": "https://www.sefaria.org/Bava_Metzia.84a?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "ברכות ה׳ ע״ב",
+          "description": "סיפור ביקור חולים וחברות.",
+          "url": "https://www.sefaria.org/Berakhot.5b?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "חבר שאי אפשר להחליף",
+        "text": "אחרי מות ריש לקיש רבי יוחנן מגלה שחכם המאשר הכול אינו מחליף את מי שהקשה עליו קושיות.",
+        "url": "https://www.sefaria.org/Bava_Metzia.84a?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "לימוד מתוך מחלוקת",
+        "text": "הסיפור מדגיש את התרומה של קושיות להבנה; זו תובנה מתוך האגדה, לא הלכה חדשה.",
+        "url": "https://www.sefaria.org/Bava_Metzia.84a?lang=he",
+        "type": "ערך לימודי"
+      }
+    },
+    {
+      "id": "reish-lakish",
+      "name": "ריש לקיש — רבי שמעון בן לקיש",
+      "mediaIds": [
+        "bromance-bimbam"
+      ],
+      "authorship": "לא נשתמר ספר שחיבר; דבריו ומחלוקותיו נמסרו בתלמוד.",
+      "hook": "העבר האישי הופך לחומר גלם של לימוד וחיים חדשים.",
+      "works": [
+        {
+          "title": "בבא מציעא פ״ד",
+          "description": "סיפור המפגש עם רבי יוחנן והמחלוקת על כלי נשק.",
+          "url": "https://www.sefaria.org/Bava_Metzia.84a?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "יומא פ״ו ע״ב",
+          "description": "דבריו על כוחה של תשובה.",
+          "url": "https://www.sefaria.org/Yoma.86b?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "מן הירדן אל בית המדרש",
+        "text": "הגמרא מספרת על תחילת הקשר עם רבי יוחנן והפיכתו של ריש לקיש לתלמיד חכם.",
+        "url": "https://www.sefaria.org/Bava_Metzia.84a?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "כוחה של תשובה",
+        "text": "בסוגיית יומא מובאים דבריו על השינוי שמחוללת תשובה; הסוגיה מבדילה בין אופני תשובה.",
+        "url": "https://www.sefaria.org/Yoma.86b?lang=he",
+        "type": "מחשבת תשובה"
+      }
+    },
+    {
+      "id": "rashi",
+      "name": "רש״י — רבי שלמה יצחקי",
+      "mediaIds": [
+        "rashi-bac"
+      ],
+      "authorship": "חיבר פירושים לתנ״ך ולתלמוד; יש להבחין בינם לבין תוספות וייחוסים מאוחרים.",
+      "hook": "כמה מילים יכולות להפוך פסוק או סוגיה לנהירים יותר.",
+      "works": [
+        {
+          "title": "פירוש רש״י לתורה",
+          "description": "פשט, לשון ומדרשי חז״ל נבחרים.",
+          "url": "https://www.sefaria.org/Rashi_on_Genesis.1.1.1?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "פירוש רש״י לתלמוד",
+          "description": "הסבר מונחים ומהלך הסוגיה.",
+          "url": "https://www.sefaria.org/Rashi_on_Berakhot.2a.1?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "למה מתחילים בבראשית?",
+        "text": "רש״י פותח את פירושו בשאלה למה התורה מתחילה בסיפור בריאת העולם.",
+        "url": "https://www.sefaria.org/Rashi_on_Genesis.1.1.1?lang=he",
+        "type": "פרשנות"
+      },
+      "idea": {
+        "title": "פשט לצד מדרש",
+        "text": "בפירושיו משולבים דיוק לשוני ומדרשי חז״ל, אך פירוש לתורה אינו זהה לספר פסיקה.",
+        "url": "https://www.sefaria.org/Rashi_on_Genesis.1.1.1?lang=he",
+        "type": "שיטת לימוד"
+      }
+    },
+    {
+      "id": "halevi",
+      "name": "רבי יהודה הלוי",
+      "mediaIds": [
+        "halevi-bac"
+      ],
+      "authorship": "חיבר את הכוזרי ופיוטים, ובהם פיוטי הכיסופים לציון.",
+      "hook": "מלך חולם חלום שמעורר אותו לחפש אמת, לא רק מחשבה יפה.",
+      "works": [
+        {
+          "title": "ספר הכוזרי",
+          "description": "דיאלוג ספרותי על אמונה, מעשה ומסורת.",
+          "url": "https://he.wikisource.org/wiki/%D7%9B%D7%95%D7%96%D7%A8%D7%99",
+          "access": "read"
+        },
+        {
+          "title": "ציון הלא תשאלי",
+          "description": "פיוט הכיסופים המפורסם לארץ ישראל.",
+          "url": "https://he.wikisource.org/wiki/%D7%A6%D7%99%D7%95%D7%9F%20%D7%94%D7%9C%D7%90%20%D7%AA%D7%A9%D7%90%D7%9C%D7%99",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "החלום שמניע ספר שלם",
+        "text": "בספר הכוזרי חלום המלך מניע מפגש עם בעלי אמונות שונות. זהו מבנה ספרותי־פילוסופי ולא תמליל ריאיון.",
+        "url": "https://www.sefaria.org/Kuzari.1.1?lang=he",
+        "type": "עלילת ספר"
+      },
+      "idea": {
+        "title": "כוונה ומעשה",
+        "text": "ריה״ל מציג מתח בין כוונה דתית טובה לבין המעשים הנכונים, לצד דיון במסורת ובזהות.",
+        "url": "https://www.sefaria.org/Kuzari.1.1?lang=he",
+        "type": "מחשבת ישראל"
+      }
+    },
+    {
+      "id": "ibn-ezra",
+      "name": "רבי אברהם אבן עזרא",
+      "mediaIds": [
+        "ibnezra-bac"
+      ],
+      "authorship": "חיבר פירושים למקרא, שירים וחיבורים בדקדוק ובמדעים.",
+      "hook": "לקרוא פסוק כמו חוקר: דקדוק, הקשר, חכמה וסקרנות.",
+      "works": [
+        {
+          "title": "פירוש אבן עזרא על המקרא",
+          "description": "פירושי מקרא, לשון ושיטת הפשט.",
+          "url": "https://he.wikisource.org/wiki/%D7%90%D7%91%D7%9F%20%D7%A2%D7%96%D7%A8%D7%90%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%A7%D7%A8%D7%90",
+          "access": "read"
+        },
+        {
+          "title": "הקדמתו לבראשית",
+          "description": "דיון מרתק בדרכי פירוש שונות.",
+          "url": "https://www.sefaria.org/Ibn_Ezra_on_Genesis%2C_Introduction.25?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "חמש הדרכים",
+        "text": "בהקדמתו לבראשית אבן עזרא משווה דרכי פירוש שונות ומציג את העקרונות שלו.",
+        "url": "https://www.sefaria.org/Ibn_Ezra_on_Genesis%2C_Introduction.25?lang=he",
+        "type": "עלילת רעיון"
+      },
+      "idea": {
+        "title": "דיוק בפסוק",
+        "text": "דקדוק והקשר משמשים יסודות לפירושו. זו שיטת פרשנות, לא ספר פסקים.",
+        "url": "https://he.wikisource.org/wiki/%D7%90%D7%91%D7%9F%20%D7%A2%D7%96%D7%A8%D7%90%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%A7%D7%A8%D7%90",
+        "type": "פרשנות"
+      }
+    },
+    {
+      "id": "rambam",
+      "name": "הרמב״ם — רבי משה בן מימון",
+      "mediaIds": [
+        "rambam-hidabroot-animation"
+      ],
+      "authorship": "מחבר משנה תורה, מורה הנבוכים, פירוש המשנה, ספר המצוות ועוד; ספריו עוסקים בתחומים שונים ויש להבחין בין הלכה, מוסר ופילוסופיה.",
+      "hook": "רופא, פילוסוף ופוסק מנסה לסדר את התורה כולה למפת לימוד אחת.",
+      "works": [
+        {
+          "title": "משנה תורה — היד החזקה",
+          "description": "14 ספרי הלכה המקיפים את כל תחומי התורה.",
+          "url": "https://mechon-mamre.org/i/0.htm",
+          "access": "read"
+        },
+        {
+          "title": "מורה הנבוכים",
+          "description": "מחשבת ישראל על היחס בין שכל, נבואה ואמונה.",
+          "url": "https://he.wikisource.org/wiki/%D7%9E%D7%95%D7%A8%D7%94%20%D7%A0%D7%91%D7%95%D7%9B%D7%99%D7%9D",
+          "access": "read"
+        },
+        {
+          "title": "שמונה פרקים",
+          "description": "הקדמה מוסרית לפירוש מסכת אבות.",
+          "url": "https://he.wikisource.org/wiki/%D7%A9%D7%9E%D7%95%D7%A0%D7%94%20%D7%A4%D7%A8%D7%A7%D7%99%D7%9D%20%D7%9C%D7%A8%D7%9E%D7%91%22%D7%9D%20%D7%90",
+          "access": "read"
+        },
+        {
+          "title": "ספר המצוות",
+          "description": "הקדמה וכללי מניין המצוות ופרטיהן.",
+          "url": "https://www.sefaria.org/Sefer_HaMitzvot%2C_Positive_Commandments.1?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "לסדר את ההלכה מחדש",
+        "text": "הרמב״ם אסף והציג את תחומי ההלכה בצורה שיטתית; לצד זאת כתב ספר פילוסופי על קושיות האמונה.",
+        "url": "https://mechon-mamre.org/i/0.htm",
+        "type": "סיפור יצירה"
+      },
+      "idea": {
+        "title": "דרך האמצע",
+        "text": "בהלכות דעות א, ד הרמב״ם מלמד על אימון במידות מאוזנות והימנעות מקצוות בדרך כלל; יש בספר סייגים שונים.",
+        "url": "https://he.wikisource.org/wiki/%D7%A8%D7%9E%D7%91%22%D7%9D%20%D7%94%D7%9C%D7%9B%D7%95%D7%AA%20%D7%93%D7%A2%D7%95%D7%AA%20%D7%90%20%D7%93",
+        "type": "הלכה ומידות"
+      }
+    },
+    {
+      "id": "abarbanel",
+      "name": "דון יצחק אברבנאל",
+      "mediaIds": [
+        "abarbanel-bac"
+      ],
+      "authorship": "חיבר פירושים לתנ״ך וספרים באמונה ובגאולה, לא בעיקר ספרי הלכה.",
+      "hook": "פרשן ומנהיג שחווה את גירוש ספרד ומעמיד שאלות קשות מול המקרא.",
+      "works": [
+        {
+          "title": "פירוש אברבנאל לתורה",
+          "description": "פירוש באמצעות שאלות, בירורים ותשובות.",
+          "url": "https://www.sefaria.org/Abarbanel_on_Torah%2C_Genesis?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "ראש אמנה",
+          "description": "דיון בעקרונות האמונה ובשיטות שקדמו לו.",
+          "url": "https://www.nli.org.il/he/discover/judaism/figures/isaac-abarbanel",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "סיפור שמתחיל בשאלות",
+        "text": "אברבנאל נהג לפתוח פרקים בשאלות פרשניות ולבנות את התשובות מתוכן.",
+        "url": "https://www.sefaria.org/Abarbanel_on_Torah%2C_Genesis?lang=he",
+        "type": "שיטת ספר"
+      },
+      "idea": {
+        "title": "אמונה לאחר משבר",
+        "text": "הגות אברבנאל עסקה גם בגאולה ובתקווה אחרי גירוש ספרד; זו מחשבה ולא פסיקה מעשית.",
+        "url": "https://www.nli.org.il/he/discover/judaism/figures/isaac-abarbanel",
+        "type": "הגות"
+      }
+    },
+    {
+      "id": "ari",
+      "name": "האר״י — רבי יצחק לוריא",
+      "mediaIds": [
+        "ari-bac"
+      ],
+      "authorship": "עיקר תורתו תועד ונערך בידי תלמידו רבי חיים ויטאל ומסדרים מאוחרים. אין לייחס לו כתיבה אישית של כל ספרי 'כתבי האר״י'.",
+      "hook": "חבורה בצפת יוצרת שפה קבלית חדשה המופצת בעולם.",
+      "works": [
+        {
+          "title": "עץ חיים",
+          "description": "תורת האר״י בנוסח שנמסר ונערך על ידי תלמידיו.",
+          "url": "https://www.sefaria.org/Etz_Chaim?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "שער הגלגולים",
+          "description": "מתוך כתבי רבי חיים ויטאל על תורת האר״י.",
+          "url": "https://he.wikisource.org/wiki/%D7%A9%D7%A2%D7%A8%20%D7%94%D7%92%D7%9C%D7%92%D7%95%D7%9C%D7%99%D7%9D",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "התורה שנמסרה לתלמידים",
+        "text": "סיפורו של האר״י הוא גם סיפור מסירת רעיונותיו דרך רבי חיים ויטאל: לא ספר אחד שפרסם בעצמו.",
+        "url": "https://he.wikisource.org/wiki/%D7%A9%D7%A2%D7%A8%20%D7%94%D7%92%D7%9C%D7%92%D7%95%D7%9C%D7%99%D7%9D",
+        "type": "תולדות כתבים"
+      },
+      "idea": {
+        "title": "להבדיל בין מחבר למסורת",
+        "text": "'עץ חיים' ו'שער הגלגולים' משמרים מסורות מתורתו, אך חוברו או נערכו בידי תלמידים. אין להציגם כפסקי הלכה.",
+        "url": "https://he.wikisource.org/wiki/%D7%A9%D7%A2%D7%A8%20%D7%94%D7%92%D7%9C%D7%92%D7%95%D7%9C%D7%99%D7%9D",
+        "type": "ייחוס היסטורי"
+      }
+    },
+    {
+      "id": "ramhal",
+      "name": "הרמח״ל — רבי משה חיים לוצאטו",
+      "mediaIds": [
+        "ramhal-bac"
+      ],
+      "authorship": "חיבר ספרי מוסר, אמונה וקבלה ובהם מסילת ישרים, דרך ה׳ ודעת תבונות.",
+      "hook": "ספר שמוביל את האדם במדרגות שינוי, לא רק משמיע עצות.",
+      "works": [
+        {
+          "title": "מסילת ישרים",
+          "description": "26 פרקי מוסר מן הזהירות ועד הקדושה.",
+          "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A1%D7%99%D7%9C%D7%AA%20%D7%99%D7%A9%D7%A8%D7%99%D7%9D",
+          "access": "read"
+        },
+        {
+          "title": "דרך ה׳",
+          "description": "מבנה שיטתי של אמונה ותכלית הבריאה.",
+          "url": "https://he.wikisource.org/wiki/%D7%93%D7%A8%D7%9A%20%D7%94'",
+          "access": "read"
+        },
+        {
+          "title": "דעת תבונות",
+          "description": "דיאלוג בין נשמה לשכל על הנהגת העולם.",
+          "url": "https://he.wikisource.org/wiki/%D7%93%D7%A2%D7%AA%20%D7%AA%D7%91%D7%95%D7%A0%D7%95%D7%AA%20%D7%A9%D7%9C%D7%9D",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "26 תחנות בדרך המוסר",
+        "text": "מסילת ישרים בנוי כרצף מדורג של מידות ועבודה אישית. העלילה כאן היא המסע הרעיוני של הלומד.",
+        "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A1%D7%99%D7%9C%D7%AA%20%D7%99%D7%A9%D7%A8%D7%99%D7%9D",
+        "type": "מהלך ספר"
+      },
+      "idea": {
+        "title": "חובת האדם בעולמו",
+        "text": "הרמח״ל מבקש לברר את תכלית חייו של אדם לפני שהוא מפרט את המידות הדרושות לו.",
+        "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A1%D7%99%D7%9C%D7%AA%20%D7%99%D7%A9%D7%A8%D7%99%D7%9D%20%D7%90",
+        "type": "מוסר"
+      }
+    },
+    {
+      "id": "besht",
+      "name": "הבעל שם טוב — רבי ישראל",
+      "mediaIds": [
+        "baal-shem-tov-hidabroot-animation"
+      ],
+      "authorship": "לא ידוע על ספר שכתב בעצמו באופן שיטתי. 'כתר שם טוב' הוא לקט מאוחר, ומסורות רבות נרשמו בידי תלמידים.",
+      "hook": "כיצד נולדת שפה חסידית של תפילה, דבקות ושמחה?",
+      "works": [
+        {
+          "title": "כתר שם טוב",
+          "description": "לקט שנאסף מדבריו על ידי ממשיכי דרכו.",
+          "url": "https://www.sefaria.org/Keter_Shem_Tov?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "תולדות יעקב יוסף",
+          "description": "ספר תלמידו רבי יעקב יוסף מפולנאה, ובו דברי רבו.",
+          "url": "https://www.sefaria.org/Toldot_Yaakov_Yosef?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "תורת הבעש״ט — רקע",
+          "description": "מידע על אופן מסירת תורתו.",
+          "url": "https://daat.ac.il/he-il/hasidut/toldot/baashat.htm",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "תורות שסופרו מחדש",
+        "text": "תורתו הגיעה לדורות הבאים דרך תלמידים וסיפורים. לא כל סיפור חסידי הוא עדות היסטורית מתועדת.",
+        "url": "https://daat.ac.il/he-il/hasidut/toldot/baashat.htm",
+        "type": "מסורת חסידית"
+      },
+      "idea": {
+        "title": "הכוונה שבחיי האדם",
+        "text": "המסורת החסידית מדגישה כוונה ותפילה בחיי היום־יום; סיפורי צדיקים אינם מחליפים דיון הלכתי.",
+        "url": "https://daat.ac.il/he-il/hasidut/toldot/baashat.htm",
+        "type": "חסידות"
+      }
+    },
+    {
+      "id": "benish",
+      "name": "הבן איש חי — רבי יוסף חיים",
+      "mediaIds": [
+        "ben-ish-hai-yehuda-petaya-tour"
+      ],
+      "authorship": "חיבר את בן איש חי, רב פעלים, עוד יוסף חי ועוד כתבים בהלכה ובדרש.",
+      "hook": "פרשת השבוע פותחת שער — אל מדרש, קבלה והלכה מעשית.",
+      "works": [
+        {
+          "title": "בן איש חי, שנה ראשונה",
+          "description": "הלכות שבועיות לפי סדר פרשות התורה.",
+          "url": "https://he.wikisource.org/wiki/%D7%91%D7%9F%20%D7%90%D7%99%D7%A9%20%D7%97%D7%99%20%D7%A9%D7%A0%D7%94%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%94%20%D7%A1%D7%A4%D7%A8%20%D7%91%D7%A8%D7%90%D7%A9%D7%99%D7%AA",
+          "access": "read"
+        },
+        {
+          "title": "רב פעלים",
+          "description": "ספר שאלות ותשובות הלכתיות.",
+          "url": "https://he.wikisource.org/wiki/%D7%91%D7%9F%20%D7%90%D7%99%D7%A9%20%D7%97%D7%99",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "מן הפסוק אל הציצית",
+        "text": "בפרשת בראשית של שנה ראשונה בן איש חי קושר מדרש על לבושים להלכות ציצית.",
+        "url": "https://he.wikisource.org/wiki/%D7%91%D7%90%22%D7%97%20%D7%A9%D7%A0%D7%94%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%94%20%D7%91%D7%A8%D7%90%D7%A9%D7%99%D7%AA",
+        "type": "מהלך ספר"
+      },
+      "idea": {
+        "title": "הלכות ציצית",
+        "text": "פרשת בראשית בשנה הראשונה עוסקת בדיני ציצית; לפסיקה למעשה יש לעיין בפרטי ההלכות ובמנהגי הקהילה.",
+        "url": "https://he.wikisource.org/wiki/%D7%91%D7%90%22%D7%97%20%D7%A9%D7%A0%D7%94%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%94%20%D7%91%D7%A8%D7%90%D7%A9%D7%99%D7%AA",
+        "type": "הלכה"
+      }
+    },
+    {
+      "id": "fatiya",
+      "name": "רבי יהודה פתיה",
+      "mediaIds": [
+        "ben-ish-hai-yehuda-petaya-tour"
+      ],
+      "authorship": "חיבר מנחת יהודה, בית לחם יהודה ויין הרקח; רובם כתבי קבלה ולא ספרי הלכה מעשית.",
+      "hook": "מקובל בגדדי מפרש את דברי הזוהר ואת מסורות האר״י.",
+      "works": [
+        {
+          "title": "מנחת יהודה",
+          "description": "פירושיו ומסורותיו על עולם הנשמות.",
+          "url": "https://ravbiton.com/maamar-yehuda-fatiya",
+          "access": "info"
+        },
+        {
+          "title": "בית לחם יהודה",
+          "description": "ביאור רחב של עץ חיים.",
+          "url": "https://ravbiton.com/maamar-yehuda-fatiya",
+          "access": "info"
+        },
+        {
+          "title": "יין הרקח",
+          "description": "ביאור האדרות שבזוהר.",
+          "url": "https://ravbiton.com/maamar-yehuda-fatiya",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "לפתוח את עץ חיים",
+        "text": "החיבור 'בית לחם יהודה' נועד להסביר את מורכבות כתבי האר״י ולהפוך את לימודו לנגיש יותר.",
+        "url": "https://ravbiton.com/maamar-yehuda-fatiya",
+        "type": "היסטוריית יצירה"
+      },
+      "idea": {
+        "title": "תורת הסוד איננה ספר פסקים",
+        "text": "יש להפריד בין לימוד קבלה והנהגות רוחניות לבין הוראה הלכתית למעשה.",
+        "url": "https://ravbiton.com/maamar-yehuda-fatiya",
+        "type": "הבחנה לימודית"
+      }
+    },
+    {
+      "id": "baba-sali",
+      "name": "הבבא סאלי — רבי ישראל אבוחצירא",
+      "mediaIds": [
+        "baba-sali-hidabroot-following-righteous"
+      ],
+      "authorship": "נודע בהנהגתו ובמסורות על תפילה וברכות; אין לייחס לו ספר הלכה או אוסף ניסים כמחבר ללא ראיה.",
+      "hook": "מסורת אבוחצירא ממזרח מרוקו לישראל: תפילה, הנהגה וסיפורי קהילה.",
+      "works": [
+        {
+          "title": "מורשת משפחת אבוחצירא",
+          "description": "חומרי עיון ומקורות על החכם ומשפחתו, לא ספר שחיבר בעצמו.",
+          "url": "https://www.nli.org.il/he/search?query=any,contains,%D7%99%D7%A9%D7%A8%D7%90%D7%9C%20%D7%90%D7%91%D7%95%D7%97%D7%A6%D7%99%D7%A8%D7%90",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "אגדות צדיקים",
+        "text": "סיפורים על ברכותיו ותפילותיו קיימים במסורות המשפחתיות והקהילתיות; יש להציגם כמסורות ולא כתיעוד מאומת.",
+        "url": "https://www.nli.org.il/he/search?query=any,contains,%D7%99%D7%A9%D7%A8%D7%90%D7%9C%20%D7%90%D7%91%D7%95%D7%97%D7%A6%D7%99%D7%A8%D7%90",
+        "type": "מסורת"
+      },
+      "idea": {
+        "title": "מנהג איננו הלכה מחייבת",
+        "text": "הנהגות וסיפורי מופת אינם תחליף לחיבור הלכתי שניתן לבדוק ולפסוק מתוכו.",
+        "url": "https://www.nli.org.il/he/search?query=any,contains,%D7%99%D7%A9%D7%A8%D7%90%D7%9C%20%D7%90%D7%91%D7%95%D7%97%D7%A6%D7%99%D7%A8%D7%90",
+        "type": "מורשת"
+      }
+    },
+    {
+      "id": "ovadia",
+      "name": "הרב עובדיה יוסף",
+      "mediaIds": [
+        "ovadia-yosef-hidabroot-documentary",
+        "ovadia-hidabroot-following-righteous-short"
+      ],
+      "authorship": "חיבר ספרי פסיקה רבים; חלק מהספרים המודרניים מוגנים בזכויות יוצרים ולכן כאן יש קישורים למידע ולא טענה לגישה חופשית לכל נוסחם.",
+      "hook": "איך מבררים שאלה קטנה בעזרת מאות שנות ספרות הפסיקה?",
+      "works": [
+        {
+          "title": "יביע אומר",
+          "description": "שאלות ותשובות הלכתיות בהיקף נרחב.",
+          "url": "https://maor-israel.com/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A1%D7%A4%D7%A8%D7%99%D7%9D/",
+          "access": "info"
+        },
+        {
+          "title": "יחוה דעת",
+          "description": "תשובות מעשיות בניסוח נגיש יחסית.",
+          "url": "https://maor-israel.com/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A1%D7%A4%D7%A8%D7%99%D7%9D/",
+          "access": "info"
+        },
+        {
+          "title": "חזון עובדיה",
+          "description": "הלכות שבת, מועדים ונושאים נוספים.",
+          "url": "https://maor-israel.com/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A1%D7%A4%D7%A8%D7%99%D7%9D/",
+          "access": "info"
+        },
+        {
+          "title": "הליכות עולם",
+          "description": "דיונים והערות על הלכות הבן איש חי.",
+          "url": "https://maor-israel.com/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A1%D7%A4%D7%A8%D7%99%D7%9D/",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "מבגדד לישראל — ויכוח בין ספרים",
+        "text": "'הליכות עולם' עוסק בדינים מן 'בן איש חי' ומציג בירור מחודש של מקורות הפסיקה: חיבור בין שני דורות.",
+        "url": "https://maor-israel.com/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A1%D7%A4%D7%A8%D7%99%D7%9D/",
+        "type": "סיפור ספר"
+      },
+      "idea": {
+        "title": "כיצד נבנה פסק?",
+        "text": "בספרי השו״ת מובאים מקורות, מחלוקות ושיקולי הכרעה. זהו תיאור שיטה, לא פסק למעשה במקרה מסוים.",
+        "url": "https://www.nli.org.il/he/a-topic/987007310296405171",
+        "type": "שיטת פסיקה"
+      }
+    }
+  ]
+}
