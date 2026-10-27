@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-10-28",
-  "updatedLabel": "28 באוקטובר 2026 — סיפורי הבן איש חי, בן ציון אבא שאול וחיים קנייבסקי",
+  "updatedLabel": "28 באוקטובר 2026 — רבי מאיר בעל הנס והאדמו״ר הזקן: שתי יצירות סיפוריות חדשות",
   "eras": [
     {
       "id": "second-temple",
@@ -93,6 +93,26 @@
   ],
   "items": [
     {
+      "id": "esther-queen-persia-shazak-free-chabad",
+      "title": "אסתר המלכה — מלכת פרס (אנימציה ארוכה לצפייה חופשית)",
+      "figure": "אסתר המלכה ומרדכי היהודי",
+      "era": "second-temple",
+      "year": -450,
+      "century": "עלילת מגילת אסתר — ימי פרס (תיארוך משוער)",
+      "region": "שושן, פרס",
+      "type": "אנימציה עלילתית — גרסה חינמית מקוצרת",
+      "language": "אנגלית",
+      "description": "שזק מביא לחיים בסיפור מאויר ומדובב את הסכנה שנשקפה ליהודי פרס ואת אומץ לבה של אסתר. זו גרסה מקוצרת שמותר לצפות בה באתר המפיץ; הסרט המלא בן 106 הדקות מוצע בנפרד בתשלום ואינו נכלל כאן.",
+      "source": "Shazak / Chabad.org — שיתוף רשמי של גרסת צפייה חינמית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/2137829/jewish/The-Queen-of-Persia.htm",
+      "sageIds": [
+        "mordechai-purim",
+        "esther-queen"
+      ],
+      "fiction": "עיבוד מאויר לסיפור מקראי ומסורות מדרשיות; הסרטון שבקישור הוא מבחר חינמי ולא הגרסה המסחרית המלאה.",
+      "verified": "2026-10-27"
+    },
+    {
       "id": "mordechai-esther-torahbox-purim-film-2026",
       "title": "מרדכי ואסתר — פורים: הסרט המלא",
       "figure": "מרדכי היהודי ואסתר המלכה",
@@ -132,26 +152,6 @@
         "mordechai-purim",
         "esther-queen"
       ]
-    },
-    {
-      "id": "esther-queen-persia-shazak-free-chabad",
-      "title": "אסתר המלכה — מלכת פרס (אנימציה ארוכה לצפייה חופשית)",
-      "figure": "אסתר המלכה ומרדכי היהודי",
-      "era": "second-temple",
-      "year": -450,
-      "century": "עלילת מגילת אסתר — ימי פרס (תיארוך משוער)",
-      "region": "שושן, פרס",
-      "type": "אנימציה עלילתית — גרסה חינמית מקוצרת",
-      "language": "אנגלית",
-      "description": "שזק מביא לחיים בסיפור מאויר ומדובב את הסכנה שנשקפה ליהודי פרס ואת אומץ לבה של אסתר. זו גרסה מקוצרת שמותר לצפות בה באתר המפיץ; הסרט המלא בן 106 הדקות מוצע בנפרד בתשלום ואינו נכלל כאן.",
-      "source": "Shazak / Chabad.org — שיתוף רשמי של גרסת צפייה חינמית",
-      "url": "https://www.chabad.org/multimedia/video_cdo/aid/2137829/jewish/The-Queen-of-Persia.htm",
-      "sageIds": [
-        "mordechai-purim",
-        "esther-queen"
-      ],
-      "fiction": "עיבוד מאויר לסיפור מקראי ומסורות מדרשיות; הסרטון שבקישור הוא מבחר חינמי ולא הגרסה המסחרית המלאה.",
-      "verified": "2026-10-27"
     },
     {
       "id": "honi-bimbam",
@@ -349,23 +349,6 @@
       "verified": "2026-10-27"
     },
     {
-      "id": "achnai-bimbam",
-      "title": "תנורו של עכנאי — לא בשמים היא",
-      "figure": "רבי אליעזר וחכמים",
-      "era": "tannaim",
-      "year": 105,
-      "century": "סוף המאה ה־1 / תחילת ה־2",
-      "region": "ארץ ישראל",
-      "type": "אנימציה עלילתית",
-      "language": "אנגלית",
-      "description": "ויכוח סוער על הלכה, אותות מופלאים, סמכות החכמים והמחיר האנושי של המחלוקת.",
-      "source": "BimBam",
-      "url": "https://bimbam.com/achnai/",
-      "youtubeId": "al4FgjbUztI",
-      "fiction": "המחזה מוזיקלית לאגדה בבבא מציעא נ״ט",
-      "verified": "2026-10-27"
-    },
-    {
       "id": "onkelos-mezuzah-shazak-chabad",
       "title": "אונקלוס והמזוזה — החיילים הרומאים (אנימציה)",
       "figure": "אונקלוס הגר וחיילים רומיים",
@@ -385,20 +368,20 @@
       ]
     },
     {
-      "id": "akiva-waiting-for-ewe",
-      "title": "Waiting for Ewe — רבי עקיבא ורחל",
-      "figure": "רבי עקיבא ורחל",
+      "id": "achnai-bimbam",
+      "title": "תנורו של עכנאי — לא בשמים היא",
+      "figure": "רבי אליעזר וחכמים",
       "era": "tannaim",
-      "year": 110,
-      "century": "המאה ה־2 בקירוב",
+      "year": 105,
+      "century": "סוף המאה ה־1 / תחילת ה־2",
       "region": "ארץ ישראל",
       "type": "אנימציה עלילתית",
       "language": "אנגלית",
-      "description": "סיפורו של רועה הצאן שהפך לחכם גדול, דרך עיניה של רחל: אהבה, פרידה ארוכה, ויתור ומאבק על חלום הלימוד. עיבוד אמנותי לכתובות ס״ב.",
-      "source": "BimBam / Studio G-dcast",
-      "url": "https://bimbam.com/waiting-for-ewe/",
-      "youtubeId": "Q-MDa28_J6Y",
-      "fiction": "המחזה לסיפור חז״ל; דמותה ומחשבותיה של רחל מעוצבות בפרשנות היוצרים",
+      "description": "ויכוח סוער על הלכה, אותות מופלאים, סמכות החכמים והמחיר האנושי של המחלוקת.",
+      "source": "BimBam",
+      "url": "https://bimbam.com/achnai/",
+      "youtubeId": "al4FgjbUztI",
+      "fiction": "המחזה מוזיקלית לאגדה בבבא מציעא נ״ט",
       "verified": "2026-10-27"
     },
     {
@@ -421,23 +404,21 @@
       "verified": "2026-10-27"
     },
     {
-      "id": "akiva-forest-all-good-hidabroot-ai",
-      "title": "רבי עקיבא — החמור, התרנגול והנר שכבה",
-      "figure": "רבי עקיבא",
+      "id": "akiva-waiting-for-ewe",
+      "title": "Waiting for Ewe — רבי עקיבא ורחל",
+      "figure": "רבי עקיבא ורחל",
       "era": "tannaim",
-      "year": 115,
-      "century": "תקופת התנאים, המאה ה־2 בקירוב",
+      "year": 110,
+      "century": "המאה ה־2 בקירוב",
       "region": "ארץ ישראל",
-      "type": "אנימציית AI סיפורית",
-      "language": "עברית",
-      "description": "עיר מסרבת לארח את רבי עקיבא, ובלילה ביער הוא מאבד בזה אחר זה את הנר, התרנגול והחמור. דווקא בבוקר מתברר מדוע התעקש לראות תקווה גם כשהכול השתבש. עיבוד אנימציה לאגדת ברכות ס׳ ע״ב (2:11 דקות).",
-      "source": "הידברות דיגיטל — סיפורי צדיקים לילדים",
-      "url": "https://www.hidabroot.org/video/224686",
-      "fiction": "עיבוד אגדה תלמודית ב־AI; האירועים אינם שחזור היסטורי מתועד",
-      "verified": "2026-10-27",
-      "sageIds": [
-        "akiva"
-      ]
+      "type": "אנימציה עלילתית",
+      "language": "אנגלית",
+      "description": "סיפורו של רועה הצאן שהפך לחכם גדול, דרך עיניה של רחל: אהבה, פרידה ארוכה, ויתור ומאבק על חלום הלימוד. עיבוד אמנותי לכתובות ס״ב.",
+      "source": "BimBam / Studio G-dcast",
+      "url": "https://bimbam.com/waiting-for-ewe/",
+      "youtubeId": "Q-MDa28_J6Y",
+      "fiction": "המחזה לסיפור חז״ל; דמותה ומחשבותיה של רחל מעוצבות בפרשנות היוצרים",
+      "verified": "2026-10-27"
     },
     {
       "id": "tarfon-honoring-mother-ai-kids",
@@ -456,6 +437,25 @@
       "verified": "2026-10-27",
       "sageIds": [
         "tarfon"
+      ]
+    },
+    {
+      "id": "akiva-forest-all-good-hidabroot-ai",
+      "title": "רבי עקיבא — החמור, התרנגול והנר שכבה",
+      "figure": "רבי עקיבא",
+      "era": "tannaim",
+      "year": 115,
+      "century": "תקופת התנאים, המאה ה־2 בקירוב",
+      "region": "ארץ ישראל",
+      "type": "אנימציית AI סיפורית",
+      "language": "עברית",
+      "description": "עיר מסרבת לארח את רבי עקיבא, ובלילה ביער הוא מאבד בזה אחר זה את הנר, התרנגול והחמור. דווקא בבוקר מתברר מדוע התעקש לראות תקווה גם כשהכול השתבש. עיבוד אנימציה לאגדת ברכות ס׳ ע״ב (2:11 דקות).",
+      "source": "הידברות דיגיטל — סיפורי צדיקים לילדים",
+      "url": "https://www.hidabroot.org/video/224686",
+      "fiction": "עיבוד אגדה תלמודית ב־AI; האירועים אינם שחזור היסטורי מתועד",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "akiva"
       ]
     },
     {
@@ -512,23 +512,6 @@
       ]
     },
     {
-      "id": "cave-bimbam",
-      "title": "רבי שמעון בר יוחאי — המערה",
-      "figure": "רשב״י ובנו",
-      "era": "tannaim",
-      "year": 155,
-      "century": "המאה ה־2",
-      "region": "ארץ ישראל",
-      "type": "אנימציה עלילתית",
-      "language": "אנגלית",
-      "description": "בריחה מן השלטון הרומי, חיים ממושכים במערה ומפגש חדש עם העולם שבחוץ.",
-      "source": "BimBam",
-      "url": "https://bimbam.com/the-cave/",
-      "youtubeId": "sGoXolgka8k",
-      "fiction": "המחזה לאגדת שבת ל״ג",
-      "verified": "2026-10-27"
-    },
-    {
       "id": "rashbi-hidabroot-following-righteous",
       "title": "בעקבות הצדיקים — רבי שמעון בר יוחאי",
       "figure": "רבי שמעון בר יוחאי",
@@ -543,6 +526,42 @@
       "url": "https://www.hidabroot.org/video/225724",
       "duration": "15:30",
       "fiction": "המחזה ואיור של סיפור מסורתי; לא תיעוד היסטורי",
+      "verified": "2026-10-27"
+    },
+    {
+      "id": "rabbi-meir-life-hidabroot-ai-2026",
+      "title": "רבי מאיר בעל הנס — סיפור חייו באנימציה",
+      "figure": "רבי מאיר בעל הנס",
+      "era": "tannaim",
+      "year": 155,
+      "century": "המאה ה־2 — תקופת התנאים",
+      "region": "ארץ ישראל בתקופה הרומית",
+      "type": "אנימציה ביוגרפית סיפורית בהמחשת AI",
+      "language": "עברית",
+      "description": "סיפור מונפש בהפקת הידברות על התנא רבי מאיר, איש בית המדרש ותלמיד רבי עקיבא, ועל האגדות שנקשרו בדמותו. ההמחשה מחיה את עולם התנאים, תוך הבדלה בין מסורות חז״ל לבין עובדות המתועדות במחקר.",
+      "source": "הידברות — ערוץ היוצר הרשמי ביוטיוב",
+      "url": "https://www.youtube.com/watch?v=qUtCzNNyF90",
+      "sageIds": [
+        "rabbi-meir"
+      ],
+      "fiction": "ביוגרפיה מונפשת המשלבת מסורות ואגדות על רבי מאיר. מראה הדמויות, הדיאלוגים והאירועים המומחשים הם עיבוד אמנותי ולא תיעוד היסטורי.",
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "cave-bimbam",
+      "title": "רבי שמעון בר יוחאי — המערה",
+      "figure": "רשב״י ובנו",
+      "era": "tannaim",
+      "year": 155,
+      "century": "המאה ה־2",
+      "region": "ארץ ישראל",
+      "type": "אנימציה עלילתית",
+      "language": "אנגלית",
+      "description": "בריחה מן השלטון הרומי, חיים ממושכים במערה ומפגש חדש עם העולם שבחוץ.",
+      "source": "BimBam",
+      "url": "https://bimbam.com/the-cave/",
+      "youtubeId": "sGoXolgka8k",
+      "fiction": "המחזה לאגדת שבת ל״ג",
       "verified": "2026-10-27"
     },
     {
@@ -954,6 +973,22 @@
       ]
     },
     {
+      "id": "ramhal-bac",
+      "title": "אנשי השם — הרמח״ל",
+      "figure": "רבי משה חיים לוצאטו",
+      "era": "acharonim",
+      "year": 1730,
+      "century": "המאה ה־18",
+      "region": "איטליה והולנד",
+      "type": "דוקומנטרי סיפורי",
+      "language": "עברית",
+      "description": "חיים רצופי יצירה, מחלוקות וחשדנות סביב מיסטיקה — סיפורו של בעל מסילת ישרים.",
+      "source": "בית אבי חי",
+      "url": "https://www.bac.org.il/videos/?videoID=7931",
+      "fiction": "תיעוד היסטורי והמחשות",
+      "verified": "2026-10-27"
+    },
+    {
       "id": "besht-hidabroot-english-ai-orphan-light",
       "title": "הבעל שם טוב — מילדות יתומה לאור החסידות",
       "figure": "רבי ישראל בעל שם טוב",
@@ -968,22 +1003,6 @@
       "url": "https://www.hidabroot.com/video/6076",
       "youtubeId": "c_Qpx1809-I",
       "fiction": "עיבוד אנימציית AI של ביוגרפיה ומסורות חסידיות; פרטים מן המסורת אינם בהכרח עובדות היסטוריות מאומתות",
-      "verified": "2026-10-27"
-    },
-    {
-      "id": "ramhal-bac",
-      "title": "אנשי השם — הרמח״ל",
-      "figure": "רבי משה חיים לוצאטו",
-      "era": "acharonim",
-      "year": 1730,
-      "century": "המאה ה־18",
-      "region": "איטליה והולנד",
-      "type": "דוקומנטרי סיפורי",
-      "language": "עברית",
-      "description": "חיים רצופי יצירה, מחלוקות וחשדנות סביב מיסטיקה — סיפורו של בעל מסילת ישרים.",
-      "source": "בית אבי חי",
-      "url": "https://www.bac.org.il/videos/?videoID=7931",
-      "fiction": "תיעוד היסטורי והמחשות",
       "verified": "2026-10-27"
     },
     {
@@ -1059,6 +1078,26 @@
         "zusha-anipoli",
         "elimelech-lizhensk"
       ]
+    },
+    {
+      "id": "shneur-zalman-scholarship-song-jem-doc",
+      "title": "האדמו״ר הזקן — תורה וניגון: סיפור חייו",
+      "figure": "רבי שניאור זלמן מלאדי, בעל התניא",
+      "era": "hasidut",
+      "year": 1798,
+      "century": "סוף המאה ה־18 — ראשית חסידות חב״ד",
+      "region": "ליטא ובלארוס — האימפריה הרוסית",
+      "type": "סרט תיעודי ביוגרפי־סיפורי",
+      "language": "אנגלית",
+      "description": "סרט תיעודי בן 19:43 דקות של Jewish Educational Media על רבי שניאור זלמן מלאדי, מייסד חסידות חב״ד ומחבר התניא ושולחן ערוך הרב. מסע בעקבות מורשתו התורנית והחסידית; הסרט הופק לציון יום פטירתו.",
+      "source": "Jewish Educational Media / Chabad.org — המפיץ הרשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/4250745/jewish/Scholarship-and-Song-A-Documentary-on-the-Alter-Rebbe.htm",
+      "duration": "19:43",
+      "sageIds": [
+        "shneur-zalman-liadi"
+      ],
+      "fiction": "תיעוד ביוגרפי מנקודת המבט של מפיק חב״די; מסורות חסידיות ותיאורים דתיים אינם כשלעצמם אימות היסטורי עצמאי.",
+      "verified": "2026-10-28"
     },
     {
       "id": "nachman-poor-man-diamond-bri",
