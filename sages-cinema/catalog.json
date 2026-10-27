@@ -220,6 +220,25 @@
       ]
     },
     {
+      "id": "hanina-miracles-chabad-puppets",
+      "title": "רבי חנינא בן דוסא — סיפורי ניסים בתיאטרון בובות",
+      "figure": "רבי חנינא בן דוסא",
+      "era": "tannaim",
+      "year": 86,
+      "century": "המאה הראשונה לספירה (שיבוץ מקורב)",
+      "region": "הגליל, ארץ ישראל",
+      "type": "דרמה עם שחקנים",
+      "language": "אנגלית",
+      "description": "כ־28 דקות של תיאטרון בובות סיפורי: רבי חנינא בן דוסא פוגש מלאכים, מסייע בהצלת ילדה וניצב מול נס נרות השבת שדלקו בחומץ. דרמה מצולמת לילדים, המבוססת על אגדות חז״ל.",
+      "source": "Chabad.org/Kids · Miracles: Tales of Rabbi Chanina ben Dosa",
+      "url": "https://www.chabad.org/kids/article_cdo/aid/1060624/jewish/Miracles-Tales-of-Rabbi-Chanina-ben-Dosa.htm",
+      "fiction": "עיבוד תיאטרון בובות לסיפורי אגדה תלמודיים; ניסים ומפגשים מופלאים מוצגים כמסורת חז״ל, לא כאירועים מאומתים היסטורית",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "hanina"
+      ]
+    },
+    {
       "id": "scholars-bimbam",
       "title": "Clash of the Scholars — מהפכת בית המדרש",
       "figure": "רבן גמליאל ורבי יהושע",
@@ -235,6 +254,25 @@
       "youtubeId": "ljRnvHHR7XM",
       "fiction": "המחזה וסאטירה מודרנית של ברכות כ״ז–כ״ח",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "onkelos-mezuzah-shazak-chabad",
+      "title": "אונקלוס והמזוזה — החיילים הרומאים (אנימציה)",
+      "figure": "אונקלוס הגר וחיילים רומיים",
+      "era": "tannaim",
+      "year": 105,
+      "century": "המאה הראשונה–השנייה לספירה (שיבוץ מקורב)",
+      "region": "העולם הרומי וארץ ישראל",
+      "type": "אנימציה עלילתית",
+      "language": "אנגלית",
+      "description": "אנימציה קצרה (3:13) הממחיזה את סיפור אונקלוס והמזוזה: חיילים שנשלחו להחזירו לרומא נעצרים מול דבריו על השמירה האלוהית. מבוסס על מסורת הבבלי, עבודה זרה י״א.",
+      "source": "Shazak Shorts · Moshe Moscowitz · Chabad.org/Kids",
+      "url": "https://www.chabad.org/kids/article_cdo/aid/5188808/jewish/Mezuzah-A-Touching-Story.htm",
+      "fiction": "עיבוד דרמטי לאגדת הגמרא, בבלי עבודה זרה י״א ע״א; פרטי האנימציה אינם שחזור היסטורי",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "onkelos"
+      ]
     },
     {
       "id": "achnai-bimbam",
@@ -618,6 +656,25 @@
       "youtubeId": "C8Wz1PMR5v4",
       "fiction": "עיון תיעודי עם פרשנות ומחוות חזותיות, לא דרמה משוחקת",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "moses-coucy-roving-rabbi-shazak",
+      "title": "רבי משה מקוצי — הרב הנודד בעל הסמ״ג",
+      "figure": "רבי משה בן יעקב מקוצי, בעל ספר מצוות גדול",
+      "era": "rishonim",
+      "year": 1250,
+      "century": "המאה ה־13 (שיבוץ מקורב לפועלו)",
+      "region": "צרפת וקהילות אירופה",
+      "type": "אנימציה עלילתית",
+      "language": "אנגלית",
+      "description": "אנימציה סיפורית קצרה (4:17) על רבי משה מקוצי, בעל ספר מצוות גדול (הסמ״ג), והמסעות שהביאו את קריאתו לקיום המצוות אל הקהילות.",
+      "source": "Shazak Shorts · Moshe Moscowitz · Chabad.org/Kids",
+      "url": "https://www.chabad.org/kids/article_cdo/aid/5188800/jewish/The-Roving-Rabbi.htm",
+      "fiction": "עיבוד אנימציה עממי לתולדותיו ולפועלו של בעל הסמ״ג; פרטי ההמחזה אינם תיעוד בן הזמן",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "moshe-coucy"
+      ]
     },
     {
       "id": "abarbanel-bac",
