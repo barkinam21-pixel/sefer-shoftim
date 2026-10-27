@@ -715,11 +715,44 @@
       "id": "rambam",
       "name": "הרמב״ם — רבי משה בן מימון",
       "mediaIds": [
-        "rambam-hidabroot-animation"
+        "rambam-hidabroot-animation",
+        "rambam-great-eagle-kan11-ep1",
+        "rambam-great-eagle-kan11-ep2",
+        "rambam-great-eagle-kan11-ep3"
       ],
       "authorship": "מחבר משנה תורה, מורה הנבוכים, פירוש המשנה, ספר המצוות ועוד; ספריו עוסקים בתחומים שונים ויש להבחין בין הלכה, מוסר ופילוסופיה.",
       "hook": "רופא, פילוסוף ופוסק מנסה לסדר את התורה כולה למפת לימוד אחת.",
       "works": [
+        {
+          "title": "פירוש המשנה לרמב״ם",
+          "description": "הפירוש השיטתי לששת סדרי המשנה שכתב הרמב״ם בערבית־יהודית. כולל מבואות מרתקים לתולדות המסורת, למסכת אבות ולפרק חלק.",
+          "url": "https://he.wikisource.org/wiki/%D7%A8%D7%9E%D7%91%22%D7%9D_%D7%A2%D7%9C_%D7%94%D7%9E%D7%A9%D7%A0%D7%94",
+          "access": "read"
+        },
+        {
+          "title": "שמונה פרקים",
+          "description": "הקדמה מוסרית לפירוש מסכת אבות.",
+          "url": "https://he.wikisource.org/wiki/%D7%A9%D7%9E%D7%95%D7%A0%D7%94%20%D7%A4%D7%A8%D7%A7%D7%99%D7%9D%20%D7%9C%D7%A8%D7%9E%D7%91%22%D7%9D%20%D7%90",
+          "access": "read"
+        },
+        {
+          "title": "איגרת השמד — מאמר קידוש השם",
+          "description": "מכתב עיוני־הלכתי מראשית מסעו של הרמב״ם, שנכתב על רקע כפייה דתית והתמודדות קהילות היהודים עם משבר ורדיפות.",
+          "url": "https://he.wikisource.org/wiki/%D7%90%D7%99%D7%92%D7%A8%D7%AA_%D7%94%D7%A9%D7%9E%D7%93",
+          "access": "read"
+        },
+        {
+          "title": "איגרת תימן",
+          "description": "מכתב העידוד של הרמב״ם ליהודי תימן ובו תשובות למצוקת קהילה, רדיפות, משיחיות שקר ושאלות אמונה. קריאה בנוסח עברי מנוקד.",
+          "url": "https://he.wikisource.org/wiki/%D7%90%D7%99%D7%92%D7%A8%D7%AA_%D7%AA%D7%99%D7%9E%D7%9F_-_%D7%9E%D7%A0%D7%95%D7%A7%D7%93",
+          "access": "read"
+        },
+        {
+          "title": "ספר המצוות",
+          "description": "הקדמה וכללי מניין המצוות ופרטיהן.",
+          "url": "https://www.sefaria.org/Sefer_HaMitzvot%2C_Positive_Commandments.1?lang=he",
+          "access": "read"
+        },
         {
           "title": "משנה תורה — היד החזקה",
           "description": "14 ספרי הלכה המקיפים את כל תחומי התורה.",
@@ -731,25 +764,13 @@
           "description": "מחשבת ישראל על היחס בין שכל, נבואה ואמונה.",
           "url": "https://he.wikisource.org/wiki/%D7%9E%D7%95%D7%A8%D7%94%20%D7%A0%D7%91%D7%95%D7%9B%D7%99%D7%9D",
           "access": "read"
-        },
-        {
-          "title": "שמונה פרקים",
-          "description": "הקדמה מוסרית לפירוש מסכת אבות.",
-          "url": "https://he.wikisource.org/wiki/%D7%A9%D7%9E%D7%95%D7%A0%D7%94%20%D7%A4%D7%A8%D7%A7%D7%99%D7%9D%20%D7%9C%D7%A8%D7%9E%D7%91%22%D7%9D%20%D7%90",
-          "access": "read"
-        },
-        {
-          "title": "ספר המצוות",
-          "description": "הקדמה וכללי מניין המצוות ופרטיהן.",
-          "url": "https://www.sefaria.org/Sefer_HaMitzvot%2C_Positive_Commandments.1?lang=he",
-          "access": "read"
         }
       ],
       "story": {
-        "title": "לסדר את ההלכה מחדש",
-        "text": "הרמב״ם אסף והציג את תחומי ההלכה בצורה שיטתית; לצד זאת כתב ספר פילוסופי על קושיות האמונה.",
-        "url": "https://mechon-mamre.org/i/0.htm",
-        "type": "סיפור יצירה"
+        "title": "מכתב ממצרים אל יהודי תימן",
+        "text": "בעוד הרמב״ם יושב במצרים ועוסק בפסיקה ובמנהיגות, מגיעה אליו מצוקת הקהילה בתימן. תשובתו היא 'איגרת תימן': טקסט מרתק שבו הוא מנסה לחזק קהילה הנתונה לאיום ולבלבול. זו עדות היסטורית כתובה, ולא עלילת פלא או סיפור מומצא.",
+        "url": "https://he.wikisource.org/wiki/%D7%90%D7%99%D7%92%D7%A8%D7%AA_%D7%AA%D7%99%D7%9E%D7%9F_-_%D7%9E%D7%A0%D7%95%D7%A7%D7%93",
+        "type": "מכתב היסטורי ויצירה"
       },
       "idea": {
         "title": "דרך האמצע",
@@ -874,7 +895,8 @@
       "name": "הבעל שם טוב — רבי ישראל",
       "mediaIds": [
         "baal-shem-tov-hidabroot-animation",
-        "hasidic-sages-destiny-stories"
+        "hasidic-sages-destiny-stories",
+        "besht-hidabroot-english-ai-orphan-light"
       ],
       "authorship": "לא ידוע על ספר שכתב בעצמו באופן שיטתי. 'כתר שם טוב' הוא לקט מאוחר, ומסורות רבות נרשמו בידי תלמידים.",
       "hook": "כיצד נולדת שפה חסידית של תפילה, דבקות ושמחה?",
