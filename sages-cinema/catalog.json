@@ -368,6 +368,26 @@
       "verified": "2026-10-27"
     },
     {
+      "id": "saadia-gaon-unpacked-golden-age",
+      "title": "רב סעדיה גאון — המאבק על יהדות בבל ותור הזהב",
+      "figure": "רב סעדיה גאון (רס״ג)",
+      "era": "geonim",
+      "year": 930,
+      "century": "המאה ה־10",
+      "region": "מצרים, סורא ובבל (עיראק)",
+      "type": "דוקומנטרי סיפורי",
+      "language": "אנגלית",
+      "description": "מן המחלוקת עם הקראים ועד ההתנגשות עם ראש הגולה: סיפורו של רס״ג, שידע לשלב מסורת, מדע ופילוסופיה ולכתוב את 'האמונות והדעות'. פרק קצר וערוך מתוך The Jewish Story, המתמקד דווקא בעולם הגאונים החסר במסע.",
+      "source": "Unpacked / OpenDor Media — The Jewish Story",
+      "url": "https://www.youtube.com/watch?v=0RhZ6VdAarU",
+      "youtubeId": "0RhZ6VdAarU",
+      "fiction": "תיעוד היסטורי סיפורי עם המחשות ועריכה חזותית; שחזור האירועים הוא פרשנות היסטורית, לא תיעוד בן הזמן",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "saadia-gaon"
+      ]
+    },
+    {
       "id": "rashi-bac",
       "title": "אנשי השם — רש״י",
       "figure": "רבי שלמה יצחקי (רש״י)",
@@ -397,6 +417,26 @@
       "source": "ערוץ הידברות / דסטני הפקות",
       "url": "https://www.hidabroot.org/video/55075",
       "fiction": "המחזה ביוגרפית באנימציה, מותאמת בעיקר לילדים; לא תיעוד מצולם של התקופה",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rashi"
+      ]
+    },
+    {
+      "id": "rashi-unpacked-commentary",
+      "title": "רש״י ויהודי אשכנז — כיצד הפך את התורה והתלמוד לנגישים",
+      "figure": "רבי שלמה יצחקי (רש״י)",
+      "era": "rishonim",
+      "year": 1090,
+      "century": "המאה ה־11",
+      "region": "צרפת ואשכנז",
+      "type": "דוקומנטרי סיפורי",
+      "language": "אנגלית",
+      "description": "פרק היסטורי קצר שמספר על פירושי רש״י לתנ״ך ולתלמוד ועל הקהילה היהודית בצל מסע הצלב הראשון. מבט שונה מסרט האנימציה הביוגרפי שכבר מופיע כאן — הדגש הוא מפעל הפירוש ומסירתו לדורות.",
+      "source": "Unpacked / OpenDor Media — The Jewish Story",
+      "url": "https://www.youtube.com/watch?v=JDATOzHjm2w",
+      "youtubeId": "JDATOzHjm2w",
+      "fiction": "תעודה סיפורית ערוכה עם חומרי רקע והמחשות; אינה דרמת שחקנים או תיעוד מן התקופה",
       "verified": "2026-10-27",
       "sageIds": [
         "rashi"
@@ -465,6 +505,27 @@
       "url": "https://www.bac.org.il/videos/?videoID=6756",
       "fiction": "מסע תיעודי סביב אדם ואירוע היסטורי",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "karo-rema-unpacked-shulchan-aruch",
+      "title": "איך נולד השולחן ערוך — רבי יוסף קארו והרמ״א",
+      "figure": "רבי יוסף קארו (הבית יוסף) ורבי משה איסרליש (הרמ״א)",
+      "era": "safed",
+      "year": 1565,
+      "century": "המאה ה־16",
+      "region": "צפת וקרקוב — מסורות ספרד ואשכנז",
+      "type": "דוקומנטרי סיפורי",
+      "language": "אנגלית",
+      "description": "שני חכמים שלא נפגשו יוצרים מסלול משותף: רבי יוסף קארו מסדר את ההלכה ב'בית יוסף' וב'שולחן ערוך', והרמ״א בקרקוב מוסיף את 'המפה' המשמרת את מנהגי אשכנז. סיפור על ספרים, מחלוקת ואחדות — מעבר בין צפת לפולין באותה תקופה.",
+      "source": "Unpacked / OpenDor Media — The Jewish Story",
+      "url": "https://www.youtube.com/watch?v=jxrt7_d35rA",
+      "youtubeId": "jxrt7_d35rA",
+      "fiction": "תיעוד היסטורי ערוך וסיפורי עם חומרי ארכיון והמחשות; לא המחזה עם שחקנים. התקופה משויכת לצפת בשל מרכזיות ספרו של קארו, אף שהרמ״א פעל בפולין",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "yosef-karo",
+        "rema"
+      ]
     },
     {
       "id": "ari-bac",
