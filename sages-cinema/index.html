@@ -136,6 +136,32 @@ footer a{text-decoration:underline}
 @media(max-width:970px){.hero-wrap{gap:20px}.media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{height:340px}}
 @media(max-width:720px){.container{width:min(100% - 26px,1180px)}.head-inner{min-height:62px}.head-actions a{display:none}.hero{padding:47px 0 35px}.hero-wrap{grid-template-columns:1fr}.hero-art{display:none}h1{font-size:57px}.hero-text{font-size:16px}.hero-numbers{margin-top:30px;gap:24px}.section-top{margin:37px 0 17px}.media-grid{grid-template-columns:1fr}.poster{height:190px}.filters{padding:11px}.filters select{flex:1;min-width:0;width:48%}.filters .check-label{width:auto}.era-heading h3{font-size:23px}.about-grid{grid-template-columns:1fr}.modal{padding:5px}.modal-top{padding:10px}.modal-bottom{padding:10px}.modal-bottom .tip{width:100%;margin:0}.note-band{font-size:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.media-grid{align-items:start}
+.study-details{border-top:1px solid rgba(236,196,138,.18);margin-top:11px;padding-top:11px}
+.study-details>summary{min-height:49px;list-style:none;cursor:pointer;border:1px solid rgba(236,196,138,.4);color:#f3d6a8;background:rgba(236,196,138,.08);border-radius:11px;padding:10px 13px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:750;font-size:13px}
+.study-details>summary::-webkit-details-marker{display:none}
+.study-details>summary:after{content:"⌄";font-size:20px;line-height:1}
+.study-details[open]>summary{background:#28383b;border-color:var(--gold-deep);border-radius:11px 11px 0 0}
+.study-details[open]>summary:after{transform:rotate(180deg)}
+.study-inner{border:1px solid #445258;border-top:0;border-radius:0 0 12px 12px;background:#12252b;padding:14px 13px 16px}
+.study-person+.study-person{margin-top:22px;padding-top:18px;border-top:1px solid #536166}
+.study-person h4{font-family:var(--serif);font-size:20px;color:#f3d5a7;margin:0 0 5px}
+.study-hook{font-size:13px;color:#d4e0d9;line-height:1.7;margin:0 0 10px}
+.study-attrib{font-size:12px;color:#a8bab6;background:#1e343a;padding:9px 10px;border-right:2px solid var(--gold-deep);border-radius:5px;line-height:1.7;margin:0 0 12px}
+.study-section{margin-top:17px}.study-section h5{font-size:14px;color:#efd0a6;margin:0 0 9px}
+.study-work{background:#1b3036;border:1px solid #32474d;padding:11px 12px;border-radius:9px;margin:8px 0}
+.study-work b{display:block;font-size:14px;color:var(--ink)}
+.study-work p{font-size:12px;line-height:1.75;color:#b7c7c3;margin:4px 0 8px}
+.study-work a,.study-source-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;min-height:39px;padding:6px 10px;color:#f2d1a1;background:#263b40;border:1px solid #475a59;border-radius:7px;font-weight:700}
+.study-work a:hover,.study-source-link:hover{background:#35504e;border-color:#b28b5d}
+.study-feature{border-right:2px solid #738481;padding:2px 12px 2px 0;margin:8px 0 2px}
+.study-feature b{display:block;color:#e7e4cf;font-size:13px}
+.study-feature p{color:#b8c9c5;font-size:12px;line-height:1.8;margin:6px 0 8px}
+.study-label{display:inline-block;color:#f1ca90;font-size:10px;margin-bottom:5px}
+.study-disclaimer{margin-top:15px;font-size:11px;color:#9cada9;border-top:1px solid #33494a;padding-top:11px;line-height:1.7}
+@media(max-width:720px){.study-details>summary{min-height:51px}.study-inner{padding:13px 11px}.study-work a,.study-source-link{min-height:43px}}
+
 </style>
 </head>
 <body>
@@ -143,7 +169,7 @@ footer a{text-decoration:underline}
 <header class="site-head">
 <div class="container head-inner">
 <a class="brand" href="#top" aria-label="דורות של אור — לדף הבית"><span class="brand-icon" aria-hidden="true">✦</span><span>דורות של אור<small>גדולי ישראל על המסך</small></span></a>
-<nav class="head-actions" aria-label="ניווט ראשי"><a href="#timeline">ציר הזמן</a><a href="#library">הסרטים</a><a href="#about">על הפרויקט</a><button id="sizeButton" class="ghost-btn text-size" type="button" title="הגדל או הקטן טקסט" aria-label="הגדל או הקטן טקסט">אא</button></nav>
+<nav class="head-actions" aria-label="ניווט ראשי"><a href="#timeline">ציר הזמן</a><a href="#library">סרטים וספרים</a><a href="#about">על הפרויקט</a><button id="sizeButton" class="ghost-btn text-size" type="button" title="הגדל או הקטן טקסט" aria-label="הגדל או הקטן טקסט">אא</button></nav>
 </div>
 </header>
 <main id="top">
@@ -154,12 +180,12 @@ footer a{text-decoration:underline}
 <h1>דורות <em>של אור.</em></h1>
 <p class="hero-text">לפגוש את גדולי ישראל דרך הסיפורים, האנשים והאירועים שעיצבו דורות של תורה. מסע צפייה כרונולוגי מהתנאים והאמוראים, דרך הראשונים והאחרונים ועד גדולי המזרח והחסידות — <strong>בלי שיעורים רגילים ובלי תשלום לצפייה בתכנים שבאוסף.</strong></p>
 <div class="hero-actions"><a class="primary-btn" href="#library">▶ התחילו במסע</a><a class="secondary-btn" href="#timeline">לגלות את התקופות ↓</a></div>
-<div class="hero-numbers" aria-label="נתוני האתר"><div class="metric"><strong id="movieCount">—</strong><span>סרטים וסיפורים</span></div><div class="metric"><strong id="eraCount">—</strong><span>תחנות בציר הזמן</span></div><div class="metric"><strong id="embeddedCount">—</strong><span>נגנים בתוך האתר</span></div></div>
+<div class="hero-numbers" aria-label="נתוני האתר"><div class="metric"><strong id="movieCount">—</strong><span>סרטים וסיפורים</span></div><div class="metric"><strong id="eraCount">—</strong><span>תחנות בציר הזמן</span></div><div class="metric"><strong id="embeddedCount">—</strong><span>נגנים בתוך האתר</span></div><div class="metric"><strong id="profileCount">—</strong><span>תיקי חכמים</span></div></div>
 </div>
 <div class="hero-art" aria-hidden="true"><div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div><div class="art-center">אור</div><span class="orbit-tag tag-a">תנאים</span><span class="orbit-tag tag-b">ראשונים</span><span class="orbit-tag tag-c">חסידות</span><span class="orbit-tag tag-d">אמוראים</span></div>
 </div>
 </section>
-<div class="note-band"><div class="container"><strong>לצפייה בחינם ·</strong> נגנים מוטמעים כשזוהה מקור רשמי שמאפשר זאת; סרטים אחרים נפתחים בדף הסרט של היוצר. היסטוריה, אגדה והמחזה אינן אותו דבר.</div></div>
+<div class="note-band"><div class="container"><strong>סרטים בחינם ולימוד בעקבותיהם ·</strong> נגנים מוטמעים כשזוהה מקור רשמי שמאפשר זאת; סרטים אחרים נפתחים בדף הסרט של היוצר. היסטוריה, אגדה והמחזה אינן אותו דבר.</div></div>
 <section id="timeline" class="container" aria-labelledby="timelineTitle">
 <div class="section-top"><div><div class="kicker">01 / מסע בזמן</div><h2 id="timelineTitle">אלפי שנים, סיפור אחד</h2><p>בחירת תקופה מסננת את הספרייה. תקופות ללא יצירות מאומתות נשארות בציר הזמן ולא ממולאות בשיעורים.</p></div></div>
 <div id="timelineRail" class="timeline-rail" role="group" aria-label="סינון לפי תקופה"></div>
@@ -167,7 +193,7 @@ footer a{text-decoration:underline}
 <section id="library" class="library container" aria-labelledby="libraryTitle">
 <div class="section-top"><div><div class="kicker">02 / ספריית הסרטים</div><h2 id="libraryTitle">צופים לפי הדורות</h2><p>הסדר נקבע לפי תקופת החכם או האירוע — לא לפי שנת יציאת הסרט.</p></div><button id="continueButton" class="secondary-btn" type="button" hidden>המשך מהמקום שלי</button></div>
 <div class="filters">
-<label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="חפשו חכם, תקופה, אזור או סרט..." autocomplete="off" aria-label="חיפוש סרטים וחכמים"></label>
+<label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="חפשו חכם, ספר, הלכה, אזור או סרט..." autocomplete="off" aria-label="חיפוש סרטים וחכמים"></label>
 <select id="genreSelect" aria-label="סוג היצירה"><option value="">כל סוגי הסרטים</option><option value="אנימציה עלילתית">אנימציה עלילתית</option><option value="דרמה עם שחקנים">דרמה עם שחקנים</option><option value="דוקומנטרי סיפורי">דוקומנטרי סיפורי</option></select>
 <select id="languageSelect" aria-label="שפת הסרט"><option value="">כל השפות</option><option value="עברית">עברית</option><option value="אנגלית">אנגלית</option></select>
 <label class="check-label"><input id="storyOnly" type="checkbox">עלילה בלבד</label>
@@ -179,19 +205,20 @@ footer a{text-decoration:underline}
 </section>
 <section class="about" id="about" aria-labelledby="aboutTitle">
 <div class="container about-grid">
-<div><div class="kicker">03 / מאחורי המסע</div><h2 id="aboutTitle">לא עוד רשימת שיעורים.</h2><p>כאן נכנסות יצירות וידאו אמיתיות בלבד: סיפורים מצולמים, סרטי אנימציה עלילתיים, סדרות וסרטי תעודה המספרים סיפור. כל יצירה מוצבת בזמן ההיסטורי המתאים לה, עם הבחנה בין מקור, סיפור מסורתי והמחזה אמנותית.</p><p>האתר עצמאי ונבנה במתכונת קלה וחינמית. הסימונים ״צפיתי״ ו״שמירה״ נשמרים בדפדפן שלך בלבד. לא צריך להירשם, לשלם או למסור מידע אישי.</p></div>
+<div><div class="kicker">03 / מאחורי המסע</div><h2 id="aboutTitle">לא עוד רשימת שיעורים.</h2><p>כאן נכנסות יצירות וידאו אמיתיות בלבד: סיפורים מצולמים, סרטי אנימציה עלילתיים, סדרות וסרטי תעודה המספרים סיפור. כל יצירה מוצבת בזמן ההיסטורי המתאים לה, עם הבחנה בין מקור, סיפור מסורתי והמחזה אמנותית. אחרי הסרט נפתח גם שער לקריאת ספרי החכם, סיפורי המקורות וההלכות או הרעיונות שלו, בלי להציג טקסט כאילו הוא וידאו.</p><p>האתר עצמאי ונבנה במתכונת קלה וחינמית. הסימונים ״צפיתי״ ו״שמירה״ נשמרים בדפדפן שלך בלבד. לא צריך להירשם, לשלם או למסור מידע אישי.</p></div>
 <div class="info-box"><h3>גם התקופות שעדיין חסרות חשובות</h3><p>אנחנו ממשיכים לחפש יצירות סיפוריות על סבוראים, גאונים, ראשוני צפון אפריקה, חכמי בבל ועיראק, יהדות פרס ותימן, פוסקים, מקובלים ואדמו״רים. לא נוסיף שיעור סטטי או קישור שבור רק כדי למלא תקופה.</p><p id="lastUpdated">עדכון קטלוג: —</p></div>
 </div>
 </section>
 </main>
 <footer class="container"><span>© דורות של אור — אינדקס צפייה חינמי, ללא אירוח יצירות מוגנות. כל הזכויות לסרטים שמורות ליוצריהם.</span><span>אתר עצמאי • <a href="https://shoftim-v3.vercel.app/" target="_blank" rel="noopener">אתר שופטים</a></span></footer>
 <div id="playerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="playerTitle" hidden>
-<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="playNext" class="next" type="button">הסרט הבא ←</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם YouTube חוסם הטמעה, ניתן לפתוח את אתר היוצר.</span></div></div>
+<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="openLearning" type="button">📚 אחרי הסרט: ספרים והלכות</button><button id="playNext" class="next" type="button">הסרט הבא ←</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם YouTube חוסם הטמעה, ניתן לפתוח את אתר היוצר.</span></div></div>
 </div>
 <script>
 (function(){
 "use strict";
 var library={eras:[],items:[]};
+var learning={profiles:[]};
 var state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false};
 var watched=new Set(readArray("sages-watched-v1")),favorites=new Set(readArray("sages-favorites-v1"));
 var activeId=null,lastFocus=null;
@@ -202,6 +229,7 @@ function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){retur
 function validUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:"#"}catch(e){return "#"}}
 function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(s)}
 function itemsSorted(){return library.items.slice().sort(function(a,b){return a.year-b.year||a.title.localeCompare(b.title,"he")})}
+function getProfiles(it){return (learning.profiles||[]).filter(function(p){return (p.mediaIds||[]).indexOf(it.id)!==-1||(it.sageIds||[]).indexOf(p.id)!==-1})}
 function selectedItems(){return itemsSorted().filter(function(it){
 if(state.era&&it.era!==state.era)return false;
 if(state.genre&&it.type!==state.genre)return false;
@@ -209,7 +237,7 @@ if(state.language&&it.language!==state.language)return false;
 if(state.story&&it.type==="דוקומנטרי סיפורי")return false;
 if(state.favorites&&!favorites.has(it.id))return false;
 if(state.unwatched&&watched.has(it.id))return false;
-if(state.query){var q=state.query.toLocaleLowerCase("he").trim();var s=[it.title,it.figure,it.description,it.region,it.century,it.source,it.type].join(" ").toLocaleLowerCase("he");if(!s.includes(q))return false}
+if(state.query){var q=state.query.toLocaleLowerCase("he").trim();var extras=getProfiles(it).map(function(p){return [p.name,p.hook,p.authorship].concat((p.works||[]).map(function(w){return w.title+" "+w.description})).join(" ")}).join(" ");var s=[it.title,it.figure,it.description,it.region,it.century,it.source,it.type,extras].join(" ").toLocaleLowerCase("he");if(!s.includes(q))return false}
 return true;
 })}
 function renderTimeline(){
@@ -218,6 +246,19 @@ library.eras.forEach(function(era){var count=library.items.filter(function(i){re
 pieces.push('<button type="button" data-era="'+esc(era.id)+'" class="timeline-btn'+(state.era===era.id?' active':'')+'" aria-pressed="'+(state.era===era.id)+'"><span class="t-icon" aria-hidden="true">'+esc(era.symbol)+'</span><b>'+esc(era.label)+'</b><small>'+esc(era.range)+'</small><span class="t-count">'+(count?count+' יצירות':'ממשיכים לחפש')+'</span></button>')
 });
 $("timelineRail").innerHTML=pieces.join("");
+}
+
+function renderStudyCard(it){
+var profiles=getProfiles(it);if(!profiles.length)return "";
+var cards=profiles.map(function(p){
+var works=(p.works||[]).map(function(w){
+return '<div class="study-work"><b>'+esc(w.title)+'</b><p>'+esc(w.description)+'</p><a href="'+validUrl(w.url)+'" target="_blank" rel="noopener noreferrer">'+(w.access==="info"?"מידע על הספר":"פתיחת מקור לקריאה")+' ↗</a></div>';
+}).join("");
+function feature(title,data){if(!data)return "";
+return '<div class="study-section"><h5>'+title+'</h5><div class="study-feature"><span class="study-label">'+esc(data.type)+'</span><b>'+esc(data.title)+'</b><p>'+esc(data.text)+'</p><a class="study-source-link" href="'+validUrl(data.url)+'" target="_blank" rel="noopener noreferrer">עיון במקור ↗</a></div></div>'}
+return '<section class="study-person"><h4>'+esc(p.name)+'</h4><p class="study-hook">'+esc(p.hook)+'</p><p class="study-attrib">'+esc(p.authorship)+'</p><div class="study-section"><h5>📖 הספרים והמקורות</h5>'+works+'</div>'+feature("🎭 הסיפור שמאחורי הדברים",p.story)+feature("⚖️ הלכה, רעיון או מורשת",p.idea)+'</section>';
+}).join("");
+return '<details id="learn-'+esc(it.id)+'" class="study-details"><summary>📚 אחרי הסרט: ספרים, סיפורים והלכות</summary><div class="study-inner">'+cards+'<p class="study-disclaimer">'+esc(learning.disclaimer||"מבוא ללימוד בלבד, לא פסיקה למעשה.")+'</p></div></details>';
 }
 function mediaCard(it){
 var isWatched=watched.has(it.id),isFav=favorites.has(it.id),embed=validYoutube(it.youtubeId);
@@ -228,7 +269,7 @@ return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
 '<h3 class="card-title">'+esc(it.title)+'</h3><p class="figure">'+esc(it.figure)+'</p><p class="desc">'+esc(it.description)+'</p><p class="source">'+esc(it.source)+' • '+esc(it.fiction)+'</p>'+
 '<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'">▶ צפייה באתר</button>':'<a class="play-btn external" href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ צפייה באתר היוצר</a>')+
 '<button class="icon-btn'+(isFav?' chosen':'')+'" type="button" data-favorite="'+esc(it.id)+'" aria-label="'+(isFav?'הסר ממועדפים':'שמור במועדפים')+'" aria-pressed="'+isFav+'" title="מועדפים">'+(isFav?'★':'☆')+'</button>'+
-'<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div></div></article>'}
+'<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div>'+renderStudyCard(it)+'</div></article>'}
 function renderCards(){
 var selected=selectedItems(),parts=[];
 $("resultsLabel").innerHTML='נמצאו <b>'+selected.length+'</b> יצירות'+(state.era?' בתקופה שנבחרה':'')+' · '+watched.size+' סומנו כצפיתי';
@@ -281,13 +322,31 @@ $("continueButton").addEventListener("click",function(){var first=itemsSorted().
 $("playerClose").addEventListener("click",closePlayer);
 $("playerModal").addEventListener("click",function(e){if(e.target===$("playerModal"))closePlayer()});
 $("playNext").addEventListener("click",nextFromCurrent);
+$("openLearning").addEventListener("click",function(){
+var id=activeId;closePlayer();if(!id)return;
+if(!document.getElementById("learn-"+id)){
+state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false};
+$("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";
+$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;refresh();
+}
+var d=document.getElementById("learn-"+id);
+if(d){d.open=true;d.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
+});
 $("markWatched").addEventListener("click",function(){if(activeId){watched.add(activeId);save("sages-watched-v1",watched);$("markWatched").textContent="✓ כבר צפיתי";renderCards()}});
 $("sizeButton").addEventListener("click",function(){var large=!document.body.classList.contains("large");document.body.classList.toggle("large",large);try{localStorage.setItem("sages-large",large?"1":"0")}catch(e){}});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closePlayer()});
 try{if(localStorage.getItem("sages-large")==="1")document.body.classList.add("large")}catch(e){}
-fetch("./catalog.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(function(data){if(!data.eras||!data.items||!Array.isArray(data.items))throw new Error("bad data");library=data;
-$("movieCount").textContent=library.items.length;$("eraCount").textContent=library.eras.length;$("embeddedCount").textContent=library.items.filter(function(i){return validYoutube(i.youtubeId)}).length;
-$("lastUpdated").textContent="עדכון הקטלוג: "+data.updatedAt+" · ללא תכנים בתשלום";refresh();
+Promise.all([
+fetch("./catalog.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("catalog HTTP "+r.status);return r.json()}),
+fetch("./sages.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("sages HTTP "+r.status);return r.json()}).catch(function(e){console.warn("Sages loading failed",e);return {profiles:[]}})
+]).then(function(parts){
+var data=parts[0];if(!data.eras||!Array.isArray(data.items))throw Error("bad catalog");
+library=data;learning=parts[1]&&Array.isArray(parts[1].profiles)?parts[1]:{profiles:[]};
+$("movieCount").textContent=library.items.length;$("eraCount").textContent=library.eras.length;
+$("embeddedCount").textContent=library.items.filter(function(i){return validYoutube(i.youtubeId)}).length;
+$("profileCount").textContent=learning.profiles.length;
+$("lastUpdated").textContent="עדכון הקטלוג: "+data.updatedAt+" · "+learning.profiles.length+" תיקי חכמים · ללא תכני צפייה בתשלום";
+refresh();
 }).catch(function(e){$("resultsLabel").textContent="הקטלוג לא נטען";$("mediaResults").innerHTML='<div class="no-results">תקלה בטעינת הספרייה. כדאי לנסות לרענן את הדף.</div>';console.error("Catalog load failure",e)});
 })();
 </script>
