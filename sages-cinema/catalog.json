@@ -288,6 +288,23 @@
       "verified": "2026-10-27"
     },
     {
+      "id": "achnai-bimbam",
+      "title": "תנורו של עכנאי — לא בשמים היא",
+      "figure": "רבי אליעזר וחכמים",
+      "era": "tannaim",
+      "year": 105,
+      "century": "סוף המאה ה־1 / תחילת ה־2",
+      "region": "ארץ ישראל",
+      "type": "אנימציה עלילתית",
+      "language": "אנגלית",
+      "description": "ויכוח סוער על הלכה, אותות מופלאים, סמכות החכמים והמחיר האנושי של המחלוקת.",
+      "source": "BimBam",
+      "url": "https://bimbam.com/achnai/",
+      "youtubeId": "al4FgjbUztI",
+      "fiction": "המחזה מוזיקלית לאגדה בבבא מציעא נ״ט",
+      "verified": "2026-10-27"
+    },
+    {
       "id": "onkelos-mezuzah-shazak-chabad",
       "title": "אונקלוס והמזוזה — החיילים הרומאים (אנימציה)",
       "figure": "אונקלוס הגר וחיילים רומיים",
@@ -307,23 +324,6 @@
       ]
     },
     {
-      "id": "achnai-bimbam",
-      "title": "תנורו של עכנאי — לא בשמים היא",
-      "figure": "רבי אליעזר וחכמים",
-      "era": "tannaim",
-      "year": 105,
-      "century": "סוף המאה ה־1 / תחילת ה־2",
-      "region": "ארץ ישראל",
-      "type": "אנימציה עלילתית",
-      "language": "אנגלית",
-      "description": "ויכוח סוער על הלכה, אותות מופלאים, סמכות החכמים והמחיר האנושי של המחלוקת.",
-      "source": "BimBam",
-      "url": "https://bimbam.com/achnai/",
-      "youtubeId": "al4FgjbUztI",
-      "fiction": "המחזה מוזיקלית לאגדה בבבא מציעא נ״ט",
-      "verified": "2026-10-27"
-    },
-    {
       "id": "akiva-waiting-for-ewe",
       "title": "Waiting for Ewe — רבי עקיבא ורחל",
       "figure": "רבי עקיבא ורחל",
@@ -339,6 +339,25 @@
       "youtubeId": "Q-MDa28_J6Y",
       "fiction": "המחזה לסיפור חז״ל; דמותה ומחשבותיה של רחל מעוצבות בפרשנות היוצרים",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "akiva-forest-all-good-hidabroot-ai",
+      "title": "רבי עקיבא — החמור, התרנגול והנר שכבה",
+      "figure": "רבי עקיבא",
+      "era": "tannaim",
+      "year": 115,
+      "century": "תקופת התנאים, המאה ה־2 בקירוב",
+      "region": "ארץ ישראל",
+      "type": "אנימציית AI סיפורית",
+      "language": "עברית",
+      "description": "עיר מסרבת לארח את רבי עקיבא, ובלילה ביער הוא מאבד בזה אחר זה את הנר, התרנגול והחמור. דווקא בבוקר מתברר מדוע התעקש לראות תקווה גם כשהכול השתבש. עיבוד אנימציה לאגדת ברכות ס׳ ע״ב (2:11 דקות).",
+      "source": "הידברות דיגיטל — סיפורי צדיקים לילדים",
+      "url": "https://www.hidabroot.org/video/224686",
+      "fiction": "עיבוד אגדה תלמודית ב־AI; האירועים אינם שחזור היסטורי מתועד",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "akiva"
+      ]
     },
     {
       "id": "tarfon-honoring-mother-ai-kids",
@@ -413,6 +432,23 @@
       ]
     },
     {
+      "id": "cave-bimbam",
+      "title": "רבי שמעון בר יוחאי — המערה",
+      "figure": "רשב״י ובנו",
+      "era": "tannaim",
+      "year": 155,
+      "century": "המאה ה־2",
+      "region": "ארץ ישראל",
+      "type": "אנימציה עלילתית",
+      "language": "אנגלית",
+      "description": "בריחה מן השלטון הרומי, חיים ממושכים במערה ומפגש חדש עם העולם שבחוץ.",
+      "source": "BimBam",
+      "url": "https://bimbam.com/the-cave/",
+      "youtubeId": "sGoXolgka8k",
+      "fiction": "המחזה לאגדת שבת ל״ג",
+      "verified": "2026-10-27"
+    },
+    {
       "id": "rashbi-hidabroot-following-righteous",
       "title": "בעקבות הצדיקים — רבי שמעון בר יוחאי",
       "figure": "רבי שמעון בר יוחאי",
@@ -430,21 +466,23 @@
       "verified": "2026-10-27"
     },
     {
-      "id": "cave-bimbam",
-      "title": "רבי שמעון בר יוחאי — המערה",
-      "figure": "רשב״י ובנו",
+      "id": "elazar-ben-durdaya-ckids-story",
+      "title": "אלעזר בן דורדיא — כשהתשובה תלויה בי",
+      "figure": "אלעזר בן דורדיא",
       "era": "tannaim",
-      "year": 155,
-      "century": "המאה ה־2",
-      "region": "ארץ ישראל",
-      "type": "אנימציה עלילתית",
+      "year": 185,
+      "century": "שלהי תקופת התנאים (שיוך כרונולוגי משוער, לא שנת לידה)",
+      "region": "ארץ ישראל — מסורת תלמודית",
+      "type": "סרטון סיפורי לילדים",
       "language": "אנגלית",
-      "description": "בריחה מן השלטון הרומי, חיים ממושכים במערה ומפגש חדש עם העולם שבחוץ.",
-      "source": "BimBam",
-      "url": "https://bimbam.com/the-cave/",
-      "youtubeId": "sGoXolgka8k",
-      "fiction": "המחזה לאגדת שבת ל״ג",
-      "verified": "2026-10-27"
+      "description": "במשך שתי דקות וארבעים ואחת שניות מסופר מעשה התשובה המטלטל של אלעזר בן דורדיא, שמבין כי האחריות לשינוי מצויה בידיו. הסרט מבוסס על אגדה בעבודה זרה י״ז ע״א; גרסת הילדים עשויה לעדן את פרטי המקור.",
+      "source": "Chabad.org/Kids — CKids Videos",
+      "url": "https://www.chabad.org/kids/article_cdo/aid/5305643/jewish/The-Story-of-Elazar-Ben-Durdaya.htm",
+      "fiction": "עיבוד אגדה תלמודית; תאריכי חייו של אלעזר אינם ידועים",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "elazar-ben-durdaya"
+      ]
     },
     {
       "id": "rabbi-judah-emperor-secret",
@@ -798,22 +836,6 @@
       ]
     },
     {
-      "id": "ramhal-bac",
-      "title": "אנשי השם — הרמח״ל",
-      "figure": "רבי משה חיים לוצאטו",
-      "era": "acharonim",
-      "year": 1730,
-      "century": "המאה ה־18",
-      "region": "איטליה והולנד",
-      "type": "דוקומנטרי סיפורי",
-      "language": "עברית",
-      "description": "חיים רצופי יצירה, מחלוקות וחשדנות סביב מיסטיקה — סיפורו של בעל מסילת ישרים.",
-      "source": "בית אבי חי",
-      "url": "https://www.bac.org.il/videos/?videoID=7931",
-      "fiction": "תיעוד היסטורי והמחשות",
-      "verified": "2026-10-27"
-    },
-    {
       "id": "besht-hidabroot-english-ai-orphan-light",
       "title": "הבעל שם טוב — מילדות יתומה לאור החסידות",
       "figure": "רבי ישראל בעל שם טוב",
@@ -828,6 +850,22 @@
       "url": "https://www.hidabroot.com/video/6076",
       "youtubeId": "c_Qpx1809-I",
       "fiction": "עיבוד אנימציית AI של ביוגרפיה ומסורות חסידיות; פרטים מן המסורת אינם בהכרח עובדות היסטוריות מאומתות",
+      "verified": "2026-10-27"
+    },
+    {
+      "id": "ramhal-bac",
+      "title": "אנשי השם — הרמח״ל",
+      "figure": "רבי משה חיים לוצאטו",
+      "era": "acharonim",
+      "year": 1730,
+      "century": "המאה ה־18",
+      "region": "איטליה והולנד",
+      "type": "דוקומנטרי סיפורי",
+      "language": "עברית",
+      "description": "חיים רצופי יצירה, מחלוקות וחשדנות סביב מיסטיקה — סיפורו של בעל מסילת ישרים.",
+      "source": "בית אבי חי",
+      "url": "https://www.bac.org.il/videos/?videoID=7931",
+      "fiction": "תיעוד היסטורי והמחשות",
       "verified": "2026-10-27"
     },
     {
@@ -962,6 +1000,25 @@
       "verified": "2026-10-27",
       "sageIds": [
         "nachman"
+      ]
+    },
+    {
+      "id": "abdullah-somekh-shofar-kids-ai",
+      "title": "רבי עבדאללה סומך — האיש שהצמיח מחדש את תורת בגדד",
+      "figure": "רבי עבדאללה סומך",
+      "era": "acharonim",
+      "year": 1870,
+      "century": "המאה ה־19",
+      "region": "בגדד, עיראק",
+      "type": "אנימציית AI סיפורית",
+      "language": "עברית",
+      "description": "מסוחר צעיר למקים בית מדרש שהעמיד דורות של רבנים בבגדד: סיפור מסירותו ללומדים וסיפור המסורת הדרמטי סביב קבורתו. המחזה לילדים של שופר Kids, ויש להבחין בין העובדות ההיסטוריות לבין סיפור הנס המסורתי.",
+      "source": "שופר Kids — סרטון היוצר הרשמי",
+      "url": "https://harav-zharia.shofar.tv/videos/25150",
+      "fiction": "ביוגרפיה בהמחזה; סיפור שלמות הגוף בעת העברת הקבר הוא מסורת פלאית, לא עובדה היסטורית מוכחת",
+      "verified": "2026-10-27",
+      "sageIds": [
+        "abdullah-somekh"
       ]
     },
     {
