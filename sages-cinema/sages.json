@@ -42,7 +42,8 @@
       "id": "hillel-hazaken",
       "name": "הלל הזקן",
       "mediaIds": [
-        "hillel-shammai-machlochet-bimbam-he"
+        "hillel-shammai-machlochet-bimbam-he",
+        "hillel-golden-rule-ruach-animation"
       ],
       "authorship": "הלל לא הותיר ספר אישי שחיבר. דבריו, הנהגותיו והמחלוקות שבין בתי המדרש שנקראו על שמו ועל שם שמאי נמסרו במשנה ובתלמוד; אין לייחס לו את עריכת המשנה.",
       "hook": "שני חכמים מבקשים אמת, ושאלה אחת מרחפת מעל בית המדרש: האם אפשר לחלוק בלי להרוס את השלום?",
@@ -64,6 +65,12 @@
           "description": "המשנה מציגה את מחלוקת הלל ושמאי כדוגמה למחלוקת שיש לה מקום בתוך עולם התורה.",
           "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%A0%D7%94%20%D7%90%D7%91%D7%95%D7%AA%20%D7%94%20%D7%99%D7%96",
           "access": "read"
+        },
+        {
+          "title": "שבת ל״א ע״א — כל התורה על רגל אחת",
+          "description": "המפגש עם המתגייר, דברי הלל על היחס לזולת וההפניה להמשך לימוד התורה.",
+          "url": "https://www.sefaria.org/Shabbat.31a?lang=he",
+          "access": "read"
         }
       ],
       "story": {
@@ -83,7 +90,8 @@
       "id": "shammai-hazaken",
       "name": "שמאי הזקן",
       "mediaIds": [
-        "hillel-shammai-machlochet-bimbam-he"
+        "hillel-shammai-machlochet-bimbam-he",
+        "hillel-golden-rule-ruach-animation"
       ],
       "authorship": "לא ידוע על ספר שכתב שמאי בעצמו; אמרותיו נשמרו במסכת אבות ובמקורות חז״ל. יש להבחין בין שמאי האיש לבין בית שמאי של תלמידיו וממשיכי דרכו.",
       "hook": "לא די לומר דבר נכון: צריך גם להתמסר ללימוד, לקיים הבטחות ולפגוש אנשים בפנים טובות.",
@@ -98,6 +106,12 @@
           "title": "משנה אבות ה, יז — מחלוקת לשם שמיים",
           "description": "מקומן של מחלוקות הלל ושמאי במסורת המשנה; הטקסט נמסר עליהם ולא חובר בידיהם.",
           "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%A0%D7%94%20%D7%90%D7%91%D7%95%D7%AA%20%D7%94%20%D7%99%D7%96",
+          "access": "read"
+        },
+        {
+          "title": "שבת ל״א ע״א — גר המבקש ללמוד על רגל אחת",
+          "description": "הגמרא מספרת על פניית הגר לשמאי ואחר כך להלל. זהו סיפור תלמודי על גישות שונות, לא ספר שחיבר שמאי.",
+          "url": "https://www.sefaria.org/Shabbat.31a?lang=he",
           "access": "read"
         }
       ],
@@ -147,6 +161,41 @@
         "text": "המשנה מתארת את חפירת מקורות המים לציבור; הסוגיה בבבא קמא עוסקת גם באחריות לנזקי בור. זו הבחנה בין פועלו הציבורי של נחוניה לבין ההלכה הכללית של הסוגיה.",
         "url": "https://www.sefaria.org/Bava_Kamma.50a?lang=he",
         "type": "משנה וסוגיה הלכתית"
+      }
+    },
+    {
+      "id": "nachum-ish-gamzu",
+      "name": "נחום איש גם זו",
+      "mediaIds": [
+        "nachum-ish-gamzu-ruach-animation"
+      ],
+      "authorship": "נחום איש גם זו מוכר ממסורות התנאים ומסיפורי התלמוד; אין בידינו ספר עצמאי שחיבר. תיאורי הניסים נלמדים כאגדות חז״ל, ולא כעדות היסטורית מאומתת.",
+      "hook": "תיבת אוצר ריקה, שליח שנראה אבוד, ומשפט אחד שאינו נכנע לייאוש.",
+      "works": [
+        {
+          "title": "תענית כ״א ע״א — נחום איש גם זו והתיבה",
+          "description": "הסיפור המלא על השליח לקיסר, הגניבה והעפר שנעשה לאות נס בסיפור הגמרא.",
+          "url": "https://www.sefaria.org/Taanit.21a?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "תענית כ״א ע״א — מפגש עם העני בדרך",
+          "description": "אגדה נוספת המסופרת על נחום, ובה חשבון נפש קשה על עיכוב במתן עזרה.",
+          "url": "https://www.sefaria.org/Taanit.21a.9?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "כשהאבנים הטובות נהפכו לעפר",
+        "text": "הגמרא מספרת שנחום נשלח עם תיבה מלאה אבנים יקרות כמתנה למלך. גנבים החליפו אותן בעפר; נחום דבק באמונתו, ובסיפור התלמודי אליהו הנביא מסייע להראות שהעפר אינו מתנה חסרת ערך. זו אגדה תלמודית, לא תיעוד מאומת.",
+        "url": "https://www.sefaria.org/Taanit.21a?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "גם זו לטובה — בלי להתעלם מן האחריות",
+        "text": "הסיפורים על נחום מציגים אמון בהתפתחותם של אירועים, אך גם נדרשים לבחון את אחריותו כאשר לא הספיק לעזור לעני. אין ללמוד מהם הלכה למעשה בלי עיון נוסף.",
+        "url": "https://www.sefaria.org/Taanit.21a?lang=he",
+        "type": "מוסר ואגדה"
       }
     },
     {
@@ -458,7 +507,8 @@
       "name": "רבי שמעון בר יוחאי",
       "mediaIds": [
         "rashbi-hidabroot-following-righteous",
-        "cave-bimbam"
+        "cave-bimbam",
+        "zohar-wise-have-eyes-bimbam"
       ],
       "authorship": "הזוהר מיוחס לרשב״י במסורת; המחקר רואה את התגבשותו בימי הביניים. אין להציגו כחיבור אישי מוסכם.",
       "hook": "כיצד שבים מעולם המערה אל חיי האדם הפשוט?",
@@ -480,6 +530,12 @@
           "description": "סקירת שאלת ייחוס חיבור הזוהר.",
           "url": "https://exhibition.nli.org.il/he/exhibition-items/zohar",
           "access": "info"
+        },
+        {
+          "title": "סבא דמשפטים — משל העלמה, זוהר ח״ב צד ע״ב–צה ע״א",
+          "description": "קטע קבלי דרמטי מתוך הזוהר. הייחוס לרשב״י הוא מסורתי, בעוד המחקר ממקם את התגבשות הזוהר בימי הביניים.",
+          "url": "https://www.zoharonline.org/zohar/volume-2/mishpatim/daf-94b/",
+          "access": "read"
         }
       ],
       "story": {
@@ -905,7 +961,8 @@
       "mediaIds": [
         "baal-shem-tov-hidabroot-animation",
         "hasidic-sages-destiny-stories",
-        "besht-hidabroot-english-ai-orphan-light"
+        "besht-hidabroot-english-ai-orphan-light",
+        "besht-yaakov-eliyahu-stopmotion-chabad"
       ],
       "authorship": "לא ידוע על ספר שכתב בעצמו באופן שיטתי. 'כתר שם טוב' הוא לקט מאוחר, ומסורות רבות נרשמו בידי תלמידים.",
       "hook": "כיצד נולדת שפה חסידית של תפילה, דבקות ושמחה?",
