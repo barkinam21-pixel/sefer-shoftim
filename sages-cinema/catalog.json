@@ -1657,6 +1657,25 @@
       "verified": "2026-10-28"
     },
     {
+      "id": "besht-four-points-radiance-chabad-documentary",
+      "title": "ארבע נקודות של אור — הבעל שם טוב והולדת החסידות",
+      "figure": "רבי ישראל בעל שם טוב",
+      "era": "hasidut",
+      "year": 1740,
+      "century": "המאה ה־18 — ראשית התנועה החסידית",
+      "region": "פודוליה, מזרח אירופה",
+      "type": "פרק דוקומנטרי היסטורי עם חוקרים — 10:54 דקות",
+      "language": "אנגלית",
+      "description": "כיצד התחילה החסידות לשנות את עולמם של יהודי מזרח אירופה? היסטוריונים וחוקרים מספרים על דמותו של הבעל שם טוב, סביבתו וצמיחתה של דרך חדשה בעבודת ה׳. פרק נפרד בסדרת הסרטים התיעודיים Four Points of Radiance.",
+      "source": "Jewish Educational Media / Chabad.org — Four Points of Radiance, פרק רשמי לצפייה חופשית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1211771/jewish/The-Baal-Shem-Tov.htm",
+      "sageIds": [
+        "besht"
+      ],
+      "fiction": "סרט תיעודי פרשני עם חוקרים; פרטים על חיי הבעל שם טוב במסורות חסידיות אינם כולם ניתנים לאימות היסטורי.",
+      "verified": "2026-10-28"
+    },
+    {
       "id": "shalom-sharabi-batzri-journey",
       "title": "בעקבות הצדיקים — הרש״ש: מתימן לירושלים",
       "figure": "רבי שלום שרעבי (הרש״ש)",
@@ -1736,6 +1755,25 @@
         "shneur-zalman-liadi"
       ],
       "fiction": "תיעוד ביוגרפי מנקודת המבט של מפיק חב״די; מסורות חסידיות ותיאורים דתיים אינם כשלעצמם אימות היסטורי עצמאי.",
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "alter-rebbe-legacy-four-points-chabad-documentary",
+      "title": "ארבע נקודות של אור — האדמו״ר הזקן: דרך חדשה ומאסר ברוסיה",
+      "figure": "רבי שניאור זלמן מלאדי — בעל התניא",
+      "era": "hasidut",
+      "year": 1798,
+      "century": "סוף המאה ה־18 — מאסר האדמו״ר הזקן בשנת 1798",
+      "region": "בלארוס ורוסיה הצארית",
+      "type": "פרק דוקומנטרי היסטורי עם חוקרים — 8:25 דקות",
+      "language": "אנגלית",
+      "description": "פרק תיעודי העוקב אחר מפעלו של מייסד חסידות חב״ד, הדיון בדרכו החדשה ומאסרו בידי השלטון הצארי בשנת 1798. חוקרים מסבירים את המשמעות של האירועים ואת המורשת שנולדה מהם. זהו פרק נפרד מהסרט 'Scholarship and Song' שכבר באתר.",
+      "source": "Jewish Educational Media / Chabad.org — Four Points of Radiance, פרק רשמי לצפייה חופשית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1212127/jewish/The-Alter-Rebbes-Legacy.htm",
+      "sageIds": [
+        "shneur-zalman-liadi"
+      ],
+      "fiction": "תיאור היסטורי תיעודי המשולב בפרשנות חוקרים ובמסורת חב״ד; לא שחזור מצולם של המאסר.",
       "verified": "2026-10-28"
     },
     {
@@ -2287,6 +2325,25 @@
         "shmuel-wosner"
       ],
       "fiction": "עיבוד ביוגרפי באמצעות תמונות והמחשות AI; סצנות ודיאלוגים מונפשים אינם צילומים היסטוריים ואינם מקור עובדתי עצמאי.",
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "lubavitcher-rebbe-four-points-radiance-chabad-documentary",
+      "title": "ארבע נקודות של אור — הרבי מלובביץ׳ והנהגת חב״ד בדור החדש",
+      "figure": "רבי מנחם מנדל שניאורסון — הרבי מלובביץ׳",
+      "era": "modern",
+      "year": 1951,
+      "century": "אמצע המאה ה־20 — תחילת הנהגתו של הרבי",
+      "region": "ברוקלין, ניו יורק והשפעת חב״ד בעולם",
+      "type": "פרק דוקומנטרי היסטורי — 12:12 דקות",
+      "language": "אנגלית",
+      "description": "פרק התעודה המסכם את ארבע נקודות האור: הרב מנחם מנדל שניאורסון עומד בראש תנועת חב״ד בעולם שאחרי השואה ומוביל את התפשטות השליחות והחינוך מעבר לניו יורק. הפרק הוא יצירה תיעודית נפרדת מהסרט על משפט הספרים שכבר בקטלוג.",
+      "source": "Jewish Educational Media / Chabad.org — Four Points of Radiance, פרק רשמי לצפייה חופשית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1213026/jewish/The-Lubavitcher-Rebbe.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "סרט תיעודי מנקודת מבט חב״דית; אין לראות בפרשנות היסטורית הסכמה של כלל החוקרים לכל טענה.",
       "verified": "2026-10-28"
     },
     {
