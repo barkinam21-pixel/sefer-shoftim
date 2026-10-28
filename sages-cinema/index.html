@@ -162,6 +162,27 @@ footer a{text-decoration:underline}
 .study-disclaimer{margin-top:15px;font-size:11px;color:#9cada9;border-top:1px solid #33494a;padding-top:11px;line-height:1.7}
 @media(max-width:720px){.study-details>summary{min-height:51px}.study-inner{padding:13px 11px}.study-work a,.study-source-link{min-height:43px}}
 
+
+/* Compact, optional learning cards: keep the films as the primary experience. */
+.study-details{margin-top:8px;padding-top:9px}
+.study-details>summary{min-height:39px;padding:6px 10px;border-color:#35474b;background:rgba(236,196,138,.035);color:#d0c1a4;font-size:12px;font-weight:650}
+.study-details[open]>summary{background:#22343a}
+.study-inner{padding:12px 11px}
+.study-person h4{font-size:17px;margin:0 0 7px}
+.study-person+.study-person{margin-top:16px;padding-top:12px}
+.study-mini-label{font-size:11px;color:#b8c2ba;margin:0 0 6px}
+.study-pills,.study-more-list{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.study-pill,.study-more>summary{display:inline-flex;min-height:33px;align-items:center;background:#263b40;border:1px solid #43575c;border-radius:8px;padding:4px 9px;color:#f3d9b2;font-size:11px;line-height:1.45}
+.study-pill:hover,.study-more>summary:hover{background:#334a4f}
+.study-more{width:100%;border:0;margin-top:3px}
+.study-more>summary{cursor:pointer;list-style:none;width:max-content;max-width:100%;color:#b8c9c5}
+.study-more>summary::-webkit-details-marker{display:none}
+.study-more-list{margin-top:8px}
+.study-quick-line{font-size:12px;color:#b7c8c3;margin:9px 0 0;line-height:1.6}
+.study-quick-line b{color:#e6d5b5}
+.study-tiny-link{font-size:11px;color:var(--gold);white-space:nowrap;text-decoration:underline}
+.study-authorship{margin:10px 0 0;font-size:11px;color:#9aaea9;line-height:1.6;border-top:1px solid #314349;padding-top:8px}
+.study-details:not([open]) .study-inner{display:none}
 </style>
 </head>
 <body>
@@ -180,7 +201,7 @@ footer a{text-decoration:underline}
 <h1>דורות <em>של אור.</em></h1>
 <p class="hero-text">לפגוש את גדולי ישראל דרך הסיפורים, האנשים והאירועים שעיצבו דורות של תורה. מסע צפייה כרונולוגי מהתנאים והאמוראים, דרך הראשונים והאחרונים ועד גדולי המזרח והחסידות — <strong>בלי שיעורים רגילים ובלי תשלום לצפייה בתכנים שבאוסף.</strong></p>
 <div class="hero-actions"><a class="primary-btn" href="#library">▶ התחילו במסע</a><a class="secondary-btn" href="#timeline">לגלות את התקופות ↓</a></div>
-<div class="hero-numbers" aria-label="נתוני האתר"><div class="metric"><strong id="movieCount">—</strong><span>סרטים וסיפורים</span></div><div class="metric"><strong id="eraCount">—</strong><span>תחנות בציר הזמן</span></div><div class="metric"><strong id="embeddedCount">—</strong><span>נגנים בתוך האתר</span></div><div class="metric"><strong id="profileCount">—</strong><span>תיקי חכמים</span></div></div>
+<div class="hero-numbers" aria-label="נתוני האתר"><div class="metric"><strong id="movieCount">—</strong><span>סרטים וסיפורים</span></div><div class="metric"><strong id="eraCount">—</strong><span>תחנות בציר הזמן</span></div><div class="metric"><strong id="embeddedCount">—</strong><span>נגנים בתוך האתר</span></div></div>
 </div>
 <div class="hero-art" aria-hidden="true"><div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div><div class="art-center">אור</div><span class="orbit-tag tag-a">תנאים</span><span class="orbit-tag tag-b">ראשונים</span><span class="orbit-tag tag-c">חסידות</span><span class="orbit-tag tag-d">אמוראים</span></div>
 </div>
@@ -205,14 +226,14 @@ footer a{text-decoration:underline}
 </section>
 <section class="about" id="about" aria-labelledby="aboutTitle">
 <div class="container about-grid">
-<div><div class="kicker">03 / מאחורי המסע</div><h2 id="aboutTitle">לא עוד רשימת שיעורים.</h2><p>כאן נכנסות יצירות וידאו אמיתיות בלבד: סיפורים מצולמים, סרטי אנימציה עלילתיים, סדרות וסרטי תעודה המספרים סיפור. כל יצירה מוצבת בזמן ההיסטורי המתאים לה, עם הבחנה בין מקור, סיפור מסורתי והמחזה אמנותית. אחרי הסרט נפתח גם שער לקריאת ספרי החכם, סיפורי המקורות וההלכות או הרעיונות שלו, בלי להציג טקסט כאילו הוא וידאו.</p><p>האתר עצמאי ונבנה במתכונת קלה וחינמית. הסימונים ״צפיתי״ ו״שמירה״ נשמרים בדפדפן שלך בלבד. לא צריך להירשם, לשלם או למסור מידע אישי.</p></div>
+<div><div class="kicker">03 / מאחורי המסע</div><h2 id="aboutTitle">לא עוד רשימת שיעורים.</h2><p>כאן נכנסות יצירות וידאו אמיתיות בלבד: סיפורים מצולמים, סרטי אנימציה עלילתיים, סדרות וסרטי תעודה המספרים סיפור. כל יצירה מוצבת בזמן ההיסטורי המתאים לה, עם הבחנה בין מקור, סיפור מסורתי והמחזה אמנותית. בלחיצה אחת אפשר גם להציץ בספרים ובמקורות של החכם, בלי לפגוע בחוויית הצפייה.</p><p>האתר עצמאי ונבנה במתכונת קלה וחינמית. הסימונים ״צפיתי״ ו״שמירה״ נשמרים בדפדפן שלך בלבד. לא צריך להירשם, לשלם או למסור מידע אישי.</p></div>
 <div class="info-box"><h3>גם התקופות שעדיין חסרות חשובות</h3><p>אנחנו ממשיכים לחפש יצירות סיפוריות על סבוראים, גאונים, ראשוני צפון אפריקה, חכמי בבל ועיראק, יהדות פרס ותימן, פוסקים, מקובלים ואדמו״רים. לא נוסיף שיעור סטטי או קישור שבור רק כדי למלא תקופה.</p><p id="lastUpdated">עדכון קטלוג: —</p></div>
 </div>
 </section>
 </main>
 <footer class="container"><span>© דורות של אור — אינדקס צפייה חינמי, ללא אירוח יצירות מוגנות. כל הזכויות לסרטים שמורות ליוצריהם.</span><span>אתר עצמאי • <a href="https://shoftim-v3.vercel.app/" target="_blank" rel="noopener">אתר שופטים</a></span></footer>
 <div id="playerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="playerTitle" hidden>
-<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="openLearning" type="button">📚 אחרי הסרט: ספרים והלכות</button><button id="playNext" class="next" type="button">הסרט הבא ←</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם YouTube חוסם הטמעה, ניתן לפתוח את אתר היוצר.</span></div></div>
+<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="openLearning" type="button">📚 ספרים בקצרה</button><button id="playNext" class="next" type="button">הסרט הבא ←</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם YouTube חוסם הטמעה, ניתן לפתוח את אתר היוצר.</span></div></div>
 </div>
 <script>
 (function(){
@@ -248,18 +269,44 @@ pieces.push('<button type="button" data-era="'+esc(era.id)+'" class="timeline-bt
 $("timelineRail").innerHTML=pieces.join("");
 }
 
-function renderStudyCard(it){
-var profiles=getProfiles(it);if(!profiles.length)return "";
-var cards=profiles.map(function(p){
-var works=(p.works||[]).map(function(w){
-return '<div class="study-work"><b>'+esc(w.title)+'</b><p>'+esc(w.description)+'</p><a href="'+validUrl(w.url)+'" target="_blank" rel="noopener noreferrer">'+(w.access==="info"?"מידע על הספר":"פתיחת מקור לקריאה")+' ↗</a></div>';
-}).join("");
-function feature(title,data){if(!data)return "";
-return '<div class="study-section"><h5>'+title+'</h5><div class="study-feature"><span class="study-label">'+esc(data.type)+'</span><b>'+esc(data.title)+'</b><p>'+esc(data.text)+'</p><a class="study-source-link" href="'+validUrl(data.url)+'" target="_blank" rel="noopener noreferrer">עיון במקור ↗</a></div></div>'}
-return '<section class="study-person"><h4>'+esc(p.name)+'</h4><p class="study-hook">'+esc(p.hook)+'</p><p class="study-attrib">'+esc(p.authorship)+'</p><div class="study-section"><h5>📖 הספרים והמקורות</h5>'+works+'</div>'+feature("🎭 הסיפור שמאחורי הדברים",p.story)+feature("⚖️ הלכה, רעיון או מורשת",p.idea)+'</section>';
-}).join("");
-return '<details id="learn-'+esc(it.id)+'" class="study-details"><summary>📚 אחרי הסרט: ספרים, סיפורים והלכות</summary><div class="study-inner">'+cards+'<p class="study-disclaimer">'+esc(learning.disclaimer||"מבוא ללימוד בלבד, לא פסיקה למעשה.")+'</p></div></details>';
+function briefStudyText(value,limit){
+var s=String(value||"").replace(/\s+/g," ").trim();
+if(s.length<=limit)return s;
+var cut=s.lastIndexOf(" ",limit);
+return s.slice(0,cut>limit*.6?cut:limit).replace(/[\s,;:.!?]+$/,"")+"…";
 }
+function renderStudyCard(it){
+var profiles=getProfiles(it);
+if(!profiles.length)return "";
+function workLink(w){
+var title=briefStudyText(w.title,64);
+return '<a class="study-pill" title="'+esc(w.title)+'" href="'+validUrl(w.url)+'" target="_blank" rel="noopener noreferrer">'+esc(title)+(w.access==="info"?' · מידע ↗':' ↗')+'</a>';
+}
+function briefFeature(label,feature){
+if(!feature||!feature.text)return "";
+var source=feature.url?'<a class="study-tiny-link" href="'+validUrl(feature.url)+'" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור: '+esc(feature.title||label)+'">למקור ↗</a>':"";
+return '<p class="study-quick-line"><b>'+label+':</b> '+esc(briefStudyText(feature.text,135))+' '+source+'</p>';
+}
+var cards=profiles.map(function(p){
+var works=(p.works||[]).filter(function(w){return w.title&&w.url});
+if(p.id==="rambam"){
+var featured=["משנה תורה","מורה הנבוכים","ספר המצוות"];
+works.sort(function(a,b){
+function score(t){for(var k=0;k<featured.length;k++){if(String(t).includes(featured[k]))return k}return 10}
+return score(a.title)-score(b.title);
+});
+}
+var primary=works.slice(0,3).map(workLink).join("");
+var remaining=works.slice(3);
+var more=remaining.length?'<details class="study-more"><summary>עוד '+remaining.length+' ספרים ומקורות</summary><div class="study-more-list">'+remaining.map(workLink).join("")+'</div></details>':"";
+var note=p.authorship?'<p class="study-authorship">'+esc(briefStudyText(p.authorship,170))+'</p>':"";
+return '<section class="study-person"><h4>'+esc(p.name)+'</h4>'+
+(works.length?'<p class="study-mini-label">ספרים ומקורות חשובים</p><div class="study-pills">'+primary+more+'</div>':'')+
+briefFeature("הסיפור",p.story)+briefFeature("רעיון או הלכה",p.idea)+note+'</section>';
+}).join("");
+return '<details id="learn-'+esc(it.id)+'" class="study-details"><summary>📚 עוד על החכם — בקצרה</summary><div class="study-inner">'+cards+'</div></details>';
+}
+
 function mediaCard(it){
 var isWatched=watched.has(it.id),isFav=favorites.has(it.id),embed=validYoutube(it.youtubeId);
 var poster=embed?'<img loading="lazy" decoding="async" src="https://i.ytimg.com/vi/'+it.youtubeId+'/hqdefault.jpg" alt="" referrerpolicy="no-referrer">':'<span class="symbol" aria-hidden="true">✦</span>';
@@ -298,7 +345,7 @@ function toggleWatched(id){if(watched.has(id))watched.delete(id);else watched.ad
 function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);save("sages-favorites-v1",favorites);renderCards()}
 function openItem(id){var it=library.items.find(function(x){return x.id===id});if(!it)return;
 if(!validYoutube(it.youtubeId)){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
-lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=validUrl(it.url);$("playerModal").hidden=false;document.body.classList.add("locked");
+lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=validUrl(it.url);$("openLearning").hidden=!getProfiles(it).length;$("playerModal").hidden=false;document.body.classList.add("locked");
 var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src="https://www.youtube-nocookie.com/embed/"+it.youtubeId+"?autoplay=1&rel=0";$("videoStage").replaceChildren(frame);
 $("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";$("playerClose").focus();
 }
@@ -344,7 +391,7 @@ var data=parts[0];if(!data.eras||!Array.isArray(data.items))throw Error("bad cat
 library=data;learning=parts[1]&&Array.isArray(parts[1].profiles)?parts[1]:{profiles:[]};
 $("movieCount").textContent=library.items.length;$("eraCount").textContent=library.eras.length;
 $("embeddedCount").textContent=library.items.filter(function(i){return validYoutube(i.youtubeId)}).length;
-$("profileCount").textContent=learning.profiles.length;
+
 $("lastUpdated").textContent="עדכון הקטלוג: "+data.updatedAt+" · "+learning.profiles.length+" תיקי חכמים · ללא תכני צפייה בתשלום";
 refresh();
 }).catch(function(e){$("resultsLabel").textContent="הקטלוג לא נטען";$("mediaResults").innerHTML='<div class="no-results">תקלה בטעינת הספרייה. כדאי לנסות לרענן את הדף.</div>';console.error("Catalog load failure",e)});
