@@ -334,7 +334,8 @@
       "name": "רבן יוחנן בן זכאי",
       "mediaIds": [
         "yavneh-bimbam",
-        "legend-destruction-kan11-full"
+        "legend-destruction-kan11-full",
+        "rybz-keshet-vaanan-ten-li-yavneh-kan"
       ],
       "authorship": "דבריו ותקנותיו במשנה ובתלמוד; לא ידוע על ספר עצמאי שחיבר.",
       "hook": "חורבן ירושלים הופך לרגע שבו צריך להציל את עתיד התורה.",
@@ -873,7 +874,8 @@
       "id": "halevi",
       "name": "רבי יהודה הלוי",
       "mediaIds": [
-        "halevi-bac"
+        "halevi-bac",
+        "yehuda-halevi-keshet-vaanan-zion-halo-tishali-kan"
       ],
       "authorship": "חיבר את הכוזרי ופיוטים, ובהם פיוטי הכיסופים לציון.",
       "hook": "מלך חולם חלום שמעורר אותו לחפש אמת, לא רק מחשבה יפה.",
@@ -888,6 +890,12 @@
           "title": "ציון הלא תשאלי",
           "description": "פיוט הכיסופים המפורסם לארץ ישראל.",
           "url": "https://he.wikisource.org/wiki/%D7%A6%D7%99%D7%95%D7%9F%20%D7%94%D7%9C%D7%90%20%D7%AA%D7%A9%D7%90%D7%9C%D7%99",
+          "access": "read"
+        },
+        {
+          "title": "לבי במזרח — משירי ציון",
+          "description": "שירו הקצר של רבי יהודה הלוי על הגעגועים לארץ ישראל, לקריאה חופשית במקור המציגו כנחלת הכלל.",
+          "url": "https://benyehuda.org/read/18581",
           "access": "read"
         }
       ],
