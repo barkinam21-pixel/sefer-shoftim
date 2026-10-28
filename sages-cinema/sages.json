@@ -1372,6 +1372,12 @@
           "description": "חיבור מוקדם על אוצר מילים, פתיחות וסיומות לחריזה והעברית של הפיוט. שרידים ומהדורות פורסמו בדורות מאוחרים; כאן רשומת ספר הכוללת הקדמות וקטעי אגרון, לא הבטחה לטקסט מלא פתוח.",
           "url": "https://www.nli.org.il/he/books/NNL_ALEPH990020410630205171/NLI",
           "access": "info"
+        },
+        {
+          "title": "תפסיר רס״ג — תרגום התורה לערבית־יהודית (קטעים)",
+          "description": "תרגומו ופירושו של רב סעדיה גאון לתורה בערבית־יהודית, כאן בתעתיק עברי ובתעתיק ערבי. פרקים אחדים זמינים לקריאה חופשית בוויקיטקסט; ההקלדה אינה מלאה ואין להציג זאת כספר שלם.",
+          "url": "https://he.wikisource.org/wiki/תפסיר_רס%22ג",
+          "access": "read"
         }
       ],
       "story": {
@@ -1574,6 +1580,12 @@
           "title": "הקדמתו לבראשית",
           "description": "דיון מרתק בדרכי פירוש שונות.",
           "url": "https://www.sefaria.org/Ibn_Ezra_on_Genesis%2C_Introduction.25?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "שפת יתר — הגנת אבן עזרא על פירושי רס״ג",
+          "description": "חיבורו של רבי אברהם אבן עזרא, המגן על פירושי רב סעדיה גאון מפני השגות דונש בן לברט. נוסח הספר זמין לקריאה חופשית בוויקיטקסט; המחבר הוא אבן עזרא ולא רס״ג.",
+          "url": "https://he.wikisource.org/wiki/ספר_שפת_יתר",
           "access": "read"
         }
       ],
@@ -2066,7 +2078,8 @@
         "hasidic-sages-destiny-stories",
         "besht-hidabroot-english-ai-orphan-light",
         "besht-yaakov-eliyahu-stopmotion-chabad",
-        "besht-kesh-vaanan-kan-story"
+        "besht-kesh-vaanan-kan-story",
+        "besht-four-points-radiance-chabad-documentary"
       ],
       "authorship": "לא ידוע על ספר שכתב בעצמו באופן שיטתי. 'כתר שם טוב' הוא לקט מאוחר, ומסורות רבות נרשמו בידי תלמידים.",
       "hook": "כיצד נולדת שפה חסידית של תפילה, דבקות ושמחה?",
@@ -2324,7 +2337,8 @@
       "id": "shneur-zalman-liadi",
       "name": "רבי שניאור זלמן מלאדי — בעל התניא, האדמו״ר הזקן",
       "mediaIds": [
-        "shneur-zalman-scholarship-song-jem-doc"
+        "shneur-zalman-scholarship-song-jem-doc",
+        "alter-rebbe-legacy-four-points-chabad-documentary"
       ],
       "hook": "באירופה של סוף המאה השמונה־עשרה מתחבר בית מדרש של הלכה אל שפתה הפנימית של החסידות; ואז המנהיג נלקח למאסר והדרך כולה עומדת למבחן.",
       "authorship": "רבי שניאור זלמן מלאדי (1745–1812) הוא מחבר 'ליקוטי אמרים — תניא' ובעל 'שולחן ערוך הרב'. חלקים מספרותו הנוספת הם דרושים שנמסרו בעל פה ונערכו לדפוס בידי תלמידים וצאצאים; אין להציג כל אוסף שנדפס משמו כספר שערך בעצמו.",
@@ -2936,7 +2950,8 @@
       "name": "רבי מנחם מנדל שניאורסון — הרבי מלובביץ׳",
       "mediaIds": [
         "rayatz-jem-embers-soviet-jewry",
-        "lubavitch-library-movement-on-trial-jem"
+        "lubavitch-library-movement-on-trial-jem",
+        "lubavitcher-rebbe-four-points-radiance-chabad-documentary"
       ],
       "hook": "בשלהי המאה העשרים הציב הרבי מליובאוויטש לימוד, שליחות וספרים במרכז רשת קהילתית שחצתה גבולות.",
       "authorship": "הרבי חיבר מכתבים, רשימות וביאורים והשמיע אלפי שיחות ומאמרים. 'היום יום' נערך על ידו בשנת 1942 מתוך דברי אדמו״רי חב״ד לפי הוראת חותנו; 'ליקוטי שיחות' מבוסס על דבריו וליקוטים שנערכו ופורסמו, ואינו יצירה שחיבר כולה כספר במו ידיו.",
