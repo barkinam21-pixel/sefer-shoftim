@@ -485,7 +485,7 @@ $("maaserSheniLessons").addEventListener("click",e=>{
 });
 $("maaserSheniContinue").addEventListener("click",()=>{
  let chapter=maaserSheniChapter,n=Array.from({length:msCount(chapter)},(_,i)=>i+1).find(x=>!maaserSheniLearned[msKey(chapter,x)]);
- if(!n&&chapter<3){maaserSheniChapter=chapter+1;chapter=maaserSheniChapter;n=Array.from({length:msCount(chapter)},(_,i)=>i+1).find(x=>!maaserSheniLearned[msKey(chapter,x)]);renderMaaserSheni();}
+ while(!n&&chapter<3){maaserSheniChapter=chapter+1;chapter=maaserSheniChapter;n=Array.from({length:msCount(chapter)},(_,i)=>i+1).find(x=>!maaserSheniLearned[msKey(chapter,x)]);renderMaaserSheni();}
  if(!n){notify("כל המשניות בפרק הזה סומנו כנלמדות.");return;}
  const slot=document.querySelector('[data-ms-slot="'+n+'"]');if(slot)slot.scrollIntoView({behavior:"smooth",block:"center"});
 });
