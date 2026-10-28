@@ -9,7 +9,8 @@
       "mediaIds": [
         "mordechai-esther-torahbox-purim-film-2026",
         "purim-the-lot-chabad-ladybug-full",
-        "esther-queen-persia-shazak-free-chabad"
+        "esther-queen-persia-shazak-free-chabad",
+        "purim-miniature-sufrin-chabad-puppets"
       ],
       "hook": "מאחורי חומות הארמון ניצבת מלכה מול בחירה שמעמידה את חייה ואת חיי עמה על הכף.",
       "authorship": "דמותה של אסתר עומדת במרכז המגילה הקרויה בשמה, אך אין לקבוע שהיא חיברה לבדה את נוסחה. מגילה ז׳ ע״א עוסקת בבקשתה להנציח את המאורעות; בבא בתרא ט״ו ע״א מייחס את כתיבת המגילה לאנשי כנסת הגדולה במסורת חז״ל.",
@@ -46,7 +47,8 @@
       "mediaIds": [
         "mordechai-esther-torahbox-purim-film-2026",
         "purim-the-lot-chabad-ladybug-full",
-        "esther-queen-persia-shazak-free-chabad"
+        "esther-queen-persia-shazak-free-chabad",
+        "purim-miniature-sufrin-chabad-puppets"
       ],
       "hook": "בשער המלך בשושן יושב אדם שסרב להשתחוות; מהחלטתו מתחיל מאבק על חיי יהודי הממלכה.",
       "authorship": "מגילת אסתר מספרת על מרדכי ומזכירה את כתיבתו (אסתר ט, כ), אולם אין להציגו כמחבר יחיד מוכח של מגילת אסתר. במסורת חז״ל בבבא בתרא ט״ו ע״א מיוחסת כתיבת המגילה לאנשי כנסת הגדולה.",
@@ -2650,6 +2652,47 @@
         "text": "יש להפריד בין לימוד קבלה והנהגות רוחניות לבין הוראה הלכתית למעשה.",
         "url": "https://ravbiton.com/maamar-yehuda-fatiya",
         "type": "הבחנה לימודית"
+      }
+    },
+    {
+      "id": "sholom-dovber-schneersohn",
+      "name": "הרבי הרש״ב — רבי שלום דובער שניאורסון",
+      "mediaIds": [
+        "rashab-four-points-radiance-chabad-documentary"
+      ],
+      "hook": "בלב רוסיה הצארית ביקש מנהיג חסידי להפוך ישיבה למקום שבו ידיעת התורה ועבודת הנפש צועדות יחד.",
+      "authorship": "הרש״ב, האדמו״ר החמישי של חב״ד, חיבר את קונטרס עץ החיים, קונטרס התפילה וקונטרס ומעיין, לצד מאמרי חסידות רבים. תרגומים והערות במהדורות מאוחרות אינם פרי עטו.",
+      "works": [
+        {
+          "title": "קונטרס עץ החיים — לימוד התורה ועבודת הלב",
+          "description": "חיבור מאת הרש״ב עבור תלמידי ישיבת תומכי תמימים. באתר חב״ד פתוחה לקריאה גרסה באנגלית בפרקים, בתרגום והערות של המוציא לאור.",
+          "url": "https://www.chabad.org/library/article_cdo/aid/1153749/jewish/The-Tree-of-Life-Kuntres-Eitz-HaChayim.htm",
+          "access": "read"
+        },
+        {
+          "title": "קונטרס התפילה — דרך ההתבוננות",
+          "description": "חיבורו על הכנה נפשית לתפילה ועבודת הלב. עמוד זה מציע מידע ביבליוגרפי בלבד, לא טקסט חופשי מלא.",
+          "url": "https://www.chabad.org/news/article_cdo/aid/613869/jewish/Fundamental-Turn-of-Century-Chasidic-Treatise-Released-in-English.htm",
+          "access": "info"
+        },
+        {
+          "title": "קונטרס ומעיין — עיצוב המידות",
+          "description": "ספרו של הרש״ב. בוויקיטקסט זמינים כמה מאמרים לקריאה בעברית; אין הבטחה שהגרסה שלמה או מוגהת.",
+          "url": "https://he.wikisource.org/wiki/קונטרס_ומעיין",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "הישיבה ששינתה את סדר היום",
+        "text": "בשנת 1897 ייסד הרש״ב את ישיבת תומכי תמימים בליובאוויטש. לצד התלמוד וההלכה ביקש לטפח לימוד שיטתי בחסידות ולעורר עבודה פנימית. זהו תיאור ביוגרפי היסטורי; הסרט מוסיף את פרשנויות החוקרים.",
+        "url": "https://www.chabad.org/library/article_cdo/aid/1283262/jewish/The-Rebbe-Rashab.htm",
+        "type": "אירוע ביוגרפי מתועד"
+      },
+      "idea": {
+        "title": "ללמוד כדי ליישם",
+        "text": "בקונטרס עץ החיים, פרק ל״ג, מדגיש הרש״ב שהלימוד צריך לכוון גם לשינוי מעשי בעבודת ה׳ ולא להישאר ידע מופשט. מדובר בעקרון חסידי, לא בפסק הלכה חדש.",
+        "url": "https://www.chabad.org/library/article_cdo/aid/144845/jewish/Chapter-XXXIII.htm",
+        "type": "קונטרס עץ החיים, פרק ל״ג"
       }
     },
     {
