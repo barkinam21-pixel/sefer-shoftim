@@ -1738,6 +1738,25 @@
       ]
     },
     {
+      "id": "alter-rebbe-colel-chabad-history-chabad-doc",
+      "title": "האדמו״ר הזקן — הקמת כולל חב״ד וצדקה ליהודי ארץ ישראל",
+      "figure": "רבי שניאור זלמן מלאדי — בעל התניא",
+      "era": "hasidut",
+      "year": 1788,
+      "century": "1788 — מפעל התמיכה בארץ ישראל בתקופת האדמו״ר הזקן",
+      "region": "מזרח אירופה וארץ ישראל",
+      "type": "מיני־דוקו היסטורי על מפעל צדקה",
+      "language": "אנגלית",
+      "description": "סרט תיעודי קצר בן 5:49 דקות על הקמת כולל חב״ד בשנת 1788 בידי רבי שניאור זלמן מלאדי, והדרך שבה מפעל התמיכה ביושבי ארץ ישראל נמשך לאורך הדורות. הפרק מתמקד במעשה היסטורי של החכם ולא בשיעור מצולם.",
+      "source": "Chabad.org — Israel's Oldest Charity: The History of Colel Chabad (הפצה רשמית)",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/2098354/jewish/Israels-Oldest-Charity.htm",
+      "sageIds": [
+        "shneur-zalman-liadi"
+      ],
+      "fiction": "סרט תיעודי מנקודת מבט חב״ד; ייסוד המוסד ב־1788 מתואר במקור הרשמי. אין זו המחזה של סיפור תלמודי.",
+      "verified": "2026-10-28"
+    },
+    {
       "id": "shneur-zalman-scholarship-song-jem-doc",
       "title": "האדמו״ר הזקן — תורה וניגון: סיפור חייו",
       "figure": "רבי שניאור זלמן מלאדי, בעל התניא",
@@ -2495,6 +2514,25 @@
         "benzion-abba-shaul"
       ],
       "fiction": "המחזה מונפשת המבוססת על ביוגרפיה ומסורת; דיאלוגים וסצנות מומחשים אינם עדות היסטורית.",
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "likkutei-sichos-engine-of-chabad-documentary",
+      "title": "ליקוטי שיחות — סיפור עריכת שיחות הרבי מלובביץ׳",
+      "figure": "הרבי מנחם מנדל שניאורסון ותורתו — ליקוטי שיחות",
+      "era": "modern",
+      "year": 1970,
+      "century": "המחצית השנייה של המאה ה־20 — תקופת השיחות ועריכתן (שנת המיון מקורבת)",
+      "region": "ניו יורק, ארצות הברית",
+      "type": "סרט תעודה סיפורי על יצירת ספר והפצתו",
+      "language": "אנגלית",
+      "description": "פרק תיעודי בן 10:15 דקות בעקבות סיפורם של קובצי 'ליקוטי שיחות': כיצד דברי הרבי מליובאוויטש הפכו לחיבור רב־כרכים ולמבחרים בשפה האנגלית. זווית קולנועית על תולדות יצירה תורנית, לא הקראה של שיעור.",
+      "source": "Chabad.org / Sichos in English — Likkutei Sichos: The Engine of Chabad (פרסום רשמי)",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/6503844/jewish/Likkutei-Sichos-The-Engine-of-Chabad.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "תיעוד תולדות קובצי שיחות של הרבי; השיחות נמסרו על ידו ונערכו לפרסום, אין לייחס לו עריכה אישית של כל הכרכים.",
       "verified": "2026-10-28"
     },
     {
