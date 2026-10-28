@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-10-29",
   "version": 1,
   "disclaimer": "הסברים תמציתיים ללימוד בלבד, לא פסיקה למעשה. חיבורים שיוחסו לחכם במסורת נבדלים מחיבורים שכתב בעצמו. מידע על ספר איננו הבטחה לזמינותו לקריאה חינם.",
   "profiles": [
@@ -304,7 +304,8 @@
       "mediaIds": [
         "yavneh-bimbam",
         "legend-destruction-kan11-full",
-        "rybz-keshet-vaanan-ten-li-yavneh-kan"
+        "rybz-keshet-vaanan-ten-li-yavneh-kan",
+        "tisha-bav-torahbox-claymation-2026"
       ],
       "authorship": "דבריו ותקנותיו במשנה ובתלמוד; לא ידוע על ספר עצמאי שחיבר.",
       "hook": "חורבן ירושלים הופך לרגע שבו צריך להציל את עתיד התורה.",
@@ -524,7 +525,8 @@
         "akiva-crowns-bimbam",
         "akiva-daughter-charity-snake-ai-kids",
         "akiva-forest-all-good-hidabroot-ai",
-        "akiva-ckids-shepherd-torah-story"
+        "akiva-ckids-shepherd-torah-story",
+        "tisha-bav-torahbox-claymation-2026"
       ],
       "authorship": "דרשותיו, מימרותיו והלכותיו נמסרו בספרות חז״ל; אין ספר מחבר אישי חתום שלו.",
       "hook": "סיפור של לימוד מאוחר, מסירות אישית וחיים של בחירה.",
@@ -563,6 +565,12 @@
           "title": "אבות דרבי נתן, נוסח א, פרק ו — תחילת לימודו של רבי עקיבא",
           "description": "מסורת מדרשית על תחילת לימודו של רבי עקיבא ועל המים השוחקים אבן. אין זה חיבור מאת רבי עקיבא.",
           "url": "https://www.sefaria.org/Avot_DeRabbi_Natan.6.2?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "ירושלמי תענית ד, ה — רבי עקיבא ובר כוכבא",
+          "description": "הסיפור התלמודי על יחסו של רבי עקיבא לבר כוכבא בתקופת המרד; מסורת חז״ל הנלמדת לצד סצנות ההמחזה, לא ספר שרבי עקיבא חיבר.",
+          "url": "https://www.sefaria.org/Jerusalem_Talmud_Taanit.4.5?lang=he",
           "access": "read"
         }
       ],
@@ -2079,7 +2087,8 @@
         "besht-hidabroot-english-ai-orphan-light",
         "besht-yaakov-eliyahu-stopmotion-chabad",
         "besht-kesh-vaanan-kan-story",
-        "besht-four-points-radiance-chabad-documentary"
+        "besht-four-points-radiance-chabad-documentary",
+        "pnei-melech-besht-hidden-righteous-animation"
       ],
       "authorship": "לא ידוע על ספר שכתב בעצמו באופן שיטתי. 'כתר שם טוב' הוא לקט מאוחר, ומסורות רבות נרשמו בידי תלמידים.",
       "hook": "כיצד נולדת שפה חסידית של תפילה, דבקות ושמחה?",
@@ -2921,10 +2930,11 @@
       "name": "רבי יוסף יצחק שניאורסון — האדמו״ר השישי מחב״ד",
       "mediaIds": [
         "rayatz-jem-embers-soviet-jewry",
-        "lubavitch-library-movement-on-trial-jem"
+        "lubavitch-library-movement-on-trial-jem",
+        "pnei-melech-sefer-hazikhronot-ep2-hidden-benjamin"
       ],
       "hook": "בעולם שבו ספר עברי ומלמד תינוקות יכלו להיחשב לאיום על השלטון, הוביל הרבי רשת של לימוד ומסירות נפש.",
-      "authorship": "הריי״צ כתב מכתבים ורשימות היסטוריות והשמיע שיחות ומאמרי חסידות. כרכי 'ספר השיחות' הם קבצים שהועלו על הכתב, לוקטו ונערכו; יש להבחין בין דבריו לבין עבודת המעתיקים, העורכים והמתרגמים.",
+      "authorship": "הריי״צ כתב מכתבים ורשימות היסטוריות והשמיע שיחות ומאמרי חסידות. כרכי 'ספר השיחות' הם קבצים שהועלו על הכתב, לוקטו ונערכו; יש להבחין בין דבריו לבין עבודת המעתיקים, העורכים והמתרגמים. 'ספר הזיכרונות' מבוסס על רשימות וזיכרונות שמסר, שעברו עיבוד ועריכה ספרותית בידי דוד לייב מקלר; אין לראות בכל פרט בסיפורים עדות היסטורית מאומתת.",
       "works": [
         {
           "title": "ספר השיחות ה׳ת״ש — שיחות הריי״צ",
@@ -2937,6 +2947,12 @@
           "description": "סיפור היסטורי־חסידי שכתב הריי״צ במכתב, עם תרגום, הערות ופרקים חינמיים באתר המוציא לאור; אין להציג את האגדות כעדות מחקרית עצמאית.",
           "url": "https://www.chabad.org/library/article_cdo/aid/3387550/jewish/The-Making-of-Chassidim.htm",
           "access": "read"
+        },
+        {
+          "title": "ספר הזיכרונות — סיפורי ימי ראשית החסידות",
+          "description": "מסורות וזיכרונות שמסר הריי״צ ושעברו עיבוד ועריכה ספרותית בידי דוד לייב מקלר. קישור למידע על המהדורה; הספר השלם אינו מוצע כאן כחומר חופשי.",
+          "url": "https://chabadshop.com/products/%D7%A1%D7%98-%D7%A1%D7%A4%D7%A8-%D7%94%D7%96%D7%9B%D7%A8%D7%95%D7%A0%D7%95%D7%AA-2-%D7%9B%D7%A8%D7%9B%D7%99%D7%9D",
+          "access": "info"
         }
       ],
       "story": {
