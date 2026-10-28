@@ -154,6 +154,26 @@
       ]
     },
     {
+      "id": "purim-miniature-sufrin-chabad-puppets",
+      "title": "פורים במיניאטורה — אסתר, מרדכי והמן בתיאטרון בובות",
+      "figure": "אסתר המלכה ומרדכי היהודי",
+      "era": "second-temple",
+      "year": -450,
+      "century": "עלילת מגילת אסתר — ימי פרס (תיארוך משוער)",
+      "region": "שושן, פרס",
+      "type": "תיאטרון בובות סיפורי — 4:54 דקות",
+      "language": "אנגלית",
+      "description": "סיפור המגילה מתעורר לחיים בהצגת בובות קצרה, קצבית ומשעשעת של הרשי ספרין. זו הפקה נפרדת מסרטי פורים שכבר נמצאים בקטלוג.",
+      "source": "Hershey Sufrin / Chabad.org — המפיץ הרשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/5719356/jewish/The-Purim-Story-in-Miniature.htm",
+      "sageIds": [
+        "esther-queen",
+        "mordechai-purim"
+      ],
+      "fiction": "המחזה של הסיפור המקראי עם הומור ופרטים אומנותיים; אינה שחזור היסטורי.",
+      "verified": "2026-10-28"
+    },
+    {
       "id": "honi-bimbam",
       "title": "חוני המעגל — הסיפור המצויר",
       "figure": "חוני המעגל",
@@ -1984,6 +2004,25 @@
       "url": "https://www.hidabroot.org/video/221137",
       "fiction": "סיור תיעודי וסיפורי מסורת, לא שחזור דרמטי",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "rashab-four-points-radiance-chabad-documentary",
+      "title": "הרבי הרש״ב — הקמת ישיבת תומכי תמימים",
+      "figure": "רבי שלום דובער שניאורסון — הרבי הרש״ב",
+      "era": "hasidut",
+      "year": 1897,
+      "century": "סוף המאה ה־19 ותחילת המאה ה־20",
+      "region": "ליובאוויטש, רוסיה",
+      "type": "פרק סרט דוקומנטרי־ביוגרפי עם ראיונות חוקרים — 7:15 דקות",
+      "language": "אנגלית",
+      "description": "פרק מתוך הסרט התיעודי Four Points of Radiance על האדמו״ר החמישי בחב״ד: האיש שהקים ישיבה חסידית חדשנית בליובאוויטש בשנת 1897. חוקרים מספרים על מהלכיו ועל השפעתם; זהו סרט תיעודי עם ראיונות, לא דרמה משוחקת.",
+      "source": "Chabad.org — Four Points of Radiance (הסרט המקורי)",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1213025/jewish/Rabbi-Sholom-DovBer.htm",
+      "sageIds": [
+        "sholom-dovber-schneersohn"
+      ],
+      "fiction": "דוקו ביוגרפי המשלב פרשנות היסטוריונים; 1897 היא שנת הקמת הישיבה, לא שנת לידתו.",
+      "verified": "2026-10-28"
     },
     {
       "id": "chafetz-chaim-water-worker-hidabroot-ai",
