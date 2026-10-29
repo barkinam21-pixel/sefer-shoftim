@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-10-29",
-  "updatedLabel": "עודכן ב־29 באוקטובר 2026",
+  "updatedLabel": "29.10.2026",
   "eras": [
     {
       "id": "second-temple",
@@ -2570,6 +2570,25 @@
       "verified": "2026-10-29"
     },
     {
+      "id": "rav-kook-1929-western-wall-deepdreams-film",
+      "title": "הרב קוק ומאבק הכותל — ירושלים של מאורעות תרפ״ט",
+      "figure": "הרב אברהם יצחק הכהן קוק",
+      "era": "modern",
+      "year": 1929,
+      "century": "מאורעות תרפ״ט — 1929",
+      "region": "ירושלים, ארץ ישראל",
+      "type": "סרט תיעודי היסטורי — עריכה והמחשות",
+      "language": "אנגלית",
+      "description": "סרט דוקומנטרי על מאבקו של הרב קוק בעניין זכויות היהודים בכותל המערבי בתקופת מאורעות תרפ״ט.",
+      "source": "DeepDreams Productions — Vimeo היוצר",
+      "url": "https://vimeo.com/420216399",
+      "sageIds": [
+        "rav-kook"
+      ],
+      "fiction": "סרט יוצר המבוסס על אירועים היסטוריים; קטעי המחשה ועריכה אינם תיעוד בלתי־אמצעי של כל האירועים.",
+      "verified": "2026-10-29"
+    },
+    {
       "id": "baba-sali-hidabroot-following-righteous",
       "title": "בעקבות הצדיקים — תחנות חייו של הבבא סאלי",
       "figure": "רבי ישראל אבוחצירא (הבבא סאלי)",
@@ -3041,6 +3060,25 @@
       "duration": "01:58",
       "fiction": "סרט אנימציה ביוגרפי קצר המיועד בעיקר לילדים",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "meir-zlotowitz-architect-revolution-kolrom",
+      "title": "מהפכה של ספרי קודש — סיפורו של הרב מאיר זלוטוביץ",
+      "figure": "הרב מאיר זלוטוביץ — ממייסדי ארטסקרול",
+      "era": "modern",
+      "year": 1976,
+      "century": "סוף המאה ה־20 — מהפכת ארטסקרול",
+      "region": "ניו יורק, ארצות הברית",
+      "type": "סרט ביוגרפי תיעודי — הפקת Kolrom",
+      "language": "אנגלית",
+      "description": "דיוקן קולנועי של הרב מאיר זלוטוביץ, ממייסדי ArtScroll, ומפעל הנגשת הספרות התורנית שייסד יחד עם הרב נתן שרמן.",
+      "source": "Kolrom Multimedia — סרט מקורי שהוצג בערב Mesorah Legacy ב־2018 וקושר בידי ArtScroll",
+      "url": "https://vimeo.com/273423285",
+      "sageIds": [
+        "meir-zlotowitz-artscroll"
+      ],
+      "fiction": "סרט ביוגרפי תיעודי שנוצר להנצחתו ומציג את פועלו מנקודת מבט היוצרים והשותפים.",
+      "verified": "2026-10-29"
     },
     {
       "id": "rabi-moshe-epstein-and-boy-jfc-1977",
