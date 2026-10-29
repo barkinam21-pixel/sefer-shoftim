@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-29",
-  "updatedLabel": "29.10.2026",
+  "updatedAt": "2026-10-30",
+  "updatedLabel": "30.10.2026",
   "eras": [
     {
       "id": "second-temple",
@@ -1010,6 +1010,26 @@
       "url": "https://www.youtube.com/watch?v=_YLEkFr-sto",
       "fiction": "המחשת AI לילדים לאגדת חז״ל בבבא מציעא פ״ה; לא תיעוד היסטורי",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "rabbi-hiyya-fringe-benefits-bimbam-menachot",
+      "title": "תלמידו של רבי חייא — הציצית שהפכה את הסיפור (אנימציה)",
+      "figure": "רבי חייא הגדול ותלמידו — אגדת מנחות מד ע״א",
+      "era": "tannaim",
+      "year": 195,
+      "century": "סוף המאה השנייה וראשית המאה השלישית — תקופת המעבר בין התנאים לאמוראים (שיבוץ משוער)",
+      "region": "ארץ ישראל — בית מדרשו של רבי חייא",
+      "type": "אנימציה עלילתית מקורית (G-dcast)",
+      "language": "אנגלית",
+      "description": "תלמיד מבית מדרשו של רבי חייא נקלע לפיתוי, אך הציצית מזכירה לו את דרכו. המפגש משנה גם את חייה של האישה, והיא מגיעה אל רבי חייא. אנימציה דמיונית, נועזת והומוריסטית המבוססת על הסיפור התלמודי במנחות מד ע״א.",
+      "source": "BimBam / Studio G-dcast — אנימציה מאת Aviva Stein ו־Robert Kornstein, נגן YouTube רשמי בדף היוצרים",
+      "url": "https://bimbam.com/menachot/",
+      "youtubeId": "kkJCuwTMKh0",
+      "sageIds": [
+        "rabbi-hiyya-gadol"
+      ],
+      "fiction": "המחזה אמנותית של אגדה תלמודית, לא עדות היסטורית לפרטי הדיאלוג, התלבושות או מראה התקופה.",
+      "verified": "2026-10-30"
     },
     {
       "id": "rav-shmuel-jli-babylon",
