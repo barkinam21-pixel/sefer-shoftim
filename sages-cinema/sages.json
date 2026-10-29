@@ -3240,7 +3240,8 @@
         "likkutei-sichos-engine-of-chabad-documentary",
         "rebbe-rebbetzin-wedding-jem-1928",
         "rebbe-recovery-rosh-chodesh-kislev-1977-jem",
-        "rebbe-faithful-fortified-security-jem"
+        "rebbe-faithful-fortified-security-jem",
+        "rebbe-hidden-treasure-four-individuals-jem"
       ],
       "hook": "בשלהי המאה העשרים הציב הרבי מליובאוויטש לימוד, שליחות וספרים במרכז רשת קהילתית שחצתה גבולות.",
       "authorship": "הרבי חיבר מכתבים, רשימות וביאורים והשמיע אלפי שיחות ומאמרים. 'היום יום' נערך על ידו בשנת 1942 מתוך דברי אדמו״רי חב״ד לפי הוראת חותנו; 'ליקוטי שיחות' מבוסס על דבריו וליקוטים שנערכו ופורסמו, ואינו יצירה שחיבר כולה כספר במו ידיו.",
@@ -4187,6 +4188,41 @@
         "text": "המסורות מדגישות מסירות לציבור. משנה אבות א, ב מציבה גמילות חסדים כיסוד; אין זו הלכה שחידש רבי דוד ומשה.",
         "url": "https://www.sefaria.org/Pirkei_Avot.1.2?lang=he",
         "type": "רעיון מוסרי והפניה למשנה"
+      }
+    },
+    {
+      "id": "chaim-elazar-shapira-munkacs",
+      "name": "רבי חיים אלעזר שפירא — בעל מנחת אלעזר, האדמו״ר ממונקאטש",
+      "mediaIds": [
+        "chaim-elazar-shapira-munkacs-wedding-1933-yadvashem"
+      ],
+      "hook": "יום החתונה של בתו בשנת 1933 הותיר לנו קול ותנועה מעולם יהודי שאבד.",
+      "authorship": "חיבר את שו״ת מנחת אלעזר ואת שער יששכר; לקטים ומהדורות מאוחרים שערכו אחרים אינם בהכרח חיבורים עצמאיים שלו.",
+      "works": [
+        {
+          "title": "שו״ת מנחת אלעזר",
+          "description": "תשובות הלכתיות שחיבר; מידע ביבליוגרפי בספרייה הלאומית.",
+          "url": "https://www.nli.org.il/he/books/NNL_ALEPH990012239050205171/NLI",
+          "access": "info"
+        },
+        {
+          "title": "שער יששכר",
+          "description": "דרשות על מועדים וחודשי השנה; רישום בספרייה הלאומית.",
+          "url": "https://www.nli.org.il/he/books/NNL_ALEPH990012184150205171/NLI",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "חתונה רגע לפני החורבן",
+        "text": "ב־15 במרץ 1933 הונצחה חתונת בת האדמו״ר במונקאטש: המוני חוגגים, נאום ביידיש וחופה מול המצלמה.",
+        "url": "https://encyclopedia.ushmm.org/content/en/film/wedding-in-munkacs",
+        "type": "סרט ארכיוני היסטורי, 1933"
+      },
+      "idea": {
+        "title": "שמירת שבת גם מעבר לים",
+        "text": "בנאום המצולם קרא האדמו״ר ליהודי אמריקה להמשיך לשמור שבת. זו עדות לדבריו באירוע, לא פסק הלכה חדש.",
+        "url": "https://encyclopedia.ushmm.org/content/en/film/wedding-in-munkacs",
+        "type": "עדות מצולמת — נאום ביידיש, 1933"
       }
     }
   ]
