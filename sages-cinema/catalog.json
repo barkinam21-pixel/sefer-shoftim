@@ -321,22 +321,6 @@
       "verified": "2026-10-28"
     },
     {
-      "id": "yavneh-bimbam",
-      "title": "The Rise of Yavneh — עליית יבנה",
-      "figure": "רבן יוחנן בן זכאי וחכמי יבנה",
-      "era": "second-temple",
-      "year": 70,
-      "century": "המאה ה־1",
-      "region": "ארץ ישראל",
-      "type": "אנימציה עלילתית",
-      "language": "אנגלית",
-      "description": "חורבן ירושלים וסיפור קמצא ובר־קמצא הופכים לסיפור על משבר והתחלה חדשה — בגישה דרמטית עם הומור.",
-      "source": "BimBam",
-      "url": "https://bimbam.com/yavneh/",
-      "fiction": "עיבוד יצירתי של אגדת חורבן",
-      "verified": "2026-10-27"
-    },
-    {
       "id": "tisha-bav-torahbox-claymation-2026",
       "title": "תשעה באב בפלסטלינה — קמצא ובר קמצא, רבן יוחנן בן זכאי ורבי עקיבא",
       "figure": "רבן יוחנן בן זכאי ורבי עקיבא — מסיפורי החורבן",
@@ -356,6 +340,22 @@
       ],
       "fiction": "המחזה בפלסטלינה המבוססת על מקורות תלמודיים ומדרשיים; קמצא ובר קמצא, טיטוס והניסים שבסיפורים אינם תיעוד קולנועי בן התקופה. הסרט מדלג בין אירועים היסטוריים המרוחקים זה מזה בזמן.",
       "verified": "2026-10-29"
+    },
+    {
+      "id": "yavneh-bimbam",
+      "title": "The Rise of Yavneh — עליית יבנה",
+      "figure": "רבן יוחנן בן זכאי וחכמי יבנה",
+      "era": "second-temple",
+      "year": 70,
+      "century": "המאה ה־1",
+      "region": "ארץ ישראל",
+      "type": "אנימציה עלילתית",
+      "language": "אנגלית",
+      "description": "חורבן ירושלים וסיפור קמצא ובר־קמצא הופכים לסיפור על משבר והתחלה חדשה — בגישה דרמטית עם הומור.",
+      "source": "BimBam",
+      "url": "https://bimbam.com/yavneh/",
+      "fiction": "עיבוד יצירתי של אגדת חורבן",
+      "verified": "2026-10-27"
     },
     {
       "id": "nachum-ish-gamzu-ruach-animation",
@@ -1517,6 +1517,25 @@
       "verified": "2026-10-28"
     },
     {
+      "id": "yosef-karo-morah-derekh-vimeo-doc",
+      "title": "מורה דרך — רבי יוסף קארו ותור הזהב של הקבלה בצפת",
+      "figure": "רבי יוסף קארו וחכמי צפת במאה ה־16",
+      "era": "safed",
+      "year": 1570,
+      "century": "המאה ה־16",
+      "region": "צפת, ארץ ישראל",
+      "type": "דוקומנטרי סיפורי",
+      "language": "עברית",
+      "description": "פרק מסדרה דוקומנטרית של ערוץ תכלת עם ד״ר מור אלטשולר: מסע אל צפת של רבי יוסף קארו ואל מפגש ההלכה והקבלה בתקופת תור הזהב שלה.",
+      "source": "ערוץ תכלת / allycom — מורה דרך, פרק 11",
+      "url": "https://vimeo.com/1946700",
+      "fiction": "סרט תעודה בהגשת חוקרת קבלה וחסידות; לא דרמה עם שחקנים. וידאו מלא בדף היוצר ב־Vimeo, בלי לטעון להטמעת YouTube.",
+      "verified": "2026-10-29",
+      "sageIds": [
+        "yosef-karo"
+      ]
+    },
+    {
       "id": "maharal-prague-golem-1920-pd-feature",
       "title": "המהר״ל מפראג והגולם — סרט הקולנוע העלילתי (1920)",
       "figure": "רבי יהודה ליווא בן בצלאל — המהר״ל מפראג, כפי שהוצג באגדה",
@@ -1666,6 +1685,25 @@
       "verified": "2026-10-28"
     },
     {
+      "id": "besht-four-points-radiance-chabad-documentary",
+      "title": "ארבע נקודות של אור — הבעל שם טוב והולדת החסידות",
+      "figure": "רבי ישראל בעל שם טוב",
+      "era": "hasidut",
+      "year": 1740,
+      "century": "המאה ה־18 — ראשית התנועה החסידית",
+      "region": "פודוליה, מזרח אירופה",
+      "type": "פרק דוקומנטרי היסטורי עם חוקרים — 10:54 דקות",
+      "language": "אנגלית",
+      "description": "כיצד התחילה החסידות לשנות את עולמם של יהודי מזרח אירופה? היסטוריונים וחוקרים מספרים על דמותו של הבעל שם טוב, סביבתו וצמיחתה של דרך חדשה בעבודת ה׳. פרק נפרד בסדרת הסרטים התיעודיים Four Points of Radiance.",
+      "source": "Jewish Educational Media / Chabad.org — Four Points of Radiance, פרק רשמי לצפייה חופשית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1211771/jewish/The-Baal-Shem-Tov.htm",
+      "sageIds": [
+        "besht"
+      ],
+      "fiction": "סרט תיעודי פרשני עם חוקרים; פרטים על חיי הבעל שם טוב במסורות חסידיות אינם כולם ניתנים לאימות היסטורי.",
+      "verified": "2026-10-28"
+    },
+    {
       "id": "baal-shem-tov-hidabroot-animation",
       "title": "בעקבות הצדיקים — הבעל שם טוב",
       "figure": "רבי ישראל בעל שם טוב",
@@ -1680,6 +1718,25 @@
       "url": "https://www.hidabroot.org/video/226148",
       "fiction": "אנימציה ביוגרפית המיועדת לילדים; חלק מהסיפורים מבוססים על מסורת",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "pnei-melech-besht-hidden-righteous-animation",
+      "title": "הבעל שם טוב והצדיקים הנסתרים — סיפור אנימציה",
+      "figure": "רבי ישראל הבעל שם טוב והצדיקים הנסתרים",
+      "era": "hasidut",
+      "year": 1740,
+      "century": "ימי ראשית תנועת החסידות במאה ה־18 (בקירוב)",
+      "region": "מזרח אירופה — ראשית החסידות",
+      "type": "אנימציה עלילתית חסידית",
+      "language": "עברית",
+      "description": "סיפור צבעוני ומדובב של 'פני מלך' על הבעל שם טוב והצדיקים שפעלו בצנעה לפני שהתפרסמה דרך החסידות. יצירת אנימציה עצמאית מהסרטים הביוגרפיים שכבר בקטלוג.",
+      "source": "פני מלך — ערוץ YouTube הרשמי של היוצר, הועלה ב־30.10.2019",
+      "url": "https://www.youtube.com/watch?v=Z-PLSkZswDA",
+      "sageIds": [
+        "besht"
+      ],
+      "fiction": "עיבוד למסורות וסיפורי חסידים על הבעל שם טוב; אין לראות במחוות ובדיאלוגים המומחשים שחזור היסטורי מתועד.",
+      "verified": "2026-10-29"
     },
     {
       "id": "besht-yaakov-eliyahu-stopmotion-chabad",
@@ -1715,44 +1772,6 @@
       ],
       "fiction": "סיפורי חסידים הם מסורת דתית־ספרותית; שחזורי הסדרה והדיאלוגים אינם תיעוד ישיר.",
       "verified": "2026-10-28"
-    },
-    {
-      "id": "besht-four-points-radiance-chabad-documentary",
-      "title": "ארבע נקודות של אור — הבעל שם טוב והולדת החסידות",
-      "figure": "רבי ישראל בעל שם טוב",
-      "era": "hasidut",
-      "year": 1740,
-      "century": "המאה ה־18 — ראשית התנועה החסידית",
-      "region": "פודוליה, מזרח אירופה",
-      "type": "פרק דוקומנטרי היסטורי עם חוקרים — 10:54 דקות",
-      "language": "אנגלית",
-      "description": "כיצד התחילה החסידות לשנות את עולמם של יהודי מזרח אירופה? היסטוריונים וחוקרים מספרים על דמותו של הבעל שם טוב, סביבתו וצמיחתה של דרך חדשה בעבודת ה׳. פרק נפרד בסדרת הסרטים התיעודיים Four Points of Radiance.",
-      "source": "Jewish Educational Media / Chabad.org — Four Points of Radiance, פרק רשמי לצפייה חופשית",
-      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1211771/jewish/The-Baal-Shem-Tov.htm",
-      "sageIds": [
-        "besht"
-      ],
-      "fiction": "סרט תיעודי פרשני עם חוקרים; פרטים על חיי הבעל שם טוב במסורות חסידיות אינם כולם ניתנים לאימות היסטורי.",
-      "verified": "2026-10-28"
-    },
-    {
-      "id": "pnei-melech-besht-hidden-righteous-animation",
-      "title": "הבעל שם טוב והצדיקים הנסתרים — סיפור אנימציה",
-      "figure": "רבי ישראל הבעל שם טוב והצדיקים הנסתרים",
-      "era": "hasidut",
-      "year": 1740,
-      "century": "ימי ראשית תנועת החסידות במאה ה־18 (בקירוב)",
-      "region": "מזרח אירופה — ראשית החסידות",
-      "type": "אנימציה עלילתית חסידית",
-      "language": "עברית",
-      "description": "סיפור צבעוני ומדובב של 'פני מלך' על הבעל שם טוב והצדיקים שפעלו בצנעה לפני שהתפרסמה דרך החסידות. יצירת אנימציה עצמאית מהסרטים הביוגרפיים שכבר בקטלוג.",
-      "source": "פני מלך — ערוץ YouTube הרשמי של היוצר, הועלה ב־30.10.2019",
-      "url": "https://www.youtube.com/watch?v=Z-PLSkZswDA",
-      "sageIds": [
-        "besht"
-      ],
-      "fiction": "עיבוד למסורות וסיפורי חסידים על הבעל שם טוב; אין לראות במחוות ובדיאלוגים המומחשים שחזור היסטורי מתועד.",
-      "verified": "2026-10-29"
     },
     {
       "id": "shalom-sharabi-batzri-journey",
@@ -1836,6 +1855,25 @@
       "verified": "2026-10-28"
     },
     {
+      "id": "alter-rebbe-legacy-four-points-chabad-documentary",
+      "title": "ארבע נקודות של אור — האדמו״ר הזקן: דרך חדשה ומאסר ברוסיה",
+      "figure": "רבי שניאור זלמן מלאדי — בעל התניא",
+      "era": "hasidut",
+      "year": 1798,
+      "century": "סוף המאה ה־18 — מאסר האדמו״ר הזקן בשנת 1798",
+      "region": "בלארוס ורוסיה הצארית",
+      "type": "פרק דוקומנטרי היסטורי עם חוקרים — 8:25 דקות",
+      "language": "אנגלית",
+      "description": "פרק תיעודי העוקב אחר מפעלו של מייסד חסידות חב״ד, הדיון בדרכו החדשה ומאסרו בידי השלטון הצארי בשנת 1798. חוקרים מסבירים את המשמעות של האירועים ואת המורשת שנולדה מהם. זהו פרק נפרד מהסרט 'Scholarship and Song' שכבר באתר.",
+      "source": "Jewish Educational Media / Chabad.org — Four Points of Radiance, פרק רשמי לצפייה חופשית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1212127/jewish/The-Alter-Rebbes-Legacy.htm",
+      "sageIds": [
+        "shneur-zalman-liadi"
+      ],
+      "fiction": "תיאור היסטורי תיעודי המשולב בפרשנות חוקרים ובמסורת חב״ד; לא שחזור מצולם של המאסר.",
+      "verified": "2026-10-28"
+    },
+    {
       "id": "shneur-zalman-scholarship-song-jem-doc",
       "title": "האדמו״ר הזקן — תורה וניגון: סיפור חייו",
       "figure": "רבי שניאור זלמן מלאדי, בעל התניא",
@@ -1853,25 +1891,6 @@
         "shneur-zalman-liadi"
       ],
       "fiction": "תיעוד ביוגרפי מנקודת המבט של מפיק חב״די; מסורות חסידיות ותיאורים דתיים אינם כשלעצמם אימות היסטורי עצמאי.",
-      "verified": "2026-10-28"
-    },
-    {
-      "id": "alter-rebbe-legacy-four-points-chabad-documentary",
-      "title": "ארבע נקודות של אור — האדמו״ר הזקן: דרך חדשה ומאסר ברוסיה",
-      "figure": "רבי שניאור זלמן מלאדי — בעל התניא",
-      "era": "hasidut",
-      "year": 1798,
-      "century": "סוף המאה ה־18 — מאסר האדמו״ר הזקן בשנת 1798",
-      "region": "בלארוס ורוסיה הצארית",
-      "type": "פרק דוקומנטרי היסטורי עם חוקרים — 8:25 דקות",
-      "language": "אנגלית",
-      "description": "פרק תיעודי העוקב אחר מפעלו של מייסד חסידות חב״ד, הדיון בדרכו החדשה ומאסרו בידי השלטון הצארי בשנת 1798. חוקרים מסבירים את המשמעות של האירועים ואת המורשת שנולדה מהם. זהו פרק נפרד מהסרט 'Scholarship and Song' שכבר באתר.",
-      "source": "Jewish Educational Media / Chabad.org — Four Points of Radiance, פרק רשמי לצפייה חופשית",
-      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1212127/jewish/The-Alter-Rebbes-Legacy.htm",
-      "sageIds": [
-        "shneur-zalman-liadi"
-      ],
-      "fiction": "תיאור היסטורי תיעודי המשולב בפרשנות חוקרים ובמסורת חב״ד; לא שחזור מצולם של המאסר.",
       "verified": "2026-10-28"
     },
     {
@@ -2350,6 +2369,26 @@
       "verified": "2026-10-28"
     },
     {
+      "id": "levi-yitzchak-schneerson-jem-letter-shoes-2026",
+      "title": "המכתב והנעליים — סיפורו של רבי לוי יצחק שניאורסון",
+      "figure": "רבי לוי יצחק שניאורסון — אביו של הרבי מלובביץ׳",
+      "era": "modern",
+      "year": 1940,
+      "century": "שנות ה־30–40 של המאה ה־20",
+      "region": "ברית המועצות וקזחסטן",
+      "type": "דוקומנטרי סיפורי",
+      "language": "אנגלית",
+      "description": "סרט קצר של JEM על התנגדותו של רבי לוי יצחק לרדיפות השלטון הסובייטי, גלותו והמשמעות שהסתתרה במכתב תודה לבנו בעקבות זוג נעליים.",
+      "source": "Jewish Educational Media (JEM) — August 2, 2026",
+      "url": "https://www.youtube.com/watch?v=FN-ulrqZWd8",
+      "youtubeId": "FN-ulrqZWd8",
+      "fiction": "תיעוד ומסמכים עם פרשנות היסטורית, לא שחזור מומחז של כל ההתרחשויות. מקור היוצר קישר לנגן ה־YouTube הזה.",
+      "verified": "2026-10-29",
+      "sageIds": [
+        "levi-yitzchak-schneerson"
+      ]
+    },
+    {
       "id": "yosef-kapach-net-sah-holchim",
       "title": "הולכים לפני המחנה — רבי יוסף קאפח: מצנעא לכתבי הרמב״ם",
       "figure": "הרב יוסף קאפח",
@@ -2649,6 +2688,25 @@
       "duration": "01:58",
       "fiction": "סרט אנימציה ביוגרפי קצר המיועד בעיקר לילדים",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "arie-leib-kaplan-safed-col-vimeo-doc",
+      "title": "השליח שהפך את צפת — סיפורו של הרב אריה לייב קפלן",
+      "figure": "הרב אריה לייב (לייבל) קפלן",
+      "era": "modern",
+      "year": 1980,
+      "century": "שנות ה־70–90 של המאה ה־20",
+      "region": "צפת, ישראל",
+      "type": "דוקומנטרי סיפורי",
+      "language": "עברית",
+      "description": "בני משפחה, חברים ורבנים מספרים על בניית מוסדות חב״ד בצפת, האיש שהנהיג אותם ומורשתו לאחר פטירתו בתאונת דרכים.",
+      "source": "COL.org.il — סרט משפחתי בהפקת עומרי פרי",
+      "url": "https://vimeo.com/4543141",
+      "fiction": "סרט ביוגרפי תיעודי עם ראיונות; מוצג ב־COL כנגן Vimeo רשמי לצפייה חופשית. אין לייחס לו ספרים שלא חיבר.",
+      "verified": "2026-10-29",
+      "sageIds": [
+        "arie-leib-kaplan-safed"
+      ]
     },
     {
       "id": "mordechai-eliyahu-holchim-lifnei-hamachane",
