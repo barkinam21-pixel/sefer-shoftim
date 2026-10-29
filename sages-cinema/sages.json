@@ -624,6 +624,35 @@
       }
     },
     {
+      "id": "yochanan-ben-torta",
+      "name": "רבי יוחנן בן תורתא — הפרה ששמרה שבת",
+      "mediaIds": [
+        "yochanan-ben-torta-cow-shabbat-hidabroot-ai"
+      ],
+      "hook": "פרה אחת שמסרבת לעבוד בשבת הופכת במדרש לפתיחה של מסע אמונה.",
+      "authorship": "לא ידוע על ספר שחיבר רבי יוחנן בן תורתא; סיפור הפרה נמסר במדרש פסיקתא רבתי יד, ולא נכתב בידיו.",
+      "works": [
+        {
+          "title": "פסיקתא רבתי יד — מעשה בפרה",
+          "description": "אגדת פרה שומרת שבת; המדרש לא נכתב בידי רבי יוחנן בן תורתא.",
+          "url": "https://www.sefaria.org/Pesikta_Rabbati.14",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "הפרה שהפתיעה את הקונה",
+        "text": "לפי המדרש, פרה מסרבת לחרוש בשבת. הקונה מתפעל מהמעשה, מתגייר ולומד תורה; זהו סיפור אגדה, לא תיעוד.",
+        "url": "https://www.sefaria.org/Pesikta_Rabbati.14",
+        "type": "אגדה מדרשית"
+      },
+      "idea": {
+        "title": "מעשה קטן שמעורר שינוי",
+        "text": "בפסיקתא רבתי יד סיפור שמירת השבת של הפרה מעורר את הקונה לבחון את דרכו. זהו רעיון מדרשי, לא פסק הלכה.",
+        "url": "https://www.sefaria.org/Pesikta_Rabbati.14",
+        "type": "פסיקתא רבתי יד — מדרש"
+      }
+    },
+    {
       "id": "acher",
       "name": "אלישע בן אבויה — אחר",
       "mediaIds": [
@@ -3281,7 +3310,8 @@
       "id": "baba-sali",
       "name": "הבבא סאלי — רבי ישראל אבוחצירא",
       "mediaIds": [
-        "baba-sali-hidabroot-following-righteous"
+        "baba-sali-hidabroot-following-righteous",
+        "baba-sali-hidabroot-life-of-holiness-ai"
       ],
       "authorship": "נודע בהנהגתו ובמסורות על תפילה וברכות; אין לייחס לו ספר הלכה או אוסף ניסים כמחבר ללא ראיה.",
       "hook": "מסורת אבוחצירא ממזרח מרוקו לישראל: תפילה, הנהגה וסיפורי קהילה.",
