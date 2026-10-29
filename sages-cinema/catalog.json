@@ -1268,6 +1268,25 @@
       "verified": "2026-10-27"
     },
     {
+      "id": "rambam-cordoba-sefardi-rtve-shalom-2014",
+      "title": "הרמב״ם בקורדובה — מסע אל הרובע היהודי של ספרד",
+      "figure": "הרמב״ם — רבי משה בן מימון ומורשת יהדות קורדובה",
+      "era": "rishonim",
+      "year": 1140,
+      "century": "המאה ה־12 — ילדות הרמב״ם בקורדובה",
+      "region": "קורדובה, ספרד",
+      "type": "דוקומנטרי־מסע — 14:50 דקות",
+      "language": "ספרדית",
+      "description": "מסע מצולם בסמטאות הרובע היהודי ובבית הכנסת בקורדובה, עיר ילדותו של הרמב״ם. פרק 'Shalom' מגלה כיצד העיר ממשיכה לספר את סיפורו של הפילוסוף והפוסק הגדול.",
+      "source": "RTVE Play · Shalom · הטלוויזיה הציבורית בספרד · 19.1.2014",
+      "url": "https://www.rtve.es/play/videos/shalom/shalom-acercamos-cordoba-sefardi/2327047/",
+      "sageIds": [
+        "rambam"
+      ],
+      "fiction": "מסע תיעודי באתרי מורשת בני זמננו; המראות אינם צילום מאירועי המאה ה־12.",
+      "verified": "2026-10-29"
+    },
+    {
       "id": "yehuda-halevi-keshet-vaanan-zion-halo-tishali-kan",
       "title": "קשת וענן — ציון הלא תשאלי: משירת רבי יהודה הלוי",
       "figure": "רבי יהודה הלוי ושירי הכיסופים לציון",
@@ -1302,6 +1321,25 @@
       "youtubeId": "6Js73BadtqQ",
       "fiction": "דוקו ביוגרפי עם המחשות אמנותיות; לא שחזור מצולם של המאה ה־12",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "benjamin-tudela-travels-eitb-vasconia",
+      "title": "בנימין מטודלה — הנוסע היהודי שהגיע עד פרס",
+      "figure": "בנימין בן יונה מטודלה — מחבר ספר המסעות",
+      "era": "rishonim",
+      "year": 1165,
+      "century": "המאה ה־12 — מסעותיו בשנות ה־60–70",
+      "region": "טודלה, בבל ופרס",
+      "type": "דוקומנטרי היסטורי קצר",
+      "language": "ספרדית",
+      "description": "מתוך הסדרה 'Una Historia de Vasconia': סיפור מסעו יוצא הדופן של בנימין מטודלה, שתיעד קהילות יהודיות מן הים התיכון ועד בגדד ופרס והשאיר אחריו את ספר המסעות.",
+      "source": "EITB · Una Historia de Vasconia · שידור ציבורי, 26.7.2018",
+      "url": "https://www.eitb.eus/es/television/programas/una-historia-de-vasconia/judios-de-vasconia/videos/detalle/5750706/video-benjamin-tudela-viajero-explorador-judio-medieval-importante/",
+      "sageIds": [
+        "benjamin-tudela"
+      ],
+      "fiction": "קטע תיעודי על ספר מסעות מן המאה ה־12. פרטי המסע נשענים גם על עדות המחבר ועל דברים ששמע; אין לראות בכל סיפור עדות ראייה.",
+      "verified": "2026-10-29"
     },
     {
       "id": "rambam-kesh-vaanan-kan-biography",
@@ -1426,6 +1464,25 @@
       "youtubeId": "sczbbpCb0L8",
       "fiction": "עיבוד אמנותי לאגדה קבלית; לא ביוגרפיה של רשב״י ולא תיעוד של המאה השנייה",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "yosef-orabuena-navarre-carlos-iii-eitb",
+      "title": "הרב יוסף אורבואנה ומלך נווארה — ברית שהגנה על היהודים",
+      "figure": "הרב יוסף אורבואנה וקרלוס השלישי מלך נווארה",
+      "era": "rishonim",
+      "year": 1395,
+      "century": "סוף המאה ה־14 וראשית המאה ה־15",
+      "region": "נווארה, צפון ספרד",
+      "type": "דוקומנטרי היסטורי קצר",
+      "language": "ספרדית",
+      "description": "סרטון מתוך סדרת ההיסטוריה של EITB על הקשר האישי בין רבה הראשי של נווארה יוסף אורבואנה למלך קרלוס השלישי, ועל מעמדה של הקהילה היהודית בחסותו.",
+      "source": "EITB · Una Historia de Vasconia · שידור ציבורי, 26.7.2018",
+      "url": "https://www.eitb.eus/es/television/programas/una-historia-de-vasconia/judios-de-vasconia/videos/detalle/5750588/video-carlos-iii-rey-navarra-protector-judios/",
+      "sageIds": [
+        "yosef-orabuena"
+      ],
+      "fiction": "סיפור היסטורי המבוסס על קשרי רב הקהילה וחצר המלוכה; פרשנות טלוויזיונית של התקופה, ללא טענה לצילום אירועים היסטוריים.",
+      "verified": "2026-10-29"
     },
     {
       "id": "bartenura-srugim-olive-mount-ep5",
