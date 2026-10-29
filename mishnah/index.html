@@ -118,6 +118,17 @@
 <p id="bikkurimSources" class="smallprint">נבדק מספור הטקסט, לא נבדקו ניגון או כתוביות של שיעור הווידאו. אין כאן פסק הלכה או היתר העתקת וידאו.</p>
 </section>
 
+
+<section id="shabbatTractate" class="next-tractate" aria-labelledby="shabbatHeading">
+<span class="eyebrow">סדר מועד · המסכת הראשונה · מסלול לימוד טקסטואלי נפרד מן ההיסטוריה</span>
+<h3 id="shabbatHeading">מסכת שבת — פרק א׳: יציאות השבת ומלאכה לפני השקיעה</h3>
+<p>לאחר ביכורים ג׳, לימוד המשנה ממשיך לפי סדר המסכתות לסדר מועד ולשבת א׳: 11 משניות ברצף, מהעני שבפתח הבית ועד מדורת בית המוקד. פרק ד׳ המופיע בחלק מדפוסי ביכורים עוסק באנדרוגינוס והוא <strong>נספח שמקורו בתוספתא</strong>; הוא אינו חלק מהרצף הבסיסי בן שלושת הפרקים, ואין לדלג על ההבחנה הזאת. השאלות והגשרים כאן הם הסברים בני זמננו ולא תיעוד שיחות חכמים.</p>
+<div class="actions" style="margin:12px 0"><button type="button" id="shabbatContinue" class="btn gold">▶ המשך למשנה הבאה שלא נלמדה</button><span id="shabbatProgress" class="progressnote" aria-live="polite"></span></div>
+<div id="shabbatLessons" class="study-lessons" aria-label="שבת פרק א׳ — 11 משניות"></div>
+<div class="peah-links"><a href="https://www.mishna.org.il/מועד/שבת/1" target="_blank" rel="noopener noreferrer">▶ שיעור וידאו עברי לפרק א׳ באתר הפרק היומי ↗</a><a href="https://mechon-mamre.org/b/h/h21.htm" target="_blank" rel="noopener noreferrer">📜 מכון ממרא — שבת ↗</a><a href="https://he.wikisource.org/wiki/משנה_שבת_א" target="_blank" rel="noopener noreferrer">📖 ויקיטקסט — שבת א׳ ↗</a></div>
+<p class="smallprint">אימות מקורות 29.10.2026: 11 משניות לפי ויקיטקסט והפרק היומי, עם השוואה למכון ממרא. <strong>במשניות ד׳–ו׳ יש הבדלי חלוקת פסקאות ומספור</strong>, המתועדים במקומם: מכון ממרא מחבר את תיאור עליית חנניה לסוף א,ג ומפצל את קטעי הפשתן והמצודות. קישור הווידאו זוהה בעמוד המקור; הניגון, המשך והכתוביות לא נבדקו בצפייה. לא נוצרו 11 סרטונים עצמאיים, אין היתר להעתיק את השיעור ואין כאן פסק הלכה.</p>
+</section>
+
 <p class="study-resource-caveat">המקור העברי ״הפרק היומי״ מציע שיעורים לכל תשעת פרקי ברכות, אך לא אומתה אפשרות להטמיע את הנגן שלו. לכן הקישור נפתח באתר המקור, בעוד שיעורי המשנה המאוירים שלמעלה נשארים בנגן של האתר.</p>
 </section>
 <section id="watch" class="playerbox" aria-label="נגן"><div class="playerheading"><h2>אולם הצפייה — בתוך האתר</h2><span class="smallprint">נגן רשמי YouTube, Vimeo וחב״ד כשמתאפשר</span></div><div id="playerHost" class="watchview"><div class="emptyplayer"><strong>הסיפור מתחיל בלחיצה אחת</strong>בחר סרטון מתוך המסלול, או לחץ ״התחל את המסע״.</div></div><div class="playingmeta"><div><h3 id="nowTitle">טרם נבחר סרטון</h3><p id="nowMeta">מסלול צפייה כרונולוגי, עם מעבר קל לסרטון הבא.</p></div><div class="control-row"><button class="btn" id="playNow" disabled>▶ נגן</button><a id="sourceNow" class="btn" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">↗ מקור רשמי</a><button class="btn" id="doneNow" disabled>✓ צפיתי</button><button class="btn gold" id="nextNow" disabled>הבא ←</button></div></div><p id="nowBridge" class="playerbridge" hidden></p><p class="embedwarning" id="embedHint">אם היוצר חסם הטמעה, אפשר תמיד לפתוח את הסרטון באתר המקורי. הפעלה אוטומטית מלאה בין אתרים שונים אינה אפשרית.</p></section>
@@ -492,13 +503,52 @@ $("bikkurimLessons").addEventListener("click",e=>{
  if(advance&&n===bikkurimCount(ch)&&ch<3){setBikkurimChapter(ch+1);notify("סיימת ביכורים "+HEB_LETTERS[ch]+"׳ — ממשיכים לפרק "+HEB_LETTERS[ch+1]+"׳ משנה א׳.");const next=$("bikkurimLessons").querySelector('[data-bikkurim-slot="1"]');if(next)next.scrollIntoView({behavior:"smooth",block:"center"});return;}
  renderBikkurim();
  if(advance&&n<bikkurimCount(ch)){const next=$("bikkurimLessons").querySelector('[data-bikkurim-slot="'+(n+1)+'"]');if(next)next.scrollIntoView({behavior:"smooth",block:"center"});}
- if(advance&&n===12&&ch===3)notify("סיימת ביכורים ג׳ — 12 משניות. בחלק מהמהדורות פרק ד׳ דן באנדרוגינוס.");
+ if(advance&&n===12&&ch===3)notify("סיימת ביכורים ג׳ — ממשיכים לשבת א׳ בסדר מועד. ביכורים ד׳ בחלק מן המהדורות הוא נספח מן התוספתא.");
 });
 $("bikkurimContinue").addEventListener("click",()=>{
  let ch=bikkurimChapter,n=Array.from({length:bikkurimCount(ch)},(_,i)=>i+1).find(x=>!bikkurimLearned[bikkurimKey(ch,x)]);
  while(!n&&ch<3){setBikkurimChapter(ch+1);ch+=1;n=Array.from({length:bikkurimCount(ch)},(_,i)=>i+1).find(x=>!bikkurimLearned[bikkurimKey(ch,x)]);}
  if(!n){notify("כל 34 המשניות בביכורים א׳–ג׳ סומנו כנלמדות.");return;}
  const slot=$("bikkurimLessons").querySelector('[data-bikkurim-slot="'+n+'"]');if(slot)slot.scrollIntoView({behavior:"smooth",block:"center"});
+});
+
+
+const SHABBAT_ONE_NOTES={"1":{"title":"פתח הבית — מהי יציאה ומהי הכנסה?","focus":"העני עומד בחוץ ובעל הבית בפנים: מי ביצע את העברת החפץ, ומה משתנה כששני אנשים חולקים את הפעולה?","context":"המשנה מציבה מצבי הוצאה והכנסה בין רשויות, בעזרת שתי דמויות לא מזוהות. ״חייב״ ו״פטור״ מתייחסים לחיוב המתואר; אין להסיק ש״פטור״ פירושו תמיד ״מותר״. ציור דלת וידיים יהיה המחשה ולא תיעוד של אירוע.","bridge":"א׳ בחנה חציית גבול של חפץ בשבת. ב׳ עוברת לגבול אחר: מה מותר להתחיל סמוך לזמן התפילה? המעבר הוא נושאי, לא תיעוד רצף אירועים."},"2":{"title":"ספר, מרחץ ובורסקי — לפני תפילת מנחה","focus":"מדוע המשנה מונה תספורת, מרחץ, עיבוד עורות, סעודה ודין? ומה ההבדל בין עצירה לקריאת שמע לבין עצירה לתפילה?","context":"״ספר״ כאן הוא ספר המתפרנס מתספורת, לא ספר קריאה; ״בורסקי״ הוא מקום עיבוד עורות. ההבחנה בין התחלה להפסקה מובאת במשנה, ואינה עצה הלכתית אישית.","bridge":"ב׳ הציבה מגבלות על עיסוקים לפני תפילה. ג׳ מתקרבת לשעת כניסת השבת ושואלת אילו חפצים והרגלים עלולים להביא לעבירה."},"3":{"title":"המחט, הקולמוס ואור הנר","focus":"למה חייט לא יוצא עם מחטו סמוך לחשיכה, ולמה מגבילים קריאה לאור הנר? כיצד המשנה מחברת בין שכחה להרגל?","context":"חייט, לבלר, חזן ותינוקות נזכרים בדוגמאות המשנה. פירוש החשש שמא יטה את הנר הוא ביאור מסורתי; אין להמחיז את הדמויות כאנשים שחיו ופעלו יחד.","bridge":"ג׳ סיכמה גדרים שנועדו למנוע טעות והרגל. ד׳ מציינת מסורת על הכרעות בית שמאי ובית הלל — אך לא ניתן להסיק שכל דוגמה מג׳ הוכרעה באותה התכנסות."},"4":{"title":"עליית חנניה — שמונה עשר דברים","focus":"מה מספרת המשנה על ביקור חכמים בעליית חנניה בן חזקיה בן גוריון, ואיך מתואר הרוב של בית שמאי?","context":"זהו דיווח תנאי בתוך המשנה על הכרעה בבית המדרש; אין לפתח ממנו שיחות, מניעים או סצנות היסטוריות שלא נמסרו. בחלוקת מכון ממרא קטע זה מופיע בסוף א,ג ומסומן [ד], בעוד ויקיטקסט והפרק היומי מונים אותו כמשנה ד׳.","bridge":"ד׳ מזכירה מחלוקת בין הבתים במישור הכללי. ה׳ מתחילה סדרה של דוגמאות מפורשות למחלוקות על מלאכה שהחלה לפני שבת.","variant":"מספור: ויקיטקסט והפרק היומי — א,ד; מכון ממרא — בתוך א,ג, מסומן [ד]. גם הכתיב גוריון/גרון משתנה בין המקורות."},"5":{"title":"דיו, סממנים וכרשינים — העבודה נמשכת מאליה","focus":"האם מותר להשרות חומרים לפני שבת כשהם ממשיכים להתרכך אחרי כניסתה? במה נחלקים בית שמאי ובית הלל?","context":"המשנה מונה דיו, סממנים וכרשינים ומנגד את היתר בית הלל. סממנים הם חומרי צבע וכרשינים הם קטניות; פירוט תעשייתי מעבר לכתוב הוא המחשה מודרנית.","bridge":"ה׳ עסקה בשריית חומרים שאינה דורשת פעולה רציפה. ו׳ מרחיבה לתהליכי עיבוד פשתן, צמר ולכידת בעלי חיים ומחדדת את שאלת השלמת המלאכה.","variant":"מספור: כאן א,ה לפי ויקיטקסט והפרק היומי; במכון ממרא גוף משנה זו מסומן א,ד [ה]."},"6":{"title":"פשתן, צמר ומצודות — שלושה תהליכים","focus":"מה משותף לתנור שבו מעבדים פשתן, ליורת הצמר ולמלכודת שפועלת לאחר השקיעה? מדוע בית הלל מתיר?","context":"לפי חלוקת ויקיטקסט והפרק היומי מובאים באותה משנה דיני אונין של פשתן, צמר ליורה ופרישת מצודות; במכון ממרא שני הראשונים הם א,ה [ו] והמצודות הן א,ו. אין להציג זאת כמחלוקת בתוצאה אלא בהפרדת הקטעים.","bridge":"ו׳ בחנה תהליכים הנמשכים מעצמם. ז׳ עוברת לעסקה ולאדם אחר: מכירה וטעינת משא לנוכרי לפני שבת.","variant":"חלוקת פסקאות: ויקיטקסט א,ו כולל פשתן, צמר ומצודות; במכון ממרא הפשתן והצמר בא,ה [ו] והמצודות בא,ו."},"7":{"title":"מכירה וטעינה לנוכרי לפני שבת","focus":"לפי בית שמאי, כמה זמן צריך להישאר כדי שהנוכרי יגיע למקום קרוב? ומהי עמדת בית הלל?","context":"המקור מבחין בין מכירה, טעינה והגבהת משא סמוך לשבת. אין להסיק ממנו כללים גורפים על מסחר בן זמננו ללא פירוש ופסק מאוחרים.","bridge":"ז׳ עסקה במסירת משא והתקדמות בדרך. ח׳ בוחנת מסירת חפצים לאומנים — עיבוד עורות וכביסה — לפני השקיעה."},"8":{"title":"מעבד העורות וכובס הבגדים","focus":"מתי מותר להעביר עורות לעבדן או בגדים לכובס נוכרי לפני שבת? מה פירוש ״עם השמש״?","context":"״עבדן״ הוא בעל מלאכה המעבד עור. המחלוקת היא על העברת החפצים בסמוך לשבת כפי שנוסחה במשנה; אין פירושה צילום של מפעל עתיק מסוים.","bridge":"ח׳ הציגה כלל על עבודה אצל אומן נוכרי. ט׳ מוסיפה עדות למנהג בית משפחתי ומבחינה בינו לבין דבר ששני הבתים מסכימים עליו."},"9":{"title":"מנהג בית רבן שמעון בן גמליאל ובית הבד","focus":"למה בבית אביו של רבן שמעון בן גמליאל נהגו למסור כלי לבן לכביסה שלושה ימים לפני שבת, ועל אילו מתקנים הסכימו שני הבתים?","context":"המשנה מביאה מנהג משפחתי של רבן שמעון בן גמליאל ואז הסכמה בעניין קורת בית הבד ועיגולי הגת. אין הכרח שמנהג המשפחה והכרעות הבתים אירעו באותו זמן או מקום.","bridge":"ט׳ חתמה בעיבוד שממשיך תחת לחץ. י׳ עוברת למטבח: כמה מן הצלייה והאפייה צריך להסתיים עוד לפני שבת?"},"10":{"title":"הבשר, הבצל והפת — מתי די בחימום?","focus":"כמה צריכים בשר, בצל וביצה להיצלות לפני שבת? ומה בדיוק נחלקו רבי אליעזר וחכמים לגבי הקרום שעל הפת?","context":"המשנה מבדילה בין צלייה, פת בתנור וחררה על הגחלים. רבי אליעזר מתייחס לקרום התחתון. זהו נוסח משנה והסבר לשוני, לא מדריך בישול או פסק להלכה.","bridge":"י׳ בדקה את התקדמות הבישול קודם השקיעה. י״א מסיימת בדינים מיוחדים הקשורים לקרבן הפסח ולמדורת בית המוקד — לא היתר כללי לכל תנור."},"11":{"title":"קרבן הפסח ומדורת בית המוקד","focus":"מדוע המשנה מתירה להשלשל את קרבן הפסח לתנור סמוך לחשיכה? מה ההבדל בין מדורת בית המוקד לבין מדורה שבגבולין?","context":"״בית המוקד״ הוא חלל בתחום המקדש שנזכר במסורת המשנה. הפרק מתאר דינים מן המציאות המקדשית; אין בידינו תיעוד מצולם של טקס מסוים, והפרשנויות המאוחרות נפרדות מלשון המשנה.","bridge":"מסתיים שבת פרק א׳. פרק ב׳ יעסוק ב״במה מדליקין״ — סוגי פתילות ושמנים ונר שבת. זהו רצף מסכת, ולא ציר תאריכים היסטוריים."}};
+const SHABBAT_LEARN_KEY="mishnah_cinema_shabbat_text_v1";
+let shabbatLearned={};
+try{const saved=JSON.parse(localStorage.getItem(SHABBAT_LEARN_KEY)||"{}");if(saved&&typeof saved==="object"&&!Array.isArray(saved))shabbatLearned=saved;}catch(_){}
+function shabbatDone(){return Array.from({length:11},(_,i)=>i+1).filter(n=>!!shabbatLearned[n]).length;}
+function renderShabbat(){
+ const done=shabbatDone();
+ $("shabbatProgress").textContent=done+" מתוך 11 משניות שסומנו כנלמדות · בנפרד מהתקדמות הצפייה";
+ $("shabbatLessons").innerHTML=Array.from({length:11},(_,i)=>{
+  const n=i+1,note=SHABBAT_ONE_NOTES[n],learned=!!shabbatLearned[n];
+  return '<div class="study-choice" data-shabbat-slot="'+n+'"><div class="study-lesson '+(learned?'isdone':'')+'"><span class="lesson-number">'+HEB_LETTERS[n]+'</span><span class="lesson-label"><strong>שבת א׳, '+hebMishnah(n)+' — '+esc(note.title)+'</strong><small>'+(learned?'✓ סומנה כנלמדה':'יחידת לימוד · וידאו אחד לפרק')+'</small></span></div>'+
+  '<p class="study-focus"><strong>השאלה המרכזית:</strong> '+esc(note.focus)+'</p>'+
+  (note.variant?'<p class="study-focus"><strong>הבדל חלוקה או נוסח:</strong> '+esc(note.variant)+'</p>':'')+
+  '<p class="study-focus"><strong>מקור, פירוש והמחשה:</strong> '+esc(note.context)+'</p>'+
+  '<p class="bridge-note"><strong>מה ראינו קודם — ולאן ממשיכים?</strong> '+esc(note.bridge)+'</p>'+
+  '<div class="actions"><a class="textsource" href="https://www.mishna.org.il/מועד/שבת/1" target="_blank" rel="noopener noreferrer">▶ וידאו: שיעור הפרק המלא ↗</a>'+
+  '<a class="textsource" href="https://www.sefaria.org/Mishnah_Shabbat.1.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📖 ספריא — משנה '+hebMishnah(n)+' ↗</a>'+
+  '<a class="textsource" href="https://he.wikisource.org/wiki/משנה_שבת_א" target="_blank" rel="noopener noreferrer">📖 ויקיטקסט — חלוקת המספור ↗</a>'+
+  '<a class="textsource" href="https://mechon-mamre.org/b/h/h21.htm" target="_blank" rel="noopener noreferrer">📜 מכון ממרא — ראה הערת המספור ↗</a>'+
+  '<button type="button" class="btn" data-shabbat-mark="'+n+'">'+(learned?'↺ בטל סימון לימוד':'✓ למדתי — המשך')+'</button></div></div>';
+ }).join("");
+}
+$("shabbatLessons").addEventListener("click",e=>{
+ const b=e.target.closest("[data-shabbat-mark]");if(!b)return;
+ const n=Number(b.dataset.shabbatMark);if(!Number.isInteger(n)||n<1||n>11)return;
+ const advance=!shabbatLearned[n];
+ if(advance)shabbatLearned[n]=true;else delete shabbatLearned[n];
+ try{localStorage.setItem(SHABBAT_LEARN_KEY,JSON.stringify(shabbatLearned));}catch(_){}
+ renderShabbat();
+ if(advance&&n<11){const next=$("shabbatLessons").querySelector('[data-shabbat-slot="'+(n+1)+'"]');if(next)next.scrollIntoView({behavior:"smooth",block:"center"});}
+ if(advance&&n===11)notify("סיימת שבת פרק א׳! ההמשך במסלול הטקסטואלי: שבת ב׳ — במה מדליקין.");
+});
+$("shabbatContinue").addEventListener("click",()=>{
+ const n=Array.from({length:11},(_,i)=>i+1).find(x=>!shabbatLearned[x]);
+ if(!n){notify("כל 11 משניות שבת א׳ סומנו כנלמדות; ההמשך הוא שבת ב׳.");return;}
+ const slot=$("shabbatLessons").querySelector('[data-shabbat-slot="'+n+'"]');if(slot)slot.scrollIntoView({behavior:"smooth",block:"center"});
 });
 
 const MAASER_SHENI_LEARN_KEY="mishnah_cinema_maaser_sheni_text_v1";
@@ -754,7 +804,7 @@ if(sharedWatchItem){
  mode="all";
  document.querySelectorAll(".filter").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.filter==="all")));
 }
-render();renderStudy();renderPeah();renderDemai();renderKilayim();renderSheviit();renderTerumot();renderMaasrot();renderMaaserSheni();renderChallah();renderOrlah();renderBikkurim();
+render();renderStudy();renderPeah();renderDemai();renderKilayim();renderSheviit();renderTerumot();renderMaasrot();renderMaaserSheni();renderChallah();renderOrlah();renderBikkurim();renderShabbat();
 if(sharedWatchItem){selectItem(sharedWatchItem.id,false,false);}
 else if(state.last&&getItem(state.last))selectItem(state.last,false,true);
 </script>
