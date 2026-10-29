@@ -3802,6 +3802,57 @@
         "url": "https://col.org.il/news/29117",
         "type": "מורשת ציבורית"
       }
+    },
+    {
+      "id": "chana-schneerson",
+      "name": "הרבנית חנה שניאורסון — אשת הרב לוי יצחק",
+      "mediaIds": [
+        "chana-schneerson-jem-video-biography"
+      ],
+      "hook": "בגלות הסובייטית הפכה עשבים לדיו כדי שדברי התורה של בעלה לא יאבדו.",
+      "authorship": "כתבה זיכרונות אישיים על חייה ועל רדיפות היהודים; אין לייחס לה את חידושי הקבלה של בעלה.",
+      "works": [
+        {
+          "title": "זיכרונות הרבנית חנה — פרקי היומן",
+          "description": "זיכרונותיה בכתיבה אישית. פרקים זמינים לקריאה חופשית באישור המו״ל.",
+          "url": "https://www.chabad.org/therebbe/article_cdo/aid/1638270/jewish/Rebbetzin-Chanas-Memoirs.htm",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "דיו מצמחי השדה",
+        "text": "בגלות בקזחסטן אספה עשבים והכינה דיו כדי שבעלה יוכל להמשיך לכתוב פירושי תורה בשולי הספרים המעטים שהיו עמם.",
+        "url": "https://www.chabad.org/therebbe/article_cdo/aid/1645907/jewish/Scholars-Unearth-Rebbetzins-Memoirs.htm",
+        "type": "זיכרונות ותיעוד היסטורי"
+      },
+      "idea": {
+        "title": "שמירת דברי תורה גם במחסור",
+        "text": "זיכרונותיה מתארים מסירות ללימוד, לתיעוד ולעזרה לזולת בתנאים קשים. זו מורשת מוסרית, לא פסק הלכה.",
+        "url": "https://www.chabad.org/therebbe/article_cdo/aid/1750626/jewish/Memoirs-of-Rebbetzin-Chana-Part-16.htm",
+        "type": "זיכרונות אישיים"
+      }
+    },
+    {
+      "id": "chaya-mushka-schneerson",
+      "name": "הרבנית חיה מושקא שניאורסון",
+      "mediaIds": [
+        "rebbe-rebbetzin-arrival-america-jem-1941"
+      ],
+      "hook": "ברחה עם בעלה מאירופה הכבושה והגיעה לניו יורק ב־1941.",
+      "authorship": "לא ידוע על ספר תורני שפרסמה כמחברת; עדויות וסיפורים על חייה נמסרו בידי בני משפחה ומכרים.",
+      "works": [],
+      "story": {
+        "title": "אונייה אל העולם החדש",
+        "text": "בני הזוג הפליגו מליסבון בספינת סרפה פינטו והגיעו לאמריקה ב־23 ביוני 1941 לאחר שנמלטו מסכנות אירופה הנאצית.",
+        "url": "https://www.chabad.org/therebbe/article_cdo/aid/2623573/jewish/The-Story-of-the-Serpa-Pinto.htm",
+        "type": "תולדות חיים ועדויות"
+      },
+      "idea": {
+        "title": "אחריות מאחורי הקלעים",
+        "text": "לפי עדויות חב״ד, תמכה בחשאי בפעילותו הציבורית של בעלה תוך שמירה על חייה הפרטיים. זהו תיאור ביוגרפי ולא הוראה הלכתית.",
+        "url": "https://www.chabad.org/therebbe/article_cdo/aid/110745/jewish/A-Brief-Biography-of-the-Rebbetzin.htm",
+        "type": "מורשת אישית"
+      }
     }
   ]
 }
