@@ -2333,6 +2333,26 @@
       "verified": "2026-10-27"
     },
     {
+      "id": "rebbe-rebbetzin-wedding-jem-1928",
+      "title": "חתונת הרבי והרבנית חיה מושקא — ורשה 1928 (סרט תיעודי)",
+      "figure": "רבי מנחם מנדל שניאורסון והרבנית חיה מושקא שניאורסון",
+      "era": "modern",
+      "year": 1928,
+      "century": "1928 — ורשה, פולין",
+      "region": "ורשה, פולין",
+      "type": "סרט תיעודי סיפורי — 23:36 דקות",
+      "language": "אנגלית",
+      "description": "סרט תיעודי על חתונת הרבי והרבנית בי״ד בכסלו תרפ״ט בוורשה, ומשמעות האירוע בחייהם.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — נגן יוצר רשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/4205239/jewish/The-Wedding-of-the-Rebbe-and-Rebbetzin-a-Documentary.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel",
+        "chaya-mushka-schneerson"
+      ],
+      "fiction": "סרט תיעודי היסטורי ממקור חב״די; הבחנה בין צילום, עדויות וזיכרונות מאוחרים.",
+      "verified": "2026-10-29"
+    },
+    {
       "id": "baba-sali-hidabroot-following-righteous",
       "title": "בעקבות הצדיקים — תחנות חייו של הבבא סאלי",
       "figure": "רבי ישראל אבוחצירא (הבבא סאלי)",
@@ -2348,6 +2368,25 @@
       "duration": "05:40",
       "fiction": "אנימציה ביוגרפית עם המחשות מסורתיות, מותאמת לילדים",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "chaya-mushka-life-and-times-jem-short",
+      "title": "הרבנית חיה מושקא — סיפור חייה בקצרה",
+      "figure": "הרבנית חיה מושקא שניאורסון",
+      "era": "modern",
+      "year": 1930,
+      "century": "המאה ה־20 — סיפור חיים",
+      "region": "אירופה וניו יורק",
+      "type": "ביוגרפיה תיעודית — 5:34 דקות",
+      "language": "אנגלית",
+      "description": "דיוקן תיעודי קצר על חייה של הרבנית חיה מושקא, מאת ארכיון JEM.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — נגן יוצר רשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/630431/jewish/The-Rebbetzin.htm",
+      "sageIds": [
+        "chaya-mushka-schneerson"
+      ],
+      "fiction": "סרט תיעודי היסטורי ממקור חב״די; הבחנה בין צילום, עדויות וזיכרונות מאוחרים.",
+      "verified": "2026-10-29"
     },
     {
       "id": "shlomo-zalman-auerbach-c14-holchim",
@@ -2747,6 +2786,25 @@
       "duration": "01:58",
       "fiction": "סרט אנימציה ביוגרפי קצר המיועד בעיקר לילדים",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "rebbe-recovery-rosh-chodesh-kislev-1977-jem",
+      "title": "לילה של חרדה ויום של שמחה — מחלת הרבי והחלמתו ב־1977",
+      "figure": "רבי מנחם מנדל שניאורסון — הרבי מלובביץ׳",
+      "era": "modern",
+      "year": 1977,
+      "century": "1977 — תשרי–כסלו תשל״ח",
+      "region": "ניו יורק, ארצות הברית",
+      "type": "סרט תיעודי סיפורי — כ־13 דקות",
+      "language": "אנגלית",
+      "description": "סרט JEM על ימי החרדה לאחר התקף הלב של הרבי בשמיני עצרת ועל חזרתו לביתו בראש חודש כסלו.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — נגן יוצר רשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/4192713/jewish/The-Story-of-Rosh-Chodesh-Kislev-5738-1977.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "סרט תיעודי היסטורי ממקור חב״די; הבחנה בין צילום, עדויות וזיכרונות מאוחרים.",
+      "verified": "2026-10-29"
     },
     {
       "id": "arie-leib-kaplan-safed-col-vimeo-doc",
