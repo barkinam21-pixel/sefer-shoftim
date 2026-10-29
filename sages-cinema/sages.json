@@ -1739,6 +1739,41 @@
       }
     },
     {
+      "id": "benjamin-tudela",
+      "name": "בנימין מטודלה — הנוסע שתיעד את חכמי המזרח",
+      "mediaIds": [
+        "benjamin-tudela-travels-eitb-vasconia"
+      ],
+      "hook": "מטודלה לבגדד ולפרס: יהודי אחד יצא למסע והשאיר מפת חיים של קהילות שלמות.",
+      "authorship": "בנימין בן יונה מטודלה חיבר את ספר המסעות, שנערך והופץ לאחר מסעו. זהו תיעוד היסטורי, לא ספר הלכה; תואר רבני מוסמך אינו ידוע.",
+      "works": [
+        {
+          "title": "מסעות בנימין מטודלה — קטעים מן הנוסח העברי",
+          "description": "מקור עברי בוויקיטקסט; מהדורת אדלר עדיין אינה שלמה שם.",
+          "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A1%D7%A2%D7%95%D7%AA_%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F_%D7%9E%D7%98%D7%95%D7%93%D7%9C%D7%94_(%D7%90%D7%93%D7%9C%D7%A8)",
+          "access": "read"
+        },
+        {
+          "title": "מסעות בנימין — נוסח, תרגום וביאור באנגלית",
+          "description": "מהדורת מ״נ אדלר מ־1907 לקריאה מלאה בחינם.",
+          "url": "https://www.gutenberg.org/files/14981/14981-h/14981-h.htm",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "המסע לבבל ולפרס",
+        "text": "בספרו תיעד בנימין קהילות במזרח, ובהן בגדד. חלק מן הפרטים נודעו לו משמועה, ולא כולם ממראה עיניו.",
+        "url": "https://tarbutil.cet.ac.il/lexicon/בנימין-מטודלה/",
+        "type": "תיעוד מסע היסטורי"
+      },
+      "idea": {
+        "title": "להכיר את חיי הקהילות",
+        "text": "סיפורו משמר עדויות על ישיבות ומנהיגים בבגדד ובפרס; זו עדות מסע, לא פסיקה הלכתית.",
+        "url": "https://he.wikisource.org/wiki/%D7%9E%D7%A1%D7%A2%D7%95%D7%AA_%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F_%D7%9E%D7%98%D7%95%D7%93%D7%9C%D7%94_(%D7%90%D7%93%D7%9C%D7%A8)",
+        "type": "ספר מסעות"
+      }
+    },
+    {
       "id": "rambam",
       "name": "הרמב״ם — רבי משה בן מימון",
       "mediaIds": [
@@ -1875,6 +1910,28 @@
         "text": "בפירושו לוויקרא י״ט, ב מסביר הרמב״ן שהאדם יכול להתנהג באופן מגונה גם בתוך גבולות המותר על פי דין; הקריאה ל'קדושים תהיו' תובעת אחריות וריסון. זהו ביאור דבריו, לא פסק הלכה חדש.",
         "url": "https://www.sefaria.org/Ramban_on_Leviticus.19?lang=he",
         "type": "פירוש הרמב״ן על התורה, ויקרא י״ט, ב"
+      }
+    },
+    {
+      "id": "yosef-orabuena",
+      "name": "הרב יוסף אורבואנה — רבה של נווארה",
+      "mediaIds": [
+        "yosef-orabuena-navarre-carlos-iii-eitb"
+      ],
+      "hook": "רב יהודי בחצר מלך נוצרי: כיצד יחסים אישיים השפיעו על גורל הקהילה?",
+      "authorship": "רב ומנהיג יהודי נווארה בימי קרלוס השלישי; לא אומת חיבור עצמאי או ספר הלכה ששרד בשמו.",
+      "works": [],
+      "story": {
+        "title": "ברית עם המלך",
+        "text": "הסרט מתאר את הקשר בין הרב יוסף אורבואנה לקרלוס השלישי, שהעניק חסות ליהודי נווארה.",
+        "url": "https://www.eitb.eus/es/television/programas/una-historia-de-vasconia/judios-de-vasconia/videos/detalle/5750588/video-carlos-iii-rey-navarra-protector-judios/",
+        "type": "תיעוד היסטורי"
+      },
+      "idea": {
+        "title": "מנהיגות קהילתית",
+        "text": "יחסי הרב עם בית המלוכה ממחישים את חשיבות הייצוג הציבורי; אין מכאן הוראה הלכתית.",
+        "url": "https://www.eitb.eus/es/television/programas/una-historia-de-vasconia/judios-de-vasconia/videos/detalle/5750588/video-carlos-iii-rey-navarra-protector-judios/",
+        "type": "היסטוריה יהודית"
       }
     },
     {
