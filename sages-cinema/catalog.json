@@ -2988,6 +2988,25 @@
       "verified": "2026-10-28"
     },
     {
+      "id": "rebbe-faithful-fortified-security-jem",
+      "title": "נאמן ומבוצר — הרבי מלובביץ׳ וביטחון ישראל",
+      "figure": "רבי מנחם מנדל שניאורסון — הרבי מלובביץ׳",
+      "era": "modern",
+      "year": 1970,
+      "century": "שנות ה־60–80 של המאה ה־20, בקירוב",
+      "region": "ישראל וניו יורק",
+      "type": "סרט תיעודי היסטורי — 12:06 דקות",
+      "language": "אנגלית",
+      "description": "תיעוד וראיונות עם בכירי מערכת הביטחון והממשל הישראלי על קשריהם עם הרבי מלובביץ׳ ועל עמדותיו בסוגיות ביטחון ישראל.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — נגן היוצר הרשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1269923/jewish/Faithful-and-Fortified.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "סרט תיעודי מנקודת מבטם של יוצרי JEM; 1970 משמשת מיקום כרונולוגי מקורב, ולא תאריך הפקה.",
+      "verified": "2026-10-29"
+    },
+    {
       "id": "rafael-elashvili-ish-al-haeda-col-documentary",
       "title": "איש על העדה — חכם רפאל אלאשוילי ויהדות גאורגיה",
       "figure": "חכם רפאל אלאשוילי",
@@ -3156,6 +3175,26 @@
       ],
       "fiction": "המחזה מונפשת המבוססת על ביוגרפיה ומסורת; דיאלוגים וסצנות מומחשים אינם עדות היסטורית.",
       "verified": "2026-10-28"
+    },
+    {
+      "id": "holtzbergs-mumbai-mission-of-love-jem",
+      "title": "שליחות של אהבה — הרב גבי ורבקי הולצברג במומבאי",
+      "figure": "הרב גבריאל הולצברג והרבנית רבקה הולצברג",
+      "era": "modern",
+      "year": 2008,
+      "century": "2003–2008, ראשית המאה ה־21",
+      "region": "מומבאי, הודו",
+      "type": "סרט תיעודי ביוגרפי — 18:13 דקות",
+      "language": "אנגלית",
+      "description": "סיפורם של גבי ורבקי הולצברג, שליחי חב״ד שפתחו בית ליהודים במומבאי. הסרט מתאר את מפעל החסד שלהם ואת חייהם שנגדעו במתקפת הטרור בנובמבר 2008.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — נגן היוצר הרשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/779312/jewish/Mission-of-Love.htm",
+      "sageIds": [
+        "gavriel-holtzberg",
+        "rivky-holtzberg"
+      ],
+      "fiction": "תיעוד ופרשנות ביוגרפית מנקודת מבט חב״דית; אינו המחזה של עובדות שלא תועדו.",
+      "verified": "2026-10-29"
     }
   ],
   "notes": "יצירות חינמיות בלבד; YouTube מוטמע רק כאשר זוהה מזהה ספציפי רשמי, ובשאר המקרים הצפייה נפתחת בדף הסרט/הווידאו של היוצר. תכני הידברות החדשים נפתחים ב-VOD המקורי. אנימציות ביוגרפיות עשויות להמחיש מסורות ואינן שחזור היסטורי מדויק."

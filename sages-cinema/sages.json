@@ -3236,7 +3236,8 @@
         "lubavitcher-rebbe-four-points-radiance-chabad-documentary",
         "likkutei-sichos-engine-of-chabad-documentary",
         "rebbe-rebbetzin-wedding-jem-1928",
-        "rebbe-recovery-rosh-chodesh-kislev-1977-jem"
+        "rebbe-recovery-rosh-chodesh-kislev-1977-jem",
+        "rebbe-faithful-fortified-security-jem"
       ],
       "hook": "בשלהי המאה העשרים הציב הרבי מליובאוויטש לימוד, שליחות וספרים במרכז רשת קהילתית שחצתה גבולות.",
       "authorship": "הרבי חיבר מכתבים, רשימות וביאורים והשמיע אלפי שיחות ומאמרים. 'היום יום' נערך על ידו בשנת 1942 מתוך דברי אדמו״רי חב״ד לפי הוראת חותנו; 'ליקוטי שיחות' מבוסס על דבריו וליקוטים שנערכו ופורסמו, ואינו יצירה שחיבר כולה כספר במו ידיו.",
@@ -4067,6 +4068,64 @@
         "text": "שני העולים מחפשים בית בארץ למרות גילם והשקפתם השונים; זהו נושא הסרט, לא הלכה המיוחסת לרב.",
         "url": "https://jfc.org.il/news_journal/70627/",
         "type": "מחשבה בעקבות סרט"
+      }
+    },
+    {
+      "id": "gavriel-holtzberg",
+      "name": "הרב גבריאל (גבי) הולצברג — שליח חב״ד במומבאי",
+      "mediaIds": [
+        "holtzbergs-mumbai-mission-of-love-jem"
+      ],
+      "hook": "אלפי קילומטרים מהבית, הפך הרב גבי דלת אחת לכתובת ליהודים מכל העולם.",
+      "authorship": "רב, תלמיד חכם ושליח חב״ד; לא אותר ספר שחיבר. המקור המצורף הוא כתבה עליו.",
+      "works": [
+        {
+          "title": "הרב גבי הולצברג — דיוקן ביוגרפי",
+          "description": "כתבה על חייו ופועלו, לא ספר שחיבר.",
+          "url": "https://www.chabad.org/news/article_cdo/aid/781143/jewish/Rabbi-Gavriel-Holtzberg-29-Had-Boundless-Energy.htm",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "בית יהודי בלב מומבאי",
+        "text": "משנת 2003 ניהלו בני הזוג בית חב״ד למטיילים ולקהילה היהודית; ב־2008 נרצחו במתקפת טרור.",
+        "url": "https://www.chabad.org/news/article_cdo/aid/2679081/jewish/Mumbai-Chabad-Center-Reopens-With-an-Eye-to-the-Future.htm",
+        "type": "תיעוד היסטורי"
+      },
+      "idea": {
+        "title": "בית פתוח לאורחים",
+        "text": "אבות א, ה מעלה את ערך הכנסת האורחים. פועלו של הרב גבי ממחיש ערך זה, ואינו פסק הלכה שחיבר.",
+        "url": "https://www.sefaria.org/Pirkei_Avot.1.5?lang=he",
+        "type": "משנה אבות א, ה"
+      }
+    },
+    {
+      "id": "rivky-holtzberg",
+      "name": "הרבנית רבקה (רבקי) הולצברג — שליחת חב״ד במומבאי",
+      "mediaIds": [
+        "holtzbergs-mumbai-mission-of-love-jem"
+      ],
+      "hook": "למטיילים הרחק מביתם, רבקי יצרה שולחן שבת חם ואוזן קשבת במומבאי.",
+      "authorship": "שליחת חב״ד ומארחת קהילתית; לא אותר ספר שחיברה. המקור המצורף הוא תיעוד על פועלה.",
+      "works": [
+        {
+          "title": "רבקי הולצברג ובית חב״ד במומבאי",
+          "description": "סיפור הקמת הבית והמשך פעילותו, לא ספר שחיברה.",
+          "url": "https://www.chabad.org/news/article_cdo/aid/2679081/jewish/Mumbai-Chabad-Center-Reopens-With-an-Eye-to-the-Future.htm",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "בית שאפשר לחזור אליו",
+        "text": "רבקי וגבי פתחו בית למטיילים ולבני הקהילה; בית חב״ד במומבאי הוקם מחדש אחרי רציחתם ב־2008.",
+        "url": "https://www.chabad.org/news/article_cdo/aid/2679081/jewish/Mumbai-Chabad-Center-Reopens-With-an-Eye-to-the-Future.htm",
+        "type": "תיעוד היסטורי"
+      },
+      "idea": {
+        "title": "הכנסת אורחים בחום",
+        "text": "אבות א, ה עוסקת בבית פתוח לרווחה. הכנסת האורחים הייתה מפעלה של רבקי; זו דוגמה מוסרית, לא פסיקה.",
+        "url": "https://www.sefaria.org/Pirkei_Avot.1.5?lang=he",
+        "type": "משנה אבות א, ה"
       }
     }
   ]
