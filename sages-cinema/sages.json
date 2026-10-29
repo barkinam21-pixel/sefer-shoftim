@@ -4447,6 +4447,41 @@
         "url": "https://www.sefaria.org/The_Book_of_Maccabees_I.4",
         "type": "ספר מקבים א, ד:לו–נט"
       }
+    },
+    {
+      "id": "jonathan-sacks",
+      "name": "הרב יונתן זקס — הרב הראשי לשעבר של בריטניה",
+      "mediaIds": [
+        "jonathan-sacks-how-to-change-world-silueta"
+      ],
+      "hook": "חיוך אחד בשכונה זרה הופך לשיעור על כוחה של אנושיות.",
+      "authorship": "הרב יונתן זקס חיבר את To Heal a Fractured World ואת מאמרי Covenant & Conversation. את הסיפור שבסרט סיפר מפי סטיבן קרטר, ולא כנוכח באירוע.",
+      "works": [
+        {
+          "title": "To Heal a Fractured World — לרפא עולם שבור",
+          "description": "ספרו על אחריות חברתית וחסד; עמוד מידע רשמי, לא ספר חופשי.",
+          "url": "https://rabbisacks.org/books/to-heal-a-fractured-world/1000/",
+          "access": "info"
+        },
+        {
+          "title": "The Kindness of Strangers — חסד של זרים",
+          "description": "מאמר שכתב על כוחו של חסד; לקריאה חופשית באתר מורשתו.",
+          "url": "https://rabbisacks.org/covenant-conversation/chayei-sarah/kindness-strangers/",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "המעשה הקטן ששינה את חייו של ילד",
+        "text": "לפי עדות סטיבן קרטר שסיפר זקס, שכנה יהודייה קיבלה את פני משפחתו בחיוך ובכיבוד. הסרט ממחיז את הסיפור.",
+        "url": "https://rabbisacks.org/videos/how-to-change-the-world-animation/",
+        "type": "עדות שסופרה והמחזה"
+      },
+      "idea": {
+        "title": "חסד — גם מול אדם זר",
+        "text": "הרב זקס מדגיש שמעשה חסד אחד יכול לשנות חיים. בגמרא סוכה מ״ט ע״ב מודגשת מעלת גמילות החסדים.",
+        "url": "https://www.sefaria.org/Sukkah.49b?lang=he",
+        "type": "מוסר; סוכה מ״ט ע״ב"
+      }
     }
   ]
 }
