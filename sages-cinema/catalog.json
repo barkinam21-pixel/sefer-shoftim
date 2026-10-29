@@ -216,6 +216,46 @@
       "verified": "2026-10-29"
     },
     {
+      "id": "miracle-lights-chabad-free-17min",
+      "title": "אורות הנס — הרפתקת המכבים באנימציה (17 דקות חינם)",
+      "figure": "יהודה המכבי והחשמונאים",
+      "era": "second-temple",
+      "year": -164,
+      "century": "המאה ה־2 לפנה״ס — מרד החשמונאים וחנוכת המקדש",
+      "region": "יהודה וירושלים",
+      "type": "אנימציה סיפורית — קטע חינמי מתוך סרט ארוך",
+      "language": "אנגלית",
+      "description": "בני וסבו נכנסים אל סיפור חנוכה: ימים של גזירות, מאבק וניצחון החשמונאים. אנימציה הרפתקנית עם דמויות ועלילה; הקישור מציג 17:11 דקות לצפייה חופשית, לא את הסרט המלא בן 60 הדקות שנמכר בנפרד.",
+      "source": "Chabad.org / JewishKids — הצגת קטע וידאו רשמי וחינמי מתוך Miracle Lights",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/2407594/jewish/Miracle-Lights.htm",
+      "sageIds": [
+        "mattathias-hasmonean",
+        "judah-maccabee"
+      ],
+      "fiction": "המחזה מאוירת של סיפור המרד וחנוכת המקדש; דמויות המסגרת והדיאלוגים הם עיבוד עלילתי, ואין להציגם כתיעוד היסטורי.",
+      "verified": "2026-10-29"
+    },
+    {
+      "id": "chanukah-story-hershey-sufrin-illustrated",
+      "title": "החשמונאים וחנוכה — הסיפור המאויר של הרשי סופרין",
+      "figure": "מתתיהו ויהודה המכבי — סיפור חנוכה",
+      "era": "second-temple",
+      "year": -164,
+      "century": "המאה ה־2 לפנה״ס — מאבק החשמונאים",
+      "region": "יהודה וירושלים",
+      "type": "סיפור היסטורי מאויר ומדובב — סרטון קצר (3:34)",
+      "language": "אנגלית",
+      "description": "סרטון סיפור מאויר של הרשי סופרין, שמביא בקצב קצר את הגזירות, המאבק והניצחון שמאחורי חנוכה. צפייה ישירה וחופשית באתר חב״ד; זו גרסה קצרה ולא סרט קולנוע באורך מלא.",
+      "source": "Chabad.org — The Story of Chanukah, מאת Hershey Sufrin",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/5198780/jewish/The-Story-of-Chanukah.htm",
+      "sageIds": [
+        "mattathias-hasmonean",
+        "judah-maccabee"
+      ],
+      "fiction": "עיבוד חזותי מקוצר של מסורת חנוכה והאירועים המתוארים בספר מקבים; האיורים והניסוח אינם תיעוד ישיר של התקופה.",
+      "verified": "2026-10-29"
+    },
+    {
       "id": "honi-circlemaker-hidabroot-ai-english-2026",
       "title": "חוני המעגל — הבצורת והמעגל: סיפור באנימציה",
       "figure": "חוני המעגל",
