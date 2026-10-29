@@ -191,6 +191,26 @@
       "verified": "2026-10-27"
     },
     {
+      "id": "honi-circlemaker-hidabroot-ai-english-2026",
+      "title": "חוני המעגל — הבצורת והמעגל: סיפור באנימציה",
+      "figure": "חוני המעגל",
+      "era": "second-temple",
+      "year": -50,
+      "century": "ימי בית שני, המאה הראשונה לפני הספירה בקירוב",
+      "region": "ירושלים וארץ ישראל",
+      "type": "אנימציה עלילתית בהמחשת AI",
+      "language": "אנגלית",
+      "description": "בעת בצורת קשה חוני המעגל ניצב בתוך מעגל ששרטט באדמה ומבקש גשם. סיפורו של החכם הופך לסצנות אנימציה דרמטיות ומדובבות.",
+      "source": "Hidabroot English — דף הסרטון המקורי ונגן YouTube שהטמיע המפיץ",
+      "url": "https://www.hidabroot.com/video/4748",
+      "youtubeId": "7UIhr8fuViY",
+      "sageIds": [
+        "honi"
+      ],
+      "fiction": "עיבוד מונפש לסיפור חז״ל במשנה תענית ג, ח; הנסים מסופרים במסורת חז״ל, והסצנות והדיאלוגים הם המחזה ולא תיעוד היסטורי.",
+      "verified": "2026-10-29"
+    },
+    {
       "id": "hillel-shammai-machlochet-bimbam-he",
       "title": "מחלוקת לשם שמיים — הלל ושמאי",
       "figure": "הלל הזקן, שמאי הזקן ובתי מדרשם",
@@ -1948,6 +1968,26 @@
       "sageIds": [
         "shalom-sharabi"
       ]
+    },
+    {
+      "id": "shalom-sharabi-hidabroot-hidden-kabbalist-ai",
+      "title": "הרש״ש — החכם הנסתר שעלה לראשות ישיבת בית אל",
+      "figure": "רבי שלום שרעבי — הרש״ש",
+      "era": "acharonim",
+      "year": 1750,
+      "century": "המאה ה־18, תקופת האחרונים",
+      "region": "תימן וירושלים",
+      "type": "דרמת אנימציה ביוגרפית בהמחשת AI",
+      "language": "אנגלית",
+      "description": "סיפור על חכם צעיר וצנוע מתימן, העובד באלמוניות בישיבת בית אל בירושלים עד שחכמתו מתגלה והוא הופך למנהיג מקובלי הישיבה.",
+      "source": "Hidabroot English — דף הסרטון המקורי ונגן YouTube שהטמיע המפיץ",
+      "url": "https://www.hidabroot.com/video/6588",
+      "youtubeId": "prNez-caDOo",
+      "sageIds": [
+        "shalom-sharabi"
+      ],
+      "fiction": "הסיפור על הצעיר שהסתיר את חכמתו הוא מסורת ביוגרפית, לא תיעוד עובדתי עצמאי; הדיאלוגים והמראות המונפשים הם המחזה.",
+      "verified": "2026-10-29"
     },
     {
       "id": "vilna-gaon-searching-puidokas-2020",
