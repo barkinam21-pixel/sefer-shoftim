@@ -2389,6 +2389,46 @@
       ]
     },
     {
+      "id": "chana-schneerson-jem-video-biography",
+      "title": "הרבנית חנה שניאורסון — גבורתה תחת רדיפות השלטון הסובייטי",
+      "figure": "הרבנית חנה שניאורסון ורבי לוי יצחק שניאורסון",
+      "era": "modern",
+      "year": 1940,
+      "century": "שנות ה־30–40 של המאה ה־20",
+      "region": "אוקראינה וקזחסטן הסובייטיות",
+      "type": "סרט ביוגרפי תיעודי — 9:33 דקות",
+      "language": "אנגלית",
+      "description": "סיפורה של הרבנית חנה, שליוותה את בעלה הרב לוי יצחק בגלות הסובייטית ושמרה על חידושי תורתו בתנאי מחסור. סרט ביוגרפי קצר עם תיעוד היסטורי.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — נגן היוצר הרשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1636128/jewish/The-Life-of-Rebbetzin-Chana-Schneerson.htm",
+      "sageIds": [
+        "chana-schneerson",
+        "levi-yitzchak-schneerson"
+      ],
+      "fiction": "סרט ביוגרפי תיעודי מנקודת מבט חב״דית; סצנות אינן תיעוד בלתי־אמצעי של אירועי הגלות.",
+      "verified": "2026-10-29"
+    },
+    {
+      "id": "rebbe-rebbetzin-arrival-america-jem-1941",
+      "title": "מסע ההצלה לאמריקה — הרבי והרבנית חיה מושקא בשנת 1941",
+      "figure": "רבי מנחם מנדל שניאורסון והרבנית חיה מושקא שניאורסון",
+      "era": "modern",
+      "year": 1941,
+      "century": "1941 — מלחמת העולם השנייה",
+      "region": "צרפת, פורטוגל וניו יורק",
+      "type": "דוקומנטרי סיפורי עם עדויות — 6:41 דקות",
+      "language": "אנגלית",
+      "description": "מסע הבריחה מאירופה הנאצית אל אמריקה, דרך עדויות של אנשים שקיבלו את בני הזוג בניו יורק ביוני 1941. סיפור קצר של סכנה, הצלה ופתיחת פרק חדש.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — נגן היוצר הרשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1558408/jewish/The-Rebbe-and-Rebbetzin-Arrive-in-America.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel",
+        "chaya-mushka-schneerson"
+      ],
+      "fiction": "סרט תיעודי הנשען על עדויות מאוחרות של אנשים שנכחו בקבלת הפנים ב־1941, לא המחזה של המסע עצמו.",
+      "verified": "2026-10-29"
+    },
+    {
       "id": "yosef-kapach-net-sah-holchim",
       "title": "הולכים לפני המחנה — רבי יוסף קאפח: מצנעא לכתבי הרמב״ם",
       "figure": "הרב יוסף קאפח",
@@ -2579,6 +2619,25 @@
       ],
       "fiction": "ביוגרפיה מצולמת וערוכה לפי מקורות ומסורות משפחתיות; לא שחזור של כל השיחות והאירועים בזמן התרחשותם.",
       "verified": "2026-10-28"
+    },
+    {
+      "id": "rebbee-six-day-war-tefillin-jem-doc",
+      "title": "הרבי ומלחמת ששת הימים — מאחורי מבצע התפילין",
+      "figure": "רבי מנחם מנדל שניאורסון — הרבי מלובביץ׳",
+      "era": "modern",
+      "year": 1967,
+      "century": "מאי–יוני 1967",
+      "region": "ישראל וניו יורק",
+      "type": "סרט תיעודי היסטורי — 14:11 דקות",
+      "language": "אנגלית",
+      "description": "סרט ארכיוני על הימים שקדמו למלחמת ששת הימים ועל קריאתו של הרבי להנחת תפילין בקרב חיילים ואזרחים, כפי שמציגים זאת יוצרי הסרט.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — נגן היוצר הרשמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/604984/jewish/The-Six-Day-War-and-Tefillin.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "תיעוד ופרשנות היסטורית של יוצרי JEM; השקפת הסרט היא זווית חב״דית ואינה תיאור ניטרלי של כל המלחמה.",
+      "verified": "2026-10-29"
     },
     {
       "id": "manitou-documentary-life-part-two",
