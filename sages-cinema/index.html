@@ -206,7 +206,7 @@ footer a{text-decoration:underline}
 <div class="hero-art" aria-hidden="true"><div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div><div class="art-center">אור</div><span class="orbit-tag tag-a">תנאים</span><span class="orbit-tag tag-b">ראשונים</span><span class="orbit-tag tag-c">חסידות</span><span class="orbit-tag tag-d">אמוראים</span></div>
 </div>
 </section>
-<div class="note-band"><div class="container"><strong>סרטים בחינם ולימוד בעקבותיהם ·</strong> נגני YouTube ו־Vimeo רשמיים מוצגים בתוך האתר כאשר היוצר מתיר זאת; אם נגן נחסם, אפשר לפתוח את הסרט באתר היוצר. היסטוריה, אגדה והמחזה אינן אותו דבר.</div></div>
+<div class="note-band"><div class="container"><strong>סרטים בחינם ולימוד בעקבותיהם ·</strong> נגני YouTube, Vimeo וארכיון האינטרנט מוצגים בתוך האתר כאשר היוצר או הארכיון מתירים זאת; אם נגן נחסם, אפשר לפתוח את הסרט באתר היוצר. היסטוריה, אגדה והמחזה אינן אותו דבר.</div></div>
 <section id="timeline" class="container" aria-labelledby="timelineTitle">
 <div class="section-top"><div><div class="kicker">01 / מסע בזמן</div><h2 id="timelineTitle">אלפי שנים, סיפור אחד</h2><p>בחירת תקופה מסננת את הספרייה. תקופות ללא יצירות מאומתות נשארות בציר הזמן ולא ממולאות בשיעורים.</p></div></div>
 <div id="timelineRail" class="timeline-rail" role="group" aria-label="סינון לפי תקופה"></div>
@@ -272,6 +272,10 @@ function playableSource(it){
      var privacy=parsed.searchParams.get("h");
      var suffix=privacy&&/^[a-fA-F0-9]{6,64}$/.test(privacy)?"?h="+privacy+"&":"?";
      return {provider:"vimeo",id:m[1],src:"https://player.vimeo.com/video/"+m[1]+suffix+"autoplay=1&dnt=1"};
+   }
+   // Internet Archive's own public-domain film player explicitly offers this embed.
+   if((vh==="archive.org"||vh==="www.archive.org")&&parsed.pathname==="/details/TheGolem_893"){
+     return {provider:"archive",id:"TheGolem_893",src:"https://archive.org/embed/TheGolem_893"};
    }
  }
  return null;
