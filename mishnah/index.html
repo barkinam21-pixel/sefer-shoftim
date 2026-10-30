@@ -1921,34 +1921,7 @@ function playSelected(){if(!current)return;
   f.referrerPolicy="strict-origin-when-cross-origin";
   f.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation");
   const playerURL="https://embed.chabad.org/multimedia/mediaplayer/embedded/embed.js.asp?aid="+aid+"&amp;width=auto&amp;height=auto";
-  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script>
-<script>
-(()=>{
- 'use strict';
- const root=document.getElementById('pesachimTractate');if(!root)return;
- const key='mishnah_cinema_pesachim_text_v1';let marks={};
- try{const saved=JSON.parse(localStorage.getItem(key)||'{}');if(saved&&typeof saved==='object'&&!Array.isArray(saved))marks=saved;}catch(_){}
- function redraw(){
-  root.querySelectorAll('[data-pesachim-mark]').forEach(button=>{const on=!!marks[button.dataset.pesachimMark];button.setAttribute('aria-pressed',String(on));button.textContent=on?'✓ למדתי — בטל סימון':'סמן שלמדתי';});
-  for(const [ch,limit] of [[1,7],[2,8]]){const p=document.getElementById('pesachim'+ch+'Progress');if(p)p.textContent=Array.from({length:limit},(_,i)=>ch+'.'+(i+1)).filter(x=>marks[x]).length+' מתוך '+limit+' משניות סומנו כנלמדות בפרק '+ch+'. הסימון נשמר במכשיר.';}
- }
- root.addEventListener('click',e=>{
-  const mark=e.target.closest('[data-pesachim-mark]');
-  if(mark){const id=mark.dataset.pesachimMark;marks[id]=!marks[id];try{localStorage.setItem(key,JSON.stringify(marks));}catch(_){}redraw();return;}
-  const play=e.target.closest('[data-pesachim-play]');if(!play)return;
-  const id=play.dataset.pesachimPlay,unit=play.dataset.pesachimKey;
-  if(!/^[\w-]{11}$/.test(id)||!/^[12]\.[1-8]$/.test(unit))return;
-  root.querySelectorAll('[data-pesachim-host]').forEach(h=>{h.replaceChildren();h.hidden=true;});
-  const host=root.querySelector('[data-pesachim-host="'+unit+'"]');if(!host)return;
-  const frame=document.createElement('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
-  frame.title='מסכת פסחים, משנה '+unit+' — The Mishnah Project';frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';
-  frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;
-  host.appendChild(frame);host.hidden=false;play.textContent='↻ טען שוב';
- });
- redraw();
-})();
-</script>
-</body></html>';
+  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script></body></html>';
   $("playerHost").replaceChildren(f);$("watch").scrollIntoView({behavior:"smooth",block:"start"});return;
  }
  if(vimeo){
@@ -2387,6 +2360,33 @@ else if(state.last&&getItem(state.last))selectItem(state.last,false,true);
   play.textContent='↻ טען שוב';
  });
  repaint();
+})();
+</script>
+
+<script>
+(()=>{
+ 'use strict';
+ const root=document.getElementById('pesachimTractate');if(!root)return;
+ const key='mishnah_cinema_pesachim_text_v1';let marks={};
+ try{const saved=JSON.parse(localStorage.getItem(key)||'{}');if(saved&&typeof saved==='object'&&!Array.isArray(saved))marks=saved;}catch(_){}
+ function redraw(){
+  root.querySelectorAll('[data-pesachim-mark]').forEach(button=>{const on=!!marks[button.dataset.pesachimMark];button.setAttribute('aria-pressed',String(on));button.textContent=on?'✓ למדתי — בטל סימון':'סמן שלמדתי';});
+  for(const [ch,limit] of [[1,7],[2,8]]){const p=document.getElementById('pesachim'+ch+'Progress');if(p)p.textContent=Array.from({length:limit},(_,i)=>ch+'.'+(i+1)).filter(x=>marks[x]).length+' מתוך '+limit+' משניות סומנו כנלמדות בפרק '+ch+'. הסימון נשמר במכשיר.';}
+ }
+ root.addEventListener('click',e=>{
+  const mark=e.target.closest('[data-pesachim-mark]');
+  if(mark){const id=mark.dataset.pesachimMark;marks[id]=!marks[id];try{localStorage.setItem(key,JSON.stringify(marks));}catch(_){}redraw();return;}
+  const play=e.target.closest('[data-pesachim-play]');if(!play)return;
+  const id=play.dataset.pesachimPlay,unit=play.dataset.pesachimKey;
+  if(!/^[\w-]{11}$/.test(id)||!/^[12]\.[1-8]$/.test(unit))return;
+  root.querySelectorAll('[data-pesachim-host]').forEach(h=>{h.replaceChildren();h.hidden=true;});
+  const host=root.querySelector('[data-pesachim-host="'+unit+'"]');if(!host)return;
+  const frame=document.createElement('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
+  frame.title='מסכת פסחים, משנה '+unit+' — The Mishnah Project';frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';
+  frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;
+  host.appendChild(frame);host.hidden=false;play.textContent='↻ טען שוב';
+ });
+ redraw();
 })();
 </script>
 </body></html>
