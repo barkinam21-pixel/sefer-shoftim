@@ -206,7 +206,7 @@ footer a{text-decoration:underline}
 <div class="hero-art" aria-hidden="true"><div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div><div class="art-center">אור</div><span class="orbit-tag tag-a">תנאים</span><span class="orbit-tag tag-b">ראשונים</span><span class="orbit-tag tag-c">חסידות</span><span class="orbit-tag tag-d">אמוראים</span></div>
 </div>
 </section>
-<div class="note-band"><div class="container"><strong>סרטים בחינם ולימוד בעקבותיהם ·</strong> נגנים מוטמעים כשזוהה מקור רשמי שמאפשר זאת; סרטים אחרים נפתחים בדף הסרט של היוצר. היסטוריה, אגדה והמחזה אינן אותו דבר.</div></div>
+<div class="note-band"><div class="container"><strong>סרטים בחינם ולימוד בעקבותיהם ·</strong> נגני YouTube ו־Vimeo רשמיים מוצגים בתוך האתר כאשר היוצר מתיר זאת; אם נגן נחסם, אפשר לפתוח את הסרט באתר היוצר. היסטוריה, אגדה והמחזה אינן אותו דבר.</div></div>
 <section id="timeline" class="container" aria-labelledby="timelineTitle">
 <div class="section-top"><div><div class="kicker">01 / מסע בזמן</div><h2 id="timelineTitle">אלפי שנים, סיפור אחד</h2><p>בחירת תקופה מסננת את הספרייה. תקופות ללא יצירות מאומתות נשארות בציר הזמן ולא ממולאות בשיעורים.</p></div></div>
 <div id="timelineRail" class="timeline-rail" role="group" aria-label="סינון לפי תקופה"></div>
@@ -233,7 +233,7 @@ footer a{text-decoration:underline}
 </main>
 <footer class="container"><span>© דורות של אור — אינדקס צפייה חינמי, ללא אירוח יצירות מוגנות. כל הזכויות לסרטים שמורות ליוצריהם.</span><span>אתר עצמאי • <a href="https://shoftim-v3.vercel.app/" target="_blank" rel="noopener">אתר שופטים</a></span></footer>
 <div id="playerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="playerTitle" hidden>
-<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="openLearning" type="button">📚 ספרים בקצרה</button><button id="playNext" class="next" type="button">הסרט הבא ←</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם YouTube חוסם הטמעה, ניתן לפתוח את אתר היוצר.</span></div></div>
+<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="openLearning" type="button">📚 ספרים בקצרה</button><button id="playNext" class="next" type="button">הסרט הבא ←</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם היוצר חוסם הטמעה, אפשר לפתוח את הסרט באתר הרשמי שלו.</span></div></div>
 </div>
 <script>
 (function(){
@@ -249,6 +249,33 @@ function save(k,set){try{localStorage.setItem(k,JSON.stringify(Array.from(set)))
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function validUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:"#"}catch(e){return "#"}}
 function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(s)}
+// Use only the providers' official players; no videos are copied or proxied.
+function playableSource(it){
+ var youtubeId=validYoutube(it.youtubeId)?it.youtubeId:null;
+ var u=validUrl(it.url),parsed=null;
+ if(u!=="#"){try{parsed=new URL(u)}catch(e){}}
+ if(parsed&&!youtubeId){
+   var host=parsed.hostname.toLowerCase(),path=parsed.pathname,candidate=null;
+   if(host==="youtube.com"||host==="www.youtube.com"||host==="m.youtube.com"){
+     candidate=path==="/watch"?parsed.searchParams.get("v"):(path.match(/^\/(?:shorts|embed)\/([A-Za-z0-9_-]{11})(?:\/|$)/)||[])[1];
+   }else if(host==="youtu.be"||host==="www.youtu.be"){
+     candidate=(path.match(/^\/([A-Za-z0-9_-]{11})(?:\/|$)/)||[])[1];
+   }
+   if(validYoutube(candidate))youtubeId=candidate;
+ }
+ if(youtubeId)return {provider:"youtube",id:youtubeId,src:"https://www.youtube-nocookie.com/embed/"+youtubeId+"?autoplay=1&rel=0"};
+ if(parsed){
+   var vh=parsed.hostname.toLowerCase(),m=null;
+   if(vh==="vimeo.com"||vh==="www.vimeo.com")m=parsed.pathname.match(/^\/(\d{5,12})(?:\/|$)/);
+   if(vh==="player.vimeo.com")m=parsed.pathname.match(/^\/video\/(\d{5,12})(?:\/|$)/);
+   if(m){
+     var privacy=parsed.searchParams.get("h");
+     var suffix=privacy&&/^[a-fA-F0-9]{6,64}$/.test(privacy)?"?h="+privacy+"&":"?";
+     return {provider:"vimeo",id:m[1],src:"https://player.vimeo.com/video/"+m[1]+suffix+"autoplay=1&dnt=1"};
+   }
+ }
+ return null;
+}
 function itemsSorted(){return library.items.slice().sort(function(a,b){return a.year-b.year||a.title.localeCompare(b.title,"he")})}
 function getProfiles(it){return (learning.profiles||[]).filter(function(p){return (p.mediaIds||[]).indexOf(it.id)!==-1||(it.sageIds||[]).indexOf(p.id)!==-1})}
 function selectedItems(){return itemsSorted().filter(function(it){
@@ -308,8 +335,8 @@ return '<details id="learn-'+esc(it.id)+'" class="study-details"><summary>📚 �
 }
 
 function mediaCard(it){
-var isWatched=watched.has(it.id),isFav=favorites.has(it.id),embed=validYoutube(it.youtubeId);
-var poster=embed?'<img loading="lazy" decoding="async" src="https://i.ytimg.com/vi/'+it.youtubeId+'/hqdefault.jpg" alt="" referrerpolicy="no-referrer">':'<span class="symbol" aria-hidden="true">✦</span>';
+var isWatched=watched.has(it.id),isFav=favorites.has(it.id),player=playableSource(it),embed=!!player;
+var poster=player&&player.provider==="youtube"?'<img loading="lazy" decoding="async" src="https://i.ytimg.com/vi/'+player.id+'/hqdefault.jpg" alt="" referrerpolicy="no-referrer">':'<span class="symbol" aria-hidden="true">'+(embed?'▶':'✦')+'</span>';
 return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
 '<div class="poster">'+poster+'<span class="poster-icon">'+(embed?'▶ נגן באתר':'↗ צפייה ביוצר')+'</span><span class="poster-label">'+esc(it.century)+'</span></div>'+
 '<div class="card-body"><div class="meta"><span>'+esc(it.type)+'</span><span>'+esc(it.language)+'</span><span>'+esc(it.region)+'</span></div>'+
@@ -344,9 +371,9 @@ function refresh(){renderTimeline();renderCards()}
 function toggleWatched(id){if(watched.has(id))watched.delete(id);else watched.add(id);save("sages-watched-v1",watched);renderCards()}
 function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);save("sages-favorites-v1",favorites);renderCards()}
 function openItem(id){var it=library.items.find(function(x){return x.id===id});if(!it)return;
-if(!validYoutube(it.youtubeId)){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
+var player=playableSource(it);if(!player){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
 lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=validUrl(it.url);$("openLearning").hidden=!getProfiles(it).length;$("playerModal").hidden=false;document.body.classList.add("locked");
-var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src="https://www.youtube-nocookie.com/embed/"+it.youtubeId+"?autoplay=1&rel=0";$("videoStage").replaceChildren(frame);
+var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src=player.src;$("videoStage").replaceChildren(frame);
 $("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";$("playerClose").focus();
 }
 function closePlayer(){if($("playerModal").hidden)return;$("playerModal").hidden=true;document.body.classList.remove("locked");$("videoStage").replaceChildren();activeId=null;if(lastFocus&&document.contains(lastFocus))lastFocus.focus()}
@@ -390,7 +417,7 @@ fetch("./sages.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("
 var data=parts[0];if(!data.eras||!Array.isArray(data.items))throw Error("bad catalog");
 library=data;learning=parts[1]&&Array.isArray(parts[1].profiles)?parts[1]:{profiles:[]};
 $("movieCount").textContent=library.items.length;$("eraCount").textContent=library.eras.length;
-$("embeddedCount").textContent=library.items.filter(function(i){return validYoutube(i.youtubeId)}).length;
+$("embeddedCount").textContent=library.items.filter(function(i){return !!playableSource(i)}).length;
 
 $("lastUpdated").textContent="עדכון הקטלוג: "+data.updatedAt+" · "+learning.profiles.length+" תיקי חכמים · ללא תכני צפייה בתשלום";
 refresh();
