@@ -3310,7 +3310,8 @@
         "rebbe-faithful-fortified-security-jem",
         "rebbe-hidden-treasure-four-individuals-jem",
         "rebbe-rebbetzin-arrival-america-jem-1941",
-        "rebbee-six-day-war-tefillin-jem-doc"
+        "rebbee-six-day-war-tefillin-jem-doc",
+        "rebbe-mymaor-beis-rabbeinu-ep1"
       ],
       "hook": "בשלהי המאה העשרים הציב הרבי מליובאוויטש לימוד, שליחות וספרים במרכז רשת קהילתית שחצתה גבולות.",
       "authorship": "הרבי חיבר מכתבים, רשימות וביאורים והשמיע אלפי שיחות ומאמרים. 'היום יום' נערך על ידו בשנת 1942 מתוך דברי אדמו״רי חב״ד לפי הוראת חותנו; 'ליקוטי שיחות' מבוסס על דבריו וליקוטים שנערכו ופורסמו, ואינו יצירה שחיבר כולה כספר במו ידיו.",
@@ -3325,6 +3326,12 @@
           "title": "ליקוטי שיחות — מבחר משיחות הרבי",
           "description": "שיחות וביאורים של הרבי שנערכו בקבצים; פרקים מתורגמים לאנגלית ניתנים לקריאה חינם בעמוד המוציא לאור.",
           "url": "https://www.chabad.org/library/article_cdo/aid/2618431/jewish/Likkutei-Sichot.htm",
+          "access": "read"
+        },
+        {
+          "title": "קונטרס בית רבינו שבבבל",
+          "description": "דברי הרבי על בית הכנסת ובית המדרש כמרכז רוחני גם בזמן הגלות.",
+          "url": "https://he.chabad.org/library/article_cdo/aid/3140299",
           "access": "read"
         }
       ],
