@@ -2579,25 +2579,25 @@
       ]
     },
     {
-      "id": "nachman-findrabbinachman-good-deeds-lamps",
-      "title": "רבי נחמן — המעשים הטובים שהפכו לנרות",
-      "figure": "רבי נחמן מברסלב — משל הנרות ואוצרות המלך",
+      "id": "nachman-findrabbinachman-ep12-focused-thought",
+      "title": "רבי נחמן — פרק 12: מחשבה ממוקדת משנה את הדרך",
+      "figure": "רבי נחמן מברסלב — כוח הריכוז והמחשבה",
       "era": "hasidut",
       "year": 1801,
-      "century": "ראשית המאה ה־19; תקופת רבי נחמן בקירוב",
-      "region": "ברסלב — אוקראינה",
-      "type": "אנימציה סיפורית קצרה",
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן בקירוב; שנת אמירת הרעיון אינה ידועה",
+      "region": "ברסלב, אוקראינה — המחזה בת־זמננו",
+      "type": "אנימציה סיפורית קצרה — פרק 12",
       "language": "אנגלית",
       "duration": "כדקה",
-      "description": "כל מעשה טוב הופך לנר המאיר את אוצרות המלך. סיפור מצויר קצר על המשל בתורת רבי נחמן, מתוך הפרק החמישה־עשר של סדרת Find Rabbi Nachman.",
-      "source": "Find Rabbi Nachman — סרט אנימציה מקורי, פרק 15",
-      "url": "https://www.findrabbinachman.com/episodes/what-if-every-good-deed-became-a-lamp",
-      "youtubeId": "Ux_9UPCEDiE",
+      "description": "אדם מנסה להפוך רעיון מפוזר לדרך ברורה; האנימציה מדגימה כיצד מחשבה ממוקדת יכולה להניע אותו למעשה.",
+      "source": "Find Rabbi Nachman — אתר היוצר הרשמי, פרק 12 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/focused-thought",
+      "youtubeId": "XTDXbWHeKbs",
       "sageIds": [
         "nachman"
       ],
-      "fiction": "עיבוד אנימציה עכשווי למשל המיוחס לרבי נחמן; היצירה אינה משחזרת אירועים מתקופת חייו.",
-      "verified": "2026-10-29"
+      "fiction": "המחשה בדיונית עכשווית לרעיון מתורת רבי נחמן; אינה אירוע ביוגרפי או שחזור היסטורי.",
+      "verified": "2026-10-30"
     },
     {
       "id": "nachman-findrabbinachman-ep13-giving-space",
@@ -2640,6 +2640,27 @@
       "verified": "2026-10-30"
     },
     {
+      "id": "nachman-findrabbinachman-good-deeds-lamps",
+      "title": "רבי נחמן — המעשים הטובים שהפכו לנרות",
+      "figure": "רבי נחמן מברסלב — משל הנרות ואוצרות המלך",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19; תקופת רבי נחמן בקירוב",
+      "region": "ברסלב — אוקראינה",
+      "type": "אנימציה סיפורית קצרה",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "כל מעשה טוב הופך לנר המאיר את אוצרות המלך. סיפור מצויר קצר על המשל בתורת רבי נחמן, מתוך הפרק החמישה־עשר של סדרת Find Rabbi Nachman.",
+      "source": "Find Rabbi Nachman — סרט אנימציה מקורי, פרק 15",
+      "url": "https://www.findrabbinachman.com/episodes/what-if-every-good-deed-became-a-lamp",
+      "youtubeId": "Ux_9UPCEDiE",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "עיבוד אנימציה עכשווי למשל המיוחס לרבי נחמן; היצירה אינה משחזרת אירועים מתקופת חייו.",
+      "verified": "2026-10-29"
+    },
+    {
       "id": "nachman-findrabbinachman-ep16-never-too-late",
       "title": "רבי נחמן — פרק 16: לעולם לא מאוחר לחזור",
       "figure": "רבי נחמן מברסלב — תקווה גם אחרי נפילה",
@@ -2657,6 +2678,69 @@
         "nachman"
       ],
       "fiction": "המחזה חזותית של רעיון תורני ואמוני; הגיבור המצויר אינו תיעוד של רבי נחמן.",
+      "verified": "2026-10-30"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep17-gods-child",
+      "title": "רבי נחמן — פרק 17: גם אחרי הטעות נשארים בנים",
+      "figure": "רבי נחמן מברסלב — משל על תשובה וקשר",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן בקירוב; שנת אמירת הרעיון אינה ידועה",
+      "region": "ברסלב, אוקראינה — המחזה בת־זמננו",
+      "type": "אנימציה סיפורית קצרה — פרק 17",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "כשאדם מרגיש שהתרחק מדי, הסיפור המצויר מזכיר את דימוי הילד הפונה שוב לאביו ומבקש לחזור.",
+      "source": "Find Rabbi Nachman — אתר היוצר הרשמי, פרק 17 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/are-you-still-gods-child-after-all-youve-done-wrong",
+      "youtubeId": "4qmNPeBe4Kk",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחשה בדיונית עכשווית לרעיון מתורת רבי נחמן; אינה אירוע ביוגרפי או שחזור היסטורי.",
+      "verified": "2026-10-30"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep18-silent-scream",
+      "title": "רבי נחמן — פרק 18: הצעקה שאיש אינו שומע",
+      "figure": "רבי נחמן מברסלב — צעקה פנימית בלב",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן בקירוב; שנת אמירת הרעיון אינה ידועה",
+      "region": "ברסלב, אוקראינה — המחזה בת־זמננו",
+      "type": "אנימציה סיפורית קצרה — פרק 18",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "גם בתוך המון אפשר לזעוק בלב בלי קול. סרט אנימציה קצר על תפילה פנימית, רגש ושתיקה.",
+      "source": "Find Rabbi Nachman — אתר היוצר הרשמי, פרק 18 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/can-you-scream-without-anyone-hearing-you",
+      "youtubeId": "wXT3FWkhQIs",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחשה בדיונית עכשווית לרעיון מתורת רבי נחמן; אינה אירוע ביוגרפי או שחזור היסטורי.",
+      "verified": "2026-10-30"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep19-small-prayers",
+      "title": "רבי נחמן — פרק 19: אפשר להתפלל גם על דבר קטן",
+      "figure": "רבי נחמן מברסלב — תפילה על צרכי היום־יום",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן בקירוב; שנת אמירת הרעיון אינה ידועה",
+      "region": "ברסלב, אוקראינה — המחזה בת־זמננו",
+      "type": "אנימציה סיפורית קצרה — פרק 19",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "שרוול קרוע, ארוחה ובגד חדש: האנימציה מציגה אדם הלומד שאין צורך גדול או קטן מכדי להתפלל עליו.",
+      "source": "Find Rabbi Nachman — אתר היוצר הרשמי, פרק 19 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/is-it-beneath-you-to-pray-for-something-small",
+      "youtubeId": "76CTRWXJq4M",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחשה בדיונית עכשווית לרעיון מתורת רבי נחמן; אינה אירוע ביוגרפי או שחזור היסטורי.",
       "verified": "2026-10-30"
     },
     {
