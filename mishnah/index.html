@@ -1533,6 +1533,18 @@
 
  <div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Pesachim.1" target="_blank" rel="noopener noreferrer">כל פרק א׳ בספריא ↗</a><a href="https://www.sefaria.org/Mishnah_Pesachim.2" target="_blank" rel="noopener noreferrer">כל פרק ב׳ בספריא ↗</a><a href="https://mechon-mamre.org/b/h/h23.htm" target="_blank" rel="noopener noreferrer">נוסח מסכת פסחים — מכון ממרא ↗</a></div>
 </section>
+
+<section id="shekalimTractate" class="next-tractate" aria-labelledby="shekalimHeading">
+  <span class="eyebrow">סדר מועד · המסכת הרביעית · לימוד טקסטואלי, בנפרד מן המסלול ההיסטורי</span>
+  <h3 id="shekalimHeading">מסכת שקלים — שמונת הפרקים, משנה אחר משנה</h3>
+  <p>אחרי עשר פרקי פסחים ממשיכים ל<strong>שקלים א׳, א׳</strong>: 52 סרטוני לימוד באנגלית מזוהים בקטלוג The Mishnah Project. ארבעה מזהי YouTube נבדקו מול דפי מקור, ויתר השיעורים נפתחים בעמודי היוצר לפי רשימת הפרקים המתועדת. אין לבלבל בין רצף הטקסט ובין תאריכי ימי הבית השני. בעמוד זה לא מוצגות תמונות או הסברים כתחליף לווידאו.</p>
+  <p class="smallprint">אימות תוכן ומספור: מכון ממרא, ויקיטקסט, ספריא, קטלוג הסרטונים של היוצר ורישום 52 הפרקים במאגר ההפצה (31.10.2026). השפה אנגלית. זיהוי הפרקים והסרטונים אינו צפייה מלאה; ניגון, כתוביות, קישורי 48 דפי המקור הפרטניים ואיכות הצילום לא נבדקו בפועל. במקרה שדף לא נטען אפשר לפתוח את מאגר היוצר. ארבעה נגנים פנימיים נטענים רק בלחיצה, ושאר הסרטונים נפתחים באתר היוצר.</p>
+  <div class="peah-links"><a class="btn ghost" href="#pesachimChapter10">← פסחים פרק י׳</a><a href="https://mechon-mamre.org/b/h/h24.htm" target="_blank" rel="noopener noreferrer">📜 נוסח המסכת — מכון ממרא</a><a href="https://he.wikisource.org/wiki/משנה_שקלים" target="_blank" rel="noopener noreferrer">📖 נוסח ויקיטקסט</a><a href="https://www.torahsecrets.co.uk/playlist/masechet-shekalim/" target="_blank" rel="noopener noreferrer">🎬 רשימת הסרטונים המלאה אצל היוצר</a></div>
+  <div id="shekalimChapters" class="study-chapters" role="group" aria-label="בחר פרק במסכת שקלים"></div>
+  <div class="actions" style="margin:12px 0;display:flex;gap:9px;flex-wrap:wrap"><button type="button" id="shekalimContinue" class="btn gold">▶ המשך למשנה הבאה שלא נלמדה</button><span id="shekalimProgress" class="progressnote" aria-live="polite"></span></div>
+  <h4 id="shekalimChapterTitle">פרק א׳</h4>
+  <div id="shekalimLessons" class="eruvin-cards" aria-label="סרטוני המשנה לפי סדר המסכת"></div>
+</section>
 <p class="study-resource-caveat">המקור העברי ״הפרק היומי״ מציע שיעורים לכל תשעת פרקי ברכות, אך לא אומתה אפשרות להטמיע את הנגן שלו. לכן הקישור נפתח באתר המקור, בעוד שיעורי המשנה המאוירים שלמעלה נשארים בנגן של האתר.</p>
 </section>
 <section id="watch" class="playerbox" aria-label="נגן"><div class="playerheading"><h2>אולם הצפייה — בתוך האתר</h2><span class="smallprint">נגן רשמי YouTube, Vimeo וחב״ד כשמתאפשר</span></div><div id="playerHost" class="watchview"><div class="emptyplayer"><strong>הסיפור מתחיל בלחיצה אחת</strong>בחר סרטון מתוך המסלול, או לחץ ״התחל את המסע״.</div></div><div class="playingmeta"><div><h3 id="nowTitle">טרם נבחר סרטון</h3><p id="nowMeta">מסלול צפייה כרונולוגי, עם מעבר קל לסרטון הבא.</p></div><div class="control-row"><button class="btn" id="playNow" disabled>▶ נגן</button><a id="sourceNow" class="btn" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">↗ מקור רשמי</a><button class="btn" id="doneNow" disabled>✓ צפיתי</button><button class="btn gold" id="nextNow" disabled>הבא ←</button></div></div><p id="nowBridge" class="playerbridge" hidden></p><p class="embedwarning" id="embedHint">אם היוצר חסם הטמעה, אפשר תמיד לפתוח את הסרטון באתר המקורי. הפעלה אוטומטית מלאה בין אתרים שונים אינה אפשרית.</p></section>
@@ -2112,7 +2124,54 @@ function playSelected(){if(!current)return;
   f.referrerPolicy="strict-origin-when-cross-origin";
   f.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation");
   const playerURL="https://embed.chabad.org/multimedia/mediaplayer/embedded/embed.js.asp?aid="+aid+"&amp;width=auto&amp;height=auto";
-  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script></body></html>';
+  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script>
+<script>
+(()=>{
+'use strict';
+const root=document.getElementById('shekalimTractate');if(!root)return;
+const chapters=[["באחד באדר: שקלים וכלאיים","מה משתנה באכיפת הכלאיים?","שולחנים במקדש: מתי גובים?","חובת הכוהנים: הוויכוח ביבנה","מי רשאי לתת שקל גם בלי חיוב?","קולבון: מי חייב בתוספת?","קולבון בעני, שכן ושותפים"],["משלוח שקלים ואחריות על כספים שאבדו","מי ששוקל בשקל חברו או בכספי הקדש","בית שמאי ובית הלל: מה עושים בעודף?","רבי שמעון ורבי יהודה: האם יש לשקל סכום קבוע?","מה דין עודפי קרבנות, צדקה ופדיון?"],["מתי תורמים את הלשכה בשלוש פעמים בשנה?","שלוש קופות ושמירת אמון הציבור","כיצד תרם בית רבן גמליאל?","חלוקת הקופות לפי ארץ ישראל, סביבתה והגולה"],["לאילו קרבנות ציבור משתמשים בכסף?","אילו הוצאות מקדש ועיר ממומנות מן הלשכה?","האם מותר להרוויח מכספי הקדש?","מה עושים בעודפים: כלי שרת, מזבח וציפוי זהב?","מותר הקטורת: תשלום לאומנים","מה עושים בנכסים שהוקדשו לציבור?","בהמות שהוקדשו: מחלוקת רבי אליעזר ורבי יהושע","יין, שמן וסולת שהוקדשו","אספקת סולת ויין למקדש — למי הסיכון?"],["מי היו בעלי התפקידים במקדש?","כמה גזברים ואמרכולים מנהלים כספי ציבור?","חותמות הנסכים: ארבעה או חמישה?","איך קונים נסכים בעזרת חותם?","מה קורה כאשר אבד החותם?","לשכת חשאים ולשכת הכלים — צדקה ותרומות"],["שלושה עשר שופרות, שולחנות והשתחוויות","המסורת על מקום גניזת הארון","שערי העזרה ומקומות ההשתחוויות","שלושה עשר שולחנות ותפקידיהם","שופרות התרומה: תקלין חדתין ועתיקין","נדבות עצים, לבונה וזהב"],["מעות שנמצאו בין קופות: לאן הן שייכות?","מעות שנמצאו בהר הבית ובירושלים","בשר שנמצא בעזרה או מחוץ לעיר","בהמה שנמצאה סמוך לירושלים","מי משלם על הנסכים לבהמה שנמצאה?","תקנות בית דין בנוגע לקרבנות ונסכים","מלח, עצים וקינים — תקנות נוספות"],["רוק שנמצא בירושלים: דיני טהרה","כלים שנמצאו בדרך לטבילה","סכין שנמצאה לקראת ערב פסח","טבילת הפרוכת כשהיא נטמאה","מידות הפרוכת ומלאכת אריגתה","בית שמאי ובית הלל: שרפת בשר קודש שנטמא","רבי אליעזר ורבי עקיבא: היכן שורפים קודש טמא?","סדר אברי הקרבנות ומה נוהג רק בזמן הבית"]];
+const titles=["ההכרזה וגביית מחצית השקל","כספי הציבור, אבדות ועודפים","תרומת הלשכה והקופות","שימושי הכסף והקדשות","ממוני המקדש והחותמות","ציוד המקדש ותרומות","מציאות ותקנות בית דין","טהרה, הפרוכת וסיום המסכת"];
+const embeds={"1.1":"o1129auv9wU","1.6":"CrxqSXs5LRc","3.1":"LNwg17sxBc8","5.1":"w-hKFFP1PjY"};
+const heb=['','א','ב','ג','ד','ה','ו','ז','ח','ט','י'];
+const key='mishnah_cinema_shekalim_text_v1';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let learned={};try{const stored=JSON.parse(localStorage.getItem(key)||'{}');if(stored&&typeof stored==='object'&&!Array.isArray(stored))learned=stored;}catch(_){ }
+let chapter=Number(new URLSearchParams(location.search).get('shekalim'))||1;if(!(chapter>=1&&chapter<=8))chapter=1;
+const videoUrl=(ch,n)=>'https://mishnah.co/moed/shekalim/chapter-'+ch+'/mishnah-'+n;
+function totalLearned(){return Object.keys(learned).filter(k=>learned[k]&&/^[1-8]\\.[0-9]+$/.test(k)).length;}
+function show(ch,scroll){chapter=ch;const nav=root.querySelector('#shekalimChapters');
+nav.innerHTML=chapters.map((items,i)=>'<button type="button" class="btn '+(i+1===ch?'gold':'ghost')+'" data-shk-ch="'+(i+1)+'" aria-pressed="'+(i+1===ch)+'">פרק '+heb[i+1]+'׳ ('+items.length+')</button>').join('');
+root.querySelector('#shekalimChapterTitle').textContent='פרק '+heb[ch]+'׳ — '+titles[ch-1];
+const lessons=chapters[ch-1];
+root.querySelector('#shekalimLessons').innerHTML=lessons.map((title,i)=>{
+const n=i+1,id=ch+'.'+n,prior=n>1?lessons[i-1]:ch>1?chapters[ch-2][chapters[ch-2].length-1]:'סיום מסכת פסחים';
+const next=n<lessons.length?lessons[i+1]:ch<8?chapters[ch][0]:'סיום מסכת שקלים';
+const vid=embeds[id];const link=videoUrl(ch,n);const seen=!!learned[id];
+return '<article class="eruvin-card" id="shekalim-'+ch+'-'+n+'"><span class="eyebrow">סדר המשנה · שקלים '+heb[ch]+'׳, '+heb[n]+'׳</span><h4>'+esc(title)+'</h4>'+
+'<p class="eruvin-bridge"><strong>קודם:</strong> '+esc(prior)+'. <strong>כאן:</strong> '+esc(title)+'. <strong>השאלה הבאה:</strong> '+esc(next)+'. זהו רצף לימודי ולא טענה לקשר סיבתי או כרונולוגי.</p>'+
+'<p class="eruvin-credit">The Mishnah Project · שיעור וידאו באנגלית · '+(vid?'מזהה נגן אומת':'דף הסרטון אצל היוצר; ניגון טרם נבדק')+'</p>'+
+'<div class="eruvin-actions">'+(vid?'<button type="button" class="btn gold" data-shk-play="'+id+'">▶ נגן כאן</button>':'')+
+'<a class="btn gold" href="'+link+'" target="_blank" rel="noopener noreferrer">▶ סרטון אצל היוצר ↗</a><button type="button" class="btn ghost" data-shk-mark="'+id+'" aria-pressed="'+seen+'">'+(seen?'✓ למדתי — בטל סימון':'סמן שלמדתי')+'</button></div>'+
+(vid?'<div class="eruvin-video" data-shk-host="'+id+'" hidden></div>':'')+
+'<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Shekalim.'+id+'?lang=he" target="_blank" rel="noopener noreferrer">נוסח משנה '+heb[ch]+'׳, '+heb[n]+'׳ — ספריא ↗</a><a href="https://mechon-mamre.org/b/h/h24.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a></div></article>';
+}).join('');
+root.querySelector('#shekalimProgress').textContent=totalLearned()+' מתוך 52 משניות סומנו כנלמדות. ההתקדמות נשמרת בדפדפן.';
+const u=new URL(location.href);u.searchParams.set('shekalim',String(ch));history.replaceState(null,'',u.pathname+u.search+u.hash);
+if(scroll)root.querySelector('#shekalimChapterTitle').scrollIntoView({behavior:'smooth',block:'start'});
+}
+root.addEventListener('click',e=>{
+const btn=e.target.closest('button');if(!btn)return;
+if(btn.dataset.shkCh){show(Number(btn.dataset.shkCh),true);return;}
+if(btn.dataset.shkMark){const id=btn.dataset.shkMark;learned[id]=!learned[id];try{localStorage.setItem(key,JSON.stringify(learned));}catch(_){ }btn.setAttribute('aria-pressed',String(!!learned[id]));btn.textContent=learned[id]?'✓ למדתי — בטל סימון':'סמן שלמדתי';root.querySelector('#shekalimProgress').textContent=totalLearned()+' מתוך 52 משניות סומנו כנלמדות. ההתקדמות נשמרת בדפדפן.';return;}
+if(btn.dataset.shkPlay){const id=btn.dataset.shkPlay,vid=embeds[id];if(!vid||!/^[-_A-Za-z0-9]{11}$/.test(vid))return;
+root.querySelectorAll('[data-shk-host]').forEach(h=>{h.replaceChildren();h.hidden=true;});
+const host=root.querySelector('[data-shk-host="'+id+'"]');if(!host)return;const frame=document.createElement('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+vid+'?rel=0';frame.title='שקלים '+id+' — The Mishnah Project';frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;host.appendChild(frame);host.hidden=false;btn.textContent='↻ טען שוב';}
+});
+root.querySelector('#shekalimContinue').addEventListener('click',()=>{for(let ch=1;ch<=8;ch++){for(let n=1;n<=chapters[ch-1].length;n++){if(!learned[ch+'.'+n]){show(ch,false);const item=document.getElementById('shekalim-'+ch+'-'+n);if(item)item.scrollIntoView({behavior:'smooth',block:'center'});return;}}}show(8,true);});
+show(chapter,false);
+})();
+</script>
+</body></html>';
   $("playerHost").replaceChildren(f);$("watch").scrollIntoView({behavior:"smooth",block:"start"});return;
  }
  if(vimeo){
