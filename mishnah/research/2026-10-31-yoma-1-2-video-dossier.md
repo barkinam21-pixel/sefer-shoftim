@@ -13,21 +13,21 @@
 - [קטלוג פודקאסט וידאו Yoma פרקים א׳–ב׳](https://podcastrepublic.net/podcast/1671398994)
 
 ## רשומת סרטונים
-- יומא 1:1 — שבוע ההכנה: מי יחליף את הכוהן הגדול? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-1) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=איך מתרגל הכוהן הגדול את עבודתו במשך שבעת הימים?)
-- יומא 1:2 — תרגול עבודה: דם, קטורת, מנורה ואיברים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-2) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=מי מדריך אותו בסדר העבודה, ואיך מכינים אותו לפרטי היום?)
-- יומא 1:3 — זקני בית דין מכינים את הכוהן הגדול — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-3) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=כיצד דואגים למצבו הגופני ערב הצום?)
-- יומא 1:4 — מה אוכלים ערב יום הכיפורים? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-4) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=מדוע משביעים את הכוהן שלא ישנה את סדר העבודה?)
-- יומא 1:5 — השבועה בעליית בית אבטינס — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-5) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=אחרי השבועה, כיצד מעסיקים אותו כדי שיישאר ער?)
-- יומא 1:6 — לימוד התנ״ך במשמרת הלילה — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-6) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=ומה עושים כשהקריאה אינה מצליחה למנוע נמנום?)
-- יומא 1:7 — אצבע צרדה: איך מעירים את הכוהן? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-7) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=מתי מתחילה עבודת תרומת הדשן ביום הכיפורים?)
-- יומא 1:8 — תרומת הדשן: מדוע מתחילים בחצות? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-8) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=בפרק ב׳ נשאל מי מקבל את הזכות לתרום את הדשן.)
-- יומא 2:1 — מי זוכה בתרומת הדשן? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-1) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=איזו סכנה גרמה לשינוי השיטה?)
-- יומא 2:2 — המרוץ המסוכן והתקנת הפייס — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-2) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=אילו עבודות חולקו בפייס השני?)
-- יומא 2:3 — הפייס השני: שלושה עשר תפקידים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-3) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=איזו הגרלה מיוחדת קשורה לקטורת ולעליית האיברים?)
-- יומא 2:4 — הפייס השלישי והרביעי: קטורת ואיברים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-4) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=כמה כוהנים נדרשים בפועל לעבודת קרבן התמיד?)
-- יומא 2:5 — תשעה עד שנים עשר כוהנים בקרבן התמיד — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-5) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=למה הקרבת איל מחייבת אחד עשר כוהנים?)
-- יומא 2:6 — קרבן איל: אחד עשר כוהנים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-6) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=וכמה נושאים את חלקי קרבן הפר?)
-- יומא 2:7 — קרבן פר: עשרים וארבעה כוהנים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-7) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=בפרק ג׳ נפתח את ההכנות לשחיטת התמיד ולזיהוי אור הבוקר.)
+- יומא 1:1 — שבוע ההכנה: מי יחליף את הכוהן הגדול? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-1) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=vEo2FCfqKtQ)
+- יומא 1:2 — תרגול עבודה: דם, קטורת, מנורה ואיברים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-2) — מזהה הטמעה לא אומת
+- יומא 1:3 — זקני בית דין מכינים את הכוהן הגדול — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-3) — מזהה הטמעה לא אומת
+- יומא 1:4 — מה אוכלים ערב יום הכיפורים? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-4) — מזהה הטמעה לא אומת
+- יומא 1:5 — השבועה בעליית בית אבטינס — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-5) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=Xugyt5jHZ3E)
+- יומא 1:6 — לימוד התנ״ך במשמרת הלילה — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-6) — מזהה הטמעה לא אומת
+- יומא 1:7 — אצבע צרדה: איך מעירים את הכוהן? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-7) — מזהה הטמעה לא אומת
+- יומא 1:8 — תרומת הדשן: מדוע מתחילים בחצות? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-1/mishnah-8) — מזהה הטמעה לא אומת
+- יומא 2:1 — מי זוכה בתרומת הדשן? — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-1) — מזהה הטמעה לא אומת
+- יומא 2:2 — המרוץ המסוכן והתקנת הפייס — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-2) — מזהה הטמעה לא אומת
+- יומא 2:3 — הפייס השני: שלושה עשר תפקידים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-3) — מזהה הטמעה לא אומת
+- יומא 2:4 — הפייס השלישי והרביעי: קטורת ואיברים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-4) — מזהה הטמעה לא אומת
+- יומא 2:5 — תשעה עד שנים עשר כוהנים בקרבן התמיד — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-5) — מזהה הטמעה לא אומת
+- יומא 2:6 — קרבן איל: אחד עשר כוהנים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-6) — מזהה הטמעה לא אומת
+- יומא 2:7 — קרבן פר: עשרים וארבעה כוהנים — [דף הווידאו אצל היוצר](https://mishnah.co/moed/yoma/chapter-2/mishnah-7) — [סרטון YouTube עם מזהה שנבדק](https://www.youtube.com/watch?v=LFSiW5Y16T0)
 
 ## הבחנות מחייבות
 - זהו סדר טקסטואלי של המשנה, לא רצף היסטורי. הכותרות, השאלות והגשרים כתובים כהסבר מודרני.
