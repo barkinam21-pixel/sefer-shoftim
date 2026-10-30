@@ -2579,6 +2579,69 @@
       ]
     },
     {
+      "id": "nachman-findrabbinachman-ep5-step-by-step",
+      "title": "רבי נחמן — פרק 5: צעד אחד בכל פעם",
+      "figure": "רבי נחמן מברסלב — משל על התקדמות מדורגת",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — ימי רבי נחמן בקירוב; תאריך מסירת הרעיון אינו ידוע",
+      "region": "ברסלב, אוקראינה — עיבוד אנימציה עכשווי",
+      "type": "אנימציה סיפורית קצרה — פרק 5",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "כשמרוב רצון לעשות טוב קשה להתחיל, הפרק מציע משל מצויר על צעד קטן, התמדה וערך הרצון.",
+      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי, פרק 5 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/step-by-step",
+      "youtubeId": "kAbrUZPAyXU",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "עיבוד אנימציה מודרני לרעיון מחסידות ברסלב; אינו אירוע היסטורי בחיי רבי נחמן.",
+      "verified": "2026-10-30"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep7-cry-not-complaint",
+      "title": "רבי נחמן — פרק 7: בכי של בן אל אביו",
+      "figure": "רבי נחמן מברסלב — משל על לב נשבר ותפילה",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — ימי רבי נחמן בקירוב; תאריך מסירת הרעיון אינו ידוע",
+      "region": "ברסלב, אוקראינה — עיבוד אנימציה עכשווי",
+      "type": "אנימציה סיפורית קצרה — פרק 7",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "ההבדל בין תלונה מיואשת לקריאה כנה מומחש באמצעות דימוי של ילד המתגעגע לאביו.",
+      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי, פרק 7 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/a-cry-not-a-complaint",
+      "youtubeId": "Z9X5JUFu3vw",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "משל חזותי על תפילה ושברון לב בהשראת דברי רבי נחמן; לא סיפור ביוגרפי.",
+      "verified": "2026-10-30"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep9-time-to-think",
+      "title": "רבי נחמן — פרק 9: הרגע שבו בוחנים את החיים",
+      "figure": "רבי נחמן מברסלב — התבוננות בדרך החיים",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — ימי רבי נחמן בקירוב; תאריך מסירת הרעיון אינו ידוע",
+      "region": "ברסלב, אוקראינה — עיבוד אנימציה עכשווי",
+      "type": "אנימציה סיפורית קצרה — פרק 9",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "השגרה רצה קדימה בלי לעצור; האנימציה מזמינה לבחון לרגע מה חשוב באמת ולאן הולכים.",
+      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי, פרק 9 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/time-to-think",
+      "youtubeId": "DXuBWtHDfy4",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחשה עכשווית לרעיון רוחני, ללא טענה לאירוע היסטורי מסוים.",
+      "verified": "2026-10-30"
+    },
+    {
       "id": "nachman-findrabbinachman-ep12-focused-thought",
       "title": "רבי נחמן — פרק 12: מחשבה ממוקדת משנה את הדרך",
       "figure": "רבי נחמן מברסלב — כוח הריכוז והמחשבה",
