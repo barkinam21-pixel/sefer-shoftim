@@ -1826,7 +1826,7 @@ function playSelected(){if(!current)return;
   if(mark){const key=mark.dataset.e910Mark;marks[key]=!marks[key];try{localStorage.setItem(storageKey,JSON.stringify(marks));}catch(_){}repaint();return;}
   const play=e.target.closest('[data-e910-play]');if(!play)return;
   const id=play.dataset.e910Play,key=play.dataset.e910Key;
-  if(!/^[a-zA-Z0-9_-]{11}$/.test(id)||!/^(9|10)\\.\\d+$/.test(key))return;
+  if(!/^[a-zA-Z0-9_-]{11}$/.test(id)|| !/^(9|10)$/.test(key.split('.')[0]) || !/^[0-9]+$/.test(key.split('.')[1]||'') )return;
   document.querySelectorAll('[data-e910-host]').forEach(host=>{host.replaceChildren();host.hidden=true;});
   const host=document.querySelector('[data-e910-host="'+key+'"]');if(!host)return;
   const iframe=document.createElement('iframe');
