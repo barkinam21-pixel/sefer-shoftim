@@ -566,7 +566,7 @@ function renderShabbat(){
   '<p class="bridge-note"><strong>מה ראינו קודם — ולאן ממשיכים?</strong> '+esc(note.bridge)+'</p>'+
   '<div class="actions"><a class="textsource" href="https://www.mishna.org.il/מועד/שבת/'+ch+'" target="_blank" rel="noopener noreferrer">▶ וידאו: שיעור הפרק המלא ↗</a>'+
   '<a class="textsource" href="https://www.sefaria.org/Mishnah_Shabbat.'+ch+'.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📖 ספריא — משנה '+hebMishnah(n)+' ↗</a>'+
-   '<a class="textsource" href="https://he.wikisource.org/wiki/משנה_שבת_'+(ch===19?'יט':ch===18?'יח':HEB_LETTERS[ch])+'_+HEB_LETTERS[n]+'" target="_blank" rel="noopener noreferrer">📖 ויקיטקסט — משנה מדויקת ↗</a>'+
+   '<a class="textsource" href="https://he.wikisource.org/wiki/משנה_שבת_'+(ch===19?'יט':ch===18?'יח':HEB_LETTERS[ch])+'_'+HEB_LETTERS[n]+'" target="_blank" rel="noopener noreferrer">📖 ויקיטקסט — משנה מדויקת ↗</a>'+
   '<a class="textsource" href="https://mechon-mamre.org/b/h/h21.htm" target="_blank" rel="noopener noreferrer">📜 מכון ממרא — ראה הערת המספור ↗</a>'+
   '<button type="button" class="btn" data-shabbat-mark="'+n+'">'+(learned?'↺ בטל סימון לימוד':'✓ למדתי — המשך')+'</button></div></div>';
  }).join("");
