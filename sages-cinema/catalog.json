@@ -336,6 +336,26 @@
       "verified": "2026-10-27"
     },
     {
+      "id": "honi-carob-seventy-years-chassidic-dreams-2026",
+      "title": "חוני המעגל ועץ החרוב — המסע של שבעים השנים",
+      "figure": "חוני המעגל",
+      "era": "second-temple",
+      "year": -50,
+      "century": "ימי בית שני, המאה ה־1 לפני הספירה בקירוב",
+      "region": "ארץ ישראל",
+      "type": "אנימציה עלילתית",
+      "language": "עברית",
+      "description": "חוני פוגש אדם שנוטע עץ חרוב למען דור שעוד לא נולד. אחר כך הוא שוקע בשינה ארוכה, וכשהוא מתעורר אחרי שבעים שנה הוא מגלה עולם שהשתנה. סיפור מונפש ומסופר מתוך אגדות חז״ל.",
+      "source": "Chassidic Dreams — חלומות חסידיים, ערוץ YouTube של היוצרים (31.1.2026)",
+      "url": "https://www.youtube.com/watch?v=LXShgabygcA",
+      "youtubeId": "LXShgabygcA",
+      "sageIds": [
+        "honi"
+      ],
+      "fiction": "אגדה תלמודית מתענית כ״ג ע״א; שבעים שנות השינה והדמויות המומחזות אינן תיעוד היסטורי.",
+      "verified": "2026-10-30"
+    },
+    {
       "id": "hillel-shammai-machlochet-bimbam-he",
       "title": "מחלוקת לשם שמיים — הלל ושמאי",
       "figure": "הלל הזקן, שמאי הזקן ובתי מדרשם",
@@ -518,6 +538,26 @@
       "url": "https://player.vimeo.com/video/125713608?app_id=122963&dnt=1",
       "fiction": "המחשה אמנותית של מסורת חז״ל; לא תיעוד היסטורי של ניסים",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "nachum-gamzu-treasure-chassidic-dreams-2026",
+      "title": "נחום איש גם זו — תיבת האוצר שהפכה לעפר",
+      "figure": "נחום איש גם זו",
+      "era": "tannaim",
+      "year": 80,
+      "century": "ראשית תקופת התנאים, המאה ה־1–2 בקירוב",
+      "region": "ארץ ישראל והאימפריה הרומית, לפי האגדה",
+      "type": "אנימציה עלילתית",
+      "language": "עברית",
+      "description": "נחום יוצא בשליחות עם מתנה יקרה לקיסר, אבל גנבים מחליפים את אבני החן שבתיבה בעפר. כשנדמה שהכול אבוד, הסיפור מקבל תפנית מפתיעה. עיבוד מונפש בעברית לאגדה התלמודית.",
+      "source": "Chassidic Dreams — חלומות חסידיים, ערוץ YouTube של היוצרים (4.1.2026)",
+      "url": "https://www.youtube.com/watch?v=lfPxQShwO1k",
+      "youtubeId": "lfPxQShwO1k",
+      "sageIds": [
+        "nachum-ish-gamzu"
+      ],
+      "fiction": "עיבוד לאגדה בבבלי תענית כ״א ע״א; התערבות אליהו והעפר המופלא מתוארים כמסורת חז״ל ולא כעובדות היסטוריות מאומתות.",
+      "verified": "2026-10-30"
     },
     {
       "id": "hanina-ben-dosa-devash-animation",
