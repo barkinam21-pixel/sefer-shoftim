@@ -643,6 +643,26 @@
       "verified": "2026-10-27"
     },
     {
+      "id": "akiva-rachel-anafeam-ai-love-torah",
+      "title": "רחל ורבי עקיבא — סיפור אהבה, עוני ותורה באנימציה",
+      "figure": "רבי עקיבא ורחל",
+      "era": "tannaim",
+      "year": 110,
+      "century": "המאה ה־2 בקירוב — לפי סיפורי חז״ל",
+      "region": "ארץ ישראל",
+      "type": "סרט אנימציה עלילתי בהמחשת AI",
+      "language": "עברית",
+      "description": "רחל רואה ברועה הצאן עקיבא עתיד של תלמיד חכם, והשניים בוחרים בלימוד התורה למרות העוני והפרידה. המחשה סיפורית ארוכה של אגדת חז״ל.",
+      "source": "ערוץ ענפים — ההעלאה המקורית ל־YouTube (5.5.2025); פרסום משובץ ב־Simcha Spot",
+      "url": "https://www.youtube.com/watch?v=hMvemix1QCs",
+      "youtubeId": "hMvemix1QCs",
+      "sageIds": [
+        "akiva"
+      ],
+      "fiction": "עיבוד חזותי לסיפור חז״ל על רבי עקיבא ורחל (כתובות סב ע״ב–סג ע״א), ולא שחזור היסטורי מתועד.",
+      "verified": "2026-10-30"
+    },
+    {
       "id": "tarfon-honoring-mother-ai-kids",
       "title": "רבי טרפון — כיבוד האם מעל הכול",
       "figure": "רבי טרפון ואמו",
@@ -3601,6 +3621,46 @@
       ],
       "fiction": "תיעוד ביוגרפי ופרשנות של יוצרי הסרט; שנת 1945 משמשת נקודת מיון לתקופת חייו ולא תאריך הפקת הסרט.",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "jonathan-sacks-faith-after-holocaust-animated",
+      "title": "לשיר מול המוות — הרב יונתן זקס ואמונה אחרי השואה",
+      "figure": "הרב יונתן זקס מספר על שלום כץ, זיכרון השואה והבחירה בחיים",
+      "era": "modern",
+      "year": 1945,
+      "century": "שנות השואה והשחרור ב־1945; קטע מקולו של הרב זקס משנת 1995",
+      "region": "אירופה — מחנות השואה; תיעוד הקול בבריטניה",
+      "type": "סרט אנימציה היסטורי־סיפורי",
+      "language": "אנגלית",
+      "description": "ניצול השואה שלום כץ ניצב מול המוות ושר תפילה שמצילה את חייו. בסרט המונפש הרב זקס חוזר לשאלה הקשה של האחריות האנושית וליכולת לבחור בחיים.",
+      "source": "The Rabbi Sacks Legacy — Faith After the Holocaust; אנימציה רשמית המבוססת על תכנית BBC מ־1995",
+      "url": "https://rabbisacks.org/videos/faith-after-the-holocaust/",
+      "youtubeId": "ujFUqM2pNNY",
+      "sageIds": [
+        "jonathan-sacks"
+      ],
+      "fiction": "המחשה אמנותית לסיפור הניצול כפי שמספר הרב זקס ולדבריו; אינה צילום מן המחנות.",
+      "verified": "2026-10-30"
+    },
+    {
+      "id": "jonathan-sacks-israel-home-of-hope-animated",
+      "title": "עמק העצמות שחזר לחיים — הרב יונתן זקס על תקומת ישראל",
+      "figure": "הרב יונתן זקס — חזון יחזקאל, השואה והקמת מדינת ישראל",
+      "era": "modern",
+      "year": 1948,
+      "century": "תקומת ישראל ב־1948 בראי חזון יחזקאל; קריינות הרב הוקלטה ב־2008",
+      "region": "אירופה וישראל",
+      "type": "סרט אנימציה סיפורי־סמלי",
+      "language": "אנגלית; כתוביות עברית, צרפתית וספרדית זמינות באתר היוצר",
+      "description": "עצמות יבשות קמות לחיים בחזון יחזקאל; הדימויים מתחלפים לזיכרון השואה ולהקמת מדינת ישראל, כשהרב זקס מספר איך עם פצוע שב לבחור בתקווה.",
+      "source": "The Rabbi Sacks Legacy — Israel: Home of Hope (אנימציה רשמית מ־2023, קול הרב מ־2008)",
+      "url": "https://rabbisacks.org/videos/israel-home-of-hope-animated/",
+      "youtubeId": "PeLo5Z-PLPY",
+      "sageIds": [
+        "jonathan-sacks"
+      ],
+      "fiction": "אנימציה סמלית המחברת בין חזון מקראי לאירועים היסטוריים; לא צילום תיעודי של ההתרחשויות.",
+      "verified": "2026-10-30"
     },
     {
       "id": "yosef-mashash-agada-hakima-acted-biography",
