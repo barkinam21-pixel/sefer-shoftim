@@ -587,6 +587,26 @@
       "verified": "2026-10-27"
     },
     {
+      "id": "akiva-chana-hess-learn-torah-animated-story",
+      "title": "רבי עקיבא — האיש שהחל ללמוד תורה (סיפור מונפש)",
+      "figure": "רבי עקיבא",
+      "era": "tannaim",
+      "year": 110,
+      "century": "תקופת התנאים, ראשית המאה ה־2 לספירה בקירוב",
+      "region": "ארץ ישראל",
+      "type": "סיפור אנימציה לילדים",
+      "language": "עברית",
+      "description": "סיפור קצר ומאויר של חנה הס על הצעד האמיץ של רבי עקיבא אל בית המדרש, ועל ההתחלה המאוחרת שהפכה לתורה של דורות. עיבוד סיפורי, לא תיעוד היסטורי.",
+      "source": "ילדים שרים ומספרים — חנה הס (ערוץ היוצרת ביוטיוב)",
+      "youtubeId": "wzr1gCERsXc",
+      "url": "https://www.youtube.com/watch?v=wzr1gCERsXc",
+      "sageIds": [
+        "akiva"
+      ],
+      "fiction": "המחזה מאוירת של מסורות חז״ל על רבי עקיבא; פרטי הבימוי והדמויות אינם עדות היסטורית.",
+      "verified": "2026-10-30"
+    },
+    {
       "id": "akiva-ckids-shepherd-torah-story",
       "title": "רבי עקיבא — מהרועה העני אל בית המדרש",
       "figure": "רבי עקיבא",
@@ -621,26 +641,6 @@
       "youtubeId": "Q-MDa28_J6Y",
       "fiction": "המחזה לסיפור חז״ל; דמותה ומחשבותיה של רחל מעוצבות בפרשנות היוצרים",
       "verified": "2026-10-27"
-    },
-    {
-      "id": "akiva-chana-hess-learn-torah-animated-story",
-      "title": "רבי עקיבא — האיש שהחל ללמוד תורה (סיפור מונפש)",
-      "figure": "רבי עקיבא",
-      "era": "tannaim",
-      "year": 110,
-      "century": "תקופת התנאים, ראשית המאה ה־2 לספירה בקירוב",
-      "region": "ארץ ישראל",
-      "type": "סיפור אנימציה לילדים",
-      "language": "עברית",
-      "description": "סיפור קצר ומאויר של חנה הס על הצעד האמיץ של רבי עקיבא אל בית המדרש, ועל ההתחלה המאוחרת שהפכה לתורה של דורות. עיבוד סיפורי, לא תיעוד היסטורי.",
-      "source": "ילדים שרים ומספרים — חנה הס (ערוץ היוצרת ביוטיוב)",
-      "youtubeId": "wzr1gCERsXc",
-      "url": "https://www.youtube.com/watch?v=wzr1gCERsXc",
-      "sageIds": [
-        "akiva"
-      ],
-      "fiction": "המחזה מאוירת של מסורות חז״ל על רבי עקיבא; פרטי הבימוי והדמויות אינם עדות היסטורית.",
-      "verified": "2026-10-30"
     },
     {
       "id": "tarfon-honoring-mother-ai-kids",
@@ -2598,6 +2598,66 @@
       ],
       "fiction": "עיבוד אנימציה עכשווי למשל המיוחס לרבי נחמן; היצירה אינה משחזרת אירועים מתקופת חייו.",
       "verified": "2026-10-29"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep13-giving-space",
+      "title": "רבי נחמן — פרק 13: לתת לילד מקום לצמוח",
+      "figure": "רבי נחמן מברסלב — משל על חינוך ואמון",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן (תיארוך מקורב; לא מועד אמירת המשל)",
+      "region": "עולם החסידות — המחזה לא ביוגרפית",
+      "type": "אנימציה סיפורית קצרה — פרק 13",
+      "language": "אנגלית",
+      "description": "סיפור אנימציה של כדקה: ילד מנסה לעמוד בכוחות עצמו, ומבוגר לומד שלפעמים דווקא שחרור האחיזה מאפשר לגדול. עיבוד רעיון המיוחס לרבי נחמן, לא תיאור אירוע מחייו.",
+      "source": "Find Rabbi Nachman — אתר היוצר של סדרת האנימציה; נגן YouTube רשמי",
+      "url": "https://www.findrabbinachman.com/episodes/giving-space",
+      "youtubeId": "HQlM9z_UTok",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחזה יצירתית של רעיון תורני באמצעות דמויות בדויות; לא תיעוד ביוגרפי ולא ציטוט מילולי של רבי נחמן.",
+      "verified": "2026-10-30"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep14-boiling-water",
+      "title": "רבי נחמן — פרק 14: כשהמים רותחים והבלבול צף",
+      "figure": "רבי נחמן מברסלב — משל המים הרותחים",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן (תיארוך מקורב; לא מועד אמירת המשל)",
+      "region": "עולם החסידות — המחזה לא ביוגרפית",
+      "type": "אנימציה סיפורית קצרה — פרק 14",
+      "language": "אנגלית",
+      "description": "משל מצויר של כדקה: כשהסיר רותח, הפסולת עולה על פני המים. כך גם בלבול שמתעורר דווקא בעת שינוי והתפתחות; הגיבור לומד לנקות מעט בכל פעם.",
+      "source": "Find Rabbi Nachman — אתר היוצר של סדרת האנימציה; נגן YouTube רשמי",
+      "url": "https://www.findrabbinachman.com/episodes/why-does-confusion-rise-when-you-start-growing",
+      "youtubeId": "PNevXiXflp0",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "סרט המחזה של משל והסבר חסידי, לא סצנה היסטורית מתועדת מחיי רבי נחמן.",
+      "verified": "2026-10-30"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep16-never-too-late",
+      "title": "רבי נחמן — פרק 16: לעולם לא מאוחר לחזור",
+      "figure": "רבי נחמן מברסלב — תקווה גם אחרי נפילה",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן (תיארוך מקורב; לא מועד אמירת המשל)",
+      "region": "עולם החסידות — המחזה לא ביוגרפית",
+      "type": "אנימציה סיפורית קצרה — פרק 16",
+      "language": "אנגלית",
+      "description": "סרט אנימציה קצר על מי שנפל ומפחד שאיבד את הדרך. הסיפור מעבד את קריאתו של רבי נחמן שלא להתייאש ולהמשיך לבקש ולנסות.",
+      "source": "Find Rabbi Nachman — אתר היוצר של סדרת האנימציה; נגן YouTube רשמי",
+      "url": "https://www.findrabbinachman.com/episodes/is-it-ever-too-late-to-come-back",
+      "youtubeId": "TMnGmlcuY90",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחזה חזותית של רעיון תורני ואמוני; הגיבור המצויר אינו תיעוד של רבי נחמן.",
+      "verified": "2026-10-30"
     },
     {
       "id": "nachman-turkey-prince-bri-animation-he",
