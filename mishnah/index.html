@@ -1807,40 +1807,7 @@ function playSelected(){if(!current)return;
   f.referrerPolicy="strict-origin-when-cross-origin";
   f.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation");
   const playerURL="https://embed.chabad.org/multimedia/mediaplayer/embedded/embed.js.asp?aid="+aid+"&amp;width=auto&amp;height=auto";
-  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script>
-<script>
-(()=>{
- 'use strict';
- const storageKey='mishnah_cinema_eruvin_9_10_v1';
- let marks={};
- try{const data=JSON.parse(localStorage.getItem(storageKey)||'{}');if(data&&typeof data==='object'&&!Array.isArray(data))marks=data;}catch(_){}
- function repaint(){
-   document.querySelectorAll('[data-e910-mark]').forEach(btn=>{const seen=!!marks[btn.dataset.e910Mark];btn.setAttribute('aria-pressed',String(seen));btn.textContent=seen?'✓ למדתי — בטל סימון':'סמן שלמדתי';});
-   for(const [ch,count] of [[9,4],[10,15]]){
-     const progress=document.getElementById('eruvin'+ch+'Progress');
-     if(progress)progress.textContent=Array.from({length:count},(_,i)=>ch+'.'+(i+1)).filter(k=>marks[k]).length+' מתוך '+count+' משניות סומנו כנלמדות בפרק '+ch+'. ההתקדמות נשמרת במכשיר זה.';
-   }
- }
- document.addEventListener('click',e=>{
-  const mark=e.target.closest('[data-e910-mark]');
-  if(mark){const key=mark.dataset.e910Mark;marks[key]=!marks[key];try{localStorage.setItem(storageKey,JSON.stringify(marks));}catch(_){}repaint();return;}
-  const play=e.target.closest('[data-e910-play]');if(!play)return;
-  const id=play.dataset.e910Play,key=play.dataset.e910Key;
-  if(!/^[a-zA-Z0-9_-]{11}$/.test(id)|| !/^(9|10)$/.test(key.split('.')[0]) || !/^[0-9]+$/.test(key.split('.')[1]||'') )return;
-  document.querySelectorAll('[data-e910-host]').forEach(host=>{host.replaceChildren();host.hidden=true;});
-  const host=document.querySelector('[data-e910-host="'+key+'"]');if(!host)return;
-  const iframe=document.createElement('iframe');
-  iframe.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
-  iframe.title='לימוד המשנה — עירובין '+key;
-  iframe.loading='lazy';iframe.referrerPolicy='strict-origin-when-cross-origin';
-  iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-  iframe.allowFullscreen=true;host.appendChild(iframe);host.hidden=false;
-  play.textContent='↻ טען שוב';
- });
- repaint();
-})();
-</script>
-</body></html>';
+  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script></body></html>';
   $("playerHost").replaceChildren(f);$("watch").scrollIntoView({behavior:"smooth",block:"start"});return;
  }
  if(vimeo){
@@ -2246,6 +2213,39 @@ else if(state.last&&getItem(state.last))selectItem(state.last,false,true);
   host.appendChild(frame);host.hidden=false;play.textContent='↻ טען שוב';
  });
  redraw();
+})();
+</script>
+
+<script>
+(()=>{
+ 'use strict';
+ const storageKey='mishnah_cinema_eruvin_9_10_v1';
+ let marks={};
+ try{const data=JSON.parse(localStorage.getItem(storageKey)||'{}');if(data&&typeof data==='object'&&!Array.isArray(data))marks=data;}catch(_){}
+ function repaint(){
+   document.querySelectorAll('[data-e910-mark]').forEach(btn=>{const seen=!!marks[btn.dataset.e910Mark];btn.setAttribute('aria-pressed',String(seen));btn.textContent=seen?'✓ למדתי — בטל סימון':'סמן שלמדתי';});
+   for(const [ch,count] of [[9,4],[10,15]]){
+     const progress=document.getElementById('eruvin'+ch+'Progress');
+     if(progress)progress.textContent=Array.from({length:count},(_,i)=>ch+'.'+(i+1)).filter(k=>marks[k]).length+' מתוך '+count+' משניות סומנו כנלמדות בפרק '+ch+'. ההתקדמות נשמרת במכשיר זה.';
+   }
+ }
+ document.addEventListener('click',e=>{
+  const mark=e.target.closest('[data-e910-mark]');
+  if(mark){const key=mark.dataset.e910Mark;marks[key]=!marks[key];try{localStorage.setItem(storageKey,JSON.stringify(marks));}catch(_){}repaint();return;}
+  const play=e.target.closest('[data-e910-play]');if(!play)return;
+  const id=play.dataset.e910Play,key=play.dataset.e910Key;
+  if(!/^[a-zA-Z0-9_-]{11}$/.test(id)|| !/^(9|10)$/.test(key.split('.')[0]) || !/^[0-9]+$/.test(key.split('.')[1]||'') )return;
+  document.querySelectorAll('[data-e910-host]').forEach(host=>{host.replaceChildren();host.hidden=true;});
+  const host=document.querySelector('[data-e910-host="'+key+'"]');if(!host)return;
+  const iframe=document.createElement('iframe');
+  iframe.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
+  iframe.title='לימוד המשנה — עירובין '+key;
+  iframe.loading='lazy';iframe.referrerPolicy='strict-origin-when-cross-origin';
+  iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  iframe.allowFullscreen=true;host.appendChild(iframe);host.hidden=false;
+  play.textContent='↻ טען שוב';
+ });
+ repaint();
 })();
 </script>
 </body></html>
