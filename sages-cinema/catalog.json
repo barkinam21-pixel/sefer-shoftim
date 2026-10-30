@@ -457,7 +457,8 @@
       "source": "BimBam",
       "url": "https://bimbam.com/yavneh/",
       "fiction": "עיבוד יצירתי של אגדת חורבן",
-      "verified": "2026-10-27"
+      "verified": "2026-10-30",
+      "youtubeId": "R6t3Zm7nMTg"
     },
     {
       "id": "nachum-ish-gamzu-ruach-animation",
@@ -1074,7 +1075,8 @@
       "source": "BimBam / Studio G-dcast",
       "url": "https://bimbam.com/the-emperors-secret/",
       "fiction": "המחזה לאגדה בעבודה זרה י׳; זהות אנטונינוס והפרטים אינם ודאות היסטורית",
-      "verified": "2026-10-27"
+      "verified": "2026-10-30",
+      "youtubeId": "lAJoys4Z6ww"
     },
     {
       "id": "rebbi-calf-animated-kids",
@@ -1187,7 +1189,8 @@
       "source": "BimBam",
       "url": "https://bimbam.com/bromance/",
       "fiction": "עיבוד יצירתי של בבא מציעא פ״ד",
-      "verified": "2026-10-27"
+      "verified": "2026-10-30",
+      "youtubeId": "O9cSNUC03-Y"
     },
     {
       "id": "rav-huna-wine-vinegar-hidabroot-ai",
@@ -4216,6 +4219,26 @@
       ],
       "fiction": "אנימציית AI ביוגרפית: העובדות הכלליות על חייו מתועדות, אך חלק מהסצנות והדימויים עשויים להיות יצירתיים ולא תיעוד היסטורי מצולם.",
       "verified": "2026-10-28"
+    },
+    {
+      "id": "rebbe-mymaor-beis-rabbeinu-ep1",
+      "title": "בית רבינו שבבבל — פרק 1: תעלומה בעקבות הרבי",
+      "figure": "הרבי מנחם מנדל שניאורסון — קונטרס בית רבינו שבבבל",
+      "era": "modern",
+      "year": 1991,
+      "century": "תשנ״ב (1991) — מועד פרסום הקונטרס; הסיפור הוא המחזה מאוחרת",
+      "region": "ברוקלין, ניו יורק — 770",
+      "type": "דרמת מסתורין עלילתית — פרק ראשון לילדים",
+      "language": "אנגלית",
+      "description": "סדרת MyMaor PLUS הופכת רעיונות מתוך 'בית רבינו שבבבל' להרפתקת מסתורין עלילתית, עם חידות ופרטים היסטוריים על מרכז חב״ד. זהו פרק ראשון מלא, לא קדימון.",
+      "source": "MyMaor PLUS — פרק ראשון מלא שהופץ ביוטיוב דרך הודעת היוצר ב־Anash.org (10.05.2023)",
+      "url": "https://youtu.be/pWX4aI-IUIc",
+      "youtubeId": "pWX4aI-IUIc",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "המסע והחידות הם תסריט מומחז לילדים בהשראת קונטרס שפרסם הרבי בשנת תשנ״ב, ולא שחזור של אירוע היסטורי.",
+      "verified": "2026-10-30"
     },
     {
       "id": "dan-merzbach-architect-of-souls-family-film",
