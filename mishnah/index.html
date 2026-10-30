@@ -2301,50 +2301,6 @@ root.querySelector('#shekalimContinue').addEventListener('click',()=>{for(let ch
 show(chapter,false);
 })();
 </script>
-<script>
-(()=>{
-'use strict';
-const root=document.getElementById('yomaTractate');if(!root)return;
-const key='mishnah_cinema_yoma_video_v1';
-const marks=Array.from(root.querySelectorAll('[data-yoma-mark]'));
-let state={};try{const v=JSON.parse(localStorage.getItem(key)||'{}');if(v&&typeof v==='object'&&!Array.isArray(v))state=v;}catch(_){}
-function redraw(){
- let count=0;
- marks.forEach(b=>{
-  const done=!!state[b.dataset.yomaMark];if(done)count++;
-  b.setAttribute('aria-pressed',String(done));
-  b.textContent=done?b.dataset.yes:b.dataset.no;
- });
- root.querySelector('#yomaProgress').textContent=count+' / '+marks.length;
- root.querySelector('#yomaContinue').disabled=count===marks.length;
-}
-root.addEventListener('click',e=>{
- const b=e.target.closest('button');if(!b||!root.contains(b))return;
- if(b.dataset.yomaMark){
-  const k=b.dataset.yomaMark;state[k]=!state[k];
-  try{localStorage.setItem(key,JSON.stringify(state));}catch(_){}
-  redraw();return;
- }
- if(!b.dataset.yomaPlay)return;
- const id=b.dataset.yomaPlay,slot=b.dataset.yomaSlot;
- if(!/^[a-zA-Z0-9_-]{11}$/.test(id)||!/^[12]-[1-8]$/.test(slot))return;
- const host=root.querySelector('[data-yoma-host="'+slot+'"]');if(!host)return;
- root.querySelectorAll('[data-yoma-host]').forEach(h=>{h.replaceChildren();h.hidden=true;});
- const frame=document.createElement('iframe');
- frame.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
- frame.title=b.dataset.yomaTitle;frame.loading='lazy';
- frame.referrerPolicy='strict-origin-when-cross-origin';
- frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
- frame.allowFullscreen=true;
- host.appendChild(frame);host.hidden=false;b.textContent=b.dataset.reload;
-});
-root.querySelector('#yomaContinue').addEventListener('click',()=>{
- const b=marks.find(x=>!state[x.dataset.yomaMark]);if(!b)return;
- b.closest('article').scrollIntoView({behavior:'smooth',block:'center'});
-});
-redraw();
-})();
-</script>
 </body></html>';
   $("playerHost").replaceChildren(f);$("watch").scrollIntoView({behavior:"smooth",block:"start"});return;
  }
@@ -2811,6 +2767,50 @@ else if(state.last&&getItem(state.last))selectItem(state.last,false,true);
   host.appendChild(frame);host.hidden=false;play.textContent='↻ טען שוב';
  });
  redraw();
+})();
+</script>
+<script>
+(()=>{
+'use strict';
+const root=document.getElementById('yomaTractate');if(!root)return;
+const key='mishnah_cinema_yoma_video_v1';
+const marks=Array.from(root.querySelectorAll('[data-yoma-mark]'));
+let state={};try{const v=JSON.parse(localStorage.getItem(key)||'{}');if(v&&typeof v==='object'&&!Array.isArray(v))state=v;}catch(_){}
+function redraw(){
+ let count=0;
+ marks.forEach(b=>{
+  const done=!!state[b.dataset.yomaMark];if(done)count++;
+  b.setAttribute('aria-pressed',String(done));
+  b.textContent=done?b.dataset.yes:b.dataset.no;
+ });
+ root.querySelector('#yomaProgress').textContent=count+' / '+marks.length;
+ root.querySelector('#yomaContinue').disabled=count===marks.length;
+}
+root.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b||!root.contains(b))return;
+ if(b.dataset.yomaMark){
+  const k=b.dataset.yomaMark;state[k]=!state[k];
+  try{localStorage.setItem(key,JSON.stringify(state));}catch(_){}
+  redraw();return;
+ }
+ if(!b.dataset.yomaPlay)return;
+ const id=b.dataset.yomaPlay,slot=b.dataset.yomaSlot;
+ if(!/^[a-zA-Z0-9_-]{11}$/.test(id)||!/^[12]-[1-8]$/.test(slot))return;
+ const host=root.querySelector('[data-yoma-host="'+slot+'"]');if(!host)return;
+ root.querySelectorAll('[data-yoma-host]').forEach(h=>{h.replaceChildren();h.hidden=true;});
+ const frame=document.createElement('iframe');
+ frame.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
+ frame.title=b.dataset.yomaTitle;frame.loading='lazy';
+ frame.referrerPolicy='strict-origin-when-cross-origin';
+ frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+ frame.allowFullscreen=true;
+ host.appendChild(frame);host.hidden=false;b.textContent=b.dataset.reload;
+});
+root.querySelector('#yomaContinue').addEventListener('click',()=>{
+ const b=marks.find(x=>!state[x.dataset.yomaMark]);if(!b)return;
+ b.closest('article').scrollIntoView({behavior:'smooth',block:'center'});
+});
+redraw();
 })();
 </script>
 </body></html>
