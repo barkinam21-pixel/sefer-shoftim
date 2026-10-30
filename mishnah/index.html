@@ -762,35 +762,7 @@ function playSelected(){if(!current)return;
   f.referrerPolicy="strict-origin-when-cross-origin";
   f.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation");
   const playerURL="https://embed.chabad.org/multimedia/mediaplayer/embedded/embed.js.asp?aid="+aid+"&amp;width=auto&amp;height=auto";
-  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script><script>
-(()=>{
- const root=document.getElementById('eruvinTractate');if(!root)return;
- const key='mishnah_cinema_eruvin_study_v1';
- const ids={'0lYEmWLf-xY':'1','H0ATNF_ufXg':'2','Sb_yq0h4i0I':'5'};
- let marks={};try{const stored=JSON.parse(localStorage.getItem(key)||'{}');if(stored&&typeof stored==='object'&&!Array.isArray(stored))marks=stored;}catch(_){}
- function redraw(){
-  root.querySelectorAll('[data-eruvin-mark]').forEach(b=>{const on=!!marks[b.dataset.eruvinMark];b.setAttribute('aria-pressed',String(on));b.textContent=on?'✓ למדתי — בטל סימון':'סמן שלמדתי';});
-  document.getElementById('eruvinProgress').textContent=Object.keys(marks).filter(k=>marks[k]&&['1','2','5'].includes(k)).length+' מתוך 3 סרטונים זמינים סומנו כנלמדים — לא מתוך 10 משניות הפרק.';
- }
- root.addEventListener('click',e=>{
-  const mark=e.target.closest('[data-eruvin-mark]');
-  if(mark){const n=mark.dataset.eruvinMark;marks[n]=!marks[n];try{localStorage.setItem(key,JSON.stringify(marks));}catch(_){}redraw();return;}
-  const play=e.target.closest('[data-eruvin-play]');if(!play)return;
-  const id=play.dataset.eruvinPlay, n=ids[id];if(!n)return;
-  root.querySelectorAll('[data-eruvin-host]').forEach(h=>{if(h.dataset.eruvinHost!==n){h.textContent='';h.hidden=true;}});
-  const host=root.querySelector('[data-eruvin-host="'+n+'"]');if(!host)return;
-  host.textContent='';const frame=document.createElement('iframe');
-  frame.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
-  frame.title='משנה עירובין פרק א משנה '+n+' — The Mishnah Project';
-  frame.loading='lazy';frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-  frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';
-  host.appendChild(frame);host.hidden=false;
-  play.textContent='↻ טען שוב';play.setAttribute('aria-label','טען שוב את סרטון משנה '+n);
- });
- redraw();
-})();
-</script>
-</body></html>';
+  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script></body></html>';
   $("playerHost").replaceChildren(f);$("watch").scrollIntoView({behavior:"smooth",block:"start"});return;
  }
  if(vimeo){
@@ -959,5 +931,33 @@ if(sharedWatchItem){
 render();renderStudy();renderPeah();renderDemai();renderKilayim();renderSheviit();renderTerumot();renderMaasrot();renderMaaserSheni();renderChallah();renderOrlah();renderBikkurim();renderShabbat();
 if(sharedWatchItem){selectItem(sharedWatchItem.id,false,false);}
 else if(state.last&&getItem(state.last))selectItem(state.last,false,true);
+</script>
+<script>
+(()=>{
+ const root=document.getElementById('eruvinTractate');if(!root)return;
+ const key='mishnah_cinema_eruvin_study_v1';
+ const ids={'0lYEmWLf-xY':'1','H0ATNF_ufXg':'2','Sb_yq0h4i0I':'5'};
+ let marks={};try{const stored=JSON.parse(localStorage.getItem(key)||'{}');if(stored&&typeof stored==='object'&&!Array.isArray(stored))marks=stored;}catch(_){}
+ function redraw(){
+  root.querySelectorAll('[data-eruvin-mark]').forEach(b=>{const on=!!marks[b.dataset.eruvinMark];b.setAttribute('aria-pressed',String(on));b.textContent=on?'✓ למדתי — בטל סימון':'סמן שלמדתי';});
+  document.getElementById('eruvinProgress').textContent=Object.keys(marks).filter(k=>marks[k]&&['1','2','5'].includes(k)).length+' מתוך 3 סרטונים זמינים סומנו כנלמדים — לא מתוך 10 משניות הפרק.';
+ }
+ root.addEventListener('click',e=>{
+  const mark=e.target.closest('[data-eruvin-mark]');
+  if(mark){const n=mark.dataset.eruvinMark;marks[n]=!marks[n];try{localStorage.setItem(key,JSON.stringify(marks));}catch(_){}redraw();return;}
+  const play=e.target.closest('[data-eruvin-play]');if(!play)return;
+  const id=play.dataset.eruvinPlay, n=ids[id];if(!n)return;
+  root.querySelectorAll('[data-eruvin-host]').forEach(h=>{if(h.dataset.eruvinHost!==n){h.textContent='';h.hidden=true;}});
+  const host=root.querySelector('[data-eruvin-host="'+n+'"]');if(!host)return;
+  host.textContent='';const frame=document.createElement('iframe');
+  frame.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
+  frame.title='משנה עירובין פרק א משנה '+n+' — The Mishnah Project';
+  frame.loading='lazy';frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';
+  host.appendChild(frame);host.hidden=false;
+  play.textContent='↻ טען שוב';play.setAttribute('aria-label','טען שוב את סרטון משנה '+n);
+ });
+ redraw();
+})();
 </script>
 </body></html>
