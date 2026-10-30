@@ -220,6 +220,7 @@ footer a{text-decoration:underline}
 <label class="check-label"><input id="storyOnly" type="checkbox">עלילה בלבד</label>
 <label class="check-label"><input id="favoritesOnly" type="checkbox">מועדפים בלבד</label>
 <label class="check-label"><input id="unwatchedOnly" type="checkbox">טרם צפיתי</label>
+<label class="check-label"><input id="siteOnly" type="checkbox">▶ צפייה בתוך האתר בלבד</label>
 </div>
 <div class="results-row"><span id="resultsLabel" aria-live="polite">טוען את הספרייה…</span><button id="clearFilters" type="button">נקה סינון</button></div>
 <div id="mediaResults"></div>
@@ -240,7 +241,7 @@ footer a{text-decoration:underline}
 "use strict";
 var library={eras:[],items:[]};
 var learning={profiles:[]};
-var state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false};
+var state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};
 var watched=new Set(readArray("sages-watched-v1")),favorites=new Set(readArray("sages-favorites-v1"));
 var activeId=null,lastFocus=null;
 function $(id){return document.getElementById(id)}
@@ -277,6 +278,11 @@ function playableSource(it){
    if((vh==="archive.org"||vh==="www.archive.org")&&parsed.pathname==="/details/TheGolem_893"){
      return {provider:"archive",id:"TheGolem_893",src:"https://archive.org/embed/TheGolem_893"};
    }
+   // Use RTVE's official public embed endpoint, never an extracted video stream.
+   if(vh==="rtve.es"||vh==="www.rtve.es"){
+     var rv=parsed.pathname.match(/^\/play\/videos\/[^/]+\/[^/]+\/(\d{6,9})\/?$/);
+     if(rv)return {provider:"rtve",id:rv[1],src:"https://secure-embed.rtve.es/drmn/embed/video/"+rv[1]};
+   }
  }
  return null;
 }
@@ -289,6 +295,7 @@ if(state.language&&it.language!==state.language)return false;
 if(state.story&&it.type==="דוקומנטרי סיפורי")return false;
 if(state.favorites&&!favorites.has(it.id))return false;
 if(state.unwatched&&watched.has(it.id))return false;
+if(state.siteOnly&&!playableSource(it))return false;
 if(state.query){var q=state.query.toLocaleLowerCase("he").trim();var extras=getProfiles(it).map(function(p){return [p.name,p.hook,p.authorship].concat((p.works||[]).map(function(w){return w.title+" "+w.description})).join(" ")}).join(" ");var s=[it.title,it.figure,it.description,it.region,it.century,it.source,it.type,extras].join(" ").toLocaleLowerCase("he");if(!s.includes(q))return false}
 return true;
 })}
@@ -355,7 +362,7 @@ library.eras.forEach(function(era){
 if(state.era&&era.id!==state.era)return;
 var sub=selected.filter(function(i){return i.era===era.id});
 if(sub.length===0){
-if(state.era&&!state.query&&!state.genre&&!state.story&&!state.favorites&&!state.unwatched){parts.push('<div class="era-section"><div class="era-heading"><div class="era-line"></div><div><h3>'+esc(era.label)+'</h3><p>'+esc(era.range)+'</p></div></div><div class="gap-box"><b>עדיין אין כאן סרט מאומת וחינמי.</b> אנחנו מחפשים יצירה סיפורית טובה, ולא ממלאים חלל בשיעורים.</div></div>')}
+if(state.era&&!state.query&&!state.genre&&!state.story&&!state.favorites&&!state.unwatched&&!state.siteOnly){parts.push('<div class="era-section"><div class="era-heading"><div class="era-line"></div><div><h3>'+esc(era.label)+'</h3><p>'+esc(era.range)+'</p></div></div><div class="gap-box"><b>עדיין אין כאן סרט מאומת וחינמי.</b> אנחנו מחפשים יצירה סיפורית טובה, ולא ממלאים חלל בשיעורים.</div></div>')}
 return;
 }
 parts.push('<section class="era-section"><div class="era-heading"><div class="era-line"></div><div><h3>'+esc(era.label)+'</h3><p>'+esc(era.range)+' · '+esc(era.lead)+'</p></div></div><div class="media-grid">');
@@ -367,7 +374,7 @@ $("mediaResults").innerHTML=parts.join("");
 renderContinue();
 }
 function renderContinue(){
-var next=itemsSorted().find(function(i){return !watched.has(i.id)});
+var next=itemsSorted().find(function(i){return !watched.has(i.id)&&(!state.siteOnly||playableSource(i))});
 $("continueButton").hidden=!next;
 $("continueButton").textContent=next?"המשך: "+(next.title.length>30?next.title.slice(0,30)+"…":next.title):"";
 }
@@ -381,7 +388,7 @@ var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;f
 $("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";$("playerClose").focus();
 }
 function closePlayer(){if($("playerModal").hidden)return;$("playerModal").hidden=true;document.body.classList.remove("locked");$("videoStage").replaceChildren();activeId=null;if(lastFocus&&document.contains(lastFocus))lastFocus.focus()}
-function nextFromCurrent(){if(!activeId)return;var seq=itemsSorted(),n=seq.findIndex(function(x){return x.id===activeId});if(n<0)return;watched.add(activeId);save("sages-watched-v1",watched);closePlayer();var following=seq[n+1];if(following)openItem(following.id);else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");renderCards()}
+function nextFromCurrent(){if(!activeId)return;var seq=itemsSorted().filter(function(i){return !state.siteOnly||playableSource(i)}),n=seq.findIndex(function(x){return x.id===activeId});if(n<0)return;watched.add(activeId);save("sages-watched-v1",watched);closePlayer();var following=seq[n+1];if(following)openItem(following.id);else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");renderCards()}
 document.addEventListener("click",function(e){
 var elem=e.target.closest("[data-era]");if(elem){state.era=elem.getAttribute("data-era")||"";refresh();$("library").scrollIntoView({behavior:"smooth"});return}
 elem=e.target.closest("[data-play]");if(elem){openItem(elem.getAttribute("data-play"));return}
@@ -395,17 +402,18 @@ $("languageSelect").addEventListener("change",function(e){state.language=e.targe
 $("storyOnly").addEventListener("change",function(e){state.story=e.target.checked;renderCards()});
 $("favoritesOnly").addEventListener("change",function(e){state.favorites=e.target.checked;renderCards()});
 $("unwatchedOnly").addEventListener("change",function(e){state.unwatched=e.target.checked;renderCards()});
-$("clearFilters").addEventListener("click",function(){state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false};$("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;refresh()});
-$("continueButton").addEventListener("click",function(){var first=itemsSorted().find(function(i){return !watched.has(i.id)});if(first)openItem(first.id)});
+$("siteOnly").addEventListener("change",function(e){state.siteOnly=e.target.checked;renderCards()});
+$("clearFilters").addEventListener("click",function(){state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};$("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;$("siteOnly").checked=false;refresh()});
+$("continueButton").addEventListener("click",function(){var first=itemsSorted().find(function(i){return !watched.has(i.id)&&(!state.siteOnly||playableSource(i))});if(first)openItem(first.id)});
 $("playerClose").addEventListener("click",closePlayer);
 $("playerModal").addEventListener("click",function(e){if(e.target===$("playerModal"))closePlayer()});
 $("playNext").addEventListener("click",nextFromCurrent);
 $("openLearning").addEventListener("click",function(){
 var id=activeId;closePlayer();if(!id)return;
 if(!document.getElementById("learn-"+id)){
-state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false};
+state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};
 $("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";
-$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;refresh();
+$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;$("siteOnly").checked=false;refresh();
 }
 var d=document.getElementById("learn-"+id);
 if(d){d.open=true;d.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
