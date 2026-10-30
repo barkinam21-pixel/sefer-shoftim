@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-30",
-  "updatedLabel": "30 באוקטובר 2026",
+  "updatedAt": "2026-10-31",
+  "updatedLabel": "31 באוקטובר 2026",
   "eras": [
     {
       "id": "second-temple",
@@ -1009,7 +1009,10 @@
       "url": "https://www.hidabroot.org/video/225724",
       "duration": "15:30",
       "fiction": "המחזה ואיור של סיפור מסורתי; לא תיעוד היסטורי",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rashbi"
+      ]
     },
     {
       "id": "rabbi-meir-life-hidabroot-ai-2026",
@@ -1450,6 +1453,26 @@
       ],
       "fiction": "מסגרת הסיפור ובובות הסדרה הן המחזה חינוכית; קורות רס״ג וחיבור האגרון הן ענייני היסטוריה וספרות.",
       "verified": "2026-10-28"
+    },
+    {
+      "id": "saadia-gaon-cpb-arte-jews-muslims-animation-2013",
+      "title": "רב סעדיה גאון — סצנת אנימציה מסדרת התעודה ״יהודים ומוסלמים״",
+      "figure": "רב סעדיה גאון (רס״ג)",
+      "era": "geonim",
+      "year": 930,
+      "century": "המאה ה־10 — תקופת הגאונים",
+      "region": "בבל ועיראק של תקופת הגאונים",
+      "type": "אנימציה תיעודית־סיפורית — קטע קצר מתוך סדרה",
+      "language": "צרפתית",
+      "description": "רב סעדיה גאון ועולמה של יהדות בבל קמים לתחייה באנימציה מסדרת התעודה הצרפתית ״יהודים ומוסלמים — כה רחוקים, כה קרובים״. זהו קטע צפייה ממוקד על רס״ג, ולא הפרק המלא של הסדרה.",
+      "source": "CPB Films — ערוץ YouTube הרשמי של חברת ההפקה; Juifs et Musulmans, si loin, si proches (ARTE, 2013)",
+      "url": "https://www.youtube.com/watch?v=jjoLQW7OttY",
+      "youtubeId": "jjoLQW7OttY",
+      "sageIds": [
+        "saadia-gaon"
+      ],
+      "fiction": "אנימציה תיעודית הממחישה את התקופה; אינה צילום היסטורי או תמליל דבריו של רס״ג. הסרטון הוא קטע מתוך סדרה, ולא הפרק השלם.",
+      "verified": "2026-10-31"
     },
     {
       "id": "saadia-gaon-unpacked-golden-age",
@@ -2396,7 +2419,10 @@
       "source": "ערוץ הידברות",
       "url": "https://www.hidabroot.org/video/226148",
       "fiction": "אנימציה ביוגרפית המיועדת לילדים; חלק מהסיפורים מבוססים על מסורת",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "besht"
+      ]
     },
     {
       "id": "pnei-melech-besht-hidden-righteous-animation",
