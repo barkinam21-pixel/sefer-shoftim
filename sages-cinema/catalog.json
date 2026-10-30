@@ -627,23 +627,6 @@
       "verified": "2026-10-27"
     },
     {
-      "id": "akiva-waiting-for-ewe",
-      "title": "Waiting for Ewe — רבי עקיבא ורחל",
-      "figure": "רבי עקיבא ורחל",
-      "era": "tannaim",
-      "year": 110,
-      "century": "המאה ה־2 בקירוב",
-      "region": "ארץ ישראל",
-      "type": "אנימציה עלילתית",
-      "language": "אנגלית",
-      "description": "סיפורו של רועה הצאן שהפך לחכם גדול, דרך עיניה של רחל: אהבה, פרידה ארוכה, ויתור ומאבק על חלום הלימוד. עיבוד אמנותי לכתובות ס״ב.",
-      "source": "BimBam / Studio G-dcast",
-      "url": "https://bimbam.com/waiting-for-ewe/",
-      "youtubeId": "Q-MDa28_J6Y",
-      "fiction": "המחזה לסיפור חז״ל; דמותה ומחשבותיה של רחל מעוצבות בפרשנות היוצרים",
-      "verified": "2026-10-27"
-    },
-    {
       "id": "akiva-rachel-anafeam-ai-love-torah",
       "title": "רחל ורבי עקיבא — סיפור אהבה, עוני ותורה באנימציה",
       "figure": "רבי עקיבא ורחל",
@@ -662,6 +645,23 @@
       ],
       "fiction": "עיבוד חזותי לסיפור חז״ל על רבי עקיבא ורחל (כתובות סב ע״ב–סג ע״א), ולא שחזור היסטורי מתועד.",
       "verified": "2026-10-30"
+    },
+    {
+      "id": "akiva-waiting-for-ewe",
+      "title": "Waiting for Ewe — רבי עקיבא ורחל",
+      "figure": "רבי עקיבא ורחל",
+      "era": "tannaim",
+      "year": 110,
+      "century": "המאה ה־2 בקירוב",
+      "region": "ארץ ישראל",
+      "type": "אנימציה עלילתית",
+      "language": "אנגלית",
+      "description": "סיפורו של רועה הצאן שהפך לחכם גדול, דרך עיניה של רחל: אהבה, פרידה ארוכה, ויתור ומאבק על חלום הלימוד. עיבוד אמנותי לכתובות ס״ב.",
+      "source": "BimBam / Studio G-dcast",
+      "url": "https://bimbam.com/waiting-for-ewe/",
+      "youtubeId": "Q-MDa28_J6Y",
+      "fiction": "המחזה לסיפור חז״ל; דמותה ומחשבותיה של רחל מעוצבות בפרשנות היוצרים",
+      "verified": "2026-10-27"
     },
     {
       "id": "tarfon-honoring-mother-ai-kids",
@@ -2235,6 +2235,25 @@
       "verified": "2026-10-29"
     },
     {
+      "id": "besht-pitchipoy-hero-shepherd-museum-animation",
+      "title": "הבעל שם טוב והרועה שהפך לגיבור הכפר — אנימציה",
+      "figure": "רבי ישראל בעל שם טוב — סיפור על רועה וגיבורי העיירה",
+      "era": "hasidut",
+      "year": 1740,
+      "century": "המאה ה־18 — מסורות סיפורי הבעל שם טוב",
+      "region": "מזרח אירופה",
+      "type": "סרט אנימציה סיפורי למוזיאון",
+      "language": "שפת הסרט לא צוינה בדף היוצר",
+      "description": "רועה פשוט נקלע לסיפור יוצא דופן, והבעל שם טוב מסייע להפוך אותו לגיבור הכפר. סרט אנימציה קצר שנוצר עבור תערוכת ״גיבורים״ של בית התפוצות.",
+      "source": "PitchiPoy Animation Productions — הפקת אנימציה רשמית עבור בית התפוצות",
+      "url": "https://pitchipoy.tv/featured/baal-shem-tov/",
+      "sageIds": [
+        "besht"
+      ],
+      "fiction": "המחזה של סיפור חסידי על הבעל שם טוב והרועה; פרטי העלילה אינם מוצגים כעובדות היסטוריות מאומתות.",
+      "verified": "2026-10-30"
+    },
+    {
       "id": "besht-yaakov-eliyahu-stopmotion-chabad",
       "title": "יעקב ואליהו הנביא — סרט סטופ־מושן על חסד",
       "figure": "תלמיד הבעל שם טוב ואליהו הנביא",
@@ -2268,25 +2287,6 @@
       ],
       "fiction": "סיפורי חסידים הם מסורת דתית־ספרותית; שחזורי הסדרה והדיאלוגים אינם תיעוד ישיר.",
       "verified": "2026-10-28"
-    },
-    {
-      "id": "besht-pitchipoy-hero-shepherd-museum-animation",
-      "title": "הבעל שם טוב והרועה שהפך לגיבור הכפר — אנימציה",
-      "figure": "רבי ישראל בעל שם טוב — סיפור על רועה וגיבורי העיירה",
-      "era": "hasidut",
-      "year": 1740,
-      "century": "המאה ה־18 — מסורות סיפורי הבעל שם טוב",
-      "region": "מזרח אירופה",
-      "type": "סרט אנימציה סיפורי למוזיאון",
-      "language": "שפת הסרט לא צוינה בדף היוצר",
-      "description": "רועה פשוט נקלע לסיפור יוצא דופן, והבעל שם טוב מסייע להפוך אותו לגיבור הכפר. סרט אנימציה קצר שנוצר עבור תערוכת ״גיבורים״ של בית התפוצות.",
-      "source": "PitchiPoy Animation Productions — הפקת אנימציה רשמית עבור בית התפוצות",
-      "url": "https://pitchipoy.tv/featured/baal-shem-tov/",
-      "sageIds": [
-        "besht"
-      ],
-      "fiction": "המחזה של סיפור חסידי על הבעל שם טוב והרועה; פרטי העלילה אינם מוצגים כעובדות היסטוריות מאומתות.",
-      "verified": "2026-10-30"
     },
     {
       "id": "shalom-sharabi-batzri-journey",
@@ -2346,6 +2346,27 @@
       "sageIds": [
         "shalom-sharabi"
       ]
+    },
+    {
+      "id": "shpoler-zeide-mozhesh-wagon-chaims-corner-2026",
+      "title": "הסבא משפולי — אתה יכול! העגלה שנתקעה בבוץ (אנימציה)",
+      "figure": "רבי יהודה לייב משפולי והמגיד ממזריטש",
+      "era": "hasidut",
+      "year": 1765,
+      "century": "אמצע המאה ה־18 — סיפור חסידי מתקופת המגיד; השנה משוערת לצורך המיון בלבד",
+      "region": "מזרח אירופה — הדרך למזריטש",
+      "type": "סרטון אנימציה עלילתי ומוזיקלי בתלת־ממד",
+      "language": "אנגלית (עם פזמון ברוסית בתעתיק)",
+      "description": "רבי לייב עושה את דרכו אל המגיד ממזריטש, ומוצא עגלון שגלגלי עגלתו שקעו בבוץ. הוא חושב שלא יוכל לעזור, אבל כמה מילים של העגלון משנות את הדרך שבה הוא רואה את כוחותיו. עיבוד סיפורי בתלת־ממד עם שיר מקורי ודמויות מונפשות, לא הרצאה.",
+      "source": "Chaim’s Corner / הרב חיים מוניץ — סרט אנימציה רשמי בערוץ היוצר, מוצג גם ב-Anash.org ב־11.10.2026",
+      "url": "https://www.youtube.com/watch?v=JUOQviE179U",
+      "youtubeId": "JUOQviE179U",
+      "sageIds": [
+        "shpoler-zeide",
+        "maggid-mezritch"
+      ],
+      "fiction": "עלילת הסרט מבוססת על מסורת חסידית שמספר ינקי טאובר ב־Wagons and Souls; יש גרסאות שונות למעשה, והוא אינו עדות היסטורית מאומתת. השיר, השיחות והמחשות ה־AI הם עיבוד אמנותי.",
+      "verified": "2026-10-30"
     },
     {
       "id": "vilna-gaon-searching-puidokas-2020",
@@ -2548,66 +2569,45 @@
       ]
     },
     {
-      "id": "nachman-findrabbinachman-ep5-step-by-step",
-      "title": "רבי נחמן — פרק 5: צעד אחד בכל פעם",
-      "figure": "רבי נחמן מברסלב — משל על התקדמות מדורגת",
+      "id": "nachman-findrabbinachman-good-deeds-lamps",
+      "title": "רבי נחמן — המעשים הטובים שהפכו לנרות",
+      "figure": "רבי נחמן מברסלב — משל הנרות ואוצרות המלך",
       "era": "hasidut",
       "year": 1801,
-      "century": "ראשית המאה ה־19 — ימי רבי נחמן בקירוב; תאריך מסירת הרעיון אינו ידוע",
-      "region": "ברסלב, אוקראינה — עיבוד אנימציה עכשווי",
-      "type": "אנימציה סיפורית קצרה — פרק 5",
+      "century": "ראשית המאה ה־19; תקופת רבי נחמן בקירוב",
+      "region": "ברסלב — אוקראינה",
+      "type": "אנימציה סיפורית קצרה",
       "language": "אנגלית",
       "duration": "כדקה",
-      "description": "כשמרוב רצון לעשות טוב קשה להתחיל, הפרק מציע משל מצויר על צעד קטן, התמדה וערך הרצון.",
-      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי, פרק 5 עם נגן YouTube",
-      "url": "https://www.findrabbinachman.com/episodes/step-by-step",
-      "youtubeId": "kAbrUZPAyXU",
+      "description": "כל מעשה טוב הופך לנר המאיר את אוצרות המלך. סיפור מצויר קצר על המשל בתורת רבי נחמן, מתוך הפרק החמישה־עשר של סדרת Find Rabbi Nachman.",
+      "source": "Find Rabbi Nachman — סרט אנימציה מקורי, פרק 15",
+      "url": "https://www.findrabbinachman.com/episodes/what-if-every-good-deed-became-a-lamp",
+      "youtubeId": "Ux_9UPCEDiE",
       "sageIds": [
         "nachman"
       ],
-      "fiction": "עיבוד אנימציה מודרני לרעיון מחסידות ברסלב; אינו אירוע היסטורי בחיי רבי נחמן.",
-      "verified": "2026-10-30"
+      "fiction": "עיבוד אנימציה עכשווי למשל המיוחס לרבי נחמן; היצירה אינה משחזרת אירועים מתקופת חייו.",
+      "verified": "2026-10-29"
     },
     {
-      "id": "nachman-findrabbinachman-ep7-cry-not-complaint",
-      "title": "רבי נחמן — פרק 7: בכי של בן אל אביו",
-      "figure": "רבי נחמן מברסלב — משל על לב נשבר ותפילה",
+      "id": "nachman-findrabbinachman-ep10-truly-alive",
+      "title": "רבי נחמן — פרק 10: הסערה שהרסה את היבול — חיים מתוך אמונה",
+      "figure": "רבי נחמן מברסלב — משל על תקווה אחרי אכזבה",
       "era": "hasidut",
       "year": 1801,
-      "century": "ראשית המאה ה־19 — ימי רבי נחמן בקירוב; תאריך מסירת הרעיון אינו ידוע",
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן בקירוב; שנת אמירת הרעיון אינה ידועה",
       "region": "ברסלב, אוקראינה — עיבוד אנימציה עכשווי",
-      "type": "אנימציה סיפורית קצרה — פרק 7",
+      "type": "אנימציה סיפורית קצרה — פרק 10",
       "language": "אנגלית",
       "duration": "כדקה",
-      "description": "ההבדל בין תלונה מיואשת לקריאה כנה מומחש באמצעות דימוי של ילד המתגעגע לאביו.",
-      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי, פרק 7 עם נגן YouTube",
-      "url": "https://www.findrabbinachman.com/episodes/a-cry-not-a-complaint",
-      "youtubeId": "Z9X5JUFu3vw",
+      "description": "סערה הורסת את מה שנזרע, והאדם עומד מול האובדן. המשל המצויר עוסק באמונה ובהתמודדות.",
+      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/truly-alive",
+      "youtubeId": "cqB6bytbwZw",
       "sageIds": [
         "nachman"
       ],
-      "fiction": "משל חזותי על תפילה ושברון לב בהשראת דברי רבי נחמן; לא סיפור ביוגרפי.",
-      "verified": "2026-10-30"
-    },
-    {
-      "id": "nachman-findrabbinachman-ep9-time-to-think",
-      "title": "רבי נחמן — פרק 9: הרגע שבו בוחנים את החיים",
-      "figure": "רבי נחמן מברסלב — התבוננות בדרך החיים",
-      "era": "hasidut",
-      "year": 1801,
-      "century": "ראשית המאה ה־19 — ימי רבי נחמן בקירוב; תאריך מסירת הרעיון אינו ידוע",
-      "region": "ברסלב, אוקראינה — עיבוד אנימציה עכשווי",
-      "type": "אנימציה סיפורית קצרה — פרק 9",
-      "language": "אנגלית",
-      "duration": "כדקה",
-      "description": "השגרה רצה קדימה בלי לעצור; האנימציה מזמינה לבחון לרגע מה חשוב באמת ולאן הולכים.",
-      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי, פרק 9 עם נגן YouTube",
-      "url": "https://www.findrabbinachman.com/episodes/time-to-think",
-      "youtubeId": "DXuBWtHDfy4",
-      "sageIds": [
-        "nachman"
-      ],
-      "fiction": "המחשה עכשווית לרעיון רוחני, ללא טענה לאירוע היסטורי מסוים.",
+      "fiction": "משל מאויר מודרני על רעיון מתורת רבי נחמן, ולא תיעוד של אירוע היסטורי בחייו.",
       "verified": "2026-10-30"
     },
     {
@@ -2670,27 +2670,6 @@
       ],
       "fiction": "סרט המחזה של משל והסבר חסידי, לא סצנה היסטורית מתועדת מחיי רבי נחמן.",
       "verified": "2026-10-30"
-    },
-    {
-      "id": "nachman-findrabbinachman-good-deeds-lamps",
-      "title": "רבי נחמן — המעשים הטובים שהפכו לנרות",
-      "figure": "רבי נחמן מברסלב — משל הנרות ואוצרות המלך",
-      "era": "hasidut",
-      "year": 1801,
-      "century": "ראשית המאה ה־19; תקופת רבי נחמן בקירוב",
-      "region": "ברסלב — אוקראינה",
-      "type": "אנימציה סיפורית קצרה",
-      "language": "אנגלית",
-      "duration": "כדקה",
-      "description": "כל מעשה טוב הופך לנר המאיר את אוצרות המלך. סיפור מצויר קצר על המשל בתורת רבי נחמן, מתוך הפרק החמישה־עשר של סדרת Find Rabbi Nachman.",
-      "source": "Find Rabbi Nachman — סרט אנימציה מקורי, פרק 15",
-      "url": "https://www.findrabbinachman.com/episodes/what-if-every-good-deed-became-a-lamp",
-      "youtubeId": "Ux_9UPCEDiE",
-      "sageIds": [
-        "nachman"
-      ],
-      "fiction": "עיבוד אנימציה עכשווי למשל המיוחס לרבי נחמן; היצירה אינה משחזרת אירועים מתקופת חייו.",
-      "verified": "2026-10-29"
     },
     {
       "id": "nachman-findrabbinachman-ep16-never-too-late",
@@ -2818,6 +2797,27 @@
       "verified": "2026-10-30"
     },
     {
+      "id": "nachman-findrabbinachman-ep5-step-by-step",
+      "title": "רבי נחמן — פרק 5: צעד אחד בכל פעם",
+      "figure": "רבי נחמן מברסלב — משל על התקדמות מדורגת",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — ימי רבי נחמן בקירוב; תאריך מסירת הרעיון אינו ידוע",
+      "region": "ברסלב, אוקראינה — עיבוד אנימציה עכשווי",
+      "type": "אנימציה סיפורית קצרה — פרק 5",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "כשמרוב רצון לעשות טוב קשה להתחיל, הפרק מציע משל מצויר על צעד קטן, התמדה וערך הרצון.",
+      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי, פרק 5 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/step-by-step",
+      "youtubeId": "kAbrUZPAyXU",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "עיבוד אנימציה מודרני לרעיון מחסידות ברסלב; אינו אירוע היסטורי בחיי רבי נחמן.",
+      "verified": "2026-10-30"
+    },
+    {
       "id": "nachman-findrabbinachman-ep6-broken-heart",
       "title": "רבי נחמן — פרק 6: לב שבור איננו עצבות",
       "figure": "רבי נחמן מברסלב — משל על תפילה ולב פתוח",
@@ -2839,24 +2839,45 @@
       "verified": "2026-10-30"
     },
     {
-      "id": "nachman-findrabbinachman-ep10-truly-alive",
-      "title": "רבי נחמן — פרק 10: הסערה שהרסה את היבול — חיים מתוך אמונה",
-      "figure": "רבי נחמן מברסלב — משל על תקווה אחרי אכזבה",
+      "id": "nachman-findrabbinachman-ep7-cry-not-complaint",
+      "title": "רבי נחמן — פרק 7: בכי של בן אל אביו",
+      "figure": "רבי נחמן מברסלב — משל על לב נשבר ותפילה",
       "era": "hasidut",
       "year": 1801,
-      "century": "ראשית המאה ה־19 — תקופת רבי נחמן בקירוב; שנת אמירת הרעיון אינה ידועה",
+      "century": "ראשית המאה ה־19 — ימי רבי נחמן בקירוב; תאריך מסירת הרעיון אינו ידוע",
       "region": "ברסלב, אוקראינה — עיבוד אנימציה עכשווי",
-      "type": "אנימציה סיפורית קצרה — פרק 10",
+      "type": "אנימציה סיפורית קצרה — פרק 7",
       "language": "אנגלית",
       "duration": "כדקה",
-      "description": "סערה הורסת את מה שנזרע, והאדם עומד מול האובדן. המשל המצויר עוסק באמונה ובהתמודדות.",
-      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי עם נגן YouTube",
-      "url": "https://www.findrabbinachman.com/episodes/truly-alive",
-      "youtubeId": "cqB6bytbwZw",
+      "description": "ההבדל בין תלונה מיואשת לקריאה כנה מומחש באמצעות דימוי של ילד המתגעגע לאביו.",
+      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי, פרק 7 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/a-cry-not-a-complaint",
+      "youtubeId": "Z9X5JUFu3vw",
       "sageIds": [
         "nachman"
       ],
-      "fiction": "משל מאויר מודרני על רעיון מתורת רבי נחמן, ולא תיעוד של אירוע היסטורי בחייו.",
+      "fiction": "משל חזותי על תפילה ושברון לב בהשראת דברי רבי נחמן; לא סיפור ביוגרפי.",
+      "verified": "2026-10-30"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep9-time-to-think",
+      "title": "רבי נחמן — פרק 9: הרגע שבו בוחנים את החיים",
+      "figure": "רבי נחמן מברסלב — התבוננות בדרך החיים",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — ימי רבי נחמן בקירוב; תאריך מסירת הרעיון אינו ידוע",
+      "region": "ברסלב, אוקראינה — עיבוד אנימציה עכשווי",
+      "type": "אנימציה סיפורית קצרה — פרק 9",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "השגרה רצה קדימה בלי לעצור; האנימציה מזמינה לבחון לרגע מה חשוב באמת ולאן הולכים.",
+      "source": "Find Rabbi Nachman — אתר הסדרה הרשמי, פרק 9 עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/time-to-think",
+      "youtubeId": "DXuBWtHDfy4",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחשה עכשווית לרעיון רוחני, ללא טענה לאירוע היסטורי מסוים.",
       "verified": "2026-10-30"
     },
     {
@@ -3649,25 +3670,6 @@
       "verified": "2026-10-28"
     },
     {
-      "id": "manitou-documentary-life-part-one",
-      "title": "מניטו — מסע חייו של הרב יהודא ליאון אשכנזי, חלק א׳",
-      "figure": "הרב יהודא ליאון אשכנזי (מניטו)",
-      "era": "modern",
-      "year": 1945,
-      "century": "המאה ה־20 — אלג׳יריה וצרפת",
-      "region": "אלג׳יריה, צרפת",
-      "type": "סרט תיעודי ביוגרפי — חלק ראשון",
-      "language": "עברית",
-      "description": "המסע של בן למשפחת רבנים באלג׳יריה, שגדל בין מסורת קהילתו לתרבות הצרפתית והפך לדמות מרכזית בהחייאת המחשבה היהודית במאה העשרים. חלק ראשון בסרט התיעודי שמפנה אליו מכון מניטו.",
-      "source": "מכון מניטו — הפניה רשמית לצפייה בחלק הראשון",
-      "url": "https://www.youtube.com/watch?v=KNzGvx9lSyQ",
-      "sageIds": [
-        "manitou-ashkenazi"
-      ],
-      "fiction": "תיעוד ביוגרפי ופרשנות של יוצרי הסרט; שנת 1945 משמשת נקודת מיון לתקופת חייו ולא תאריך הפקת הסרט.",
-      "verified": "2026-10-27"
-    },
-    {
       "id": "jonathan-sacks-faith-after-holocaust-animated",
       "title": "לשיר מול המוות — הרב יונתן זקס ואמונה אחרי השואה",
       "figure": "הרב יונתן זקס מספר על שלום כץ, זיכרון השואה והבחירה בחיים",
@@ -3686,6 +3688,25 @@
       ],
       "fiction": "המחשה אמנותית לסיפור הניצול כפי שמספר הרב זקס ולדבריו; אינה צילום מן המחנות.",
       "verified": "2026-10-30"
+    },
+    {
+      "id": "manitou-documentary-life-part-one",
+      "title": "מניטו — מסע חייו של הרב יהודא ליאון אשכנזי, חלק א׳",
+      "figure": "הרב יהודא ליאון אשכנזי (מניטו)",
+      "era": "modern",
+      "year": 1945,
+      "century": "המאה ה־20 — אלג׳יריה וצרפת",
+      "region": "אלג׳יריה, צרפת",
+      "type": "סרט תיעודי ביוגרפי — חלק ראשון",
+      "language": "עברית",
+      "description": "המסע של בן למשפחת רבנים באלג׳יריה, שגדל בין מסורת קהילתו לתרבות הצרפתית והפך לדמות מרכזית בהחייאת המחשבה היהודית במאה העשרים. חלק ראשון בסרט התיעודי שמפנה אליו מכון מניטו.",
+      "source": "מכון מניטו — הפניה רשמית לצפייה בחלק הראשון",
+      "url": "https://www.youtube.com/watch?v=KNzGvx9lSyQ",
+      "sageIds": [
+        "manitou-ashkenazi"
+      ],
+      "fiction": "תיעוד ביוגרפי ופרשנות של יוצרי הסרט; שנת 1945 משמשת נקודת מיון לתקופת חייו ולא תאריך הפקת הסרט.",
+      "verified": "2026-10-27"
     },
     {
       "id": "jonathan-sacks-israel-home-of-hope-animated",
