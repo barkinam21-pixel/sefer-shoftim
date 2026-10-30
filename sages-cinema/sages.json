@@ -4566,6 +4566,35 @@
         "url": "https://www.sefaria.org/Menachot.44a?lang=he",
         "type": "בבלי מנחות מד ע״א"
       }
+    },
+    {
+      "id": "shpoler-zeide",
+      "name": "הסבא משפולי — רבי יהודה לייב",
+      "mediaIds": [
+        "shpoler-zeide-mozhesh-wagon-chaims-corner-2026"
+      ],
+      "hook": "עגלון ועגלה תקועה גילו לרבי לייב כוח שלא האמין שיש בו.",
+      "authorship": "הסבא משפולי מוכר ממסורות חסידיות על חייו ועל הנהגתו. הסיפור 'עגלות ונשמות' נכתב בידי ינקי טאובר, לא בידי רבי לייב; אין לייחס לו את כתיבת הסיפור או את מילות השיר.",
+      "works": [
+        {
+          "title": "עגלות ונשמות — מעשה בסבא משפולי",
+          "description": "סיפור חסידי בעיבוד ינקי טאובר; אינו ספר שחיבר רבי לייב.",
+          "url": "https://www.chabad.org/library/article_cdo/aid/114592/jewish/Wagons-and-Souls.htm",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "העגלון והעגלה",
+        "text": "לפי המסורת, רבי לייב סייע לעגלון שנקלע לבוץ, והמגיד ממזריטש קשר זאת לכוחו לסייע לאחרים. זהו סיפור חסידי, לא תיעוד היסטורי.",
+        "url": "https://www.chabad.org/library/article_cdo/aid/114592/jewish/Wagons-and-Souls.htm",
+        "type": "מסורת חסידית — ינקי טאובר, Wagons and Souls"
+      },
+      "idea": {
+        "title": "לגלות יכולת ולעזור",
+        "text": "בסיפור 'עגלות ונשמות' נדרש רבי לייב לנסות לפני שיוותר על סיוע לזולת. זהו רעיון מוסרי מן המעשה, לא הוראה הלכתית.",
+        "url": "https://www.chabad.org/library/article_cdo/aid/114592/jewish/Wagons-and-Souls.htm",
+        "type": "סיפור חסידי — Wagons and Souls, ינקי טאובר"
+      }
     }
   ]
 }
