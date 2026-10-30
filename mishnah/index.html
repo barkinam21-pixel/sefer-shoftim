@@ -2138,7 +2138,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 let learned={};try{const stored=JSON.parse(localStorage.getItem(key)||'{}');if(stored&&typeof stored==='object'&&!Array.isArray(stored))learned=stored;}catch(_){ }
 let chapter=Number(new URLSearchParams(location.search).get('shekalim'))||1;if(!(chapter>=1&&chapter<=8))chapter=1;
 const videoUrl=(ch,n)=>'https://mishnah.co/moed/shekalim/chapter-'+ch+'/mishnah-'+n;
-function totalLearned(){return Object.keys(learned).filter(k=>learned[k]&&/^[1-8]\\.[0-9]+$/.test(k)).length;}
+function totalLearned(){return Object.keys(learned).filter(k=>learned[k]&&/^[1-8]\.[0-9]+$/.test(k)).length;}
 function show(ch,scroll){chapter=ch;const nav=root.querySelector('#shekalimChapters');
 nav.innerHTML=chapters.map((items,i)=>'<button type="button" class="btn '+(i+1===ch?'gold':'ghost')+'" data-shk-ch="'+(i+1)+'" aria-pressed="'+(i+1===ch)+'">פרק '+heb[i+1]+'׳ ('+items.length+')</button>').join('');
 root.querySelector('#shekalimChapterTitle').textContent='פרק '+heb[ch]+'׳ — '+titles[ch-1];
