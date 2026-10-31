@@ -1,0 +1,46 @@
+name: Mishnah JS syntax and chapter links
+on:
+  push:
+    paths:
+      - 'mishnah/*.js'
+      - '.github/workflows/mishnah-js-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse every Mishnah JS module
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in mishnah/*.js; do
+            echo "Checking $file"
+            node --check "$file"
+          done
+      - name: Check the Taanit chapter chain and ten unique Mishnayot
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs');
+          const assert=require('node:assert/strict');
+          const ch1=fs.readFileSync('mishnah/taanit-ch1.js','utf8');
+          const ch2=fs.readFileSync('mishnah/taanit-ch2.js','utf8');
+          assert.match(ch1, /new URL\("taanit-ch2\.js",base\)/);
+          assert.match(ch1, /const next=n===7\?"#taanit-2-1"/);
+          assert.match(ch2, /parent\.after\(section\)/);
+          assert.match(ch2, /"mishnah_cinema_taanit_ch2_v1"/);
+          const m=ch2.match(/const units=(\[[^\n]+\]);/);
+          assert.ok(m,'Ten source-mapped units must be embedded as JSON data');
+          const units=JSON.parse(m[1]);
+          assert.equal(units.length,10);
+          assert.deepEqual(units.map(u=>u[0]),[1,2,3,4,5,6,7,8,9,10]);
+          assert.equal(new Set(units.map(u=>u[1])).size,10);
+          assert.ok(units.every(u=>u.length===6 && u.slice(1).every(v=>typeof v==='string' && v.length>10)));
+          console.log('Taanit 1 -> 2 navigation and ten Mishnah records passed');
+          NODE
