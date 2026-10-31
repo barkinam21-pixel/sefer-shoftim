@@ -1,7 +1,7 @@
 "use strict";
 (function(){
  const parent=document.getElementById("sukkahTractate");
- if(!parent||!document.getElementById("sukkahChapter4")||document.getElementById("sukkah-4-10")||document.getElementById("sukkahChapter5"))return;
+ if(!parent||!document.getElementById("sukkahChapter4")||!document.getElementById("sukkah-4-10")||document.getElementById("sukkahChapter5"))return;
  // Order follows Sefaria and HaPerek HaYomi, not the chronology of Jewish history.
  const units=[
  [1,"החליל ושמחת בית השואבה","החליל של בית השואבה נוהג חמישה או שישה ימים ואינו דוחה שבת או יום טוב. המשנה מדגישה את עוצמת השמחה.","סוכה ד׳, י׳ תיארה כיצד הכינו את המים לניסוך בשבת; כעת עוברים לשמחה שליוותה את שאיבת המים — מצווה וטקס קרובים, לא אותו מעשה.","איך האירו את עזרת הנשים לחגיגה?"],
