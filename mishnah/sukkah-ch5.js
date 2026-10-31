@@ -25,14 +25,14 @@
  '<p class="smallprint">למשנה ח׳ אותר סרטון ייעודי באנגלית של The Mishnah Project במזהה YouTube מאומת בכותרת ובפרטי המפרסם בלבד. לשאר שבע המשניות ניתנת גישה לשיעור עברי אחד של הפרק השלם, ולא שבעה סרטונים. ניגון, כתוביות ומשך טרם נבדקו בצפייה.</p>'+
  '<div class="actions" style="margin:12px 0"><button id="sukkah5Continue" type="button" class="btn gold">▶ המשך ללמוד</button> <span id="sukkah5Progress" class="progressnote" aria-live="polite"></span></div><div class="eruvin-cards">';
  for(const [n,title,focus,bridge,question] of units){
-  const id=videoIds[n],prev=n===1?"#sukkah-4-10":"#sukkah-5-"+(n-1),next=n===8?"https://www.sefaria.org/Mishnah_Beitzah.1.1?lang=he":"#sukkah-5-"+(n+1);
+  const id=videoIds[n],prev=n===1?"#sukkah-4-10":"#sukkah-5-"+(n-1),next=n===8?"#beitzah-1-1":"#sukkah-5-"+(n+1);
   let actions=id?'<button type="button" class="btn gold" data-sukkah5-play="'+id+'" data-n="'+n+'">▶ נגן באתר</button><a class="btn ghost" href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener noreferrer">הסרטון המקורי ↗</a>':'<a class="btn gold" href="'+fullChapter+'" target="_blank" rel="noopener noreferrer">▶ שיעור הפרק השלם ↗</a>';
   html+='<article class="eruvin-card" id="sukkah-5-'+n+'"><span class="eyebrow">סוכה ה׳, '+letters[n]+'</span><h4>'+esc(title)+'</h4><p>'+esc(focus)+'</p>'+
    '<p class="eruvin-bridge"><strong>מה ראינו קודם — למה כאן?</strong> '+esc(bridge)+' <strong>מה נלמד אחר כך?</strong> '+esc(question)+'</p>'+
    '<p class="eruvin-credit">'+(id?'The Mishnah Project · סרטון יחידה באנגלית, זוהה במטא־נתונים בלבד':'הפרק היומי · שיעור וידאו עברי לפרק השלם (לא סרטון ליחידה זו)')+'</p>'+
    '<div class="eruvin-actions">'+actions+'<button type="button" class="btn ghost" data-sukkah5-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
    (id?'<div class="eruvin-video" data-sukkah5-host="'+n+'" hidden></div>':'')+
-   '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Sukkah.5.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📜 המשנה בספריא ↗</a><a href="https://mechon-mamre.org/b/h/h26.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a><a href="'+prev+'">הקודם</a><a href="'+next+'"'+(n===8?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+   '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Sukkah.5.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📜 המשנה בספריא ↗</a><a href="https://mechon-mamre.org/b/h/h26.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a><a href="'+prev+'">הקודם</a><a href="'+next+'"'+''+'>הבא</a></div></article>';
  }
  section.innerHTML=html+'</div><p class="smallprint">המסלול הטקסטואלי ממשיך לפי סדר המסכתות אל מסכת ביצה. קטעי לימוד מאוחרים ודיונים תלמודיים אינם חלק מנוסח המשנה. הסרטונים משובצים ממקורות חיצוניים ללא העתקה; הזכויות שייכות לבעליהם.</p>';
  parent.appendChild(section);
@@ -53,3 +53,6 @@
  let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
  if(/^sukkah(?:Chapter5|-5-[1-8])$/.test(hash)){const anchor=hash==="sukkahChapter5"?section:document.getElementById(hash);if(anchor)requestAnimationFrame(()=>anchor.scrollIntoView({behavior:"auto",block:"start"}));}
 })();
+
+// Mount the next tractate after the final Sukkah chapter is ready.
+(()=>{const s=document.createElement("script");s.src="./beitzah-ch1.js";document.body.appendChild(s);})();
