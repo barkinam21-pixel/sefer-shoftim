@@ -32,13 +32,13 @@
   for(const [n,title,explanation,bridge,question,youtubeId] of units){
     const publisher="https://mishnah.co/moed/rosh-hashanah/chapter-1/mishnah-"+n;
     const previous=n===1?"#beitzah-5-7":"#rosh-hashanah-1-"+(n-1);
-    const next=n===9?"https://www.sefaria.org/Mishnah_Rosh_Hashanah.2.1?lang=he":"#rosh-hashanah-1-"+(n+1);
+    const next=n===9?"#rosh-hashanah-2-1":"#rosh-hashanah-1-"+(n+1);
     html+='<article class="eruvin-card" id="rosh-hashanah-1-'+n+'"><span class="eyebrow">ראש השנה א׳, '+letters[n]+'</span><h4>'+esc(title)+'</h4><p>'+esc(explanation)+'</p>'+
       '<p class="eruvin-bridge"><strong>מה ראינו קודם — מדוע זה מוביל לזה?</strong> '+esc(bridge)+' <strong>השאלה הבאה:</strong> '+esc(question)+'</p>'+
       '<p class="eruvin-credit">וידאו לימוד באנגלית · The Mishnah Project · עמוד ומזהה נגן אומתו, צפייה וכתוביות לא אומתו</p>'+
       '<div class="eruvin-actions"><button type="button" class="btn gold" data-rh1-play="'+youtubeId+'" data-rh1-n="'+n+'">▶ צפה כאן בסרטון</button> <a class="btn ghost" href="'+publisher+'" target="_blank" rel="noopener noreferrer">סרטון המקור ↗</a> <button type="button" class="btn ghost" data-rh1-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
       '<div class="eruvin-video" data-rh1-host="'+n+'" hidden></div>'+
-      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.1.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">המשנה בספריא ↗</a> <a href="https://he.wikisource.org/wiki/משנה_ראש_השנה_א" target="_blank" rel="noopener noreferrer">ויקיטקסט ↗</a> <a href="'+previous+'">הקודם</a> <a href="'+next+'"'+(n===9?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.1.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">המשנה בספריא ↗</a> <a href="https://he.wikisource.org/wiki/משנה_ראש_השנה_א" target="_blank" rel="noopener noreferrer">ויקיטקסט ↗</a> <a href="'+previous+'">הקודם</a> <a href="'+next+'"'+'>הבא</a></div></article>';
   }
   section.innerHTML=html+'</div><p class="smallprint">סוף פרק א׳. ממשיכים לראש השנה ב׳, א׳ — בדיקת העדים — במסלול הטקסטואלי; מסלול ההיסטוריה נשאר עצמאי.</p>';
   parent.after(section);
@@ -65,4 +65,16 @@
     const dest=hash==="roshHashanahChapter1"?section:document.getElementById(hash);
     if(dest)requestAnimationFrame(()=>dest.scrollIntoView({behavior:"auto",block:"start"}));
   }
+})();
+
+/* Load the next text chapter only after the preceding chapter mounts. */
+(function(){
+  if(!document.getElementById("roshHashanahChapter1")||
+     document.getElementById("roshHashanahChapter2")||
+     document.querySelector("script[data-rh2-loader]"))return;
+  const script=document.createElement("script");
+  const base=document.currentScript&&document.currentScript.src;
+  script.src=base?new URL("rosh-hashanah-ch2.js",base).href:"./rosh-hashanah-ch2.js";
+  script.dataset.rh2Loader="1";script.async=true;
+  document.head.appendChild(script);
 })();

@@ -35,13 +35,13 @@
       '<button type="button" class="btn gold" data-beitzah5-play="'+id+'" data-n="'+n+'">▶ נגן כאן · '+duration+'</button> <a class="btn ghost" href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener noreferrer">הסרטון המקורי ↗</a>':
       '<a class="btn gold" href="'+publisher+'" target="_blank" rel="noopener noreferrer">▶ סרטון למשנה '+letters[n]+' · '+duration+' ↗</a>';
     const previous=n===1?"#beitzah-4-7":"#beitzah-5-"+(n-1);
-    const next=n===7?"https://www.sefaria.org/Mishnah_Rosh_Hashanah.1.1?lang=he":"#beitzah-5-"+(n+1);
+    const next=n===7?"#rosh-hashanah-1-1":"#beitzah-5-"+(n+1);
     html+='<article class="eruvin-card" id="beitzah-5-'+n+'"><span class="eyebrow">ביצה ה׳, '+letters[n]+'</span><h4>'+e(title)+'</h4><p>'+e(explanation)+'</p>'+
       '<p class="eruvin-bridge"><strong>מה ראינו קודם — כיצד זה מוביל לסרטון הבא?</strong> '+e(bridge)+' <strong>השאלה הבאה:</strong> '+e(question)+'</p>'+
       '<p class="eruvin-credit">הסבר עכשווי · סרטון The Mishnah Project לפי קטלוג המפרסם · לא נבדק בצפייה</p>'+
       '<div class="eruvin-actions">'+video+' <button type="button" class="btn ghost" data-beitzah5-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
       (id?'<div class="eruvin-video" data-beitzah5-host="'+n+'" hidden></div>':'')+
-      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Beitzah.5.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">משנה בספריא ↗</a> <a href="'+text+'" target="_blank" rel="noopener noreferrer">ויקיטקסט ↗</a> <a href="'+previous+'">הקודם</a> <a href="'+next+'"'+(n===7?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Beitzah.5.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">משנה בספריא ↗</a> <a href="'+text+'" target="_blank" rel="noopener noreferrer">ויקיטקסט ↗</a> <a href="'+previous+'">הקודם</a> <a href="'+next+'"'+'>הבא</a></div></article>';
   }
   section.innerHTML=html+'</div><p class="smallprint">סיום מסכת ביצה. ההמשך הטקסטואלי בסדר מועד הוא ראש השנה א׳, א׳; הוא אינו המשך כרונולוגי של הדמויות בסרטונים.</p>';
   parent.after(section);
