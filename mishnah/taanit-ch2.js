@@ -19,11 +19,11 @@
     '<div class="actions" style="margin:12px 0"><button type="button" class="btn gold" id="ta2Continue">▶ המשך ללמוד</button> <span id="ta2Progress" class="progressnote" aria-live="polite"></span></div><div class="eruvin-cards">';
   for(const [n,title,explanation,bridge,question,note] of units){
     const prev=n===1?"#taanit-1-7":"#taanit-2-"+(n-1);
-    const next=n===10?"https://www.sefaria.org/Mishnah_Ta%27anit.3.1?lang=he":"#taanit-2-"+(n+1);
+    const next=n===10?"#taanit-3-1":"#taanit-2-"+(n+1);
     html+='<article class="eruvin-card" id="taanit-2-'+n+'"><span class="eyebrow">תענית ב׳, '+letters[n]+'</span><h4>'+esc(title)+'</h4><p>'+esc(explanation)+'</p>'+
       '<p class="eruvin-bridge"><strong>מה ראינו קודם — ומה מוביל לכאן?</strong> '+esc(bridge)+' <strong>השאלה הבאה:</strong> '+esc(question)+'</p>'+
       '<p class="smallprint">'+esc(note)+'</p><div class="eruvin-actions"><button type="button" class="btn ghost" data-ta2-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
-      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Ta%27anit.2.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">קרא את המשנה עצמה ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'+(n===10?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Ta%27anit.2.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">קרא את המשנה עצמה ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"+'>הבא</a></div></article>';
   }
   section.innerHTML=html+'</div><p class="smallprint">המשך לימוד לפי סדר המסכתות: תענית ג׳, א׳. נדרשת בדיקת זכויות ואיכות לכל סרטון לפני הוספתו.</p>';
   parent.after(section);
@@ -37,4 +37,13 @@
   draw();
   let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
   if(hash==="taanitChapter2"||/^taanit-2-(10|[1-9])$/.test(hash)){const dest=hash==="taanitChapter2"?section:document.getElementById(hash);if(dest)requestAnimationFrame(()=>dest.scrollIntoView({behavior:"auto",block:"start"}));}
+})();
+/* Add the next chapter only after chapter 2 has mounted. No extra libraries or eager video. */
+(function(){
+  if(!document.getElementById("taanitChapter2")||document.getElementById("taanitChapter3")||document.querySelector("script[data-ta3-loader]"))return;
+  const script=document.createElement("script");
+  const base=document.currentScript&&document.currentScript.src;
+  script.src=base?new URL("taanit-ch3.js",base).href:"./taanit-ch3.js";
+  script.async=true;script.dataset.ta3Loader="1";
+  document.head.appendChild(script);
 })();
