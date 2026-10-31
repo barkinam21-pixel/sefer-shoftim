@@ -19,11 +19,11 @@
     '<div class="actions" style="margin:12px 0"><button type="button" class="btn gold" id="rh4Continue">▶ המשך ללמוד</button> <span id="rh4Progress" class="progressnote" aria-live="polite"></span></div><div class="eruvin-cards">';
   for(const [n,title,explanation,bridge,question,note] of units){
     const prev=n===1?"#rosh-hashanah-3-8":"#rosh-hashanah-4-"+(n-1);
-    const next=n===9?"https://www.sefaria.org/Mishnah_Taanit.1.1?lang=he":"#rosh-hashanah-4-"+(n+1);
+    const next=n===9?"#taanit-1-1":"#rosh-hashanah-4-"+(n+1);
     html+='<article class="eruvin-card" id="rosh-hashanah-4-'+n+'"><span class="eyebrow">ראש השנה ד׳, '+letters[n]+'</span><h4>'+esc(title)+'</h4><p>'+esc(explanation)+'</p>'+
        '<p class="eruvin-bridge"><strong>מה ראינו קודם — ולמה עוברים לכאן?</strong> '+esc(bridge)+' <strong>מה נלמד אחר כך?</strong> '+esc(question)+'</p>'+
        '<p class="smallprint">'+esc(note)+'</p><div class="eruvin-actions"><button type="button" class="btn ghost" data-rh4-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
-       '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.4.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">קרא את המשנה בספריא ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'+(n===9?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+       '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.4.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">קרא את המשנה בספריא ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'+'>הבא</a></div></article>';
   }
   section.innerHTML=html+'</div><p class="smallprint">סיום מסכת ראש השנה. המסכת הבאה בסדר המשנה: תענית, פרק א׳ משנה א׳. אין לראות ברצף המסכתות סדר כרונולוגי של מאורעות.</p>';
   parent.after(section);
@@ -40,4 +40,16 @@
      const dest=hash==="roshHashanahChapter4"?section:document.getElementById(hash);
      if(dest)requestAnimationFrame(()=>dest.scrollIntoView({behavior:"auto",block:"start"}));
   }
+})();
+
+/* Load the next tractate in textual order, separate from the historical timeline. */
+(function(){
+  if(!document.getElementById("roshHashanahChapter4")||
+     document.getElementById("taanitChapter1")||
+     document.querySelector("script[data-ta1-loader]"))return;
+  const script=document.createElement("script");
+  const base=document.currentScript&&document.currentScript.src;
+  script.src=base?new URL("taanit-ch1.js",base).href:"./taanit-ch1.js";
+  script.async=true;script.dataset.ta1Loader="1";
+  document.head.appendChild(script);
 })();
