@@ -3,30 +3,69 @@
 const root=document.getElementById("yomaTractate");
 if(!root||document.getElementById("yomaCh3And4"))return;
 const units=[[3,1,"מתי מתחיל זמן השחיטה?","הממונה שולח לבדוק אם האיר המזרח; מתתיה בן שמואל מזכיר את חברון.","פרק ב׳ בחר בכוהנים לעבודות; כעת צריך לקבוע מתי אפשר להתחיל.","מה קורה כאשר טועים בזיהוי השחר?"],[3,2,"הירח שהתחפש לשחר","טעות באור הלבנה גרמה לשחיטת התמיד בטרם זמנו, והמשנה מסבירה גם דיני טבילה וקידוש.","משנה א׳ קבעה מבחן אור; כאן רואים מדוע חשוב לדייק.","איזה סדר טבילות נדרש מכוהן גדול?"],[3,3,"חמש טבילות ועשרה קידושים","גם מי שטהור טובל לפני כניסה לעזרה; הכוהן הגדול טובל חמש פעמים ביום.","לאחר הטעות והטהרה במשנה ב׳, מגדירים כאן את הכללים הכלליים.","כיצד מתקיים שלב הטבילה הראשון?"],[3,4,"בגדי זהב, תמיד וקטורת","לאחר טבילה וקידוש ידיים לובש הכוהן בגדי זהב ועוסק בתמיד, בקטורת ובנרות.","משנה ג׳ הגדירה מספר טבילות; כאן רואים את סדר העבודה.","מתי מקטירים ומה אם מי הטבילה קרים?"],[3,5,"קטורת בוקר ומים חמימים","המשנה משווה את מיקום הקטורת בבוקר ובערב ומזכירה חימום מי טבילה לפי הצורך.","אחרי עבודות השחר במשנה ד׳ מתחדדים פרטי הקטורת והטבילה.","מהו הסדר במעבר לבגדי לבן?"],[3,6,"הטבילה והמעבר לבגדי לבן","הכוהן פושט, טובל, לובש לבן ומקדש ידיו ורגליו; רבי מאיר חולק על סדר הפעולות.","הטבילה שנזכרה במשנה ה׳ מקבלת עתה תיאור מדויק.","מדוע ערכם של בגדי הלבן חשוב?"],[3,7,"כמה שווים בגדי הלבן?","רבי מאיר וחכמים מציעים ערכים שונים לבגדים, ומוזכרת תוספת מכספו.","לאחר החלפת הבגדים במשנה ו׳ דנים כאן בשוויים ובמימונם.","מה עושה הכוהן עם פרו קודם השחיטה?"],[3,8,"הווידוי על פר הכוהן","הכוהן סומך על הפר ומתוודה על עצמו ועל ביתו; העם מגיב לשם המפורש.","לאחר בגדי הלבן במשנה ז׳, הכוהן מתחיל בווידוי.","איך מגיעים אל שני השעירים והקלפי?"],[3,9,"השעירים והגורלות","שני שעירים ניצבים בעזרה לצד קלפי הגורלות, ובן גמלא מוזכר לשבח.","מפר הכוהן במשנה ח׳ עוברים אל השעירים שנועדו להגרלה.","אילו עוד שיפורים נתרמו למקדש?"],[3,10,"היוזמות שזכו לשבח","בן קטין, מונבז, הילני וניקנור נזכרים על עבודתם ושיפור מתקני המקדש.","משנה ט׳ שיבחה את שדרוג הגורלות; כאן מצטרפים תורמים נוספים.","מי נזכרים לגנאי על סירוב להעביר ידע?"],[3,11,"מי סירב ללמד את מלאכת המקדש?","בית גרמו, בית אבטינס ואחרים נזכרים לגנאי על שלא לימדו את מלאכתם.","רשימת השבח במשנה י׳ מתהפכת לרשימת גנאי — הנגדה ערכית ולא מפגש היסטורי.","פרק ד׳ חוזר להגרלת השעירים: מה עלה ביד הכוהן?"],[4,1,"גורל לה׳ וגורל לעזאזל","הכוהן מוציא שני גורלות ומניחם על השעירים, ויש מחלוקת בנוסח ההכרזה.","פרק ג׳ הסתיים בבעלי המלאכה; כעת חוזרים להגרלה שהוכנה בג׳, ט׳, בלי קשר סיבתי ליחידת הגנאי.","מה עושים לאחר הכרעת הגורל?"],[4,2,"לשון זהורית ווידוי שני","מסמנים את השעירים והכוהן מתוודה פעם נוספת, גם על בני אהרן.","אחרי החלוקה בין השעירים במשנה א׳, הסימן והווידוי מכינים להמשך.","מה עושים עם דם הפר לאחר שחיטתו?"],[4,3,"דם הפר והמחתה","ממרסים את הדם כדי שלא יקרש, והכוהן נוטל מחתה עם גחלים.","לאחר וידוי משנה ב׳ מתחילה הכנה מעשית של הדם והגחלים.","במה שונה מחתת יום הכיפורים?"],[4,4,"מה שונה בקטורת יום הכיפורים?","חומר המחתה, גודלה, משקלה, הידית והקטורת שונים מן הרגיל.","משנה ג׳ הציגה את המחתה; עכשיו משווים לפרטי כלי העבודה של ימות השנה.","מה משתנה גם במסלול הכוהן ובקידוש?"],[4,5,"הכבש וקיתון הזהב","המשנה עוסקת בדרך העלייה בכבש ובקידוש ידיים ורגליים בקיתון של זהב.","אחרי הבדלי הכלים במשנה ד׳, עוברים להליכה ולפעולת הקידוש.","מהו מספר מערכות האש ביום הכיפורים?"],[4,6,"המחלוקת על מערכות המזבח","רבי מאיר, רבי יוסי ורבי יהודה נחלקים במספר מערכות האש ביום רגיל וביום הכיפורים.","אחרי הדרך והקיתון במשנה ה׳, עכשיו מסתיים הפרק בסידור האש.","הבא לפי סדר המשנה: יומא ה׳, א׳ — הכנסת הקטורת לפני ולפנים."]];
-const captions={3:"פרק ג׳ — מן השחר ועד תולדות בעלי המלאכה במקדש",4:"פרק ד׳ — גורלות, וידוי, גחלים ומערכות האש"};
+units.push(...[[5,1,"הכניסה לקודש הקודשים: הכף, המחתה והפרוכות","הכוהן הגדול נושא את המחתה בימין ואת כף הקטורת בשמאל, עובר בין הפרוכות; רבי יוסי חולק על מספר הפרוכות.","פרק ד׳ עסק במחתה ובקטורת של היום המיוחד; כעת רואים כיצד הכלים מובאים פנימה.","מה עומד בקודש הקודשים לאחר שניטל הארון?"],[5,2,"אבן השתייה במקום הארון","המשנה מזכירה את אבן השתייה, שניצבה במקום הארון לאחר שניטל, ועליה הונחה הקטורת. זהו תיאור במסורת המשנה, לא ממצא ארכאולוגי שהוכח.","לאחר המעבר בין הפרוכות במשנה א׳, המשנה עוצרת לשאול מה נמצא בחלל הפנימי.","מה עושה הכוהן כאשר הוא נכנס שוב, הפעם עם דם הפר?"],[5,3,"אחת למעלה ושבע למטה: דם הפר","הכוהן מקבל את דם הפר ממי שממרס בו, מזה ממנו אחת למעלה ושבע למטה ומונה כל הזאה בקול.","משנה ב׳ תיארה את מקומה של הקטורת; עכשיו עוברים להזאות דם הפר בקודש הקודשים.","כיצד חוזר על סדר ההזאות עם דם השעיר?"],[5,4,"דם השעיר, הפרוכת וערבוב הדמים","דם השעיר נזרק בפנים; אחר כך נעשות הזאות על הפרוכת מצד ההיכל, מדם הפר ומדם השעיר, ולבסוף מערבים את הדמים.","משנה ג׳ קבעה את ספירת ההזאות מדם הפר; כאן מיושם הסדר גם בשעיר ובהזאות שמחוץ לפרוכת.","כיצד נותנים את הדם על קרנות מזבח הזהב?"],[5,5,"סיבוב מזבח הזהב או עמידה במקום?","המשנה מתארת את סדר נתינת הדם על ארבע קרנות מזבח הזהב; רבי אליעזר מציג דרך אחרת, מעמידה במקום.","משנה ד׳ סיימה בערבוב הדמים; כעת משתמשים בהם לעבודת מזבח הזהב.","מה עושים לאחר מתנות הקרנות, ולאן מגיעים שיירי הדם?"],[5,6,"שבע הזאות, שיירי הדם ונחל קדרון","לאחר שבע הזאות על טוהרו של המזבח נשפכים שיירי הדם על יסודות המזבח החיצון, ומשם אל התעלה והקדרון.","משנה ה׳ התמקדה בקרנות מזבח הזהב; זו משלימה את מתנותיו ואת הטיפול בשארית הדמים.","מה הדין אם החליפו את הסדר או נשפך הדם באמצע?"],[5,7,"מדוע סדר העבודה אינו ניתן להחלפה?","המשנה קובעת שמעשי יום הכיפורים חייבים להיעשות בסדרם, ודנה בהתחלה מחדש כשנשפך הדם; רבי אלעזר ורבי שמעון חולקים על נקודת החזרה.","אחרי פרטי עבודת הדם במשניות ג׳–ו׳, המשנה מנסחת את הכלל המסכם: הסדר עצמו מהותי.","בפרק ו׳ חוזרים לשני השעירים: מה קורה כשאחד מהם מת?"]]);
+const captions={3:"פרק ג׳ — מן השחר ועד תולדות בעלי המלאכה במקדש",4:"פרק ד׳ — גורלות, וידוי, גחלים ומערכות האש",5:"פרק ה׳ — הקטורת, ההזאות וקדושת סדר העבודה"};
 const numerals=["","א","ב","ג","ד","ה","ו","ז","ח","ט","י","י״א"];
 const h=s=>{const a=document.createElement("span");a.textContent=String(s);return a.innerHTML;};
 const holder=document.createElement("div");holder.id="yomaCh3And4";
-let html='<nav class="actions" style="display:flex;flex-wrap:wrap;gap:9px;margin:14px 0" aria-label="פרקי יומא"><a class="btn" href="#yomaChapter3">פרק ג׳ (11)</a><a class="btn" href="#yomaChapter4">פרק ד׳ (6)</a></nav>';
-for(const ch of [3,4]){
+let html='<nav class="actions" style="display:flex;flex-wrap:wrap;gap:9px;margin:14px 0" aria-label="פרקי יומא"><a class="btn" href="#yomaChapter3">פרק ג׳ (11)</a><a class="btn" href="#yomaChapter4">פרק ד׳ (6)</a><a class="btn" href="#yomaChapter5">פרק ה׳ (7)</a></nav>';
+for(const ch of [3,4,5]){
  html+='<section id="yomaChapter'+ch+'" aria-label="'+captions[ch]+'"><h4>'+captions[ch]+'</h4>';
  if(ch===3)html+='<p class="smallprint">הבדל מספור: ספריא והיוצר מונים 11 משניות בפרק ג׳; במכון ממרא 12 משניות, משום שתגובת העם לווידוי בג׳, ח׳ מופיעה בו כמשנה נפרדת. לכן ג׳, ט׳–י״א באתר תואמות לג׳, י׳–י״ב במכון ממרא.</p>';
+  if(ch===5)html+='<p class="smallprint">הערת מספור חיונית: באתר זה פרק ה׳ מחולק לשבע משניות לפי ספריא והפרק היומי. במכון ממרא אותן יחידות מרוכזות בשש משניות: ה׳, א׳–ב׳ שלנו בתוך ה׳, א׳ שלו; ה׳, ג׳–ד׳ שלנו בה׳, ב׳–ג׳ שלו; ה׳, ה׳ שלנו בעיקר בה׳, ד׳ שלו (עם פתיחה בסוף ה׳, ג׳); ה׳, ו׳–ז׳ שלנו בה׳, ה׳–ו׳ שלו. אין מדובר בשני פרקים שונים ואין לתקן את המספור בשקט.</p>';
  html+='<div class="eruvin-cards">';
  for(const x of units.filter(x=>x[0]===ch)){
   const [c,n,title,summary,bridge,question]=x,id=c+'-'+n;
-  const prev=(c===3&&n===1)?'2-7':n===1?'3-11':c+'-'+(n-1);
-  const next=(c===3&&n===11)?'4-1':n===(c===3?11:6)?null:c+'-'+(n+1);
+  const prev=(c===3&&n===1)?'2-7':n===1?(c===4?'3-11':'4-6'):c+'-'+(n-1);
+  const next=(c===3&&n===11)?'4-1':(c===4&&n===6)?'5-1':(c===5&&n===7)?null:c+'-'+(n+1);
+
+   const verifiedYT=c===5?({4:"kC56SExBxaw",5:"-TlZIcCnQ8A",6:"KefMZYg10Pg"})[n]:null;
+   const videoControls=c!==5?
+     '<a class="btn gold" href="https://mishnah.co/moed/yoma/chapter-'+c+'/mishnah-'+n+'" target="_blank" rel="noopener noreferrer">▶ צפה בסרטון המקורי אצל היוצר ↗</a>':
+     verifiedYT?
+       '<button type="button" class="btn gold" data-yoma-play="'+verifiedYT+'" data-yoma-slot="'+id+'" data-yoma-title="'+h(title)+'" data-reload="↻ טען שוב">▶ נגן בתוך האתר</button><a class="btn ghost" href="https://www.youtube.com/watch?v='+verifiedYT+'" target="_blank" rel="noopener noreferrer">מקור הסרטון ↗</a>':
+       n===2?
+         '<a class="btn gold" href="https://mishnah.co/moed/yoma/chapter-5/mishnah-2" target="_blank" rel="noopener noreferrer">▶ שיעור נפרד באנגלית — עמוד היוצר ↗</a>':
+         '<a class="btn gold" href="https://mishna.org.il/מועד/יומא/5" target="_blank" rel="noopener noreferrer">▶ שיעור עברי לכל הפרק (לא וידאו נפרד) ↗</a>';
+   const playerHost=verifiedYT?'<div class="eruvin-video" data-yoma-host="'+id+'" hidden></div>':'';
+   const credit=c!==5?
+     'The Mishnah Project · שיעור באנגלית · נוכחות בקטלוג אומתה; משך, כתוביות וניגון בפועל לא נבדקו':
+     verifiedYT?'The Mishnah Project · אנגלית · מזהה סרטון וכותרת YouTube אומתו; ניגון, משך וכתוביות לא נבדקו':
+     n===2?'The Mishnah Project · אנגלית · עמוד המקור אומת; ניגון וכתוביות לא נבדקו':
+     'הפרק היומי · עברית · שיעור וידאו לפרק השלם בלבד; סרטון נפרד למשנה זו לא אומת';
+
   html+='<article class="eruvin-card" id="yoma-'+id+'" data-yoma-unit="'+id+'"><span class="eyebrow">לימוד טקסטואלי · יומא '+numerals[c]+'׳, '+numerals[n]+'׳</span>'+
   '<h4>'+h(title)+'</h4><p>'+h(summary)+'</p>'+
   '<p class="eruvin-bridge"><strong>מה ראינו קודם ומדוע זה מוביל לכאן?</strong> '+h(bridge)+' <strong>השאלה שהשיעור הבא פותח:</strong> '+h(question)+'</p>'+
-  '<p class="eruvin-credit">The Mishnah Project · שיעור באנגלית · נוכחות בקטלוג אומתה; משך, כתוביות וניגון בפועל לא נבדקו</p>'+
-  '<div class="eruvin-actions"><a class="btn gold" href="https://mishnah.co/moed/yoma/chapter-'+c+'/mishnah-'+n+'" target="_blank" rel="noopener noreferrer">▶ צפה בסרטון המקורי אצל היוצר ↗</a>'+
-  '<button type="button" class="btn ghost" data-yoma-mark="'+id+'" data-yes="✓ למדתי — בטל סימון" data-no="סמן שלמדתי" aria-pressed="false">סמן שלמדתי</button></div>'+
+  '<p class="eruvin-credit">'+h(credit)+'</p>'+
+  '<div class="eruvin-actions">'+videoControls+
+  '<button type="button" class="btn ghost" data-yoma-mark="'+id+'" data-yes="✓ למדתי — בטל סימון" data-no="סמן שלמדתי" aria-pressed="false">סמן שלמדתי</button></div>'+playerHost+
   '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Yoma.'+c+'.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📜 נוסח המשנה בספריא ↗</a>'+
   '<a href="https://www.mishnah.org/learn/yoma/'+c+'/'+n+'/" target="_blank" rel="noopener noreferrer">נוסח נוסף ופירוש ↗</a>'+
-  '<a href="#yoma-'+prev+'">הקודם</a>'+(next?'<a href="#yoma-'+next+'">הבא</a>':'<a href="https://www.sefaria.org/Mishnah_Yoma.5.1" target="_blank" rel="noopener noreferrer">הבא: יומא ה׳, א׳ ↗</a>')+'</div></article>';
+  '<a href="#yoma-'+prev+'">הקודם</a>'+(next?'<a href="#yoma-'+next+'">הבא</a>':'<a href="https://www.sefaria.org/Mishnah_Yoma.6.1?lang=he" target="_blank" rel="noopener noreferrer">הבא: יומא ו׳, א׳ ↗</a>')+'</div></article>';
  }
  html+='</div><p class="peah-links"><a href="https://www.mishna.org.il/מועד/יומא/'+ch+'" target="_blank" rel="noopener noreferrer">▶ שיעור וידאו עברי לכל הפרק ↗</a><a href="https://mechon-mamre.org/b/h/h25.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a></p></section>';
 }
 holder.innerHTML=html;root.appendChild(holder);
+
+const heading=root.querySelector('#yomaHeading');
+if(heading)heading.textContent='מסכת יומא — לימוד רציף לפי המשניות, פרקים א׳–ה׳';
+const intro=root.querySelector('#yomaHeading + p');
+if(intro)intro.textContent='ממשיכים לאחר מסכת שקלים אל 39 יחידות לימוד במסכת יומא, פרקים א׳–ה׳, לפי סדר המשניות. בפרק ה׳ שבע יחידות לפי ספריא והפרק היומי, אך במכון ממרא החלוקה היא לשש; פירוט ההבדל מופיע לפני הפרק. נוספו שלושה נגני YouTube פנימיים לפרק ה׳ ועוד עמוד וידאו פרטני מאומת אחד; לשאר היחידות בפרק יש שיעור וידאו עברי של הפרק כולו. אין להציג שיעור לפרק כסרטון נפרד לכל משנה. המסלול הטקסטואלי נפרד מהמסלול ההיסטורי.';
+root.addEventListener('click',e=>{
+ const b=e.target.closest('button[data-yoma-play][data-yoma-slot]');
+ if(!b||!root.contains(b)||!/^5-[456]$/.test(b.dataset.yomaSlot))return;
+ const id=b.dataset.yomaPlay;
+ if(!['kC56SExBxaw','-TlZIcCnQ8A','KefMZYg10Pg'].includes(id))return;
+ const host=root.querySelector('[data-yoma-host="'+b.dataset.yomaSlot+'"]');
+ if(!host)return;
+ root.querySelectorAll('[data-yoma-host]').forEach(node=>{node.replaceChildren();node.hidden=true;});
+ const frame=document.createElement('iframe');
+ frame.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
+ frame.title=b.dataset.yomaTitle||'משנה יומא ה׳ — The Mishnah Project';
+ frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';
+ frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+ frame.allowFullscreen=true;host.appendChild(frame);host.hidden=false;
+ b.textContent=b.dataset.reload||'↻ טען שוב';
+});
 })();
