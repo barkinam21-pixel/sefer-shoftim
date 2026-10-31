@@ -51,5 +51,20 @@ jobs:
           assert.deepEqual(nine,[1,2,3,4,5,6,7,8,9]);
           assert.match(ch3, /Mishnah_Ta%27anit\.3\.'/);
           assert.match(ch3, /Mechon Mamre|מכון ממרא/);
-          console.log('Taanit 1 -> 2 -> 3 navigation, ten plus nine Mishnah records passed');
+          const ch4=fs.readFileSync('mishnah/taanit-ch4.js','utf8');
+          assert.match(ch3, /new URL\("taanit-ch4\.js",source\)/);
+          assert.match(ch3, /const next=n===9\?"#taanit-4-1"/);
+          assert.match(ch4, /parent\.after\(section\)/);
+          assert.match(ch4, /"mishnah_cinema_taanit_ch4_v1"/);
+          const m4=ch4.match(/const units=(\[[^\n]+\]);/);
+          assert.ok(m4,'Eight source-mapped chapter 4 units must be embedded as JSON data');
+          const u4=JSON.parse(m4[1]);
+          assert.equal(u4.length,8);
+          assert.deepEqual(u4.map(u=>u[0]),[1,2,3,4,5,6,7,8]);
+          assert.equal(new Set(u4.map(u=>u[1])).size,8);
+          assert.ok(u4.every(u=>u.length===6 && u.slice(1).every(v=>typeof v==='string' && v.length>10)));
+          assert.match(ch4, /Mishnah_Ta%27anit\.4\.'/);
+          assert.match(ch4, /מכון ממרא/);
+          assert.match(ch4, /Mishnah_Megillah\.1\.1/);
+          console.log('Taanit 1 -> 2 -> 3 -> 4, ten plus nine plus eight learning records passed');
           NODE
