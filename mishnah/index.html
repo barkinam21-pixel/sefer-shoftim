@@ -2254,8 +2254,7 @@ function playSelected(){if(!current)return;
   f.referrerPolicy="strict-origin-when-cross-origin";
   f.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation");
   const playerURL="https://embed.chabad.org/multimedia/mediaplayer/embedded/embed.js.asp?aid="+aid+"&amp;width=auto&amp;height=auto";
-  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script><script src="./sukkah-ch1.js"></script>
-</body></html>';
+  f.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;background:#06090e;overflow:hidden}body>div,body>iframe,body>object,video{max-width:100%}</style></head><body><script src="'+playerURL+'"><'+'/script></body></html>';
   $("playerHost").replaceChildren(f);$("watch").scrollIntoView({behavior:"smooth",block:"start"});return;
  }
  if(vimeo){
@@ -2815,4 +2814,5 @@ root.querySelector('#yomaContinue').addEventListener('click',()=>{
 redraw();
 })();
 </script>
+<script src="./sukkah-ch1.js"></script>
 </body></html>
