@@ -51,3 +51,15 @@
  let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
  if(/^beitzah(?:Chapter4|-4-[1-7])$/.test(hash)){const el=hash==="beitzahChapter4"?section:document.getElementById(hash);if(el)requestAnimationFrame(()=>el.scrollIntoView({behavior:"auto",block:"start"}));}
 })();
+
+/* Chained textual course loader. One small JS fetch; no video preloading. */
+(function(){
+  if(!document.getElementById("beitzahChapter4")||document.getElementById("beitzahChapter5"))return;
+  if(document.querySelector("script[data-mishnah-beitzah5]"))return;
+  const s=document.createElement("script");
+  s.dataset.mishnahBeitzah5="1";
+  const origin=document.currentScript&&document.currentScript.src;
+  s.src=origin?new URL("beitzah-ch5.js",origin).href:"./beitzah-ch5.js";
+  s.defer=true;
+  document.body.appendChild(s);
+})();
