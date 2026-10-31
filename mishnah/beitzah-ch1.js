@@ -102,7 +102,7 @@
  for(const [n,title,explanation,bridge,question] of units){
    const video=videoIds[n];
    const previous=n===1?"#beitzah-1-10":"#beitzah-2-"+(n-1);
-   const next=n===10?"https://www.sefaria.org/Mishnah_Beitzah.3.1?lang=he":"#beitzah-2-"+(n+1);
+   const next=n===10?"#beitzah-3-1":"#beitzah-2-"+(n+1);
    const videoControl=video?
     '<button type="button" class="btn gold" data-beitzah2-play="'+video+'" data-n="'+n+'">▶ הפעל נגן כאן</button> <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v='+video+'">עמוד הסרטון ↗</a>':
     '<a class="btn gold" target="_blank" rel="noopener noreferrer" href="'+catalog+'">פתח קטלוג · ב׳, '+letters[n]+' ↗</a>';
@@ -113,9 +113,9 @@
       '<div class="eruvin-actions">'+videoControl+' <button type="button" class="btn ghost" data-beitzah2-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
       (video?'<div class="eruvin-video" data-beitzah2-host="'+n+'" hidden></div>':'')+
       '<div class="peah-links"><a target="_blank" rel="noopener noreferrer" href="https://www.sefaria.org/Mishnah_Beitzah.2.'+n+'?lang=he">המשנה בספריא ↗</a>'+
-      ' <a target="_blank" rel="noopener noreferrer" href="'+hebrew+'">נוסח הפרק בוויקיטקסט ↗</a> <a href="'+previous+'">הקודם</a> <a href="'+next+'"'+(n===10?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+      ' <a target="_blank" rel="noopener noreferrer" href="'+hebrew+'">נוסח הפרק בוויקיטקסט ↗</a> <a href="'+previous+'">הקודם</a> <a href="'+next+'"' +'>הבא</a></div></article>';
  }
- chapter.innerHTML=markup+'</div><p class="smallprint">המשך הלימוד: ביצה ג׳, א׳. עד להרחבת הפרק הבא, המעבר פותח את נוסח המקור בלבד. אין כאן שחזור של אירועים מתקופת התנאים או שימוש חוזר בקובצי הסרטונים.</p>';
+ chapter.innerHTML=markup+'</div><p class="smallprint">המשך הלימוד: ביצה ג׳, א׳. ניתן להמשיך מכאן לפרק ג׳ באתר. אין כאן שחזור של אירועים מתקופת התנאים או שימוש חוזר בקובצי הסרטונים.</p>';
  prev.after(chapter);
  let state={};const storage="mishnah_cinema_beitzah_ch2_v1";
  try{const val=JSON.parse(localStorage.getItem(storage)||"{}");if(val&&typeof val==="object"&&!Array.isArray(val))state=val;}catch(_){}
@@ -140,3 +140,4 @@
  let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
  if(/^beitzah(?:Chapter2|-2-(?:10|[1-9]))$/.test(hash)){const target=hash==="beitzahChapter2"?chapter:document.getElementById(hash);if(target)requestAnimationFrame(()=>target.scrollIntoView({behavior:"auto",block:"start"}));}
 })();
+\n// Continue the textual Mishnah sequence; load on demand after chapter 2 mounts.\n(()=>{const s=document.createElement("script");s.src="./beitzah-ch3.js";document.body.appendChild(s);})();\n
