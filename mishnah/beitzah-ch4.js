@@ -21,14 +21,14 @@
  '<div class="actions" style="margin:12px 0"><button type="button" class="btn gold" id="beitzah4Continue">▶ המשך ללמוד</button> <span id="beitzah4Progress" class="progressnote" aria-live="polite"></span></div><div class="eruvin-cards">';
  for(const [n,title,explanation,bridge,question] of units){
   const id=videos[n],prev=n===1?"#beitzah-3-8":"#beitzah-4-"+(n-1);
-  const next=n===7?"https://www.sefaria.org/Mishnah_Beitzah.5.1?lang=he":"#beitzah-4-"+(n+1);
+  const next=n===7?"#beitzah-5-1":"#beitzah-4-"+(n+1);
   const video=id?'<button type="button" class="btn gold" data-beitzah4-play="'+id+'" data-n="'+n+'">▶ נגן כאן</button> <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v='+id+'">הסרטון המקורי ↗</a>':'<a class="btn gold" target="_blank" rel="noopener noreferrer" href="https://mishnah.co/moed/beitza/chapter-4/mishnah-'+n+'">▶ סרטון המשנה אצל היוצר ↗</a>';
   html+='<article class="eruvin-card" id="beitzah-4-'+n+'"><span class="eyebrow">ביצה ד׳, '+letters[n]+'</span><h4>'+escapeText(title)+'</h4><p>'+escapeText(explanation)+'</p>'+
    '<p class="eruvin-bridge"><strong>מה ראינו קודם — כיצד הוא מוביל לכאן?</strong> '+escapeText(bridge)+' <strong>השאלה הבאה:</strong> '+escapeText(question)+'</p>'+
    '<p class="eruvin-credit">הסבר עכשווי, לא לשון המשנה ולא שחזור היסטורי · סרטון לפי מטא־נתונים בלבד</p>'+
    '<div class="eruvin-actions">'+video+' <button type="button" class="btn ghost" data-beitzah4-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
    (id?'<div class="eruvin-video" data-beitzah4-host="'+n+'" hidden></div>':'')+
-   '<div class="peah-links"><a target="_blank" rel="noopener noreferrer" href="https://www.sefaria.org/Mishnah_Beitzah.4.'+n+'?lang=he">המשנה בספריא ↗</a> <a target="_blank" rel="noopener noreferrer" href="'+text+'">ויקיטקסט ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'+(n===7?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+   '<div class="peah-links"><a target="_blank" rel="noopener noreferrer" href="https://www.sefaria.org/Mishnah_Beitzah.4.'+n+'?lang=he">המשנה בספריא ↗</a> <a target="_blank" rel="noopener noreferrer" href="'+text+'">ויקיטקסט ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'+(n===7?'':'')+'>הבא</a></div></article>';
  }
  section.innerHTML=html+'</div><p class="smallprint">ההמשך הוא ביצה ה׳, א׳ — המקור נפתח בקישור עד שיהיה שיעור באתר. אין כאן טענה לרצף אירועים או סקירת תורה אנושית.</p>';
  parent.after(section);
