@@ -12,7 +12,7 @@
  '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Sukkah.3" target="_blank" rel="noopener noreferrer">📜 המקור בספריא ↗</a><a href="https://mechon-mamre.org/b/h/h26.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a><a href="https://www.mishna.org.il/מועד/סוכה/3" target="_blank" rel="noopener noreferrer">▶ שיעור הפרק בעברית ↗</a></div>'+
  '<div class="actions" style="margin:12px 0"><button id="sukkah3Continue" type="button" class="btn gold">▶ המשך ללמוד</button> <span id="sukkah3Progress" class="progressnote" aria-live="polite"></span></div><div class="eruvin-cards">';
  for(const [n,title,focus,bridge,question] of data){
-  const id=videos[n],prev=n===1?"#sukkah-2-9":"#sukkah-3-"+(n-1),next=n===15?"https://www.sefaria.org/Mishnah_Sukkah.4.1":"#sukkah-3-"+(n+1);
+  const id=videos[n],prev=n===1?"#sukkah-2-9":"#sukkah-3-"+(n-1),next=n===15?"#sukkah-4-1":"#sukkah-3-"+(n+1);
   html+='<article class="eruvin-card" id="sukkah-3-'+n+'"><span class="eyebrow">סוכה ג׳, '+letters[n]+'</span><h4>'+esc(title)+'</h4><p>'+esc(focus)+'</p>'+
   '<p class="eruvin-bridge"><strong>מה ראינו קודם — מדוע זה מוביל לזה?</strong> '+esc(bridge)+' <strong>השאלה הבאה:</strong> '+esc(question)+'</p>'+
   '<p class="eruvin-credit">'+(id?"The Mishnah Project · סרטון פרטני באנגלית, מזהה מאומת במטא־נתונים בלבד":"אין סרטון פרטני מאומת; צפייה בשיעור העברי של הפרק כולו")+'</p>'+
@@ -20,7 +20,7 @@
   '<a class="btn gold" href="https://www.mishna.org.il/מועד/סוכה/3" target="_blank" rel="noopener noreferrer">▶ שיעור הפרק השלם ↗</a>')+
   '<button class="btn ghost" type="button" data-sukkah3-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
   (id?'<div class="eruvin-video" data-sukkah3-host="'+n+'" hidden></div>':'')+
-  '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Sukkah.3.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📜 המשנה בספריא ↗</a><a href="https://mechon-mamre.org/b/h/h26.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a><a href="'+prev+'">הקודם</a><a href="'+next+'"'+(n===15?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+  '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Sukkah.3.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📜 המשנה בספריא ↗</a><a href="https://mechon-mamre.org/b/h/h26.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a><a href="'+prev+'">הקודם</a><a href="'+next+'"'+''+'>הבא</a></div></article>';
  }
  section.innerHTML=html+'</div><p class="smallprint">ההסברים בני זמננו; העדויות על התנאים הן מתוך המשנה ואין להמציא מפגשים שלא תועדו.</p>';
  parent.appendChild(section);
@@ -43,3 +43,6 @@
  let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
  if(/^sukkah(?:Chapter3|-3-(?:[1-9]|1[0-5]))$/.test(hash)){const a=hash==="sukkahChapter3"?section:document.getElementById(hash);if(a)requestAnimationFrame(()=>a.scrollIntoView({behavior:"auto",block:"start"}));}
 })();
+
+// Mount the next textual chapter once chapter 3 is in the DOM.
+(()=>{const s=document.createElement("script");s.src="./sukkah-ch4.js";document.body.appendChild(s);})();
