@@ -30,8 +30,8 @@
     '<div class="actions" style="margin:12px 0"><button type="button" class="btn gold" id="ta3Continue">▶ המשך ללמוד</button> <span class="progressnote" id="ta3Progress" aria-live="polite"></span></div><div class="eruvin-cards">';
   for(const [n,title,explanation,bridge,question,note] of units){
     const prev=n===1?"#taanit-2-10":"#taanit-3-"+(n-1);
-    const next=n===9?"https://www.sefaria.org/Mishnah_Ta%27anit.4.1?lang=he":"#taanit-3-"+(n+1);
-    const nextAttr=n===9?' target="_blank" rel="noopener noreferrer"':"";
+    const next=n===9?"#taanit-4-1":"#taanit-3-"+(n+1);
+    const nextAttr="";
     html+='<article class="eruvin-card" id="taanit-3-'+n+'"><span class="eyebrow">תענית ג׳, '+letters[n]+'</span><h4>'+esc(title)+'</h4><p>'+esc(explanation)+'</p>'+
       '<p class="eruvin-bridge"><strong>מה ראינו — ואיך זה מוביל לכאן?</strong> '+esc(bridge)+' <strong>השאלה הבאה:</strong> '+esc(question)+'</p>'+
       '<p class="smallprint">'+esc(note)+'</p><div class="eruvin-actions"><button type="button" class="btn ghost" data-ta3-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
@@ -49,4 +49,15 @@
   draw();
   let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
   if(hash==="taanitChapter3"||/^taanit-3-[1-9]$/.test(hash)){const dest=hash==="taanitChapter3"?section:document.getElementById(hash);if(dest)requestAnimationFrame(()=>dest.scrollIntoView({behavior:"auto",block:"start"}));}
+})();
+
+/* Lazy-load the next textual chapter only after chapter 3 is mounted. */
+(function(){
+  if(!document.getElementById("taanitChapter3") || document.getElementById("taanitChapter4") || document.querySelector("script[data-ta4-loader]")) return;
+  const script=document.createElement("script");
+  const source=document.currentScript&&document.currentScript.src;
+  script.src=source?new URL("taanit-ch4.js",source).href:"./taanit-ch4.js";
+  script.async=true;
+  script.dataset.ta4Loader="1";
+  document.head.appendChild(script);
 })();
