@@ -63,3 +63,6 @@
  let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
  if(/^sukkah(?:Chapter4|-4-(?:10|[1-9]))$/.test(hash)){const anchor=hash==="sukkahChapter4"?section:document.getElementById(hash);if(anchor)requestAnimationFrame(()=>anchor.scrollIntoView({behavior:"auto",block:"start"}));}
 })();
+
+// Load the next textual Mishnah chapter after chapter 4 has mounted.
+(()=>{const s=document.createElement("script");s.src="./sukkah-ch5.js";document.body.appendChild(s);})();
