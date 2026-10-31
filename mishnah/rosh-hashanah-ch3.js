@@ -69,7 +69,7 @@
     html+='<article class="eruvin-card" id="rosh-hashanah-3-'+n+'"><span class="eyebrow">ראש השנה ג׳, '+letters[n]+' · מכון ממרא '+esc(mapping[n])+'</span><h4>'+esc(title)+'</h4>'+
     '<p>'+esc(explanation)+'</p><p class="eruvin-bridge"><strong>מה ראינו קודם — למה זה מוביל לכאן?</strong> '+esc(bridge)+' <strong>השאלה הבאה:</strong> '+esc(nextQuestion)+'</p>'+
     '<p class="smallprint">'+esc(sourceNote)+'</p><div class="eruvin-actions"><button type="button" class="btn ghost" data-rh3-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
-    '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.3.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">קרא את המשנה עצמה ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'++'>הבא</a></div></article>';
+    '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.3.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">קרא את המשנה עצמה ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'">הבא</a></div></article>';
   }
   section.innerHTML=html+'</div><p class="smallprint">המשך לימוד המשנה לפי סדר המסכת: ראש השנה ד׳, א׳. החורבן הוא גם נושא בפרק הבא, אך המעבר בין הפרקים אינו ציר זמן היסטורי.</p>';
   parent.after(section);
