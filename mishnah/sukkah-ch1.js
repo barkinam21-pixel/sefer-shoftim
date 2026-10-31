@@ -83,4 +83,10 @@
   });
   continueBtn.addEventListener("click",function(){const n=lessons.find(u=>!done[u[0]]);if(!n)return;const card=section.querySelector("#sukkah-1-"+n[0]);if(card)card.scrollIntoView({behavior:"smooth",block:"start"});});
   repaint();
+  // The chapter is injected after page load; honor direct hash links once it exists.
+  const fragment=decodeURIComponent(window.location.hash.slice(1));
+  if(/^sukkah(?:Tractate|Chapter1|-1-(?:[1-9]|10|11))$/.test(fragment)){
+    const anchor=fragment==="sukkahTractate"?section:section.querySelector("#"+fragment);
+    if(anchor)requestAnimationFrame(()=>anchor.scrollIntoView({behavior:"instant",block:"start"}));
+  }
 })();
