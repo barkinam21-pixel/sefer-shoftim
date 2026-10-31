@@ -87,6 +87,6 @@
   const fragment=decodeURIComponent(window.location.hash.slice(1));
   if(/^sukkah(?:Tractate|Chapter1|-1-(?:[1-9]|10|11))$/.test(fragment)){
     const anchor=fragment==="sukkahTractate"?section:section.querySelector("#"+fragment);
-    if(anchor)requestAnimationFrame(()=>anchor.scrollIntoView({behavior:"instant",block:"start"}));
+    if(anchor)requestAnimationFrame(()=>anchor.scrollIntoView({behavior:"auto",block:"start"}));
   }
 })();
