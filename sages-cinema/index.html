@@ -93,6 +93,10 @@ h1 em{display:block;color:var(--gold);font-style:normal}
 .poster:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,24,27,.8),transparent 45%);pointer-events:none}
 .poster img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.67) brightness(.72)}
 .poster .symbol{font-family:var(--serif);font-size:76px;color:rgba(245,204,148,.52);text-shadow:0 8px 40px #111}
+.poster.playing{height:auto;aspect-ratio:16/9;background:#05090a}
+.poster.playing:before,.poster.playing:after{display:none}
+.poster.playing iframe{width:100%;height:100%;aspect-ratio:16/9;border:0;display:block}
+.poster.playing .poster-icon,.poster.playing .poster-label{display:none}
 .poster-label{position:absolute;z-index:1;bottom:12px;right:13px;font-size:11px;color:#f1dab1;background:rgba(16,26,30,.85);border:1px solid rgba(236,196,138,.22);padding:4px 9px;border-radius:7px}
 .poster-icon{position:absolute;z-index:1;left:12px;top:12px;border:1px solid rgba(236,196,138,.5);color:var(--gold);background:#17262c;padding:4px 9px;border-radius:8px;font-size:11px}
 .card-body{padding:18px 17px 16px;display:flex;flex-direction:column;flex:1;gap:10px}
@@ -212,7 +216,7 @@ footer a{text-decoration:underline}
 <div id="timelineRail" class="timeline-rail" role="group" aria-label="סינון לפי תקופה"></div>
 </section>
 <section id="library" class="library container" aria-labelledby="libraryTitle">
-<div class="section-top"><div><div class="kicker">02 / ספריית הסרטים</div><h2 id="libraryTitle">צופים לפי הדורות</h2><p>הסדר נקבע לפי תקופת החכם או האירוע — לא לפי שנת יציאת הסרט.</p></div><button id="continueButton" class="secondary-btn" type="button" hidden>המשך מהמקום שלי</button></div>
+<div class="section-top"><div><div class="kicker">02 / ספריית הסרטים</div><h2 id="libraryTitle">צופים לפי הדורות</h2><p>לוחצים על ״▶ צפייה כאן באתר״ והסרט מתנגן בתוך הכרטיס שלו, בלי לעזוב את הדף. הסדר נקבע לפי תקופת החכם או האירוע.</p></div><button id="continueButton" class="secondary-btn" type="button" hidden>המשך מהמקום שלי</button></div>
 <div class="filters">
 <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="חפשו חכם, ספר, הלכה, אזור או סרט..." autocomplete="off" aria-label="חיפוש סרטים וחכמים"></label>
 <select id="genreSelect" aria-label="סוג היצירה"><option value="">כל סוגי הסרטים</option><option value="אנימציה עלילתית">אנימציה עלילתית</option><option value="דרמה עם שחקנים">דרמה עם שחקנים</option><option value="דוקומנטרי סיפורי">דוקומנטרי סיפורי</option></select>
@@ -352,7 +356,7 @@ return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
 '<div class="poster">'+poster+'<span class="poster-icon">'+(embed?'▶ נגן באתר':'↗ צפייה ביוצר')+'</span><span class="poster-label">'+esc(it.century)+'</span></div>'+
 '<div class="card-body"><div class="meta"><span>'+esc(it.type)+'</span><span>'+esc(it.language)+'</span><span>'+esc(it.region)+'</span></div>'+
 '<h3 class="card-title">'+esc(it.title)+'</h3><p class="figure">'+esc(it.figure)+'</p><p class="desc">'+esc(it.description)+'</p><p class="source">'+esc(it.source)+' • '+esc(it.fiction)+'</p>'+
-'<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'">▶ צפייה באתר</button>':'<a class="play-btn external" href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ צפייה באתר היוצר</a>')+
+'<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'" aria-pressed="false">▶ צפייה כאן באתר</button>':'<a class="play-btn external" href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ צפייה באתר היוצר</a>')+
 '<button class="icon-btn'+(isFav?' chosen':'')+'" type="button" data-favorite="'+esc(it.id)+'" aria-label="'+(isFav?'הסר ממועדפים':'שמור במועדפים')+'" aria-pressed="'+isFav+'" title="מועדפים">'+(isFav?'★':'☆')+'</button>'+
 '<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div>'+renderStudyCard(it)+'</div></article>'}
 function renderCards(){
@@ -381,6 +385,35 @@ $("continueButton").textContent=next?"המשך: "+(next.title.length>30?next.tit
 function refresh(){renderTimeline();renderCards()}
 function toggleWatched(id){if(watched.has(id))watched.delete(id);else watched.add(id);save("sages-watched-v1",watched);renderCards()}
 function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);save("sages-favorites-v1",favorites);renderCards()}
+// Open the provider's actual player in the card on the page, not only in a modal.
+function playInCard(id,button){
+ var it=library.items.find(function(x){return x.id===id}),player=it&&playableSource(it);
+ if(!player)return openItem(id);
+ var card=button.closest(".media-card"),poster=card&&card.querySelector(".poster");
+ if(!poster)return openItem(id);
+ var previous=document.querySelector(".media-card .poster.playing"),same=previous===poster;
+ if(previous){
+   previous.replaceChildren();
+   previous.innerHTML=previous.dataset.originalPoster||"";
+   previous.classList.remove("playing");
+   var oldButton=previous.closest(".media-card").querySelector("[data-play]");
+   if(oldButton){oldButton.textContent="▶ צפייה כאן באתר";oldButton.setAttribute("aria-pressed","false")}
+ }
+ if(same)return;
+ poster.dataset.originalPoster=poster.innerHTML;
+ poster.classList.add("playing");
+ var frame=document.createElement("iframe");
+ frame.title="וידאו: "+it.title;
+ frame.referrerPolicy="strict-origin-when-cross-origin";
+ frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+ frame.allowFullscreen=true;
+ frame.loading="eager";
+ frame.src=player.src;
+ poster.replaceChildren(frame);
+ button.textContent="✕ סגירת הסרט";
+ button.setAttribute("aria-pressed","true");
+ poster.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+}
 function openItem(id){var it=library.items.find(function(x){return x.id===id});if(!it)return;
 var player=playableSource(it);if(!player){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
 lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=validUrl(it.url);$("openLearning").hidden=!getProfiles(it).length;$("playerModal").hidden=false;document.body.classList.add("locked");
@@ -391,7 +424,7 @@ function closePlayer(){if($("playerModal").hidden)return;$("playerModal").hidden
 function nextFromCurrent(){if(!activeId)return;var seq=itemsSorted().filter(function(i){return !state.siteOnly||playableSource(i)}),n=seq.findIndex(function(x){return x.id===activeId});if(n<0)return;watched.add(activeId);save("sages-watched-v1",watched);closePlayer();var following=seq[n+1];if(following)openItem(following.id);else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");renderCards()}
 document.addEventListener("click",function(e){
 var elem=e.target.closest("[data-era]");if(elem){state.era=elem.getAttribute("data-era")||"";refresh();$("library").scrollIntoView({behavior:"smooth"});return}
-elem=e.target.closest("[data-play]");if(elem){openItem(elem.getAttribute("data-play"));return}
+elem=e.target.closest("[data-play]");if(elem){playInCard(elem.getAttribute("data-play"),elem);return}
 elem=e.target.closest("[data-favorite]");if(elem){toggleFavorite(elem.getAttribute("data-favorite"));return}
 elem=e.target.closest("[data-watched]");if(elem){toggleWatched(elem.getAttribute("data-watched"));return}
 elem=e.target.closest("[data-external]");if(elem){var id=elem.getAttribute("data-external");try{localStorage.setItem("sages-last-opened",id)}catch(ex){}}
