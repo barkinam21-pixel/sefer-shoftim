@@ -2,6 +2,8 @@
 
 ## ממצא קריטי ותיקון בקוד
 - בדיקת HTML ממשי של https://mishnah-cinema-journey.vercel.app/ העלתה שהדף במצב Production READY אינו כולל כלל את המחרוזת `sukkahTractate` או `sukkah-ch1.js`, על אף שכתובות הקבצים `/sukkah-ch3.js`, `/sukkah-ch4.js`, `/sukkah-ch5.js` החזירו HTTP 200. לכן אין להסתפק בסטטוס READY או בקיומם של קבצי JS כדי לומר שהפרקים נגישים.
+- **תיקון שני שנמצא בבדיקה:** קובץ `sukkah-ch5.js` כלל תנאי ששיבש תמיד את יצירת פרק ה׳: הוא עצר דווקא כאשר `sukkah-4-10` קיים. התנאי הוחלף בבדיקת חסר (סימן !), כך שפרק ה׳ ייטען רק לאחר שכרטיס המשנה האחרונה בפרק ד׳ קיים. קומיט: https://github.com/barkinam21-pixel/sefer-shoftim/commit/dbe26f7c47c99178ad622ab93364fcfaeaf48e81
+- **בדיקות תחביר שבוצעו:** פרסור באמצעות V8 `new Function` לכל ארבעת הקבצים `sukkah-ch1.js`, `sukkah-ch3.js`, `sukkah-ch4.js`, `sukkah-ch5.js` עבר. זו אינה בדיקת הרצה בדפדפן, ופרק ב׳ כלול בקובץ הראשון.
 - שרשרת ההרכבה בקוד: `sukkah-ch1.js` יוצר את המסכת אחרי `yomaTractate` ומרכיב גם פרק ב׳; הוא טוען פרק ג׳, שיטען ד׳, שיטען ה׳. משמע הבעיה היא העדר נקודת הכניסה בדף.
 - התיקון הוכנס ל-`mishnah/index.html` בסוף גוף המסמך: `<script src="./sukkah-ch1.js"></script>`. קומיט תקין: https://github.com/barkinam21-pixel/sefer-shoftim/commit/85b1d96421afcbf5ec040ff02fe2aa95d2afbf54
 - תוקנה באותו קומיט טעות של הוספת התג לתוך מחרוזת `iframe.srcdoc` במקום לגוף המסמך; דיפ הקומיט מאמת שמחרוזת הנגן המקורית שוחזרה ותג הטעינה מופיע אחרי סקריפטי העמוד ולפני תג סגירת הגוף.
