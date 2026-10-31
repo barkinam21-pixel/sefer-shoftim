@@ -65,11 +65,11 @@
     '<div class="actions" style="margin:12px 0"><button type="button" class="btn gold" id="rh3Continue">▶ המשך ללמוד</button> <span class="progressnote" id="rh3Progress" aria-live="polite"></span></div><div class="eruvin-cards">';
   for(const [n,title,explanation,bridge,nextQuestion,sourceNote] of units){
     const prev=n===1?"#rosh-hashanah-2-9":"#rosh-hashanah-3-"+(n-1);
-    const next=n===8?"https://www.sefaria.org/Mishnah_Rosh_Hashanah.4.1?lang=he":"#rosh-hashanah-3-"+(n+1);
+    const next=n===8?"#rosh-hashanah-4-1":"#rosh-hashanah-3-"+(n+1);
     html+='<article class="eruvin-card" id="rosh-hashanah-3-'+n+'"><span class="eyebrow">ראש השנה ג׳, '+letters[n]+' · מכון ממרא '+esc(mapping[n])+'</span><h4>'+esc(title)+'</h4>'+
     '<p>'+esc(explanation)+'</p><p class="eruvin-bridge"><strong>מה ראינו קודם — למה זה מוביל לכאן?</strong> '+esc(bridge)+' <strong>השאלה הבאה:</strong> '+esc(nextQuestion)+'</p>'+
     '<p class="smallprint">'+esc(sourceNote)+'</p><div class="eruvin-actions"><button type="button" class="btn ghost" data-rh3-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
-    '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.3.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">קרא את המשנה עצמה ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'+(n===8?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+    '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.3.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">קרא את המשנה עצמה ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'++'>הבא</a></div></article>';
   }
   section.innerHTML=html+'</div><p class="smallprint">המשך לימוד המשנה לפי סדר המסכת: ראש השנה ד׳, א׳. החורבן הוא גם נושא בפרק הבא, אך המעבר בין הפרקים אינו ציר זמן היסטורי.</p>';
   parent.after(section);
@@ -83,4 +83,16 @@
   draw();
   let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
   if(hash==="roshHashanahChapter3"||/^rosh-hashanah-3-[1-8]$/.test(hash)){const dest=hash==="roshHashanahChapter3"?section:document.getElementById(hash);if(dest)requestAnimationFrame(()=>dest.scrollIntoView({behavior:"auto",block:"start"}));}
+})();
+
+/* Continue textual Mishnah study; independent of the historical film timeline. */
+(function(){
+  if(!document.getElementById("roshHashanahChapter3")||
+     document.getElementById("roshHashanahChapter4")||
+     document.querySelector("script[data-rh4-loader]"))return;
+  const script=document.createElement("script");
+  const base=document.currentScript&&document.currentScript.src;
+  script.src=base?new URL("rosh-hashanah-ch4.js",base).href:"./rosh-hashanah-ch4.js";
+  script.async=true;script.dataset.rh4Loader="1";
+  document.head.appendChild(script);
 })();
