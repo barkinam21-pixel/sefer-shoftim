@@ -54,7 +54,7 @@ for(const ch of [3,4,5,6,7,8]){
   '<button type="button" class="btn ghost" data-yoma-mark="'+id+'" data-yes="✓ למדתי — בטל סימון" data-no="סמן שלמדתי" aria-pressed="false">סמן שלמדתי</button></div>'+playerHost+
   '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Yoma.'+c+'.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📜 נוסח המשנה בספריא ↗</a>'+
   '<a href="https://www.mishnah.org/learn/yoma/'+c+'/'+n+'/" target="_blank" rel="noopener noreferrer">נוסח נוסף ופירוש ↗</a>'+
-  '<a href="#yoma-'+prev+'">הקודם</a>'+(next?'<a href="#yoma-'+next+'">הבא</a>':(c===8?'<a href="https://www.sefaria.org/Mishnah_Sukkah.1.1?lang=he" target="_blank" rel="noopener noreferrer">הבא: סוכה א׳, א׳ ↗</a>':'<a href="#yoma-8-1">הבא: יומא ח׳, א׳</a>'))+'</div></article>';
+  '<a href="#yoma-'+prev+'">הקודם</a>'+(next?'<a href="#yoma-'+next+'">הבא</a>':(c===8?'<a href="#sukkah-1-1" target="_blank" rel="noopener noreferrer">הבא: סוכה א׳, א׳ ↗</a>':'<a href="#yoma-8-1">הבא: יומא ח׳, א׳</a>'))+'</div></article>';
  }
  html+='</div><p class="peah-links"><a href="https://www.mishna.org.il/מועד/יומא/'+ch+'" target="_blank" rel="noopener noreferrer">▶ שיעור וידאו עברי לכל הפרק ↗</a><a href="https://mechon-mamre.org/b/h/h25.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a></p></section>';
 }
@@ -81,3 +81,6 @@ root.addEventListener('click',e=>{
  b.textContent=b.dataset.reload||'↻ טען שוב';
 });
 })();
+
+// Continue the text-order Mishnah study with Sukkah, without altering the historical route.
+(()=>{const tag=document.createElement("script");tag.src="./sukkah-ch1.js";document.body.appendChild(tag);})();
