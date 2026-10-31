@@ -531,7 +531,8 @@
         "akiva-ckids-shepherd-torah-story",
         "tisha-bav-torahbox-claymation-2026",
         "akiva-chana-hess-learn-torah-animated-story",
-        "akiva-rachel-anafeam-ai-love-torah"
+        "akiva-rachel-anafeam-ai-love-torah",
+        "akiva-motty-ilowitz-24000-talmidim-animated-song-2025"
       ],
       "authorship": "דרשותיו, מימרותיו והלכותיו נמסרו בספרות חז״ל; אין ספר מחבר אישי חתום שלו.",
       "hook": "סיפור של לימוד מאוחר, מסירות אישית וחיים של בחירה.",
@@ -576,6 +577,12 @@
           "title": "ירושלמי תענית ד, ה — רבי עקיבא ובר כוכבא",
           "description": "הסיפור התלמודי על יחסו של רבי עקיבא לבר כוכבא בתקופת המרד; מסורת חז״ל הנלמדת לצד סצנות ההמחזה, לא ספר שרבי עקיבא חיבר.",
           "url": "https://www.sefaria.org/Jerusalem_Talmud_Taanit.4.5?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "יבמות ס״ב ע״ב — תלמידי רבי עקיבא",
+          "description": "הסיפור על מות תלמידיו ועל תחילת ההוראה מחדש מפי חכמים אחרים.",
+          "url": "https://www.sefaria.org/Yevamot.62b?lang=he",
           "access": "read"
         }
       ],
@@ -5075,6 +5082,41 @@
         "text": "לפי סיפור משפחתי, כשנינתה ביקשה ללמוד עמה על צדקה, השיבה הרבנית שצדקה צריך בעיקר לעשות.",
         "url": "https://agadah.org.il/story/עושה-צדקה/",
         "type": "חכימא, עושה צדקה; נמסר מפי משפחת קאפח"
+      }
+    },
+    {
+      "id": "yisrael-meir-lau",
+      "name": "הרב ישראל מאיר לאו — הילד לולק שניצל מבוכנוואלד",
+      "mediaIds": [
+        "yisrael-meir-lau-38-full-documentary-2026"
+      ],
+      "hook": "ילד קטן שורד את בוכנוואלד, עולה לארץ וצומח להנהגת הרבנות הראשית.",
+      "authorship": "הרב לאו חיבר את ספר הזיכרונות 'אל תשלח ידך אל הנער', שראה אור גם באנגלית בשם 'Out of the Depths'. הסרט התיעודי מבוסס על עדותו ועל זיכרונות בני משפחתו, ולא על ספר שכתב יוצר הסרט בשמו.",
+      "works": [
+        {
+          "title": "אל תשלח ידך אל הנער — ספר הזיכרונות",
+          "description": "סיפור ילדותו, ההישרדות והעלייה. בספרייה הלאומית מידע על הספר, לא קריאה מלאה.",
+          "url": "https://www.nli.org.il/he/books/NNL_ALEPH990036689550205171/NLI",
+          "access": "info"
+        },
+        {
+          "title": "עדות הרב לאו לאחר השחרור — קטע מתוך ספרו",
+          "description": "קטע עדות לקריאה חופשית באתר יד ושם; אינו נוסח הספר המלא.",
+          "url": "https://wwv.yadvashem.org/yv/he/holocaust/about/related/docs/isarel_lau.pdf",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "הילד והאח מבוכנוואלד",
+        "text": "יד ושם מתעד כיצד אחיו נפתלי הגן על לולק במחנות, וב־1945 יצאו שניהם מבוכנוואלד לחיים חדשים. הסרט מביא את קולם לאחר שנים.",
+        "url": "https://wwv.yadvashem.org/yv/en/exhibitions/survivors/lau.asp",
+        "type": "עדות וזיכרון היסטורי"
+      },
+      "idea": {
+        "title": "ללמוד לחיות יחד",
+        "text": "בסרט הרב לאו מדגיש שהעם יודע להתאבל יחד, אך חייב ללמוד גם לחיות יחד. קריאה לאחריות ולאחדות, ולא פסיקת הלכה.",
+        "url": "https://collive.com/new-film-on-rabbi-yisrael-meir-lau-an-unbroken-chain-of-38-generations/",
+        "type": "מוסר — דברי הרב בסרט"
       }
     }
   ]
