@@ -1985,6 +1985,44 @@
       "verified": "2026-10-30"
     },
     {
+      "id": "rambam-chabad-who-was-maimonides-animated-facts",
+      "title": "הרמב״ם — מי היה משה בן מימון? סרטון מצויר קצר",
+      "figure": "הרמב״ם — רבי משה בן מימון",
+      "era": "rishonim",
+      "year": 1170,
+      "century": "המאה ה־12 — חייו ויצירתו של הרמב״ם",
+      "region": "ספרד, צפון אפריקה ומצרים",
+      "type": "אנימציה ביוגרפית קצרה — 1:35 דקות",
+      "language": "אנגלית",
+      "description": "דמויות מצוירות מציגות בקצרה את חייו של הרמב״ם ואת תפקידיו כפוסק, רופא והוגה. היכרות קלילה ומונפשת עם החכם, ולא שיעור מצולם או סרט ביוגרפי מלא.",
+      "source": "Dovid Taub ו־Yitzchak Feigenbaum / Chabad.org Jewish Kids — סרטון רשמי חינמי",
+      "url": "https://www.chabad.org/kids/article_cdo/aid/364175/jewish/Who-Was-Maimonides.htm",
+      "sageIds": [
+        "rambam"
+      ],
+      "fiction": "סרטון ביוגרפי מצויר ופשוט, עם אמצעי המחשה לילדים; אינו שחזור מצולם של אירועים היסטוריים.",
+      "verified": "2026-10-31"
+    },
+    {
+      "id": "rambam-chabad-what-if-jewish-treasure-stethoscope-adventure",
+      "title": "מחפשים את אוצר הרמב״ם — הרפתקת אנימציה במדבר",
+      "figure": "הרמב״ם — רבי משה בן מימון",
+      "era": "rishonim",
+      "year": 1170,
+      "century": "בהשראת דמות הרמב״ם, המאה ה־12; העלילה עצמה בדיונית",
+      "region": "מסע דמיוני בעקבות הרמב״ם",
+      "type": "אנימציה עלילתית בדיונית — 3:03 דקות",
+      "language": "אנגלית",
+      "description": "אלי, איזי ודינה יוצאים למסע הרפתקאות חובק עולם בעקבות הסטטוסקופ הדמיוני של הרמב״ם. סערת חול מסבכת את החיפוש, והילדים מגלים כיצד פריט אחד יכול לפתוח סיפור על חכם, רופא ויוצר ספרים.",
+      "source": "Dovid Taub ו־Yitzchak Feigenbaum / Chabad.org — סרטון מקורי רשמי לצפייה חופשית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1348335/jewish/What-If-We-Hunted-for-Jewish-Treasure.htm",
+      "sageIds": [
+        "rambam"
+      ],
+      "fiction": "הרפתקה דמיונית לילדים; הסטטוסקופ הוא אביזר בדיוני, ולא חפץ היסטורי של הרמב״ם.",
+      "verified": "2026-10-31"
+    },
+    {
       "id": "rambam-great-eagle-kan11-ep2",
       "title": "הנשר הגדול — פרק 2: הרמב״ם במצרים ומשנה תורה",
       "figure": "רבי משה בן מימון (הרמב״ם)",
