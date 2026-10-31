@@ -23,7 +23,7 @@ jobs:
             echo "Checking $file"
             node --check "$file"
           done
-      - name: Check the Taanit chapter chain and ten unique Mishnayot
+      - name: Check the Taanit chapter chain and distinct Mishnayot
         shell: bash
         run: |
           node <<'NODE'
@@ -42,5 +42,14 @@ jobs:
           assert.deepEqual(units.map(u=>u[0]),[1,2,3,4,5,6,7,8,9,10]);
           assert.equal(new Set(units.map(u=>u[1])).size,10);
           assert.ok(units.every(u=>u.length===6 && u.slice(1).every(v=>typeof v==='string' && v.length>10)));
-          console.log('Taanit 1 -> 2 navigation and ten Mishnah records passed');
+          const ch3=fs.readFileSync('mishnah/taanit-ch3.js','utf8');
+          assert.match(ch2, /new URL\("taanit-ch3\\.js",base\)/);
+          assert.match(ch2, /const next=n===10\\?"#taanit-3-1"/);
+          assert.match(ch3, /parent\\.after\\(section\\)/);
+          assert.match(ch3, /"mishnah_cinema_taanit_ch3_v1"/);
+          const nine=[...ch3.matchAll(/^\\s*\\[([1-9]),"/gm)].map(m=>Number(m[1]));
+          assert.deepEqual(nine,[1,2,3,4,5,6,7,8,9]);
+          assert.match(ch3, /Mishnah_Ta%27anit\\.3\\.'/);
+          assert.match(ch3, /Mechon Mamre|מכון ממרא/);
+          console.log('Taanit 1 -> 2 -> 3 navigation, ten plus nine Mishnah records passed');
           NODE
