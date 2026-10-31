@@ -1705,7 +1705,8 @@
         "rashi-universtorah-french-animation-1",
         "rashi-universtorah-french-animation-2",
         "rashi-universtorah-french-animation-3",
-        "rashi-universtorah-french-animation-4"
+        "rashi-universtorah-french-animation-4",
+        "rashi-shazak-behind-scenes-ephod-animation"
       ],
       "authorship": "חיבר פירושים לתנ״ך ולתלמוד; יש להבחין בינם לבין תוספות וייחוסים מאוחרים.",
       "hook": "כמה מילים יכולות להפוך פסוק או סוגיה לנהירים יותר.",
@@ -1742,7 +1743,8 @@
       "mediaIds": [
         "halevi-bac",
         "yehuda-halevi-keshet-vaanan-zion-halo-tishali-kan",
-        "yehuda-halevi-shraga-bishgada-kan-2016"
+        "yehuda-halevi-shraga-bishgada-kan-2016",
+        "yehuda-halevi-jewish-tapestry-medieval-scholars"
       ],
       "authorship": "חיבר את הכוזרי ופיוטים, ובהם פיוטי הכיסופים לציון.",
       "hook": "מלך חולם חלום שמעורר אותו לחפש אמת, לא רק מחשבה יפה.",
@@ -3135,6 +3137,28 @@
         "text": "ב׳חפץ חיים׳, הלכות לשון הרע, כלל ג, סעיף א, מודגש שגם דיבור פוגע הנאמר בפני האדם עצמו איננו הופך למותר מעצם הפומביות. זהו עיון במקור כתוב, לא פסק הלכה חדש.",
         "url": "https://he.wikisource.org/wiki/חפץ_חיים_-_הלכות_לשון_הרע_ג_א",
         "type": "הלכה — מקור ראשוני"
+      }
+    },
+    {
+      "id": "avraham-hazan-algeria",
+      "name": "הרב אברהם חזן — מאלג׳יריה לישראל",
+      "mediaIds": [
+        "avraham-hazan-algeria-agadah-memory-jerusalem"
+      ],
+      "hook": "ילד מאלג׳יריה בוכה על חורבן ירושלים, ואז מגלה שהיא עדיין מלאה חיים.",
+      "authorship": "סיפור ילדותו מובא בספר הביוגרפי ״לנטוע שמים״ מאת מרים סטיווי חזן; אין לייחס לו את חיבור הספר. לא נוסף כאן ספר מפרי עטו ללא מקור קריאה מאומת.",
+      "works": [],
+      "story": {
+        "title": "ירושלים חיה — גם אחרי החורבן",
+        "text": "לפי זיכרונותיו, בתשעה באב בכה על החורבן; בפסח פגש אורח מירושלים והבין שיהודים מעולם לא נטשו אותה.",
+        "url": "https://agadah.org.il/story/%D7%9E%D7%90%D7%91%D7%9C-%D7%9C%D7%A9%D7%9E%D7%97%D7%94-%D7%95%D7%9E%D7%97%D7%95%D7%A8%D7%91%D7%9F-%D7%9C%D7%92%D7%90%D7%95%D7%9C%D7%94/",
+        "type": "זיכרון אישי בעיבוד אגדה – חכימא; על פי מרים סטיווי חזן, לנטוע שמים, עמ׳ 24–25"
+      },
+      "idea": {
+        "title": "לזכור את החורבן ולחיות בתקווה",
+        "text": "בזיכרונו, תשעה באב ופסח לימדו יחד אבל על העבר ותקווה לעתיד. זהו מסר מן הסיפור, לא פסיקה הלכתית.",
+        "url": "https://agadah.org.il/story/%D7%9E%D7%90%D7%91%D7%9C-%D7%9C%D7%A9%D7%9E%D7%97%D7%94-%D7%95%D7%9E%D7%97%D7%95%D7%A8%D7%91%D7%9F-%D7%9C%D7%92%D7%90%D7%95%D7%9C%D7%94/",
+        "type": "אגדה – חכימא, מאבל לשמחה ומחורבן לגאולה"
       }
     },
     {

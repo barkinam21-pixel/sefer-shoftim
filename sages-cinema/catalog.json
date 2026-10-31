@@ -1722,6 +1722,25 @@
       ]
     },
     {
+      "id": "rashi-shazak-behind-scenes-ephod-animation",
+      "title": "רש״י — מאחורי הקלעים של פירוש האפוד",
+      "figure": "רש״י — רבי שלמה יצחקי",
+      "era": "rishonim",
+      "year": 1080,
+      "century": "המאה ה־11 — ימי פעילותו של רש״י",
+      "region": "צרפת ואשכנז",
+      "type": "אנימציה קצרה וסיפור אגדה — Shazak Shorts",
+      "language": "אנגלית",
+      "description": "אגדה מונפשת על האופן שבו מראה לבוש מן העולם שסביב רש״י סייע להמחיש את בגד האפוד בפירושו לתורה. סיפור על התבוננות וחיפוש פשט בלב עולם ימי הביניים, ולא תיעוד היסטורי של מעשה מוכח.",
+      "source": "Shazak Productions / Moshe Moscowitz — סרטון רשמי ב־Chabad.org Jewish Kids",
+      "url": "https://www.chabad.org/kids/article_cdo/aid/5201983/jewish/Behind-the-Scenes-with-Rashi.htm",
+      "sageIds": [
+        "rashi"
+      ],
+      "fiction": "אגדה מסורתית על רש״י, לא אירוע ביוגרפי מאומת. פירוש רש״י לאפוד בשמות כ״ח ד׳ הוא טקסט מקורי; הסצנה המונפשת היא המחזה מאוחרת.",
+      "verified": "2026-10-31"
+    },
+    {
       "id": "yitzhak-alfasi-rif-asf-jewish-tapestry-medieval-scholars",
       "title": "הרי״ף — רבי יצחק אלפסי: מהמגרב לספרד וספר ההלכות",
       "figure": "רבי יצחק אלפסי — הרי״ף",
@@ -1776,6 +1795,26 @@
       "url": "https://www.bac.org.il/videos/?videoID=7934",
       "fiction": "דוקו־מסע; המסורת והאגדות מסומנות כחלק מן הסיפור",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "yehuda-halevi-jewish-tapestry-medieval-scholars",
+      "title": "רבי יהודה הלוי — המשורר, הפילוסוף והכוזרי",
+      "figure": "רבי יהודה הלוי",
+      "era": "rishonim",
+      "year": 1120,
+      "century": "המחצית הראשונה של המאה ה־12",
+      "region": "ספרד המוסלמית וארצות הים התיכון",
+      "type": "סרטון תיעודי־ביוגרפי סיפורי — Medieval Scholars",
+      "language": "אנגלית",
+      "description": "משירי האהבה והקודש של רבי יהודה הלוי אל שאלות האמונה הגדולות של ספר הכוזרי. פרק בסדרת חכמי ספרד העוקב אחר מחשבת המשורר והגעגועים לציון.",
+      "source": "Jewish Tapestry — American Sephardi Federation, Institute of Jewish Experience; Medieval Scholars",
+      "url": "https://www.youtube.com/watch?v=5CiI9tC4BT8",
+      "youtubeId": "5CiI9tC4BT8",
+      "sageIds": [
+        "halevi"
+      ],
+      "fiction": "סרטון עיוני־ביוגרפי ערוך עם סיפור היסטורי; קטעי המחשה אינם צילום מתקופתו של ריה״ל.",
+      "verified": "2026-10-31"
     },
     {
       "id": "ibnezra-bac",
@@ -2417,27 +2456,6 @@
       "verified": "2026-10-29"
     },
     {
-      "id": "chida-azulai-agadah-biography-video",
-      "title": "החיד״א — מסעו של חכם בין כתבי היד והקהילות",
-      "figure": "רבי חיים יוסף דוד אזולאי — החיד״א",
-      "era": "acharonim",
-      "year": 1760,
-      "century": "המאה ה־18 — מסעותיו של החיד״א באירופה ובקהילות ישראל",
-      "region": "ירושלים, אירופה ואיטליה",
-      "type": "סרטון ביוגרפי סיפורי קצר — 2:31",
-      "language": "עברית",
-      "duration": "2:31",
-      "description": "סיפורו של החיד״א, תלמיד חכם ושליח מארץ ישראל שנדד בין קהילות, פגש ספריות וכתבי יד, והניח אחריו את 'שם הגדולים' ו'ברכי יוסף'.",
-      "source": "אגדה – בית סיפורי העם היהודי / חכימא — וידאו רשמי",
-      "url": "https://www.youtube.com/watch?v=qZZ8Hao2wCg",
-      "youtubeId": "qZZ8Hao2wCg",
-      "sageIds": [
-        "chida-azulai"
-      ],
-      "fiction": "סיכום ביוגרפי עם המחשה יצירתית; אינו צילום של אירועים מהמאה ה־18.",
-      "verified": "2026-10-31"
-    },
-    {
       "id": "besht-ruchnii-a-yid-young-orphan-animation",
       "title": "הבעל שם טוב הצעיר — הילד ביער והשיר ״A Yid״",
       "figure": "רבי ישראל בן אליעזר בילדותו — הבעל שם טוב",
@@ -2716,6 +2734,27 @@
         "shalom-sharabi"
       ],
       "fiction": "סיפור מוסרי על הרש״ש בעיבוד מצולם; תיאור המפגש אינו ראיה לתיעוד היסטורי של הדיאלוגים.",
+      "verified": "2026-10-31"
+    },
+    {
+      "id": "chida-azulai-agadah-biography-video",
+      "title": "החיד״א — מסעו של חכם בין כתבי היד והקהילות",
+      "figure": "רבי חיים יוסף דוד אזולאי — החיד״א",
+      "era": "acharonim",
+      "year": 1760,
+      "century": "המאה ה־18 — מסעותיו של החיד״א באירופה ובקהילות ישראל",
+      "region": "ירושלים, אירופה ואיטליה",
+      "type": "סרטון ביוגרפי סיפורי קצר — 2:31",
+      "language": "עברית",
+      "duration": "2:31",
+      "description": "סיפורו של החיד״א, תלמיד חכם ושליח מארץ ישראל שנדד בין קהילות, פגש ספריות וכתבי יד, והניח אחריו את 'שם הגדולים' ו'ברכי יוסף'.",
+      "source": "אגדה – בית סיפורי העם היהודי / חכימא — וידאו רשמי",
+      "url": "https://www.youtube.com/watch?v=qZZ8Hao2wCg",
+      "youtubeId": "qZZ8Hao2wCg",
+      "sageIds": [
+        "chida-azulai"
+      ],
+      "fiction": "סיכום ביוגרפי עם המחשה יצירתית; אינו צילום של אירועים מהמאה ה־18.",
       "verified": "2026-10-31"
     },
     {
@@ -4187,6 +4226,26 @@
         "moshe-kalfon-hacohen"
       ],
       "fiction": "סיפור קהילתי על הרב עם עיבוד חזותי וקריינות; אין בידינו תאריך מדויק של האירוע.",
+      "verified": "2026-10-31"
+    },
+    {
+      "id": "avraham-hazan-algeria-agadah-memory-jerusalem",
+      "title": "הרב אברהם חזן — הילד שגילה שירושלים חיה",
+      "figure": "הרב אברהם חזן מאלג׳יריה — לימים רב המשטרה ושירות בתי הסוהר",
+      "era": "modern",
+      "year": 1930,
+      "century": "ילדות באלג׳יריה במחצית הראשונה של המאה ה־20",
+      "region": "אלג׳יריה וירושלים",
+      "type": "סרטון סיפורי קצר — זיכרון ילדות מעובד",
+      "language": "עברית",
+      "description": "ילד צעיר באלג׳יריה בוכה בתשעה באב על חורבן ירושלים. כאשר אורח מירושלים מגיע לביתו בפסח, הוא מגלה שהעיר עודה חיה בעם ישראל, והאבל מתחלף בתקווה. סיפור אישי מעובד מתוך זיכרונות הרב.",
+      "source": "אגדה — בית סיפורי העם היהודי / חכימא; מאבל לשמחה ומחורבן לגאולה (1:32)",
+      "url": "https://www.youtube.com/watch?v=T9TJf-W24iU",
+      "youtubeId": "T9TJf-W24iU",
+      "sageIds": [
+        "avraham-hazan-algeria"
+      ],
+      "fiction": "עיבוד חזותי של זיכרון ילדות שסיפר הרב; על פי מרים סטיווי חזן, ״לנטוע שמים״, עמ׳ 24–25. אינו צילום של האירועים.",
       "verified": "2026-10-31"
     },
     {
