@@ -29,7 +29,7 @@
  '<div class="actions" style="margin:12px 0"><button id="sukkah4Continue" type="button" class="btn gold">▶ המשך ללמוד</button> <span id="sukkah4Progress" class="progressnote" aria-live="polite"></span></div><div class="eruvin-cards">';
  for(const [n,title,focus,bridge,question] of units){
   const id=videoIds[n],page=producerPages[n];
-  const prev=n===1?"#sukkah-3-15":"#sukkah-4-"+(n-1),next=n===10?"https://www.sefaria.org/Mishnah_Sukkah.5.1?lang=he":"#sukkah-4-"+(n+1);
+  const prev=n===1?"#sukkah-3-15":"#sukkah-4-"+(n-1),next=n===10?"#sukkah-5-1":"#sukkah-4-"+(n+1);
   let actions='';
   if(id){actions='<button type="button" class="btn gold" data-sukkah4-play="'+id+'" data-n="'+n+'">▶ נגן באתר</button><a class="btn ghost" href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener noreferrer">הסרטון המקורי ↗</a>';}
   else if(page){actions='<a class="btn gold" href="'+page+'" target="_blank" rel="noopener noreferrer">▶ סרטון פרטני אצל היוצר ↗</a>';}
@@ -39,7 +39,7 @@
    '<p class="eruvin-credit">'+(id?'The Mishnah Project · זוהה במטא־נתונים בלבד':page?'The Mishnah Project · דף משנה פרטני זוהה':'שיעור וידאו עברי של הפרק השלם — לא סרטון פרטני')+'</p>'+
    '<div class="eruvin-actions">'+actions+'<button type="button" class="btn ghost" data-sukkah4-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
    (id?'<div class="eruvin-video" data-sukkah4-host="'+n+'" hidden></div>':'')+
-   '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Sukkah.4.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📜 משנה מדויקת בספריא ↗</a><a href="https://mechon-mamre.org/b/h/h26.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a><a href="'+prev+'">הקודם</a><a href="'+next+'"'+(n===10?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+   '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Sukkah.4.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">📜 משנה מדויקת בספריא ↗</a><a href="https://mechon-mamre.org/b/h/h26.htm" target="_blank" rel="noopener noreferrer">מכון ממרא ↗</a><a href="'+prev+'">הקודם</a><a href="'+next+'"'+'>הבא</a></div></article>';
  }
  section.innerHTML=html+'</div><p class="smallprint">הנושאים והגשרים הם ביאור מודרני. תיאור מנהגי המקדש מבוסס על המשנה, ואין לראות בהמחזה עתידית צילום של ההתרחשות ההיסטורית. הסרטונים נשארים אצל בעלי הזכויות; אין העתקת וידאו.</p>';
  parent.appendChild(section);
