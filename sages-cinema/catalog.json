@@ -2880,6 +2880,47 @@
       "youtubeId": "pF2SAb054NE"
     },
     {
+      "id": "nachman-findrabbinachman-ep3-bundles-of-thought",
+      "title": "רבי נחמן — פרק 3: מאין מגיעות המחשבות?",
+      "figure": "רבי נחמן מברסלב — משל על מחשבות המתגלות ברגע הנכון",
+      "era": "hasidut",
+      "year": 1800,
+      "century": "ראשית המאה ה־19 בקירוב; זמן אמירת הדברים אינו מתועד",
+      "region": "ברסלב, מזרח אירופה — עיבוד בן־זמננו",
+      "type": "אנימציה סיפורית קצרה — פרק 3",
+      "language": "אנגלית",
+      "duration": "0:52",
+      "description": "מחשבה נשלפת, והסדר כולו משתנה: סיפור מצויר על מחשבות שעולות פתאום בתודעה.",
+      "source": "Find Rabbi Nachman — פרק אנימציה מקורי באתר הרשמי עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/bundles-of-thought",
+      "youtubeId": "stv8skqLKKo",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחשה מודרנית לרעיון מתורת רבי נחמן; אינה תיעוד היסטורי של חייו או שחזור של שיחה.",
+      "verified": "2026-10-31"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep8-guard-your-thoughts",
+      "title": "רבי נחמן — פרק 8: כמה רחוק מחשבה יכולה להגיע?",
+      "figure": "רבי נחמן מברסלב — משל על כוח המחשבה",
+      "era": "hasidut",
+      "year": 1800,
+      "century": "ראשית המאה ה־19 בקירוב; זמן אמירת הדברים אינו מתועד",
+      "region": "ברסלב, מזרח אירופה — עיבוד בן־זמננו",
+      "type": "אנימציה סיפורית קצרה — פרק 8",
+      "language": "אנגלית",
+      "description": "רגל יכולה לבעוט ויד יכולה לזרוק, אבל המחשבה מגיעה רחוק מכולן. המחשה מונפשת.",
+      "source": "Find Rabbi Nachman — פרק אנימציה מקורי באתר הרשמי עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/guard-your-thoughts",
+      "youtubeId": "U-JxJgB94Vw",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחשה מודרנית לרעיון מתורת רבי נחמן; אינה תיעוד היסטורי של חייו או שחזור של שיחה.",
+      "verified": "2026-10-31"
+    },
+    {
       "id": "nachman-bitter-herb-bri-animation-he",
       "title": "מעשה ממרור — הטעם של הסבלנות",
       "figure": "רבי נחמן מברסלב — מעשה ממרור",
@@ -3209,6 +3250,26 @@
       ],
       "fiction": "המחשה עכשווית לרעיון רוחני, ללא טענה לאירוע היסטורי מסוים.",
       "verified": "2026-10-30"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep11-hidden-desire",
+      "title": "רבי נחמן — פרק 11: הרצון הקטן ששולט בלב",
+      "figure": "רבי נחמן מברסלב — משל על כוחו של רצון נסתר",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 בקירוב; זמן אמירת הדברים אינו מתועד",
+      "region": "ברסלב, מזרח אירופה — עיבוד בן־זמננו",
+      "type": "אנימציה סיפורית קצרה — פרק 11",
+      "language": "אנגלית",
+      "description": "רצון קטן ונסתר עלול להשתלט על הלב. סרטון על דחף שמושך את האדם בלי שיבחין.",
+      "source": "Find Rabbi Nachman — פרק אנימציה מקורי באתר הרשמי עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/the-hidden-desire",
+      "youtubeId": "cNrTmLl7qrs",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "המחשה מודרנית לרעיון מתורת רבי נחמן; אינה תיעוד היסטורי של חייו או שחזור של שיחה.",
+      "verified": "2026-10-31"
     },
     {
       "id": "nachman-turkey-prince-bri-animation-he",
