@@ -116,7 +116,7 @@
  '<div class="eruvin-cards">';
  for(const u of lessons){
   const n=u.n,previous=n===1?"#sukkah-1-11":"#sukkah-2-"+(n-1);
-  const next=n===9?"https://www.sefaria.org/Mishnah_Sukkah.3.1?lang=he":"#sukkah-2-"+(n+1);
+  const next=n===9?"#sukkah-3-1":"#sukkah-2-"+(n+1);
   html+='<article id="sukkah-2-'+n+'" data-sukkah2-unit="'+n+'" class="eruvin-card">'+
    '<span class="eyebrow">סוכה ב׳ · משנה '+n+(u.url?' · סרטון פרטני מזוהה':' · סרטון פרטני טרם אותר')+'</span>'+
    '<h4>'+escapeHTML(u.title)+'</h4><p>'+escapeHTML(u.desc)+'</p>'+
@@ -165,3 +165,6 @@
  let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
  if(/^sukkah(?:Chapter2|-2-[1-9])$/.test(hash)){const anchor=hash==="sukkahChapter2"?section:section.querySelector("#"+hash);if(anchor)requestAnimationFrame(()=>anchor.scrollIntoView({behavior:"auto",block:"start"}));}
 })();
+
+// Defer chapter 3 until both earlier chapters have been mounted.
+(()=>{const s=document.createElement("script");s.src="./sukkah-ch3.js";document.body.appendChild(s);})();
