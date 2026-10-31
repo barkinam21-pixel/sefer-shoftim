@@ -19,13 +19,13 @@
   for(const [n,title,explanation,bridge,question] of units){
     const id=videos[n];
     const prev=n===1?"#rosh-hashanah-1-9":"#rosh-hashanah-2-"+(n-1);
-    const next=n===9?"https://www.sefaria.org/Mishnah_Rosh_Hashanah.3.1?lang=he":"#rosh-hashanah-2-"+(n+1);
+    const next=n===9?"#rosh-hashanah-3-1":"#rosh-hashanah-2-"+(n+1);
     const video=id?'<button type="button" class="btn gold" data-rh2-play="'+id+'" data-rh2-n="'+n+'">▶ סרטון בתוך האתר</button> <a class="btn ghost" href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener noreferrer">מקור הווידאו ↗</a>':'<span class="smallprint">סרטון פרטני לא אומת עדיין; לימוד המשנה והמקור זמינים כאן.</span>';
     html+='<article class="eruvin-card" id="rosh-hashanah-2-'+n+'"><span class="eyebrow">ראש השנה ב׳, '+letters[n]+'</span><h4>'+esc(title)+'</h4><p>'+esc(explanation)+'</p>'+
       '<p class="eruvin-bridge"><strong>מה ראינו קודם — ולמה זה מוביל לכאן?</strong> '+esc(bridge)+' <strong>השאלה הבאה:</strong> '+esc(question)+'</p>'+
       '<div class="eruvin-actions">'+video+' <button type="button" class="btn ghost" data-rh2-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
       (id?'<div class="eruvin-video" data-rh2-host="'+n+'" hidden></div>':'')+
-      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.2.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">המשנה בספריא ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'+(n===9?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Rosh_Hashanah.2.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">המשנה בספריא ↗</a> <a href="'+prev+'">הקודם</a> <a href="'+next+'"'+''+'>הבא</a></div></article>';
   }
   section.innerHTML=html+'</div><p class="smallprint">סיום פרק ב׳. ההמשך לפי סדר המשנה: ראש השנה ג׳, א׳, לא מעבר כרונולוגי במסלול תולדות התנאים.</p>';
   parent.after(section);
@@ -51,4 +51,16 @@
     const dest=hash==="roshHashanahChapter2"?section:document.getElementById(hash);
     if(dest)requestAnimationFrame(()=>dest.scrollIntoView({behavior:"auto",block:"start"}));
   }
+})();
+
+/* Textual continuation, independent of the historical cinema timeline. */
+(function(){
+  if(!document.getElementById("roshHashanahChapter2")||
+     document.getElementById("roshHashanahChapter3")||
+     document.querySelector("script[data-rh3-loader]"))return;
+  const script=document.createElement("script");
+  const base=document.currentScript&&document.currentScript.src;
+  script.src=base?new URL("rosh-hashanah-ch3.js",base).href:"./rosh-hashanah-ch3.js";
+  script.dataset.rh3Loader="1";script.async=true;
+  document.head.appendChild(script);
 })();
