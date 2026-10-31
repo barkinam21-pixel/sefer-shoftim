@@ -41,7 +41,7 @@
   for(const [n,title,explanation,bridge,question] of units){
     const direct=directVideos[n];
     const previous=n===1?"#beitzah-2-10":"#beitzah-3-"+(n-1);
-    const next=n===8?"https://www.sefaria.org/Mishnah_Beitzah.4.1?lang=he":"#beitzah-3-"+(n+1);
+    const next=n===8?"#beitzah-4-1":"#beitzah-3-"+(n+1);
     const external="https://mishnah.co/moed/beitza/chapter-3/mishnah-"+n;
     const video=direct?
       '<button type="button" class="btn gold" data-beitzah3-play="'+direct+'" data-n="'+n+'">▶ נגן כאן</button> <a class="btn ghost" href="https://www.youtube.com/watch?v='+direct+'" target="_blank" rel="noopener noreferrer">פתח אצל היוצר ↗</a>':
@@ -52,7 +52,7 @@
       '<p class="eruvin-credit">הסבר עכשווי · The Mishnah Project, סרטון '+(direct?'עם מזהה מאומת במטא־נתונים':'בעמוד היוצר ובקטלוג')+'; לא אומתה צפייה או איכות בפועל</p>'+
       '<div class="eruvin-actions">'+video+' <button type="button" class="btn ghost" data-beitzah3-mark="'+n+'" aria-pressed="false">סמן שלמדתי</button></div>'+
       (direct?'<div class="eruvin-video" data-beitzah3-host="'+n+'" hidden></div>':'')+
-      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Beitzah.3.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">הנוסח בספריא ↗</a> <a href="'+textSource+'" target="_blank" rel="noopener noreferrer">ויקיטקסט ↗</a> <a href="'+previous+'">הקודם</a> <a href="'+next+'"'+(n===8?' target="_blank" rel="noopener noreferrer"':'')+'>הבא</a></div></article>';
+      '<div class="peah-links"><a href="https://www.sefaria.org/Mishnah_Beitzah.3.'+n+'?lang=he" target="_blank" rel="noopener noreferrer">הנוסח בספריא ↗</a> <a href="'+textSource+'" target="_blank" rel="noopener noreferrer">ויקיטקסט ↗</a> <a href="'+previous+'">הקודם</a> <a href="'+next+'"'+(n===8?'':'')+'>הבא</a></div></article>';
   }
   section.innerHTML=html+'</div><p class="smallprint">המשך לפי סדר המשנה: ביצה ד׳, א׳. החוליות בסדרת הסרטונים הן לפי נושאי המשניות, לא אירועים היסטוריים זה אחר זה. הסרטונים מוטמעים ממקורם, ללא העתקת קובצי וידאו.</p>';
   parent.after(section);
@@ -95,3 +95,5 @@
     if(node)requestAnimationFrame(()=>node.scrollIntoView({behavior:"auto",block:"start"}));
   }
 })();
+// Mount the next textual chapter after chapter 3 is rendered; no eager video loading.
+(()=>{const s=document.createElement('script');s.src='./beitzah-ch4.js';document.body.appendChild(s);})();
