@@ -81,3 +81,17 @@
     if(dest)requestAnimationFrame(()=>dest.scrollIntoView({behavior:"auto",block:"start"}));
   }
 })();
+
+/* Load the following textual tractate after Beitzah 5 has mounted;
+   preserve existing navigation and historical chronology. */
+(function(){
+  if(!document.getElementById("beitzahChapter5") ||
+     document.getElementById("roshHashanahChapter1") ||
+     document.querySelector('script[data-rh1-loader]'))return;
+  const script=document.createElement("script");
+  const current=document.currentScript && document.currentScript.src;
+  script.src=current?new URL("rosh-hashanah-ch1.js",current).href:"/rosh-hashanah-ch1.js";
+  script.dataset.rh1Loader="1";
+  script.async=true;
+  document.head.appendChild(script);
+})();
