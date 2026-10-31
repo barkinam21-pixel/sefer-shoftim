@@ -1743,6 +1743,26 @@
       ]
     },
     {
+      "id": "rashi-abc770-animated-life-hebrew",
+      "title": "רש״י — תולדות חייו בסרטון אנימציה",
+      "figure": "רבי שלמה יצחקי (רש״י)",
+      "era": "rishonim",
+      "year": 1075,
+      "century": "המאה ה־11 — חיי רש״י בצרפת",
+      "region": "טרואה, צרפת",
+      "type": "אנימציה ביוגרפית — סיפור חייו",
+      "language": "עברית",
+      "description": "רש״י קם לתחייה בדמויות מצוירות: סיפורו של פרשן התורה והתלמוד, לימודו ופועלו בעולם יהדות צרפת של ימי הביניים.",
+      "source": "חב״ד — אור אין סוף; דף הסרט עם נגן YouTube מוטמע",
+      "url": "https://www.youtube.com/watch?v=4Nw-GP-q304",
+      "youtubeId": "4Nw-GP-q304",
+      "sageIds": [
+        "rashi"
+      ],
+      "fiction": "ביוגרפיה מאוירת בהמחזה; דיאלוגים ופרטי סצנות אינם תיעוד היסטורי עצמאי.",
+      "verified": "2026-10-31"
+    },
+    {
       "id": "rashi-shazak-behind-scenes-ephod-animation",
       "title": "רש״י — מאחורי הקלעים של פירוש האפוד",
       "figure": "רש״י — רבי שלמה יצחקי",
@@ -2075,6 +2095,26 @@
       "url": "https://www.hidabroot.org/video/63034",
       "fiction": "סרט ביוגרפי מונפש; שיחות וסצנות עשויות להיות המחזה",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "rambam-abc770-comic-biographical-animation",
+      "title": "הרמב״ם — הנשר הגדול בסרט קומיקס מונפש",
+      "figure": "הרמב״ם — רבי משה בן מימון",
+      "era": "rishonim",
+      "year": 1180,
+      "century": "המאה ה־12 — ספרד ומצרים",
+      "region": "קורדובה, פאס ומצרים",
+      "type": "סרט קומיקס מונפש — ביוגרפיה סיפורית",
+      "language": "עברית",
+      "description": "מסע מצויר בעקבות החכם שיצא מספרד, פעל במצרים וחיבר את משנה תורה: סיפור חייו של הרמב״ם בסרט אנימציה קצר.",
+      "source": "חב״ד — אור אין סוף; נגן YouTube מוטמע, מצוין גם באאוריקה כסרט קומיקס בעברית",
+      "url": "https://www.youtube.com/watch?v=bXreA96Wjyk",
+      "youtubeId": "bXreA96Wjyk",
+      "sageIds": [
+        "rambam"
+      ],
+      "fiction": "סרט קומיקס ביוגרפי עם המחשה דרמטית; אינו שחזור תיעודי של הדיאלוגים.",
+      "verified": "2026-10-31"
     },
     {
       "id": "rambam-great-eagle-kan11-ep3",
