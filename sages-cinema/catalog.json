@@ -2676,6 +2676,25 @@
       "verified": "2026-10-28"
     },
     {
+      "id": "besht-poor-resh-tailors-kabbalatoons-chabad",
+      "title": "שני החייטים והבעל שם טוב — סיפור מונפש על הצלה",
+      "figure": "הבעל שם טוב ושני החייטים — מעשייה חסידית",
+      "era": "hasidut",
+      "year": 1745,
+      "century": "המאה ה־18 — מעשייה חסידית ללא תאריך היסטורי ידוע",
+      "region": "מזרח אירופה — עולם הכפרים החסידיים",
+      "type": "אנימציה סיפורית — KabbalaToons",
+      "language": "אנגלית",
+      "description": "שני חייטים נודדים פוגשים בעל אכסניה המאויים במאסר בגלל בגד מלכותי. מה שמתחיל בצרה גדולה מוביל לשינוי גורלות ולמפגש עם הבעל שם טוב.",
+      "source": "Tzvi Freeman / KabbalaToons / Chabad.org — סרטון רשמי חינמי",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/936172/jewish/Poor-Resh.htm",
+      "sageIds": [
+        "besht"
+      ],
+      "fiction": "מעשייה חסידית מעובדת לסרט מצויר; שמות החייטים ופרטי הדיאלוג הם חלק מן העיבוד ולא עובדות היסטוריות מאומתות.",
+      "verified": "2026-10-31"
+    },
+    {
       "id": "shalom-sharabi-batzri-journey",
       "title": "בעקבות הצדיקים — הרש״ש: מתימן לירושלים",
       "figure": "רבי שלום שרעבי (הרש״ש)",
