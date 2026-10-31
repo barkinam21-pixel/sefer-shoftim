@@ -4646,6 +4646,26 @@
       "verified": "2026-10-28"
     },
     {
+      "id": "levi-yitzchak-schneerson-underground-wedding-jem-adamski",
+      "title": "החתונה במחתרת — הרב לוי יצחק והמוזמן המפתיע",
+      "figure": "רבי לוי יצחק שניאורסון — רב העיר יקטרינוסלב",
+      "era": "modern",
+      "year": 1938,
+      "century": "סוף שנות ה־30 של המאה ה־20; שנת המעשה משוערת",
+      "region": "דניפרופטרובסק (יקטרינוסלב), אוקראינה הסובייטית",
+      "type": "עדות מצולמת סיפורית — חתונה יהודית במחתרת",
+      "language": "אנגלית",
+      "duration": "4:19 דקות",
+      "description": "באווירת הפחד של ברית המועצות, רבי לוי יצחק עורך חתונה יהודית בחשאי. כשחסר אדם למניין, הוא מזמין דווקא אדם החשוד כמלשין קומוניסטי — כך זוכר העד ישראל אדמסקי.",
+      "source": "Jewish Educational Media / Living Torah — עדותו המצולמת של ישראל אדמסקי (A Jew Just Like You)",
+      "url": "https://www.chabad.org/therebbe/livingtorah/player_cdo/aid/2265010/jewish/A-Jew-Just-Like-You.htm",
+      "sageIds": [
+        "levi-yitzchak-schneerson"
+      ],
+      "fiction": "עדות זיכרון אישית מצולמת על אירוע משנות ה־30, לא צילום האירוע או המחזה היסטורית; השנה משוערת לצורך הסידור.",
+      "verified": "2026-10-31"
+    },
+    {
       "id": "levi-yitzchak-schneerson-unbreakable-faith-pnei-melech-2025",
       "title": "אמונה בלתי מנוצחת — רבי לוי יצחק שניאורסון מול החוקרים הסובייטים",
       "figure": "רבי לוי יצחק שניאורסון — אביו של הרבי מלובביץ׳",
@@ -4663,6 +4683,26 @@
         "levi-yitzchak-schneerson"
       ],
       "fiction": "היצירה מבוססת על מסורת ביוגרפית חב״דית, אך הדיאלוגים והמראות הם המחזה מצוירת, ולא תצלום או תמלול מאומת של החקירה.",
+      "verified": "2026-10-31"
+    },
+    {
+      "id": "levi-yitzchak-schneerson-you-will-survive-jem-adamski",
+      "title": "אתה עוד תשרוד — דבריו של רבי לוי יצחק לפני המלחמה",
+      "figure": "רבי לוי יצחק שניאורסון ותלמידו ישראל אדמסקי",
+      "era": "modern",
+      "year": 1939,
+      "century": "ערב מלחמת העולם השנייה, סביב 1939",
+      "region": "דניפרופטרובסק, ברית המועצות",
+      "type": "עדות מצולמת סיפורית — זיכרון מתקופת הרדיפות",
+      "language": "אנגלית",
+      "duration": "4:21 דקות",
+      "description": "ישראל אדמסקי מספר על שיעורי התורה החשאיים שקיבל מרב העיר תחת השלטון הסובייטי, ועל הדברים המפתיעים שאמר לו רבי לוי יצחק סמוך לפרוץ מלחמת העולם השנייה.",
+      "source": "Jewish Educational Media / Chabad.org — עדותו המצולמת של ישראל אדמסקי (You Will Survive)",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/6198446/jewish/You-Will-Survive.htm",
+      "sageIds": [
+        "levi-yitzchak-schneerson"
+      ],
+      "fiction": "עדות זיכרון מצולמת ולא שחזור דרמטי של המאורע; תיאור הדברים משקף את זיכרונו של המספר.",
       "verified": "2026-10-31"
     },
     {
