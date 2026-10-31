@@ -2870,6 +2870,26 @@
       "verified": "2026-10-29"
     },
     {
+      "verified": "2026-10-31",
+      "era": "hasidut",
+      "id": "nachman-real-story-ukraine-breslov-library-documentary-2025",
+      "title": "רבי נחמן — מסע חייו ממז׳יבוז׳ עד אומן",
+      "figure": "רבי נחמן מברסלב",
+      "year": 1799,
+      "century": "סוף המאה ה־18 וראשית המאה ה־19",
+      "region": "מז׳יבוז׳, ברסלב ואומן שבאוקראינה; ארץ ישראל",
+      "type": "סרט תעודה ביוגרפי־מסע עם צילומי אתרים",
+      "language": "אנגלית",
+      "description": "מסע מצולם באתרים המזוהים עם רבי נחמן: מילדותו, דרך מסעו לארץ ישראל, ועד שנותיו האחרונות באומן. צילומי מקומות בני זמננו מלווים בסיפור חייו ובמורשת החסידית.",
+      "source": "Breslov Stories / Breslov Audiobook Library — פרסום רשמי, 12.11.2025",
+      "url": "https://www.youtube.com/watch?v=Z2XWmoALus8",
+      "youtubeId": "Z2XWmoALus8",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "סרט ביוגרפי מאוחר עם צילומי מקומות כיום ומסורות חסידיות; סצנות ומסורות אינן תיעוד בן התקופה."
+    },
+    {
       "id": "nachman-poor-man-diamond-bri",
       "title": "העני והיהלום — מעשה אנימציה מרבי נחמן",
       "figure": "רבי נחמן מברסלב — סיפוריו",
@@ -3343,6 +3363,26 @@
       "verified": "2026-10-30"
     },
     {
+      "verified": "2026-10-31",
+      "era": "hasidut",
+      "id": "nachman-diamond-prince-breslov-library-animated-he-2026",
+      "title": "בן המלך שהיה מאבנים טובות — אנימציה על סיפורי רבי נחמן",
+      "figure": "רבי נחמן מברסלב — המעשה החמישי",
+      "year": 1804,
+      "century": "תחילת המאה ה־19 — סיפורי המעשיות",
+      "region": "ברסלב, מזרח אירופה (סיפור משל)",
+      "type": "סרט אנימציה סיפורי",
+      "language": "עברית",
+      "description": "מלך המבקש יורש, נסיך ואבנים טובות מובילים למעשייה מסתורית על שינוי וערך פנימי. אנימציה סיפורית בעברית לפי המעשה החמישי של רבי נחמן, ולא שיעור מצולם.",
+      "source": "Rabbi Nachman's Stories HE / Breslov Audiobook Library — פרסום רשמי, 28.2.2026",
+      "url": "https://www.youtube.com/watch?v=pc4DO0dsOBY",
+      "youtubeId": "pc4DO0dsOBY",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "משל חסידי שמסר רבי נחמן, ולא אירוע היסטורי בחיי מלך מסוים; הסצנות המצוירות הן עיבוד אמנותי."
+    },
+    {
       "id": "nachman-humble-king-animation",
       "title": "המלך העניו — מעשה ממלך וחכם",
       "figure": "רבי נחמן מברסלב — מעשה ממלך עניו",
@@ -3459,6 +3499,26 @@
       "fiction": "דוקו עכשווי על השפעה תרבותית ודתית, המשלב פרשנויות; התוכן העכשווי אינו עדות היסטורית מימי רבי נחמן.",
       "verified": "2026-10-28",
       "youtubeId": "S8_7vNdlYXA"
+    },
+    {
+      "verified": "2026-10-31",
+      "era": "hasidut",
+      "id": "reb-noson-disciple-saved-breslov-legacy-documentary-2026",
+      "title": "רבי נתן מנמירוב — התלמיד ששמר את מורשת רבי נחמן",
+      "figure": "רבי נתן שטרנהרץ (מוהרנ״ת)",
+      "year": 1812,
+      "century": "ראשית המאה ה־19 — דור תלמידי רבי נחמן",
+      "region": "נמירוב, ברסלב ואומן שבמזרח אירופה",
+      "type": "סרט תעודה סיפורי ביוגרפי",
+      "language": "אנגלית",
+      "description": "סיפור חייו של רבי נתן מנמירוב: מפגשו עם רבי נחמן, שימור דברי רבו, הדפסת ספריו והתמודדותו עם התנגדות. סרט ביוגרפי על האיש שהמשיך להפיץ את תורת ברסלב.",
+      "source": "Breslov Stories / Breslov Audiobook Library — פרסום רשמי, 21.6.2026",
+      "url": "https://www.youtube.com/watch?v=Z04ZKeM_rNg",
+      "youtubeId": "Z04ZKeM_rNg",
+      "sageIds": [
+        "natan-nemirov"
+      ],
+      "fiction": "תעודה ביוגרפית על בסיס מסורת ברסלב; סיפורים אישיים, חלומות ופרטי העימותים אינם בהכרח עדות היסטורית עצמאית."
     },
     {
       "id": "israel-salanter-short-shabbat-meal-hidabroot-ai",
