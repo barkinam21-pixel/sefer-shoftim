@@ -140,4 +140,6 @@
  let hash="";try{hash=decodeURIComponent(location.hash.slice(1));}catch(_){}
  if(/^beitzah(?:Chapter2|-2-(?:10|[1-9]))$/.test(hash)){const target=hash==="beitzahChapter2"?chapter:document.getElementById(hash);if(target)requestAnimationFrame(()=>target.scrollIntoView({behavior:"auto",block:"start"}));}
 })();
-\n// Continue the textual Mishnah sequence; load on demand after chapter 2 mounts.\n(()=>{const s=document.createElement("script");s.src="./beitzah-ch3.js";document.body.appendChild(s);})();\n
+
+// Continue the textual Mishnah sequence; load after chapter 2 mounts.
+(()=>{const s=document.createElement("script");s.src="./beitzah-ch3.js";document.body.appendChild(s);})();
