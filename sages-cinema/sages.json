@@ -387,7 +387,8 @@
       "name": "רבי יהושע בן חנניה",
       "mediaIds": [
         "scholars-bimbam",
-        "yehoshua-hadrian-sipura-moscow-2019"
+        "yehoshua-hadrian-sipura-moscow-2019",
+        "achnai-sipura-talmuda-moscow-2019"
       ],
       "authorship": "דבריו מופיעים במשנה ובתלמוד; אין בידינו ספר שחיבר.",
       "hook": "החכם שחלק על הנשיא והעדיף לבסוף את אחדות בית הדין.",
@@ -422,7 +423,8 @@
       "id": "gamliel",
       "name": "רבן גמליאל דיבנה",
       "mediaIds": [
-        "scholars-bimbam"
+        "scholars-bimbam",
+        "achnai-sipura-talmuda-moscow-2019"
       ],
       "authorship": "נשיא בית המדרש ביבנה; תורתו נשמרה במקורות חז״ל ולא בספר עצמאי.",
       "hook": "הנהגה מול מחלוקת: האם סמכות יכולה לפגוע בכבוד החכמים?",
@@ -457,7 +459,8 @@
       "id": "eliezer",
       "name": "רבי אליעזר בן הורקנוס",
       "mediaIds": [
-        "achnai-bimbam"
+        "achnai-bimbam",
+        "achnai-sipura-talmuda-moscow-2019"
       ],
       "authorship": "מימרותיו נשמרו בחז״ל; 'פרקי דרבי אליעזר' נושא את שמו במסורת אך נכתב בתקופה מאוחרת ממנו.",
       "hook": "היחיד מול הרבים — מחלוקת קשה על תנור אחד.",
@@ -543,7 +546,8 @@
         "akiva-chana-hess-learn-torah-animated-story",
         "akiva-rachel-anafeam-ai-love-torah",
         "akiva-motty-ilowitz-24000-talmidim-animated-song-2025",
-        "figures-past-second-temple-jfc-1996"
+        "figures-past-second-temple-jfc-1996",
+        "akiva-charity-sipura-talmuda-moscow-2019"
       ],
       "authorship": "דרשותיו, מימרותיו והלכותיו נמסרו בספרות חז״ל; אין ספר מחבר אישי חתום שלו.",
       "hook": "סיפור של לימוד מאוחר, מסירות אישית וחיים של בחירה.",
