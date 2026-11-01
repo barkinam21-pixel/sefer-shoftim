@@ -2468,7 +2468,8 @@
         "besht-four-points-radiance-chabad-documentary",
         "pnei-melech-besht-hidden-righteous-animation",
         "besht-ruchnii-a-yid-young-orphan-animation",
-        "besht-pitchipoy-hero-shepherd-museum-animation"
+        "besht-pitchipoy-hero-shepherd-museum-animation",
+        "malchuyot-shel-mata-kan11-ep1-revenge-of-sander"
       ],
       "authorship": "לא ידוע על ספר שכתב בעצמו באופן שיטתי. 'כתר שם טוב' הוא לקט מאוחר, ומסורות רבות נרשמו בידי תלמידים.",
       "hook": "כיצד נולדת שפה חסידית של תפילה, דבקות ושמחה?",
@@ -5349,6 +5350,28 @@
         "text": "האגדה מזהירה מפני יהירות רוחנית וקיצורי דרך לגאולה. זו פרשנות לסיפור עממי, לא פסק הלכה או קביעה היסטורית.",
         "url": "https://agadah.org.il/story/מעשה-נורא-מר-יוסף-דילה-ריינה/",
         "type": "מסר סיפורי מתוך 'מעשה יוסף דלה ריינה'"
+      }
+    },
+    {
+      "id": "yissachar-dov-rokach-belz",
+      "name": "רבי ישכר דב רוקח (השני) — האדמו״ר מבעלזא",
+      "mediaIds": [
+        "malchuyot-shel-mata-kan11-ep2-belz-rebbe"
+      ],
+      "hook": "חסידות ששוקמה אחרי השואה מתכנסת סביב רבי ומנהיגות שנמשכת בארץ ובתפוצות.",
+      "authorship": "האדמו״ר רבי ישכר דב רוקח השני מנהיג את חסידות בעלזא. הסרט מתעד את הנהגתו ואת חצרו; לא אומת כאן ספר שחיבר בעצמו, ולכן אין לייחס לו ספרים שיצאו בשמו.",
+      "works": [],
+      "story": {
+        "title": "הרבי מגיע לחסידיו מעבר לים",
+        "text": "בסדרת כאן 11 מתועד ביקור האדמו״ר מבעלזא במונטריאול לאחר שנים רבות, עם מפגשים, ניגונים וחיי חצר חסידית.",
+        "url": "https://www.youtube.com/watch?v=IiZCV2khRGw",
+        "type": "תיעוד קולנועי, כאן 11 (2019)"
+      },
+      "idea": {
+        "title": "עשה לך רב — ומשמעות המנהיגות",
+        "text": "המשנה באבות א׳, ו׳ אומרת ״עשה לך רב״. הסרט בוחן כיצד קשר ההדרכה והקהילה מתבטא בחצר חסידית כיום.",
+        "url": "https://www.sefaria.org/Pirkei_Avot.1.6?lang=he",
+        "type": "משנה, אבות א׳, ו׳ — זיקה רעיונית, לא ציטוט של האדמו״ר"
       }
     }
   ]
