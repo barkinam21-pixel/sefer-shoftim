@@ -4379,6 +4379,25 @@
       ]
     },
     {
+      "id": "lubavitch-rebbe-universtorah-childhood-french-biography",
+      "title": "הרבי מלובביץ׳ — מילדותו ברוסיה עד להנהגה (סרט ביוגרפי)",
+      "figure": "הרבי מנחם מנדל שניאורסון",
+      "era": "modern",
+      "year": 1910,
+      "century": "ראשית המאה ה־20 ועד חייו הבוגרים; 1910 נקודת מיון משוערת בלבד",
+      "region": "ניקולאייב ויקטרינוסלב, האימפריה הרוסית; ניו יורק",
+      "type": "סרט דיוקן תיעודי ביוגרפי",
+      "language": "צרפתית",
+      "description": "דיוקן מצולם וסיפורי בעקבות חייו של מנחם מנדל שניאורסון: מן הילדות ברוסיה, דרך מסלול חיים שהוביל אותו אל הנהגת חב״ד. הסרט הועלה לצפייה חופשית במדור הווידאו של UniversTorah.",
+      "source": "UniversTorah — Le Rabbi de Loubavitch: Sa vie, son enfance; דף וידאו מתאריך 26.02.2015",
+      "url": "https://www.universtorah.com/videos/histoire-archives/rabbi-loubavitch-vie-enfance",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "דיוקן תיעודי בגרסת המפיץ; בחירת הסצנות והפרשנות הן עריכה ביוגרפית, ולא שחזור בלתי אמצעי של ילדותו.",
+      "verified": "2026-11-01"
+    },
+    {
       "id": "yaakov-sofer-yechezkel-halevi-middle-road-agadah",
       "title": "להיפגש באמצע הדרך — שני חכמים מבגדד יוצאים להתפייס",
       "figure": "רבי יעקב חיים סופר (כף החיים) ורבי יחזקאל עזרא הלוי",
@@ -5682,6 +5701,25 @@
         "lubavitcher-rebbe-menachem-mendel"
       ],
       "fiction": "תיעוד מצולם אותנטי משנת 1972, לצד פרשנות של יוצרי הסרט; לא שחזור דרמטי.",
+      "verified": "2026-11-01"
+    },
+    {
+      "id": "lubavitch-rebbe-elliot-lasky-where-is-god-video",
+      "title": "איפה אלוהים? — המפגש ששינה את חייו של אליוט לסקי",
+      "figure": "הרבי מנחם מנדל שניאורסון ואליוט לסקי",
+      "era": "modern",
+      "year": 1972,
+      "century": "ראשית שנות השבעים — מועד המפגש על פי עדות המספר",
+      "region": "ניו יורק, ארצות הברית",
+      "type": "סיפור תיעודי אישי מצולם",
+      "language": "צרפתית — דף הפצה; שפת הסרט לפי גרסת הנגן",
+      "description": "אליוט לסקי התרחק מאורח החיים הדתי שבו גדל. מפגש בלתי צפוי עם הרבי מלובביץ׳ משנה את מסלולו; סרטון עדות אישי על התלבטות, שיחה ותפנית בחיים, ולא שיעור מצולם.",
+      "source": "UniversTorah — Mais où est D-ieu ? (02.03.2016), סרט וידאו חינמי על עדות אליוט לסקי",
+      "url": "https://www.universtorah.com/videos/documents-evenements/mais-ou-est-dieu",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "סיפור חיים המסופר מפי בעל המעשה; תאריך המפגש המשוער נלקח מעדויות נלוות, ופרטי הזיכרון אינם שחזור היסטורי מצולם של האירוע.",
       "verified": "2026-11-01"
     },
     {
