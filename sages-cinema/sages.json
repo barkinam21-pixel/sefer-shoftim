@@ -962,7 +962,8 @@
         "zohar-wise-have-eyes-bimbam",
         "rashbi-binat-hatzadikim-tv2000-ai-film",
         "rashbi-chana-hess-cave-3d-story-2025",
-        "rashbi-torahbox-french-ai-animated-life-2025"
+        "rashbi-torahbox-french-ai-animated-life-2025",
+        "joseph-della-reina-rejoice-bar-yochai-jfc-1967"
       ],
       "authorship": "הזוהר מיוחס לרשב״י במסורת; המחקר רואה את התגבשותו בימי הביניים. אין להציגו כחיבור אישי מוסכם.",
       "hook": "כיצד שבים מעולם המערה אל חיי האדם הפשוט?",
@@ -4733,7 +4734,8 @@
       "mediaIds": [
         "moshe-kalfon-hacohen-agadah-short-biography",
         "moshe-kalfon-hakohen-power-of-words-agadah",
-        "moshe-kalfon-matzot-lekulam-agadah"
+        "moshe-kalfon-matzot-lekulam-agadah",
+        "djerba-magical-island-kalfon-moshe-1971-jfc"
       ],
       "hook": "באי ג׳רבה העמיד חכם אחד דורות של פוסקים ולא חדל לחלום על ציון.",
       "authorship": "רבי כלפון משה הכהן חיבר את שו״ת שואל ונשאל ואת ברית כהונה על מנהגי ג׳רבה. יש להבדיל בין ספריו לבין סיפורים עליו שנערכו בידי מספרים מאוחרים.",
@@ -5300,6 +5302,41 @@
         "text": "בפיוט 'אעופה אשכונה' מבקש הדובר את קרבת ה' בשפה של שיר השירים, ובהשראת תהלים נה, ז–ח; זהו ביטוי פיוטי, לא פסק הלכה.",
         "url": "https://www.nli.org.il/he/piyut/Piyut1song_010093400000005171/NLI",
         "type": "פיוט — אעופה אשכונה; תהלים נה, ז–ח"
+      }
+    },
+    {
+      "id": "joseph-della-reina",
+      "name": "רבי יוסף דלה ריינה — המקובל מאגדת הגאולה",
+      "mediaIds": [
+        "joseph-della-reina-rejoice-bar-yochai-jfc-1967"
+      ],
+      "hook": "מקובל המבקש להחיש את הגאולה מגלה באגדה מה עלול לקרות כשמנסים לכפות את הקץ.",
+      "authorship": "יוסף דלה ריינה נודע בעיקר כגיבור אגדה קבלית מהמאה ה־15. החיבור 'מעשה יוסף דלה ריינה' הוא סיפור עליו שנמסר ועובד בידי אחרים, ואינו ספר שהוכח שחיבר בעצמו.",
+      "works": [
+        {
+          "title": "מעשה יוסף דלה ריינה — נוסח הסיפור",
+          "description": "נוסח אגדת המקובל, בעריכת מוסרים מאוחרים; לא יצירה ודאית שלו.",
+          "url": "https://he.wikisource.org/wiki/מעשה_יוסף_דילה_ריינה/תוכן",
+          "access": "read"
+        },
+        {
+          "title": "מעשה רבי יוסף דלה רינה — כתב יד",
+          "description": "רשומת כתב יד בספרייה הלאומית למסורות הסיפור.",
+          "url": "https://www.nli.org.il/he/manuscripts/NNL_ALEPH990000701180205171/NLI",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "הניסיון להחיש את הגאולה",
+        "text": "על פי האגדה, יוסף וחמשת תלמידיו מנסים להכניע כוחות רשע בכוח השמות הקדושים ונכשלים. אין כאן תיעוד היסטורי של המעשה.",
+        "url": "https://he.wikisource.org/wiki/מעשה_יוסף_דילה_ריינה/תוכן",
+        "type": "אגדה קבלית מאוחרת; נוסח שלמה נאוארי, דפוס ורשה תרנ״ט"
+      },
+      "idea": {
+        "title": "לא לנסות לכפות את הקץ",
+        "text": "האגדה מזהירה מפני יהירות רוחנית וקיצורי דרך לגאולה. זו פרשנות לסיפור עממי, לא פסק הלכה או קביעה היסטורית.",
+        "url": "https://agadah.org.il/story/מעשה-נורא-מר-יוסף-דילה-ריינה/",
+        "type": "מסר סיפורי מתוך 'מעשה יוסף דלה ריינה'"
       }
     }
   ]
