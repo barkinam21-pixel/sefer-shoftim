@@ -312,7 +312,9 @@
         "yavneh-bimbam",
         "legend-destruction-kan11-full",
         "rybz-keshet-vaanan-ten-li-yavneh-kan",
-        "tisha-bav-torahbox-claymation-2026"
+        "tisha-bav-torahbox-claymation-2026",
+        "rybz-moscow-sipura-yavneh-part1-2019",
+        "rybz-moscow-sipura-yavneh-part2-2019"
       ],
       "authorship": "דבריו ותקנותיו במשנה ובתלמוד; לא ידוע על ספר עצמאי שחיבר.",
       "hook": "חורבן ירושלים הופך לרגע שבו צריך להציל את עתיד התורה.",
@@ -383,7 +385,8 @@
       "id": "yehoshua",
       "name": "רבי יהושע בן חנניה",
       "mediaIds": [
-        "scholars-bimbam"
+        "scholars-bimbam",
+        "yehoshua-hadrian-sipura-moscow-2019"
       ],
       "authorship": "דבריו מופיעים במשנה ובתלמוד; אין בידינו ספר שחיבר.",
       "hook": "החכם שחלק על הנשיא והעדיף לבסוף את אחדות בית הדין.",
@@ -488,7 +491,8 @@
       "id": "onkelos",
       "name": "אונקלוס הגר",
       "mediaIds": [
-        "onkelos-mezuzah-shazak-chabad"
+        "onkelos-mezuzah-shazak-chabad",
+        "onkelos-hidabroot-kids-ai-soldiers-2025"
       ],
       "authorship": "תרגום אונקלוס לתורה מיוחס במסורת לאונקלוס הגר, שמסר את תרגום התורה מפי רבותיו לפי בבלי מגילה ג׳ ע״א. נוסח התרגום שבידינו משקף מסורת טקסטואלית ממושכת, ואין להציג את כולו ככתב יד אישי שנכתב בידו.",
       "hook": "חיילים רומאים באים לקחת גר אחד — אבל השיחה על המזוזה הופכת את דרכם.",
