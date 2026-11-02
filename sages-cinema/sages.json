@@ -490,7 +490,8 @@
         "hanina-ben-dosa-devash-animation",
         "hanina-chickens-goats-ai-kids",
         "hanina-miracles-chabad-puppets",
-        "hanina-pole-garden-chabad-aleph-puppets-2025"
+        "hanina-pole-garden-chabad-aleph-puppets-2025",
+        "hanina-arod-anafeam-ai-2026"
       ],
       "authorship": "אין ספר שחיבר בעצמו הידוע לנו. מעשיו ומימרותיו מצויים במשנה ובתלמוד; המעשיות על ניסים הן סיפורי חז״ל ולא תיעוד היסטורי בן הזמן.",
       "hook": "חומץ במקום שמן בנר השבת, ותרנגולות שהפכו לעיזים — שני סיפורי חז״ל על בית עני וישר.",
@@ -511,6 +512,12 @@
           "title": "בבלי בבא קמא נ׳ ע״א",
           "description": "תפקידו בסיפור הצלת בתו של נחוניה חופר שיחין.",
           "url": "https://www.sefaria.org/Bava_Kamma.50a?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "בבלי ברכות ל״ג ע״א — רבי חנינא והערוד",
+          "description": "מקור האגדה על המפגש עם הערוד.",
+          "url": "https://www.sefaria.org/Berakhot.33a?lang=he",
           "access": "read"
         }
       ],
@@ -1440,7 +1447,8 @@
       "id": "r-yohanan",
       "name": "רבי יוחנן",
       "mediaIds": [
-        "bromance-bimbam"
+        "bromance-bimbam",
+        "yohanan-giant-gems-anafeam-ai-2026"
       ],
       "authorship": "דבריו מופיעים בבבלי ובירושלמי; לא חיבר בעצמו את כל התלמוד הירושלמי.",
       "hook": "מה חסר בבית מדרש כשנשאר רק מי שמסכים?",
@@ -1456,6 +1464,12 @@
           "description": "סיפור ביקור חולים וחברות.",
           "url": "https://www.sefaria.org/Berakhot.5b?lang=he",
           "access": "read"
+        },
+        {
+          "title": "בבלי בבא בתרא ע״ה ע״א — שערי ירושלים",
+          "description": "המסע של תלמיד רבי יוחנן ואבני הענק.",
+          "url": "https://www.sefaria.org/Bava_Batra.75a?lang=he",
+          "access": "read"
         }
       ],
       "story": {
@@ -1469,6 +1483,35 @@
         "text": "הסיפור מדגיש את התרומה של קושיות להבנה; זו תובנה מתוך האגדה, לא הלכה חדשה.",
         "url": "https://www.sefaria.org/Bava_Metzia.84a?lang=he",
         "type": "ערך לימודי"
+      }
+    },
+    {
+      "id": "rabbi-freida",
+      "name": "רבי פרידא",
+      "mediaIds": [
+        "rabbi-freida-400-times-anafeam-ai-2026"
+      ],
+      "hook": "מורה אחד, תלמיד אחד ומאות חזרות — עד שהלב וההבנה נפגשים.",
+      "authorship": "לא ידוע על ספר עצמאי שחיבר. דבריו וסיפורים עליו שמורים בתלמוד; נמנה עם אמוראי ארץ ישראל.",
+      "works": [
+        {
+          "title": "בבלי עירובין נ״ד ע״ב — המורה הסבלני",
+          "description": "מעשה ארבע מאות החזרות והבחירה בטובת בני דורו.",
+          "url": "https://www.sefaria.org/Eruvin.54b?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "עוד ארבע מאות פעמים",
+        "text": "לפי האגדה, חששו של התלמיד מהפסקת הלימוד הסיח את דעתו. רבי פרידא הרגיע אותו וחזר שוב על הכול.",
+        "url": "https://www.sefaria.org/Eruvin.54b?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "סבלנות לפני הכול",
+        "text": "עירובין נ״ד ע״ב מציג הקשבה לקושי של תלמיד ומסירות להוראה, בלי לייחס לחכם ספר שלא חיבר.",
+        "url": "https://www.sefaria.org/Eruvin.54b?lang=he",
+        "type": "בבלי עירובין נ״ד ע״ב"
       }
     },
     {
@@ -1574,6 +1617,35 @@
         "text": "בבבלי ברכות לד ע״ב מובאת מימרת רבי אבהו המפליגה במעלת בעלי תשובה, לצד עמדת רבי יוחנן. זו מחלוקת רעיונית בסוגיה ולא פסק הלכה חדש.",
         "url": "https://he.wikisource.org/wiki/ברכות_לד_ב",
         "type": "בבלי ברכות לד ע״ב"
+      }
+    },
+    {
+      "id": "baroka-chozaah",
+      "name": "רבי ברוקא חוזאה",
+      "mediaIds": [
+        "baroka-world-to-come-anafeam-ai-2026"
+      ],
+      "hook": "הוא חיפש בשוק את בני העולם הבא — ומצא אותם במקום שלא ציפה לו.",
+      "authorship": "לא ידוע על ספר שחיבר. המעשה עליו מובא בבבלי תענית כ״ב ע״א. אין לבלבלו עם רבי יוחנן בן ברוקא.",
+      "works": [
+        {
+          "title": "בבלי תענית כ״ב ע״א — אנשי השוק",
+          "description": "מקור האגדה על רבי ברוקא, אליהו ועושי חסד נסתרים.",
+          "url": "https://www.sefaria.org/Taanit.22a?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "למי שמורה ההפתעה בשוק?",
+        "text": "באגדת התלמוד אליהו מצביע על איש המסייע לנרדפים ועל שניים המשמחים עצובים ומשכינים שלום.",
+        "url": "https://www.sefaria.org/Taanit.22a?lang=he",
+        "type": "אגדה תלמודית"
+      },
+      "idea": {
+        "title": "חסד שאיש לא רואה",
+        "text": "בתענית כ״ב ע״א זוכים להערכה מי שפועלים להגנה, לשמחה ולשלום. זו קריאה ערכית באגדה ולא פסק הלכה.",
+        "url": "https://www.sefaria.org/Taanit.22a?lang=he",
+        "type": "בבלי תענית כ״ב ע״א"
       }
     },
     {
