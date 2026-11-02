@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-02",
-  "updatedLabel": "2 בנובמבר 2026",
+  "updatedLabel": "עודכנו שלוש יצירות קולנועיות ושימור מורשת רבני פאס",
   "eras": [
     {
       "id": "second-temple",
@@ -6857,6 +6857,64 @@
       ],
       "fiction": "דרמה בדיונית על חוויית חסיד בימינו; העלילה והדיאלוגים אינם עובדות ביוגרפיות על הרבי.",
       "verified": "2026-11-01"
+    },
+    {
+      "id": "rebbe-wwii-france-wartime-border-etrog-jem",
+      "title": "הרבי והגבול בצרפת — עדות מתקופת המלחמה",
+      "figure": "רבי מנחם מנדל שניאורסון — בצרפת בזמן מלחמת העולם השנייה",
+      "era": "modern",
+      "year": 1940,
+      "century": "בימי מלחמת העולם השנייה",
+      "region": "צרפת של וישי",
+      "type": "עדות היסטורית מצולמת — 2:38 דקות",
+      "language": "אנגלית",
+      "description": "פליט בצרפת של וישי מספר על מאמציו של רבי מנחם מנדל שניאורסון לקיים מצווה בזמן המלחמה. עדות אישית מצולמת ולא שחזור עלילתי.",
+      "source": "Jewish Educational Media — Living Torah, Program 421",
+      "url": "https://www.chabad.org/therebbe/livingtorah/player_cdo/aid/1974187/jewish/Why-the-Rebbe-Snuck-Over-the-Wartime-Border.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "זיכרון אישי של הרב מנחם טייכטל; אין מדובר בצילום האירועים עצמם.",
+      "verified": "2026-11-02"
+    },
+    {
+      "id": "rebbe-kfar-chabad-esrog-orchard-jem",
+      "title": "מהאתרוג באיטליה לפרדס בארץ — כפר חב״ד",
+      "figure": "הרבי מנחם מנדל שניאורסון והרב נחמן אלבוים",
+      "era": "modern",
+      "year": 1956,
+      "century": "שנות החמישים של המאה ה־20",
+      "region": "כפר חב״ד, ישראל",
+      "type": "תיעוד סיפורי מצולם — 5:21 דקות",
+      "language": "אנגלית",
+      "description": "חשש מהרכבת אתרוגים באיטליה הוביל ליוזמה לנטיעת פרדס אתרוגים בישראל. סיפור על העצים הראשונים, תושייה ומעורבות הרבי.",
+      "source": "Jewish Educational Media — Living Torah, Program 682",
+      "url": "https://www.chabad.org/therebbe/livingtorah/player_cdo/aid/3801474/jewish/Esrogim-in-Kfar-Chabad.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "עדות מאוחרת על יוזמה שהחלה בשנת 1956; לא תיעוד מוסרט משנת 1956.",
+      "verified": "2026-11-02"
+    },
+    {
+      "id": "abraham-sabbagh-last-rabbi-fez-mimouna-animation",
+      "title": "רבי אברהם סבאג — רבה האחרון של פאס",
+      "figure": "רבי אברהם סבאג — רבה של פאס במרוקו",
+      "era": "modern",
+      "year": 2011,
+      "century": "תחילת המאה ה־21; פעילותו של הרב מתועדת ב־2011",
+      "region": "פאס, מרוקו",
+      "type": "אנימציה ביוגרפית — מורשת יהדות מרוקו",
+      "language": "שפת הקריינות לא אומתה",
+      "description": "עמותת מימונה מספרת באנימציה את סיפורו של הרב אברהם סבאג, המתואר כרבה האחרון של פאס, ומשמרת את זיכרון הקהילה היהודית העתיקה.",
+      "source": "Association Mimouna — גלריית Animated Videos הרשמית",
+      "url": "https://www.youtube.com/watch?v=tQxMdiMyINc",
+      "youtubeId": "tQxMdiMyINc",
+      "sageIds": [
+        "abraham-sabbagh-fez"
+      ],
+      "fiction": "סרטון הנפשה ביוגרפי; שנת 2011 מציינת פעילות מתועדת, לא שנת לידה או הפקה.",
+      "verified": "2026-11-02"
     }
   ],
   "notes": "יצירות חינמיות בלבד; YouTube מוטמע רק כאשר זוהה מזהה ספציפי רשמי, ובשאר המקרים הצפייה נפתחת בדף הסרט/הווידאו של היוצר. תכני הידברות החדשים נפתחים ב-VOD המקורי. אנימציות ביוגרפיות עשויות להמחיש מסורות ואינן שחזור היסטורי מדויק."

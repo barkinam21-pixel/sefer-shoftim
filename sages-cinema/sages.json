@@ -5624,6 +5624,28 @@
         "url": "https://www.sefaria.org/Chullin.94a?lang=he",
         "type": "בבלי חולין צ״ד ע״א–ע״ב — עיון במקור, לא פסיקה"
       }
+    },
+    {
+      "id": "abraham-sabbagh-fez",
+      "name": "רבי אברהם סבאג — רבה של פאס",
+      "mediaIds": [
+        "abraham-sabbagh-last-rabbi-fez-mimouna-animation"
+      ],
+      "hook": "רבה האחרון של פאס נשא את זיכרונה של קהילה יהודית בת מאות שנים.",
+      "authorship": "לא אותר חיבור תורני מאומת שחיבר; אין לייחס לו ספרים על סמך סרט ביוגרפי.",
+      "works": [],
+      "story": {
+        "title": "ברכת הרב בבית הכנסת העתיק",
+        "text": "תיעוד מ־2011 מציג את הרב אברהם סבאג בבית הכנסת אבן דנאן בפאס; עמותת מימונה הקדישה לו אנימציה.",
+        "url": "https://universtorah.com/videos/documents-evenements/benediction-roi-maroc-synagogue-aben-danan",
+        "type": "תיעוד קהילתי מ־2011, לא אגדה"
+      },
+      "idea": {
+        "title": "לא לפרוש מן הציבור",
+        "text": "אבות ב׳, ד׳ קוראת שלא לפרוש מן הציבור; זהו הקשר רעיוני לשימור הקהילה, לא פסיקה המיוחסת לרב סבאג.",
+        "url": "https://www.sefaria.org/Pirkei_Avot.2.4?lang=he",
+        "type": "משנה, אבות ב׳, ד׳ — הקשר רעיוני בלבד"
+      }
     }
   ]
 }
