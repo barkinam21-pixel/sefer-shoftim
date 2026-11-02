@@ -5760,6 +5760,42 @@
         "url": "https://www.sefaria.org/Pirkei_Avot.2.4?lang=he",
         "type": "משנה, אבות ב׳, ד׳ — הקשר רעיוני בלבד"
       }
+    },
+    {
+      "id": "yehuda-amital",
+      "name": "הרב יהודה עמיטל — מראשי ישיבת הר עציון",
+      "mediaIds": [
+        "yehuda-amital-holocaust-testimony-har-etzion-2011",
+        "yehuda-amital-tribute-har-etzion-2011"
+      ],
+      "hook": "מן השואה בטרנסילבניה אל הקמת ישיבה בגוש עציון — סיפור של אומץ ואנושיות.",
+      "authorship": "הרב עמיטל מסר שיחות וכתב דברי תורה והגות. הספר 'והארץ נתן לבני אדם' מאגד משיחותיו בעריכת הרב אמנון בזק; יש להבחין בין דבריו לבין עריכת הקובץ.",
+      "works": [
+        {
+          "title": "והארץ נתן לבני אדם — פרקי הגות וחינוך",
+          "description": "לקט שיחות על חינוך, מוסר טבעי ואחריות האדם, בעריכת אמנון בזק.",
+          "url": "https://www.etzion.org.il/he/publications/books-yeshiva-faculty/publications-philosophy-and-current-affairs/ve-haaretz-natan-levnei-adam",
+          "access": "info"
+        },
+        {
+          "title": "אנושיות — קטע חופשי משיחות הרב",
+          "description": "קטע מתוך הספר, על אנושיות ורגישות מוסרית בעבודת הקודש.",
+          "url": "https://www.etzion.org.il/he/philosophy/great-thinkers/harav-yehuda-amital/%D7%90%D7%A0%D7%95%D7%A9%D7%99%D7%95%D7%AA",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "קול שנותר מן המלחמה",
+        "text": "בעדות המצולמת הוא מספר על ילדותו, עבודת הכפייה והשחרור ב־1944; אלה זיכרונות אישיים, לא שחזור דרמטי.",
+        "url": "https://www.etzion.org.il/he/holidays/yom-hashoah/%D7%A9%D7%9E%D7%A2-%D7%94-%D7%A7%D7%95%D7%9C-%D7%99%D7%94%D7%95%D7%93%D7%94-%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%95-%D7%A9%D7%9C-%D7%94%D7%A8%D7%91-%D7%A2%D7%9E%D7%99%D7%98%D7%9C-%D7%91%D7%A9%D7%95%D7%90%D7%94",
+        "type": "עדות אישית מצולמת באתר הישיבה"
+      },
+      "idea": {
+        "title": "אנושיות קודמת להפשטה",
+        "text": "בקטע 'אנושיות' הרב מדגיש שגם עבודת קודש אינה מבטלת רגשות אנושיים או את חובת ההתחשבות באדם.",
+        "url": "https://www.etzion.org.il/he/philosophy/great-thinkers/harav-yehuda-amital/%D7%90%D7%A0%D7%95%D7%A9%D7%99%D7%95%D7%AA",
+        "type": "דברי הרב עמיטל, 'אנושיות', והארץ נתן לבני אדם, עמ׳ 145–146"
+      }
     }
   ]
 }
