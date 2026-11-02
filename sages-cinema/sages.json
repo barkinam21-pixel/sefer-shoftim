@@ -174,7 +174,8 @@
         "akiva-motty-ilowitz-24000-talmidim-animated-song-2025",
         "figures-past-second-temple-jfc-1996",
         "akiva-charity-sipura-talmuda-moscow-2019",
-        "akiva-shraga-bishgada-kan-season3-2014"
+        "akiva-shraga-bishgada-kan-season3-2014",
+        "akiva-italam-when-learn-torah-animated-2020"
       ],
       "authorship": "דרשותיו, מימרותיו והלכותיו נמסרו בספרות חז״ל; אין ספר מחבר אישי חתום שלו.",
       "hook": "סיפור של לימוד מאוחר, מסירות אישית וחיים של בחירה.",
@@ -251,7 +252,8 @@
         "chanukah-story-hershey-sufrin-illustrated",
         "maccabees-keshet-veanan-kan-1983",
         "figures-past-second-temple-jfc-1996",
-        "lights-chanukah-1983-wurtzel-vimeo-official"
+        "lights-chanukah-1983-wurtzel-vimeo-official",
+        "hanukkah-follow-holidays-hidabroot-hannah-seven-sons-225105"
       ],
       "hook": "מול צבא גדול ומצויד עומד יהודה עם לוחמיו, ואחר כך עולה לטהר את המקדש.",
       "authorship": "לא ידוע על ספר שיהודה המכבי חיבר. סיפור פעולותיו נמסר בספר מקבים א, שמחברו אינו מזוהה; אין לייחס לו את חיבור הספר.",
@@ -285,7 +287,8 @@
         "miracle-lights-chabad-free-17min",
         "chanukah-story-hershey-sufrin-illustrated",
         "maccabees-keshet-veanan-kan-1983",
-        "lights-chanukah-1983-wurtzel-vimeo-official"
+        "lights-chanukah-1983-wurtzel-vimeo-official",
+        "hanukkah-follow-holidays-hidabroot-hannah-seven-sons-225105"
       ],
       "hook": "במודיעין ניצב כהן מול גזירה: לוותר על מורשת אבותיו או לצאת למאבק.",
       "authorship": "אין חיבור ידוע שכתב מתתיהו. ספר מקבים א מתאר את פועלו, אך נכתב בידי מחבר אחר שאינו מזוהה בוודאות; הוא אינו חיבור של מתתיהו.",
@@ -308,6 +311,35 @@
         "text": "מקבים א, ב:יט–כב מתאר את החלטתו של מתתיהו לשמור על דתו למרות איום השלטון; זהו תיאור היסטורי, לא פסק הלכה.",
         "url": "https://www.sefaria.org/The_Book_of_Maccabees_I.2.1-29",
         "type": "ספר מקבים א, ב:יט–כב"
+      }
+    },
+    {
+      "id": "hannah-seven-sons",
+      "name": "חנה ושבעת בניה — מסורת עמידה באמונה",
+      "mediaIds": [
+        "hanukkah-follow-holidays-hidabroot-hannah-seven-sons-225105"
+      ],
+      "hook": "אם ושבעת בניה ניצבים מול גזירה קשה — ומסרבים לוותר על אמונתם.",
+      "authorship": "אין חיבור ידוע שכתבה חנה. גרסת האגדה בבבלי גיטין נ״ז ע״ב אינה נוקבת בשם האם; הכינוי חנה מוכר ממסורות אחרות.",
+      "works": [
+        {
+          "title": "בבלי גיטין נ״ז ע״ב — האם ושבעת בניה",
+          "description": "מסורת חז״ל על אם ובניה מול כפיית עבודה זרה; אינו חיבור של האם.",
+          "url": "https://www.sefaria.org/Gittin.57b?lang=he",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "שבעה בנים ואמונה אחת",
+        "text": "בגיטין נ״ז ע״ב מובא סיפור על אם ושבעת בניה מול גזירת המלך. זו מסורת תלמודית, והסרט מוסיף לה המחזה.",
+        "url": "https://www.sefaria.org/Gittin.57b?lang=he",
+        "type": "אגדת חז״ל והמחזה"
+      },
+      "idea": {
+        "title": "עמידה רוחנית מול כפייה",
+        "text": "בגיטין נ״ז ע״ב מתוארת נאמנותם של בני המשפחה לאמונתם גם בשעת סכנה; זהו עיון בסיפור, לא הוראה מעשית.",
+        "url": "https://www.sefaria.org/Gittin.57b?lang=he",
+        "type": "אגדת חז״ל"
       }
     },
     {
