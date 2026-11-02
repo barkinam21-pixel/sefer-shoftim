@@ -387,7 +387,8 @@
         "hillel-shammai-machlochet-bimbam-he",
         "hillel-golden-rule-ruach-animation",
         "hillel-patience-hidabroot-story-animation",
-        "hillel-shammai-batzri-graves-journey"
+        "hillel-shammai-batzri-graves-journey",
+        "hillel-rooftop-anafeam-ai-kolel-2026"
       ],
       "authorship": "הלל לא הותיר ספר אישי שחיבר. דבריו, הנהגותיו והמחלוקות שבין בתי המדרש שנקראו על שמו ועל שם שמאי נמסרו במשנה ובתלמוד; אין לייחס לו את עריכת המשנה.",
       "hook": "שני חכמים מבקשים אמת, ושאלה אחת מרחפת מעל בית המדרש: האם אפשר לחלוק בלי להרוס את השלום?",
@@ -420,6 +421,12 @@
           "title": "שבת ל׳ ע״ב–ל״א ע״א — סבלנותו של הלל",
           "description": "הסיפור על מי שניסה להכעיס את הלל בשאלות חוזרות בערב שבת, והלקח על סבלנותו. זהו נוסח התלמוד ולא חיבור שכתב הלל.",
           "url": "https://www.sefaria.org/Shabbat.30b?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "יומא ל״ה ע״ב — הלל על גג בית המדרש",
+          "description": "אגדת חכמים על הלל העני, השלג, הלימוד והצלתו מן הקור.",
+          "url": "https://www.sefaria.org/Yoma.35b?lang=he",
           "access": "read"
         }
       ],
