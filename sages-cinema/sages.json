@@ -2811,7 +2811,8 @@
         "besht-pitchipoy-hero-shepherd-museum-animation",
         "malchuyot-shel-mata-kan11-ep1-revenge-of-sander",
         "sefer-hazikhronot-doron-hagi-episode40-hidden-sages",
-        "besht-poor-resh-tailors-kabbalatoons-chabad"
+        "besht-poor-resh-tailors-kabbalatoons-chabad",
+        "on-heaven-and-earth-berel-wein-destiny-col-2000"
       ],
       "authorship": "לא ידוע על ספר שכתב בעצמו באופן שיטתי. 'כתר שם טוב' הוא לקט מאוחר, ומסורות רבות נרשמו בידי תלמידים.",
       "hook": "כיצד נולדת שפה חסידית של תפילה, דבקות ושמחה?",
@@ -3096,7 +3097,8 @@
       "mediaIds": [
         "hasidic-sages-destiny-stories",
         "maggid-zusha-agadah-blessing-hardship",
-        "shpoler-zeide-mozhesh-wagon-chaims-corner-2026"
+        "shpoler-zeide-mozhesh-wagon-chaims-corner-2026",
+        "on-heaven-and-earth-berel-wein-destiny-col-2000"
       ],
       "hook": "לאחר הבעש״ט, חבורת תלמידים צריכה להחליט איך מעבירים דרך רוחנית לדור הבא.",
       "authorship": "מסורות תורתו נאספו ב'מגיד דבריו ליעקב' בידי תלמידו רבי שלמה מלוצק; אין לייחס את חיבור העריכה למגיד כאילו כתב את כולו בעצמו.",
@@ -3132,7 +3134,8 @@
       "name": "רבי משולם זושא מאניפולי",
       "mediaIds": [
         "hasidic-sages-destiny-stories",
-        "maggid-zusha-agadah-blessing-hardship"
+        "maggid-zusha-agadah-blessing-hardship",
+        "on-heaven-and-earth-berel-wein-destiny-col-2000"
       ],
       "hook": "שני אחים נודדים, עוני גדול ודרך חסידית שבה הענווה עצמה נעשית סיפור.",
       "authorship": "לא ידוע על ספר שיטתי שכתב בעצמו. 'מנורת זהב' מקבץ דברי תורה ומסורות עליו שנאספו ונדפסו אחרי פטירתו; יש להבחין בין הקובץ לבין חיבור אישי.",
@@ -3237,7 +3240,8 @@
       "id": "levi-yitzchak-berdichev",
       "name": "רבי לוי יצחק מברדיצ׳ב",
       "mediaIds": [
-        "hasidic-sages-destiny-stories"
+        "hasidic-sages-destiny-stories",
+        "on-heaven-and-earth-berel-wein-destiny-col-2000"
       ],
       "hook": "הצדיק שמחפש דרך לראות זכות באדם — וגם מלמד מהי אחריות כלפי הזולת.",
       "authorship": "מחבר 'קדושת לוי', ספר דרושים ותורות על פרשות התורה והמועדים. סיפורי הסנגוריה שנמסרו עליו שייכים למסורת החסידית ויש להבחין בינם לבין דבריו הכתובים.",
@@ -3266,6 +3270,41 @@
         "text": "לפי 'קדושת לוי' על פרשת נח, עבודת ה׳ נמדדת גם ברצון לקרב את הזולת ולהיטיב עמו. זהו מסר רעיוני, לא פסק הלכה חדש.",
         "url": "https://www.sefaria.org/Kedushat_Levi%2C_Genesis%2C_Noach",
         "type": "מוסר חסידי"
+      }
+    },
+    {
+      "id": "leib-sarahs",
+      "name": "רבי אריה לייב שרה׳ס — הצדיק הנודד",
+      "mediaIds": [
+        "on-heaven-and-earth-berel-wein-destiny-col-2000"
+      ],
+      "hook": "צדיק חסידי נודד שאסף תרומות לפדיון שבויים, ושמו נקשר בסיפורי מופת.",
+      "authorship": "אין ידיעה על ספר שחיבר בעצמו. ״גבורת ארי״ כינס מסורות עליו; לפי קטלוג הספרייה הלאומית נערך כנראה בידי הרב ראובן מרגליות.",
+      "works": [
+        {
+          "title": "גבורת ארי — תולדות רבי לייב שרה׳ס",
+          "description": "קובץ מסורות עליו, בעריכה המיוחסת לראובן מרגליות; לא ספר שחיבר.",
+          "url": "https://www.nli.org.il/he/books/NNL_ALEPH990009581790205171/NLI",
+          "access": "info"
+        },
+        {
+          "title": "ר׳ לייב שרה׳ס — סיפורי אפרים צורף",
+          "description": "סיפורי חסידים מאוחרים לקריאה חופשית; אינם עדות בת־התקופה.",
+          "url": "https://benyehuda.org/read/56803",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "מסעותיו של הצדיק הנודד",
+        "text": "במסורת החסידית מסופר שנדד בכפרים ועיירות לאיסוף כספים לפדיון שבויים ולסיוע לנזקקים; סיפורי המופת אינם תיעוד היסטורי.",
+        "url": "https://benyehuda.org/read/56803",
+        "type": "מסורת חסידית"
+      },
+      "idea": {
+        "title": "פדיון שבויים קודם",
+        "text": "הרמב״ם, מתנות עניים ח, י, מדגיש את חשיבות פדיון השבויים. זהו רעיון מתוך המקור, ולא פסק הלכה חדש.",
+        "url": "https://www.sefaria.org/Mishneh_Torah%2C_Gifts_to_the_Poor.8.10?lang=he",
+        "type": "משנה תורה, מתנות עניים ח, י"
       }
     },
     {
