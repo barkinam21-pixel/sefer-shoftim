@@ -4454,7 +4454,10 @@
         "rebbetanya-arabic-jem-secret-weapon-bouskila",
         "rebbe-marching-orders-jem-documentary",
         "safe-place-1991-gulf-war-tzivos-hashem-full-drama",
-        "lubavitcher-rebbe-moscow-iron-curtain-greetings-acted-2016"
+        "lubavitcher-rebbe-moscow-iron-curtain-greetings-acted-2016",
+        "rebbe-rav-jem-berlin-1929",
+        "rebbe-rav-jem-visit-1964",
+        "rebbe-rav-jem-farbrengen-1980"
       ],
       "hook": "בשלהי המאה העשרים הציב הרבי מליובאוויטש לימוד, שליחות וספרים במרכז רשת קהילתית שחצתה גבולות.",
       "authorship": "הרבי חיבר מכתבים, רשימות וביאורים והשמיע אלפי שיחות ומאמרים. 'היום יום' נערך על ידו בשנת 1942 מתוך דברי אדמו״רי חב״ד לפי הוראת חותנו; 'ליקוטי שיחות' מבוסס על דבריו וליקוטים שנערכו ופורסמו, ואינו יצירה שחיבר כולה כספר במו ידיו.",
@@ -6262,6 +6265,43 @@
         "text": "ב״שער החצר״ סימן ו׳ הדגיש שתלמידי חכמים בארץ ישראל נוחים זה לזה בהלכה; רעיון מוסרי, לא פסק חדש.",
         "url": "https://www.toraland.org.il/%D7%97%D7%A0%D7%95%D7%AA-%D7%9E%D7%A7%D7%95%D7%95%D7%A0%D7%AA/%D7%A1%D7%A4%D7%A8%D7%99-%D7%94%D7%9E%D7%9B%D7%95%D7%9F/%D7%A9%D7%A2%D7%A8-%D7%94%D7%97%D7%A6%D7%A8/",
         "type": "שער החצר, סימן ו׳ — מובא בהקדמת המהדירים"
+      }
+    },
+    {
+      "id": "joseph-ber-soloveitchik",
+      "name": "הרב יוסף דוב סולובייצ׳יק — 'הרב' מבוסטון",
+      "mediaIds": [
+        "rebbe-rav-jem-berlin-1929",
+        "rebbe-rav-jem-visit-1964",
+        "rebbe-rav-jem-farbrengen-1980"
+      ],
+      "hook": "בין ברלין לניו יורק, 'הרב' שילב עיון הלכתי עמוק עם דיאלוג בין עולמות.",
+      "authorship": "הרב סולובייצ׳יק חיבר את המסות 'איש ההלכה' ו'איש האמונה הבודד'. חיבורים אחרים הנדפסים בשמו נערכו גם משיעורים, הרצאות ורשימות, ויש להבחין בין דבריו לבין עבודת העורכים.",
+      "works": [
+        {
+          "title": "איש ההלכה (Halakhic Man)",
+          "description": "מסה בהגות ההלכה ובאופיו של האדם ההלכתי; עמוד מידע של המו״ל.",
+          "url": "https://jps.org/books/halakhic-man/",
+          "access": "info"
+        },
+        {
+          "title": "איש האמונה הבודד (The Lonely Man of Faith)",
+          "description": "מסה על חוויית האמונה והמפגש בין העולם הדתי לעולם המודרני.",
+          "url": "https://oupress.org/product/the-lonely-man-of-faith/",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "משני צדיה של האוקיינוס",
+        "text": "תלמידיו מספרים על המפגשים בברלין ועל קשר אישי שהתחדש בניו יורק; אלה עדויות מאוחרות, לא צילום המפגשים עצמם.",
+        "url": "https://www.chabad.org/multimedia/video_cdo/aid/527752/jewish/In-Berlin.htm",
+        "type": "עדות מאוחרת — JEM, In Berlin (1929)"
+      },
+      "idea": {
+        "title": "לחיות מתוך מסגרת ההלכה",
+        "text": "ב'איש ההלכה' הוא מתאר את ההלכה כדרך להבנת העולם ולעיצוב חיי האדם; דיון הגותי ולא פסק הלכה למעשה.",
+        "url": "https://jps.org/books/halakhic-man/",
+        "type": "איש ההלכה — תיאור חיבור המקור, JPS"
       }
     }
   ]
