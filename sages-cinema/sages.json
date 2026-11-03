@@ -227,6 +227,12 @@
           "description": "הסיפור על מות תלמידיו ועל תחילת ההוראה מחדש מפי חכמים אחרים.",
           "url": "https://www.sefaria.org/Yevamot.62b?lang=he",
           "access": "read"
+        },
+        {
+          "title": "בבא בתרא י׳ ע״א — רבי עקיבא וטורנוסרופוס",
+          "description": "דיון תלמודי על צדקה, עוני ואחריות לסייע לאחר.",
+          "url": "https://www.sefaria.org/Bava_Batra.10a?lang=he",
+          "access": "read"
         }
       ],
       "story": {
