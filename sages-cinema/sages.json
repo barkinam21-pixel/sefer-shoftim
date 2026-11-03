@@ -6175,6 +6175,35 @@
         "url": "https://www.sefaria.org/Pirkei_Avot.1.12?lang=he",
         "type": "משנה — אבות א, יב"
       }
+    },
+    {
+      "id": "sheshet-benveniste-aragon",
+      "name": "ששת בן יצחק בןבנשתי — הרופא והמלומד מספרד",
+      "mediaIds": [
+        "sheshet-benveniste-rtve-shalom-biography-2014"
+      ],
+      "hook": "בין ארמונות מלכי אראגון לבתי מדרש וספרים — רופא יהודי שסייע לחכמי דורו.",
+      "authorship": "חיבר שירה וחיבורים רפואיים; חיבור רפואי שלו שרד בכתבי יד, אך שמו המדויק אינו מבוסס במקורות שבדקנו. ספר שעשועים הוקדש לו בידי יוסף אבן זבארה, ולא נכתב בידו.",
+      "works": [
+        {
+          "title": "כתבי הרפואה של ששת בןבנשתי — מידע על כתבי היד",
+          "description": "חיבורים רפואיים המיוחסים לו, שנשמרו בכתבי יד; מידע ביוגרפי, לא טקסט חופשי.",
+          "url": "https://www.galeriametges.cat/galeria-fitxa.php?icod=EFDF",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "רופא, מתרגם ושליח המלך",
+        "text": "לפי מקורות ביוגרפיים, שימש רופא מלכים, תמך בחכמים ואף נשלח בשנת 1200 בשליחות דיפלומטית למרוקו.",
+        "url": "https://www.galeriametges.cat/galeria-fitxa.php?icod=EFDF",
+        "type": "ביוגרפיה היסטורית"
+      },
+      "idea": {
+        "title": "תמיכה בחכמים וביצירה",
+        "text": "מקורות התקופה מתארים אותו כפטרונם של מלומדים ומשוררים וכמי שהעריך את משנה תורה לרמב״ם.",
+        "url": "https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/benveniste-sheshet-ben-isaac-ben-joseph",
+        "type": "ביוגרפיה מחקרית — לא פסק הלכה"
+      }
     }
   ]
 }
