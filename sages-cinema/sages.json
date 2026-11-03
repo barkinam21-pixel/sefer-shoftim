@@ -6205,6 +6205,35 @@
         "url": "https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/benveniste-sheshet-ben-isaac-ben-joseph",
         "type": "ביוגרפיה מחקרית — לא פסק הלכה"
       }
+    },
+    {
+      "id": "gracia-nasi",
+      "name": "דונה גרציה (חנה) נשיא — מנהיגה ומצילת אנוסים",
+      "mediaIds": [
+        "dona-gracia-nasi-todoai-cinematic-docudrama-2026"
+      ],
+      "hook": "מסוחרת עשירה הפכה למי שהפעילה רשת סיוע ליהודים אנוסים ברחבי אירופה.",
+      "authorship": "דונה גרציה הייתה מנהיגה ופטרונית קהילה; לא ידוע על חיבור תורני שכתבה. תנ״ך פרארה (1553) הוקדש לה, אך לא נכתב בידיה, ומימונה אינו ודאי.",
+      "works": [
+        {
+          "title": "תנ״ך פרארה (1553) — הוקדש לדונה גרציה",
+          "description": "תרגום מקרא לספרדית לאנוסים; הוקדש לה אך לא נכתב בידיה.",
+          "url": "https://blog.nli.org.il/sodot-ferrara-anusim/",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "בין נמלי אירופה לקושטא",
+        "text": "מן המסחר באירופה פעלה דונה גרציה למען אנוסים נרדפים; הסרט משחזר את חייה בסצנות AI ואינו תיעוד מצולם.",
+        "url": "https://todowith.ai/blog/cinematic-ai-film",
+        "type": "סיפור היסטורי בהמחזה"
+      },
+      "idea": {
+        "title": "אחריות לקהילה נרדפת",
+        "text": "תנ״ך פרארה הוקדש לה ושירת אנוסים המבקשים לשוב למורשתם; עצם ההקדשה מתועדת, אך לא מוכח שמימנה את ההדפסה.",
+        "url": "https://blog.nli.org.il/sodot-ferrara-anusim/",
+        "type": "מורשת היסטורית — לא הלכה"
+      }
     }
   ]
 }
