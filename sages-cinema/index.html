@@ -259,6 +259,7 @@ function validUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:"#
 function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(s)}
 // Use only the providers' official players; no videos are copied or proxied.
 function playableSource(it){
+ if(it.externalOnly===true)return null; // This entry has only a verified official watch page, not a verified embed.
  var youtubeId=validYoutube(it.youtubeId)?it.youtubeId:null;
  var u=validUrl(it.url),parsed=null;
  if(u!=="#"){try{parsed=new URL(u)}catch(e){}}
