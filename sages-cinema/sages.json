@@ -6344,6 +6344,35 @@
         "url": "https://www.chabad.org/library/article_cdo/aid/2363483/jewish/In-Defense-of-Chassidism.htm",
         "type": "עדות מזא״ה, משפט בייליס, 4.11.1913; בבלי שבת ל״א ע״א"
       }
+    },
+    {
+      "id": "avraham-hamra-syria",
+      "name": "הרב אברהם חמרה — רבה של יהדות סוריה",
+      "mediaIds": [
+        "damascus-crowns-rabbi-avraham-hamra-chabad"
+      ],
+      "hook": "בדמשק, בין סכנה לסוד, נאבק רב הקהילה להציל יהודים וכתבי תנ״ך עתיקים.",
+      "authorship": "כתרי דמשק אינם חיבורים שחיבר הרב חמרה, אלא כתבי יד של המקרא שנשמרו בקהילה במשך מאות שנים. הרב סייע בהצלתם; אין כאן ייחוס ספר שחיבר בעצמו.",
+      "works": [
+        {
+          "title": "כתרי דמשק — כתבי יד עתיקים (לא חיבורו של הרב)",
+          "description": "סקירה על כתבי התנ״ך שהציל; אין לייחס לו את חיבורם.",
+          "url": "https://www.nli.org.il/he/discover/judaism/jewish-people-treasures/damascus-keter",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "הספר שהוסתר במעיל",
+        "text": "לפי תיעוד המבצע, הרב מסר כתב יד יקר ערך לשליח שהסתירו במעילו; כך נפתח נתיב הצלה מן דמשק. פרטים אחרים נותרו חסויים.",
+        "url": "https://www.chabad.org/library/article_cdo/aid/6787876/jewish/The-Untold-Story-of-the-Crowns-of-Damascus.htm",
+        "type": "עדות היסטורית מתועדת על הצלת כתרי דמשק בשנות ה־90"
+      },
+      "idea": {
+        "title": "ומסרה — האחריות להעברת המורשת",
+        "text": "אבות א, א מתאר מסירת תורה מדור לדור. שמירת כתבי היד העתיקים ממחישה אחריות זו, בלי לייחס לרב חמרה חיבור שלא כתב.",
+        "url": "https://www.sefaria.org/Pirkei_Avot.1.1?lang=he",
+        "type": "משנה אבות א, א — עיקרון מסירת התורה"
+      }
     }
   ]
 }
