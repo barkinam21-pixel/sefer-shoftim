@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-04",
-  "updatedLabel": "נוספו שני סרטוני אנימציה חדשים מתורת רבי נחמן — קימה אחרי נפילה ומשל הצמא",
+  "updatedLabel": "נוספו שני סרטונים תיעודיים מאומתים: הבריחה מפריז ב־1940 וזיכרונות מחיי הרבנית חיה מושקא",
   "eras": [
     {
       "id": "second-temple",
@@ -6689,6 +6689,27 @@
       "verified": "2026-10-29"
     },
     {
+      "id": "rebbe-rebbetzin-paris-escape-jem-1940",
+      "title": "הבריחה מפריז — הרבי והרבנית חיה מושקא ביוני 1940",
+      "figure": "רבי מנחם מנדל שניאורסון והרבנית חיה מושקא שניאורסון",
+      "era": "modern",
+      "year": 1940,
+      "century": "יוני 1940 — מלחמת העולם השנייה",
+      "region": "פריז, צרפת",
+      "type": "עדות היסטורית מצולמת — סיפור בריחה, 4:46 דקות",
+      "language": "אנגלית",
+      "duration": "4:46",
+      "description": "כשפריז עמדה בפני הכיבוש הנאצי, הרבי והרבנית חיה מושקא נאלצו לעזוב את העיר. הרב שלום דובער לוין משחזר את סיפור היציאה, כפי ששמע מפי הרבנית עצמה — זיכרון אישי שמאיר את רגעי הסכנה.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — Leaving Paris, June 1940; נגן הווידאו הרשמי",
+      "url": "https://www.chabad.org/therebbe/article_cdo/aid/3935956/jewish/Leaving-Paris.htm",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel",
+        "chaya-mushka-schneerson"
+      ],
+      "fiction": "תיעוד מאוחר של סיפור שסיפרה הרבנית למספר; הסרט אינו צילום של הבריחה עצמה, ויש להבחין בין זיכרון בעל־פה לתיעוד בן התקופה.",
+      "verified": "2026-11-04"
+    },
+    {
       "id": "rebbe-rebbetzin-arrival-america-jem-1941",
       "title": "מסע ההצלה לאמריקה — הרבי והרבנית חיה מושקא בשנת 1941",
       "figure": "רבי מנחם מנדל שניאורסון והרבנית חיה מושקא שניאורסון",
@@ -7977,6 +7998,27 @@
       ],
       "fiction": "תיעוד היסטורי מנקודת מבטו של המפיק; הצפייה החינמית היא בקטע מוגדר ולא בסרט השלם.",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "rebbetzin-chaya-mushka-vignettes-jem-1988",
+      "title": "דיוקן של ענווה — זיכרונות מחיי הרבנית חיה מושקא",
+      "figure": "הרבנית חיה מושקא שניאורסון",
+      "era": "modern",
+      "year": 1988,
+      "century": "מבט על חייה עד פטירתה בשנת 1988",
+      "region": "אירופה וניו יורק",
+      "type": "סרט תיעודי ביוגרפי עם עדויות אישיות — 7:36 דקות",
+      "language": "אנגלית",
+      "duration": "7:36",
+      "description": "דיוקן של אישה שבחרה לחיות הרחק מאור הזרקורים: אנשים שפגשו את הרבנית חיה מושקא משחזרים רגעים של מסירות וצניעות, לצד דבריו של הרבי לאחר פטירתה. סיפור חיים דרך זיכרונות אישיים.",
+      "source": "Jewish Educational Media (JEM) / Chabad.org — Vignettes of Royalty, Living Torah; נגן הווידאו הרשמי",
+      "url": "https://www.chabad.org/therebbe/article_cdo/aid/4649191/jewish/Vignettes-of-Royalty.htm",
+      "sageIds": [
+        "chaya-mushka-schneerson",
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "סרט תיעודי המשלב זיכרונות וקטעי דברים מאוחרים; שנת 1988 היא נקודת ייחוס לדיוקן, לא שנת ההתרחשות של כל הסיפורים.",
+      "verified": "2026-11-04"
     },
     {
       "id": "mordechai-eliyahu-hakima-children-joy",
