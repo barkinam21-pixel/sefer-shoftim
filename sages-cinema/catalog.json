@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-04",
-  "updatedLabel": "נוספו שני מסעות תיעודיים מצולמים בעקבות רבי טרפון ורבי מאיר בעל הנס.",
+  "updatedLabel": "תוקן שיוך נגן האנימציה ״על שמים וארץ״ לסרט הנכון; לא נוספו סרטים בהרצה זו.",
   "eras": [
     {
       "id": "second-temple",
@@ -4048,7 +4048,8 @@
         "leib-sarahs"
       ],
       "fiction": "עיבוד אמנותי של סיפורים ומסורות חסידיות, חלקם אגדיים; הדיאלוגים, הנסים וסדר המאורעות אינם תיעוד היסטורי ודאי.",
-      "verified": "2026-11-02"
+      "verified": "2026-11-04",
+      "youtubeId": "7VToY3jTDqc"
     },
     {
       "id": "hasidic-sages-destiny-stories",
@@ -4064,15 +4065,14 @@
       "source": "דסטני הפקות / הידברות; נגן YouTube של ״על שמים וארץ״ המובא גם ב־COL, 23.1.2023",
       "url": "https://www.hidabroot.org/video/63035",
       "fiction": "המחזה של סיפורים ומסורות חסידיות; הפרטים אינם תיעוד היסטורי בלתי תלוי",
-      "verified": "2026-11-03",
+      "verified": "2026-11-04",
       "sageIds": [
         "besht",
         "maggid-mezritch",
         "levi-yitzchak-berdichev",
         "zusha-anipoli",
         "elimelech-lizhensk"
-      ],
-      "youtubeId": "7VToY3jTDqc"
+      ]
     },
     {
       "id": "alter-rebbe-colel-chabad-history-chabad-doc",
