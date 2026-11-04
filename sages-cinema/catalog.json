@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-04",
-  "updatedLabel": "נוסף הסרט התיעודי הג׳ושניקים על הרב יהושע גורדון והשפעתו המתמשכת",
+  "updatedLabel": "נוספו מסע בעקבות משנה תורה ושתי עדויות מסמרקנד הסובייטית",
   "eras": [
     {
       "id": "second-temple",
@@ -2841,6 +2841,26 @@
       "url": "https://www.hidabroot.org/video/63034",
       "fiction": "סרט ביוגרפי מונפש; שיחות וסצנות עשויות להיות המחזה",
       "verified": "2026-10-27"
+    },
+    {
+      "id": "rambam-mishneh-torah-800-years-history-moscowitz-chabad",
+      "title": "משנה תורה — מסע היסטורי של 800 שנה בעקבות הרמב״ם",
+      "figure": "הרמב״ם — רבי משה בן מימון",
+      "era": "rishonim",
+      "year": 1180,
+      "century": "המאה ה־12 ואילך — יצירת משנה תורה ותולדות השפעתו",
+      "region": "מצרים וקהילות ישראל לדורותיהן",
+      "type": "סרטון תיעודי־היסטורי, מסע בעקבות ספר (6:29)",
+      "language": "אנגלית",
+      "duration": "6:29",
+      "description": "מסע מצולם בעקבות ספר משנה תורה של הרמב״ם: כיצד חיבור מימי הביניים ליווה את עולם התורה במשך מאות שנים? סקירה היסטורית סיפורית על הספר, ולא שיעור בהלכותיו.",
+      "source": "Chabad.org / Moshe Moscowitz / Shazak — פרק וידאו רשמי לצפייה חופשית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/4118002/jewish/The-Book-Every-Jew-Needs-to-Know.htm",
+      "sageIds": [
+        "rambam"
+      ],
+      "fiction": "סקירה היסטורית בת זמננו על חיבורו של הרמב״ם, לא צילומים בני התקופה.",
+      "verified": "2026-11-04"
     },
     {
       "id": "rambam-great-eagle-kan11-ep3",
@@ -6903,6 +6923,46 @@
       ],
       "fiction": "ביוגרפיה מצולמת בעריכת הידברות עם המחשות חזותיות באמצעות AI; תמונות השחזור אינן צילומי היסטוריה מקוריים.",
       "verified": "2026-11-01"
+    },
+    {
+      "id": "samarkand-secret-torah-school-hillel-zaltzman",
+      "title": "בית הספר הסודי לתורה — המחתרת היהודית בסמרקנד",
+      "figure": "הרב הלל זלצמן ופעילי המחתרת היהודית",
+      "era": "modern",
+      "year": 1950,
+      "century": "אמצע המאה ה־20 בתקופה הסובייטית — שנת המיון משוערת",
+      "region": "סמרקנד, אוזבקיסטן הסובייטית",
+      "type": "עדות אישית מצולמת ומסופרת (8:41)",
+      "language": "אנגלית",
+      "duration": "8:41",
+      "description": "הרב הלל זלצמן חוזר לילדותו בסמרקנד ומספר כיצד למדו תורה בסתר לנוכח סכנות השלטון הסובייטי. פרק עדות אישי מתוך סדרת סיפורים על המחתרת היהודית.",
+      "source": "Chabad.org — Stories from the Samarkand Jewish Underground / Hillel Zaltzman",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/3486907/jewish/The-Secret-Torah-School.htm",
+      "sageIds": [
+        "hillel-zaltzman"
+      ],
+      "fiction": "זיכרונותיו האישיים של המספר, לא שחזור מצולם בן התקופה; האירועים מוצגים מנקודת מבטו.",
+      "verified": "2026-11-04"
+    },
+    {
+      "id": "samarkand-secret-matzah-bakery-hillel-zaltzman",
+      "title": "מאפיית המצות החשאית — יהדות סמרקנד תחת הקומוניזם",
+      "figure": "הרב הלל זלצמן ויהודי סמרקנד",
+      "era": "modern",
+      "year": 1950,
+      "century": "אמצע המאה ה־20 בתקופה הסובייטית — שנת המיון משוערת",
+      "region": "סמרקנד, אוזבקיסטן הסובייטית",
+      "type": "עדות אישית מצולמת ומסופרת (7:23)",
+      "language": "אנגלית",
+      "duration": "7:23",
+      "description": "איך אפו מצות לפסח תחת מעקב קומוניסטי? הרב הלל זלצמן מספר על מאפיית מצות שפעלה בסתר ועל ההתעקשות לשמור את מסורת החג במציאות מסוכנת.",
+      "source": "Chabad.org — Stories from the Samarkand Jewish Underground / Hillel Zaltzman",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/3486923/jewish/Our-Secret-Matzah-Bakery.htm",
+      "sageIds": [
+        "hillel-zaltzman"
+      ],
+      "fiction": "עדות אישית על העבר, לא צילום מקורי של המאפייה בתקופת המחתרת.",
+      "verified": "2026-11-04"
     },
     {
       "id": "lubavitcher-rebbe-four-points-radiance-chabad-documentary",
