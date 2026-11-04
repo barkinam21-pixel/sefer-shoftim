@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-04",
-  "updatedLabel": "נוספו שני מסעות מצולמים: חכמי עכו ופייטן ירושלים ותוניס רבי אשר מזרחי",
+  "updatedLabel": "תוקנו שיוכים הדדיים בין סרטים קיימים לתיקי חכמים; לא נוספו סרטים בהרצה זו",
   "eras": [
     {
       "id": "second-temple",
@@ -516,7 +516,10 @@
       "url": "https://bimbam.com/honi/",
       "youtubeId": "hRfV7XrGfBo",
       "fiction": "עיבוד אגדה תלמודית, לא צילום היסטורי",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "honi"
+      ]
     },
     {
       "id": "honi-carob-seventy-years-chassidic-dreams-2026",
@@ -573,7 +576,11 @@
       "url": "https://bimbam.com/machlochet/",
       "youtubeId": "H6enfCzlU9M",
       "fiction": "המחשה חינוכית מונפשת של מסורות חז״ל; אין מדובר בתיעוד של דיון היסטורי מסוים",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "hillel-hazaken",
+        "shammai-hazaken"
+      ]
     },
     {
       "id": "hillel-shammai-batzri-graves-journey",
@@ -629,7 +636,11 @@
       "source": "RUACH, Inc. · Jewish Story Video Project",
       "url": "https://player.vimeo.com/video/125713616?app_id=122963&dnt=1",
       "fiction": "עיבוד חינוכי מצויר לסיפור התלמודי בשבת ל״א ע״א, לא שחזור היסטורי",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "hillel-hazaken",
+        "shammai-hazaken"
+      ]
     },
     {
       "id": "dama-ben-netina-jasper-anafeam-free-2026",
@@ -686,7 +697,10 @@
       "youtubeId": "96PXvR8MJJY",
       "duration": "93:00",
       "fiction": "דרמת קולנוע מאוירת המבוססת על יוסף בן מתתיהו ואגדות החורבן; הדיאלוגים והסצנות מעובדים אמנותית ואין לראות בכל פרט עובדה היסטורית",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rybz"
+      ]
     },
     {
       "id": "rybz-keshet-vaanan-ten-li-yavneh-kan",
@@ -783,7 +797,10 @@
       "url": "https://bimbam.com/yavneh/",
       "fiction": "עיבוד יצירתי של אגדת חורבן",
       "verified": "2026-10-30",
-      "youtubeId": "R6t3Zm7nMTg"
+      "youtubeId": "R6t3Zm7nMTg",
+      "sageIds": [
+        "rybz"
+      ]
     },
     {
       "id": "nachum-ish-gamzu-ruach-animation",
@@ -799,7 +816,10 @@
       "source": "RUACH, Inc. · Jewish Story Video Project · Yeshiva Elementary School",
       "url": "https://player.vimeo.com/video/125713608?app_id=122963&dnt=1",
       "fiction": "המחשה אמנותית של מסורת חז״ל; לא תיעוד היסטורי של ניסים",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "nachum-ish-gamzu"
+      ]
     },
     {
       "id": "nachum-gamzu-treasure-chassidic-dreams-2026",
@@ -954,7 +974,11 @@
       "url": "https://bimbam.com/scholars/",
       "youtubeId": "ljRnvHHR7XM",
       "fiction": "המחזה וסאטירה מודרנית של ברכות כ״ז–כ״ח",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "yehoshua",
+        "gamliel"
+      ]
     },
     {
       "id": "onkelos-moscow-sipura-talmuda-acted-2019",
@@ -1029,7 +1053,10 @@
       "url": "https://bimbam.com/achnai/",
       "youtubeId": "al4FgjbUztI",
       "fiction": "המחזה מוזיקלית לאגדה בבבא מציעא נ״ט",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "eliezer"
+      ]
     },
     {
       "id": "achnai-sipura-talmuda-moscow-2019",
@@ -1167,7 +1194,10 @@
       "url": "https://bimbam.com/waiting-for-ewe/",
       "youtubeId": "Q-MDa28_J6Y",
       "fiction": "המחזה לסיפור חז״ל; דמותה ומחשבותיה של רחל מעוצבות בפרשנות היוצרים",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "akiva"
+      ]
     },
     {
       "id": "tarfon-honoring-mother-ai-kids",
@@ -1302,7 +1332,10 @@
       "url": "https://bimbam.com/rabbi-akiva/",
       "youtubeId": "lyn7xRH11dk",
       "fiction": "אגדת מנחות כ״ט, לא תיעוד של מפגש היסטורי",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "akiva"
+      ]
     },
     {
       "id": "acher-bimbam",
@@ -1319,7 +1352,11 @@
       "url": "https://bimbam.com/elisha-and-acher/",
       "youtubeId": "N4SZ0awPnUY",
       "fiction": "עיבוד מודרני חופשי למקורות בחגיגה",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "acher",
+        "rabbi-meir"
+      ]
     },
     {
       "id": "akiva-daughter-charity-snake-ai-kids",
@@ -1571,7 +1608,10 @@
       "url": "https://bimbam.com/the-cave/",
       "youtubeId": "sGoXolgka8k",
       "fiction": "המחזה לאגדת שבת ל״ג",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rashbi"
+      ]
     },
     {
       "id": "rashbi-anafeam-story-ai-kolel-2026",
@@ -1746,7 +1786,10 @@
       "url": "https://bimbam.com/the-emperors-secret/",
       "fiction": "המחזה לאגדה בעבודה זרה י׳; זהות אנטונינוס והפרטים אינם ודאות היסטורית",
       "verified": "2026-10-30",
-      "youtubeId": "lAJoys4Z6ww"
+      "youtubeId": "lAJoys4Z6ww",
+      "sageIds": [
+        "rebbi"
+      ]
     },
     {
       "id": "rebbi-calf-animated-kids",
@@ -1762,7 +1805,10 @@
       "source": "עולם הילדים — ערוץ YouTube",
       "url": "https://www.youtube.com/watch?v=_YLEkFr-sto",
       "fiction": "המחשת AI לילדים לאגדת חז״ל בבבא מציעא פ״ה; לא תיעוד היסטורי",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rebbi"
+      ]
     },
     {
       "id": "rabbi-hiyya-fringe-benefits-bimbam-menachot",
@@ -1919,7 +1965,11 @@
       "url": "https://bimbam.com/bromance/",
       "fiction": "עיבוד יצירתי של בבא מציעא פ״ד",
       "verified": "2026-10-30",
-      "youtubeId": "O9cSNUC03-Y"
+      "youtubeId": "O9cSNUC03-Y",
+      "sageIds": [
+        "r-yohanan",
+        "reish-lakish"
+      ]
     },
     {
       "id": "rav-huna-wine-vinegar-hidabroot-ai",
@@ -2328,7 +2378,10 @@
       "source": "בית אבי חי",
       "url": "https://www.bac.org.il/videos/?videoID=7932",
       "fiction": "יצירה תיעודית עם שחזורים/המחשות",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rashi"
+      ]
     },
     {
       "id": "rashi-kesh-vaanan-what-says-rashi-kan",
@@ -2538,7 +2591,10 @@
       "source": "בית אבי חי",
       "url": "https://www.bac.org.il/videos/?videoID=7934",
       "fiction": "דוקו־מסע; המסורת והאגדות מסומנות כחלק מן הסיפור",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "halevi"
+      ]
     },
     {
       "id": "yehuda-halevi-jewish-tapestry-medieval-scholars",
@@ -2653,7 +2709,10 @@
       "url": "https://www.youtube.com/watch?v=6Js73BadtqQ",
       "youtubeId": "6Js73BadtqQ",
       "fiction": "דוקו ביוגרפי עם המחשות אמנותיות; לא שחזור מצולם של המאה ה־12",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rambam"
+      ]
     },
     {
       "id": "david-umoshe-moroccan-council-ai-biography-2025",
@@ -2804,7 +2863,10 @@
       "url": "https://www.youtube.com/watch?v=NsZ8xyeaEk4",
       "youtubeId": "NsZ8xyeaEk4",
       "fiction": "דוקו ביוגרפי המשלב פרשנות היסטורית והמחשות",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rambam"
+      ]
     },
     {
       "id": "rambam-abc770-comic-biographical-animation",
@@ -2840,7 +2902,10 @@
       "source": "הידברות בשיתוף קרן דסטני",
       "url": "https://www.hidabroot.org/video/63034",
       "fiction": "סרט ביוגרפי מונפש; שיחות וסצנות עשויות להיות המחזה",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rambam"
+      ]
     },
     {
       "id": "rambam-mishneh-torah-800-years-history-moscowitz-chabad",
@@ -2877,7 +2942,10 @@
       "url": "https://www.youtube.com/watch?v=C8Wz1PMR5v4",
       "youtubeId": "C8Wz1PMR5v4",
       "fiction": "עיון תיעודי עם פרשנות ומחוות חזותיות, לא דרמה משוחקת",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rambam"
+      ]
     },
     {
       "id": "sheshet-benveniste-rtve-shalom-biography-2014",
@@ -3016,7 +3084,10 @@
       "url": "https://bimbam.com/kabbalah_eyes/",
       "youtubeId": "sczbbpCb0L8",
       "fiction": "עיבוד אמנותי לאגדה קבלית; לא ביוגרפיה של רשב״י ולא תיעוד של המאה השנייה",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "rashbi"
+      ]
     },
     {
       "id": "yosef-orabuena-navarre-carlos-iii-eitb",
@@ -3091,7 +3162,10 @@
       "source": "בית אבי חי",
       "url": "https://www.bac.org.il/videos/?videoID=6756",
       "fiction": "מסע תיעודי סביב אדם ואירוע היסטורי",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "abarbanel"
+      ]
     },
     {
       "id": "dona-gracia-nasi-todoai-cinematic-docudrama-2026",
@@ -3695,7 +3769,10 @@
       "source": "בית אבי חי",
       "url": "https://www.bac.org.il/videos/?videoID=7931",
       "fiction": "תיעוד היסטורי והמחשות",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "ramhal"
+      ]
     },
     {
       "id": "besht-hidabroot-english-ai-orphan-light",
@@ -3712,7 +3789,10 @@
       "url": "https://www.hidabroot.com/video/6076",
       "youtubeId": "c_Qpx1809-I",
       "fiction": "עיבוד אנימציית AI של ביוגרפיה ומסורות חסידיות; פרטים מן המסורת אינם בהכרח עובדות היסטוריות מאומתות",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "besht"
+      ]
     },
     {
       "id": "or-hachaim-kesh-vaanan-nli-heritage",
@@ -3823,7 +3903,10 @@
       "source": "Holy World Productions · Chabad.org Kids",
       "url": "https://www.chabad.org/kids/article_cdo/aid/1966644/jewish/Yaakov-and-Eliyahu.htm",
       "fiction": "אגדה חסידית מעובדת לבובות סטופ־מושן; הסרט הארוך שממנו נלקחה היצירה אינו מוצע כאן",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "besht"
+      ]
     },
     {
       "id": "malchuyot-shel-mata-kan11-ep1-revenge-of-sander",
@@ -5514,7 +5597,11 @@
       "source": "ערוץ הידברות — בעקבות הצדיקים",
       "url": "https://www.hidabroot.org/video/221137",
       "fiction": "סיור תיעודי וסיפורי מסורת, לא שחזור דרמטי",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "benish",
+        "fatiya"
+      ]
     },
     {
       "id": "rashab-chabadkidsvideos-he-part2-leadership-2026",
@@ -6299,7 +6386,10 @@
       "url": "https://www.hidabroot.org/video/225289",
       "duration": "05:40",
       "fiction": "אנימציה ביוגרפית עם המחשות מסורתיות, מותאמת לילדים",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "baba-sali"
+      ]
     },
     {
       "id": "baba-sali-hidabroot-life-of-holiness-ai",
@@ -7558,7 +7648,10 @@
       "source": "ערוץ הידברות",
       "url": "https://www.hidabroot.org/video/209688",
       "fiction": "סרט תיעודי; הבחנה בין עדויות, פרשנויות וסיפורים",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "ovadia"
+      ]
     },
     {
       "id": "benzion-abba-shaul-anafeam-ai-2025",
@@ -7808,7 +7901,10 @@
       "url": "https://www.hidabroot.org/video/227513",
       "duration": "01:58",
       "fiction": "סרט אנימציה ביוגרפי קצר המיועד בעיקר לילדים",
-      "verified": "2026-10-27"
+      "verified": "2026-10-27",
+      "sageIds": [
+        "ovadia"
+      ]
     },
     {
       "id": "yehuda-tzadka-clean-hands-agadah",
