@@ -6409,6 +6409,42 @@
         "url": "https://www.sefaria.org/Pirkei_Avot.1.6?lang=he",
         "type": "משנה אבות א, ו"
       }
+    },
+    {
+      "id": "hillel-zaltzman",
+      "name": "הרב הלל זלצמן — עדות ממחתרת סמרקנד",
+      "mediaIds": [
+        "samarkand-secret-torah-school-hillel-zaltzman",
+        "samarkand-secret-matzah-bakery-hillel-zaltzman"
+      ],
+      "hook": "איך לומדים תורה ואופים מצות כשכל צעד עלול לחשוף את המחתרת?",
+      "authorship": "הרב הלל זלצמן חיבר את ספר הזיכרונות Samarkand על חיי המחתרת היהודית בברית המועצות. חלק מפרקיו פורסמו באישור לקריאה חופשית באתר חב״ד; הוא אינו מחבר ספרי ההלכה שנלמדו במחתרת.",
+      "works": [
+        {
+          "title": "Samarkand — פרקי זיכרונות מן המחתרת",
+          "description": "מבחר פרקים מספרו של זלצמן, ולא הספר המלא.",
+          "url": "https://www.chabad.org/library/article_cdo/aid/2805267/jewish/Samarkand-Jewish-Underground.htm",
+          "access": "read"
+        },
+        {
+          "title": "ביקורת פתע — פרק מתוך Samarkand",
+          "description": "פרק סיפור אישי מתוך ספר הזיכרונות.",
+          "url": "https://www.chabad.org/library/article_cdo/aid/3018260/jewish/A-Surprise-Inspection.htm",
+          "access": "read"
+        }
+      ],
+      "story": {
+        "title": "בית מדרש מחוץ לחוק",
+        "text": "זלצמן מתאר כיצד למד תורה בסתר בילדותו בסמרקנד, כשחשיפת הלימודים עלולה הייתה לסכן את התלמידים והמורים.",
+        "url": "https://www.chabad.org/multimedia/video_cdo/aid/3486907/jewish/The-Secret-Torah-School.htm",
+        "type": "עדות וזיכרונות אישיים"
+      },
+      "idea": {
+        "title": "ובמקום שאין אנשים השתדל להיות איש",
+        "text": "באבות ב, ה נדרשת אחריות אישית במקום של מחסור במנהיגות; סיפור המחתרת מדגים התמדה ואחריות במציאות מסוכנת.",
+        "url": "https://www.sefaria.org/Pirkei_Avot.2.5?lang=he",
+        "type": "משנה אבות ב, ה"
+      }
     }
   ]
 }
