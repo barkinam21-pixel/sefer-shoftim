@@ -6374,6 +6374,41 @@
         "url": "https://www.sefaria.org/Pirkei_Avot.1.1?lang=he",
         "type": "משנה אבות א, א — עיקרון מסירת התורה"
       }
+    },
+    {
+      "id": "yehoshua-binyomin-gordon",
+      "name": "הרב יהושע בנימין (ג׳וש) גורדון — מורה תורה ושליח חב״ד",
+      "mediaIds": [
+        "the-joshniks-rabbi-yehoshua-gordon-documentary-2026"
+      ],
+      "hook": "תלמידים שלא פגשו אותו עדיין יושבים מדי בוקר לשיעורו — שנים לאחר מותו.",
+      "authorship": "הרב יהושע בנימין גורדון (1949–2016) לימד והקליט שיעורים על חומש עם רש״י, תניא ומשנה תורה. ספרים אלה חוברו בידי מחבריהם, ולא בידי הרב גורדון עצמו.",
+      "works": [
+        {
+          "title": "תניא — רבי שניאור זלמן מלאדי",
+          "description": "ספר בעל התניא שלימד הרב גורדון; לא חיבור שלו.",
+          "url": "https://www.sefaria.org/Tanya?lang=he",
+          "access": "read"
+        },
+        {
+          "title": "ארכיון הקלטות הרב גורדון",
+          "description": "מידע והקלטות של שיעוריו; אינו ספר שחיבר.",
+          "url": "https://www.chabad.org/multimedia/video_cdo/aid/903523/jewish/Rabbi-Gordon.htm",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "בית מדרש שמעבר לזמן",
+        "text": "עשר שנים לאחר פטירתו, אנשים שלא פגשו את הרב ממשיכים ללמוד בהקלטותיו; הסרט מתעד את הקהילה שנוצרה סביבו.",
+        "url": "https://www.chabad.org/multimedia/video_cdo/aid/7210402/jewish/The-Joshniks.htm",
+        "type": "סרט תיעודי בן זמננו"
+      },
+      "idea": {
+        "title": "עשה לך רב וקנה לך חבר",
+        "text": "באבות א, ו נזכרת חשיבות הרב והחברות בלימוד. הסרט ממחיש כיצד לימוד משותף יכול לקרב תלמידים גם מרחוק.",
+        "url": "https://www.sefaria.org/Pirkei_Avot.1.6?lang=he",
+        "type": "משנה אבות א, ו"
+      }
     }
   ]
 }
