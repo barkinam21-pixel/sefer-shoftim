@@ -6309,6 +6309,41 @@
         "url": "https://jps.org/books/halakhic-man/",
         "type": "איש ההלכה — תיאור חיבור המקור, JPS"
       }
+    },
+    {
+      "id": "yaakov-mazeh",
+      "name": "הרב יעקב מזא״ה — רבה של מוסקבה",
+      "mediaIds": [
+        "beilis-trial-chabad-target-of-opportunity-1913"
+      ],
+      "hook": "כשעלילת דם הרעישה את רוסיה, התייצב רב מוסקבה בבית המשפט להגן על עמו.",
+      "authorship": "הרב יעקב מזא״ה נשא עדות הגנה במשפט בייליס ב־1913, שפורסמה גם בעיתון 'הצפירה'. חיבר זיכרונות שהתפרסמו לאחר מכן; הסרט אינו יצירתו.",
+      "works": [
+        {
+          "title": "עדות הרב מזא״ה במשפט בייליס — הגנה על החסידות",
+          "description": "קטע מעדותו ב־1913 בתרגום אנגלי חופשי באתר חב״ד.",
+          "url": "https://www.chabad.org/library/article_cdo/aid/2363483/jewish/In-Defense-of-Chassidism.htm",
+          "access": "read"
+        },
+        {
+          "title": "זיכרונות הרב יעקב מזא״ה",
+          "description": "סקירה על ספר זיכרונותיו, לא הספר השלם לקריאה.",
+          "url": "https://www.makorrishon.co.il/culture/books/article/235038",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "העד שהשיב לעלילת הדם",
+        "text": "בשנת 1913 בא רב מוסקבה לקייב והגן במשפט בייליס על יהודים וחסידים מפני האשמות שקריות; עדותו נשתמרה.",
+        "url": "https://www.chabad.org/library/article_cdo/aid/2363483/jewish/In-Defense-of-Chassidism.htm",
+        "type": "אירוע היסטורי מתועד — משפט בייליס, 1913"
+      },
+      "idea": {
+        "title": "כבוד האדם והיושר כלפי הזולת",
+        "text": "בעדותו הביא את עקרון האיסור לפגוע בזולת ואת הכלל התלמודי ״דעלך סני לחברך לא תעביד״ (שבת לא ע״א).",
+        "url": "https://www.chabad.org/library/article_cdo/aid/2363483/jewish/In-Defense-of-Chassidism.htm",
+        "type": "עדות מזא״ה, משפט בייליס, 4.11.1913; בבלי שבת ל״א ע״א"
+      }
     }
   ]
 }
