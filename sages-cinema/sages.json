@@ -2149,7 +2149,8 @@
         "rambam-chabad-what-if-jewish-treasure-stethoscope-adventure",
         "rambam-shraga-bishgada-kan-season2-2014",
         "rambam-abc770-comic-biographical-animation",
-        "maimonides-burial-tiberias-dramatized-axelrod-jfc"
+        "maimonides-burial-tiberias-dramatized-axelrod-jfc",
+        "akko-four-sages-hidabroot-liran-levi-2025"
       ],
       "authorship": "מחבר משנה תורה, מורה הנבוכים, פירוש המשנה, ספר המצוות ועוד; ספריו עוסקים בתחומים שונים ויש להבחין בין הלכה, מוסר ופילוסופיה.",
       "hook": "רופא, פילוסוף ופוסק מנסה לסדר את התורה כולה למפת לימוד אחת.",
@@ -2308,7 +2309,8 @@
       "id": "ramban-nachmanides",
       "name": "הרמב״ן — רבי משה בן נחמן, פרשן התורה ומגן יהדות ברצלונה",
       "mediaIds": [
-        "ramban-barcelona-disputation-palace-2019"
+        "ramban-barcelona-disputation-palace-2019",
+        "akko-four-sages-hidabroot-liran-levi-2025"
       ],
       "hook": "בארמון מלך אראגון נדרש חכם יהודי להשיב לטענות הכנסייה מול שלטון שהיה חזק ממנו — ולשמור על קולו.",
       "authorship": "רבי משה בן נחמן חיבר פירושים לתורה ולתלמוד, חיבורים הלכתיים וכתבים נוספים; 'ספר הוויכוח' מוסר את גרסתו למעמד ברצלונה. 'איגרת הרמב״ן' מיוחסת לו במסורת הספרותית; אין לזהות את כל פירוט הוויכוח שבחיבור עם תמליל ניטרלי ומוסכם.",
@@ -2981,7 +2983,8 @@
       "id": "ramhal",
       "name": "הרמח״ל — רבי משה חיים לוצאטו",
       "mediaIds": [
-        "ramhal-bac"
+        "ramhal-bac",
+        "akko-four-sages-hidabroot-liran-levi-2025"
       ],
       "authorship": "חיבר ספרי מוסר, אמונה וקבלה ובהם מסילת ישרים, דרך ה׳ ודעת תבונות.",
       "hook": "ספר שמוביל את האדם במדרגות שינוי, לא רק משמיע עצות.",
@@ -3578,7 +3581,8 @@
         "nachman-findrabbinachman-ep21-song-of-grass",
         "nachman-diamond-prince-breslov-library-animated-he-2026",
         "nachman-findrabbinachman-ep22-fall-begin-again",
-        "nachman-findrabbinachman-ep23-thirst-for-water"
+        "nachman-findrabbinachman-ep23-thirst-for-water",
+        "akko-four-sages-hidabroot-liran-levi-2025"
       ],
       "authorship": "רבי נחמן מסר תורה ומעשיות בעל פה. תלמידו רבי נתן מברסלב תיעד, ערך והוציא לאור הרבה מדבריו; 'ליקוטי מוהר״ן' ו'סיפורי מעשיות' משמרים את תורתו וסיפוריו, אך אינם חיבורים שכתב והדפיס כולם בעצמו. גם 'מעשה ממרור' ו'משל ההינדיק' נמסרו במסורת בשמו בקובצי חסידים מאוחרים, ולא הוצאו לאור בידיו.",
       "hook": "נסיכה נעלמת, מלך מסתורי והיהלום האמיתי — שלושה סיפורים שנועדו להוביל את הקורא אל מעבר לעלילה.",
@@ -6488,6 +6492,41 @@
         "text": "בסיפורו של סגל, הרצון לתקוע בסוף יום הכיפורים גבר על חשש המעצר. זהו מסר מתוך זיכרונות אישיים, ולא פסק הלכה.",
         "url": "https://www.chabad.org/library/article_cdo/aid/2246/jewish/The-Shofar-and-the-Wall.htm",
         "type": "זיכרונות סגל — ״השופר והכותל״"
+      }
+    },
+    {
+      "id": "asher-shimon-mizrahi",
+      "name": "רבי אשר שמעון מזרחי — פייטן ירושלים ותוניס",
+      "mediaIds": [
+        "asher-mizrahi-jerusalem-tunis-liran-levi-hidabroot-2023"
+      ],
+      "hook": "פיוטיו עברו מירושלים לתוניס וחזרו איתו, כסיפור של גלות, געגוע ושיבה.",
+      "authorship": "רבי אשר מזרחי חיבר והלחין פיוטים ושירים בעברית, בערבית ובלדינו. ״מעדני מלך״ הוא קובץ שיריו; אין לייחס לו לחנים שעובדו או הולחנו בידי אחרים.",
+      "works": [
+        {
+          "title": "מעדני מלך — קובץ שירי רבי אשר מזרחי",
+          "description": "רישום ספר שיריו בספרייה הלאומית; הספר המלא אינו פתוח כאן לקריאה.",
+          "url": "https://www.nli.org.il/he/books/NNL_ALEPH990013761530205171/NLI",
+          "access": "info"
+        },
+        {
+          "title": "נגילה הללויה — פיוט מאת אשר מזרחי",
+          "description": "עמוד הפיוט, מידע וביצועים בספרייה הלאומית; השימוש מוגבל בזכויות.",
+          "url": "https://www.nli.org.il/he/piyut/Piyut1song_010027900000005171/NLI",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "הפיוטים שנסעו עם החזן",
+        "text": "לפי מחקר הספרייה הלאומית, מזרחי עבר מירושלים לתוניס, פעל שם כחזן ופייטן וחזר לירושלים ב־1967, סמוך לפטירתו.",
+        "url": "https://www.nli.org.il/he/discover/music/jewish-music/piyut/articles/figures/asher-mizrahi",
+        "type": "ביוגרפיה על פי מאמר יעקב אסל, נכדו, באתר הפיוט והתפילה"
+      },
+      "idea": {
+        "title": "כמיהה לשיבה לציון",
+        "text": "בפיוט ״נגילה הללויה״ מזרחי משלב שמחה עם תפילה לקיבוץ נדחים ולגאולה; זהו עיון בשירה ולא פסק הלכה.",
+        "url": "https://www.nli.org.il/he/piyut/Piyut1song_010027900000005171/NLI",
+        "type": "אתר הפיוט והתפילה, ״נגילה הללויה״ — פירוש הפיוט"
       }
     }
   ]
