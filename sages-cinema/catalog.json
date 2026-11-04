@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-04",
-  "updatedLabel": "תוקנו שיוכים הדדיים בין סרטים קיימים לתיקי חכמים; לא נוספו סרטים בהרצה זו",
+  "updatedLabel": "נוספו שני פרקי זיכרונות תיעודיים על האדמו״ר הריי״צ, הרבי והרבנית בפריז של שנות ה־30",
   "eras": [
     {
       "id": "second-temple",
@@ -6686,6 +6686,27 @@
       "verified": "2026-11-01"
     },
     {
+      "id": "jem-early-years-lax-family-two-rebbes-paris-1930s",
+      "title": "פריז של שנות השלושים — הריי״צ והרבי בבית משפחת לאקס",
+      "figure": "רבי יוסף יצחק שניאורסון והרבי מנחם מנדל שניאורסון",
+      "era": "modern",
+      "year": 1935,
+      "century": "שנות ה־30 של המאה ה־20; השנה המדויקת לא נמסרה",
+      "region": "פריז, צרפת",
+      "type": "וידאו תיעודי סיפורי — זיכרון אישי מוקלט",
+      "language": "אנגלית",
+      "description": "ברל לאקס חוזר לבית הוריו בפריז, שם התאכסן האדמו״ר הקודם מחב״ד בביקוריו בעיר, ומספר על הביקורים של חתנו, הרבי לעתיד. זיכרון משפחתי על מפגשים יוצאי דופן.",
+      "source": "Jewish Educational Media / Chabad.org — סדרת The Early Years, פרק מקורי לצפייה חופשית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/586338/jewish/Reb-Yankel-and-Baila-Lax.htm",
+      "duration": "05:12",
+      "sageIds": [
+        "rayatz-schneersohn",
+        "lubavitcher-rebbe-menachem-mendel"
+      ],
+      "fiction": "עדות אישית מאוחרת של בן המשפחה על שנות ה־30; אין לראות בה צילום של המפגשים עצמם.",
+      "verified": "2026-11-04"
+    },
+    {
       "id": "levi-yitzchak-schneerson-underground-wedding-jem-adamski",
       "title": "החתונה במחתרת — הרב לוי יצחק והמוזמן המפתיע",
       "figure": "רבי לוי יצחק שניאורסון — רב העיר יקטרינוסלב",
@@ -6724,6 +6745,27 @@
       ],
       "fiction": "רקע רדיפת יהודי וינה בשנת 1938 היסטורי; פרטי הנדר והמעשה בתל אביב נמסרו במסורת חסידית ונכתבו מאוחר יותר.",
       "verified": "2026-10-31"
+    },
+    {
+      "id": "jem-early-years-efraim-steinmetz-paris-1938",
+      "title": "הרבי והרבנית בפריז — ילד בן עשר נזכר בביקורים בדירתם",
+      "figure": "רבי מנחם מנדל שניאורסון והרבנית חיה מושקא שניאורסון",
+      "era": "modern",
+      "year": 1938,
+      "century": "1938, ערב מלחמת העולם השנייה",
+      "region": "פריז, צרפת",
+      "type": "וידאו תיעודי סיפורי — עדות אישית מוקלטת",
+      "language": "אנגלית",
+      "description": "אפרים שטיינמץ נזכר כיצד עברה משפחתו לפריז ב־1938 ובביקורים אצל הרבי והרבנית בדירתם. חלון קצר ואישי אל חייהם באירופה שלפני המלחמה.",
+      "source": "Jewish Educational Media / Chabad.org — סדרת The Early Years, פרק מקורי לצפייה חופשית",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/586341/jewish/Efraim-Steimetz.htm",
+      "duration": "03:18",
+      "sageIds": [
+        "lubavitcher-rebbe-menachem-mendel",
+        "chaya-mushka-schneerson"
+      ],
+      "fiction": "זיכרונותיו המאוחרים של עד ראייה על ביקורי ילדותו; לא המחזה עלילתית של הביקורים.",
+      "verified": "2026-11-04"
     },
     {
       "id": "levi-yitzchak-schneerson-unbreakable-faith-pnei-melech-2025",
