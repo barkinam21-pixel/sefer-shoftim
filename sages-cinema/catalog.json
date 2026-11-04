@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-04",
-  "updatedLabel": "נוספו מסע בעקבות משנה תורה ושתי עדויות מסמרקנד הסובייטית",
+  "updatedLabel": "נוסף הדי השופר — סרט תיעודי על תקיעת השופר בכותל בשנת 1930",
   "eras": [
     {
       "id": "second-temple",
@@ -6372,6 +6372,25 @@
       ],
       "fiction": "עיבוד סיפור מוסרי על דמות החכם; אין להניח שהדיאלוגים משוחזרים ממקור היסטורי ישיר.",
       "verified": "2026-10-31"
+    },
+    {
+      "id": "moshe-tzvi-segal-shofar-western-wall-toldot-1930",
+      "title": "הדי השופר — הרב משה צבי סגל והמאבק בכותל",
+      "figure": "הרב משה צבי סגל ותוקעי השופר בכותל",
+      "era": "modern",
+      "year": 1930,
+      "century": "1930–1947 — ימי המנדט הבריטי",
+      "region": "הכותל המערבי, ירושלים",
+      "type": "דוקומנטרי היסטורי סיפורי — עדויות ותיעוד חזרה לזירת האירוע",
+      "language": "אנגלית",
+      "description": "בשנת 1930 תקע הרב משה צבי סגל בשופר בכותל מול איסור הבריטים ונעצר. הסרט מפגיש עדים שחזרו לכותל לספר על המעשה ועל המשך המסורת עד 1947.",
+      "source": "Toldot Yisrael / Eyewitness 1948 — צפייה חופשית בנגן הרשמי של Chabad.org",
+      "url": "https://www.chabad.org/multimedia/video_cdo/aid/1303924/jewish/Defiance-at-the-Western-Wall.htm",
+      "sageIds": [
+        "moshe-tzvi-segal-shofar"
+      ],
+      "fiction": "תיעוד המבוסס על ראיונות ועדויות אישיות מאוחרות; אין זה צילום של תקיעת השופר ב־1930.",
+      "verified": "2026-11-04"
     },
     {
       "id": "chaim-elazar-shapira-munkacs-wedding-1933-yadvashem",

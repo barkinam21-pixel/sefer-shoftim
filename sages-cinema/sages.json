@@ -6445,6 +6445,41 @@
         "url": "https://www.sefaria.org/Pirkei_Avot.2.5?lang=he",
         "type": "משנה אבות ב, ה"
       }
+    },
+    {
+      "id": "moshe-tzvi-segal-shofar",
+      "name": "הרב משה צבי סגל — תוקע השופר בכותל",
+      "mediaIds": [
+        "moshe-tzvi-segal-shofar-western-wall-toldot-1930"
+      ],
+      "hook": "תקיעת שופר אחת בכותל ב־1930 הפכה רגע של תפילה למאבק על חירות.",
+      "authorship": "הרב משה צבי סגל חיבר את זיכרונותיו ״דור ודור״. באתר חב״ד פורסם קטע מזיכרונותיו בתרגום לאנגלית בשם ״השופר והכותל״. הסרט התיעודי אינו יצירה שחיבר.",
+      "works": [
+        {
+          "title": "השופר והכותל — קטע מזיכרונות הרב סגל",
+          "description": "עדות אישית מתורגמת על תקיעת השופר בכותל בשנת 1930.",
+          "url": "https://www.chabad.org/library/article_cdo/aid/2246/jewish/The-Shofar-and-the-Wall.htm",
+          "access": "read"
+        },
+        {
+          "title": "דור ודור — זיכרונות משה צבי סגל",
+          "description": "רישום ביבליוגרפי של ספר הזיכרונות; לא טקסט מלא לקריאה.",
+          "url": "https://www.nli.org.il/he/books/NNL_ALEPH990010069490205171/NLI",
+          "access": "info"
+        }
+      ],
+      "story": {
+        "title": "השופר שנשמע למרות האיסור",
+        "text": "לפי זיכרונותיו, סגל תקע בשופר בכותל במוצאי יום הכיפורים 1930, נעצר והובל למשטרה. התקיעה הפכה לסמל של עמידה על המסורת.",
+        "url": "https://www.chabad.org/library/article_cdo/aid/2246/jewish/The-Shofar-and-the-Wall.htm",
+        "type": "עדות אישית וזיכרונות"
+      },
+      "idea": {
+        "title": "עמידה על מסורת גם בשעת לחץ",
+        "text": "בסיפורו של סגל, הרצון לתקוע בסוף יום הכיפורים גבר על חשש המעצר. זהו מסר מתוך זיכרונות אישיים, ולא פסק הלכה.",
+        "url": "https://www.chabad.org/library/article_cdo/aid/2246/jewish/The-Shofar-and-the-Wall.htm",
+        "type": "זיכרונות סגל — ״השופר והכותל״"
+      }
     }
   ]
 }
