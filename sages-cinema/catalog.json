@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-04",
-  "updatedLabel": "נוסף הדי השופר — סרט תיעודי על תקיעת השופר בכותל בשנת 1930",
+  "updatedLabel": "נוספו שני סרטוני אנימציה חדשים מתורת רבי נחמן — קימה אחרי נפילה ומשל הצמא",
   "eras": [
     {
       "id": "second-temple",
@@ -4756,6 +4756,48 @@
       ],
       "fiction": "המחזה אמנותית בהשראת מסורת חסידית על רבי נחמן; שנת האירוע אינה ידועה, ותמונות ודיאלוגים אינם תיעוד היסטורי.",
       "verified": "2026-11-02"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep22-fall-begin-again",
+      "title": "רבי נחמן — פרק 22: גם כשנופלים, קמים שוב",
+      "figure": "רבי נחמן מברסלב — משל אנימציה על התחלה מחדש",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן בקירוב; מועד אמירת הרעיון אינו ידוע",
+      "region": "ברסלב, אוקראינה — המחשה סיפורית עכשווית",
+      "type": "אנימציה סיפורית קצרה — פרק 22",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "אדם מנסה להתקדם, נופל ושוב אוסף כוח לקום. סרטון אנימציה קצר על היכולת להתחיל מחדש שוב ושוב.",
+      "source": "Find Rabbi Nachman — פרק 22, אתר היוצרים הרשמי עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/fell-again-today",
+      "youtubeId": "ujGQ3BP2YHw",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "משל מונפש בהשראת רעיון של רבי נחמן, ולא תיעוד אירוע היסטורי או שיעור מצולם.",
+      "verified": "2026-11-04"
+    },
+    {
+      "id": "nachman-findrabbinachman-ep23-thirst-for-water",
+      "title": "רבי נחמן — פרק 23: הצמא שממתיק את המים",
+      "figure": "רבי נחמן מברסלב — המחשה אנימטיבית של משל הצמא",
+      "era": "hasidut",
+      "year": 1801,
+      "century": "ראשית המאה ה־19 — תקופת רבי נחמן בקירוב; מועד אמירת הרעיון אינו ידוע",
+      "region": "ברסלב, אוקראינה — המחשה סיפורית עכשווית",
+      "type": "אנימציה סיפורית קצרה — פרק 23",
+      "language": "אנגלית",
+      "duration": "כדקה",
+      "description": "כמו שמים מתוקים יותר לאחר צמא גדול, המשל המצויר מציג את הגעגוע והכמיהה כמקור של חיפוש רוחני.",
+      "source": "Find Rabbi Nachman — פרק 23, אתר היוצרים הרשמי עם נגן YouTube",
+      "url": "https://www.findrabbinachman.com/episodes/ever-been-truly-thirsty",
+      "youtubeId": "z7oK87If83Q",
+      "sageIds": [
+        "nachman"
+      ],
+      "fiction": "עיבוד אנימציה למשל רוחני המיוחס לרבי נחמן; אין כאן שחזור היסטורי של מעשה מחייו.",
+      "verified": "2026-11-04"
     },
     {
       "id": "nachman-findrabbinachman-ep4-gift-of-forgetting",
