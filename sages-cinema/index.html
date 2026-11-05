@@ -92,6 +92,9 @@ h1 em{display:block;color:var(--gold);font-style:normal}
 .poster:before{content:"";position:absolute;inset:10px;border:1px solid rgba(236,196,138,.18);border-radius:5px;pointer-events:none}
 .poster:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,24,27,.8),transparent 45%);pointer-events:none}
 .poster img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.67) brightness(.72)}
+/* The poster itself is a usable play/watch control, not just a decorative thumbnail. */
+.poster-launch{position:absolute;inset:0;z-index:3;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:pointer}
+.poster-launch:focus-visible{outline:3px solid var(--gold);outline-offset:-4px}
 .poster .symbol{font-family:var(--serif);font-size:76px;color:rgba(245,204,148,.52);text-shadow:0 8px 40px #111}
 .poster.playing{height:auto;aspect-ratio:16/9;background:#05090a}
 .poster.playing:before,.poster.playing:after{display:none}
@@ -367,8 +370,10 @@ var fallbackUrl=embed&&player.provider==="youtube"?"https://www.youtube.com/watc
 var fallbackLabel=embed&&player.provider==="youtube"?"צפייה ישירה ביוטיוב":"צפייה ישירה באתר היוצר";
 var sourceFallback=embed?'<div class="source-access"><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a></div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>';
 var poster=player&&player.provider==="youtube"?'<img loading="lazy" decoding="async" src="https://i.ytimg.com/vi/'+player.id+'/hqdefault.jpg" alt="" referrerpolicy="no-referrer">':'<span class="symbol" aria-hidden="true">'+(embed?'▶':'✦')+'</span>';
+// Clicking the thumbnail launches the same official player or legal source as the action button.
+var posterLaunch=embed?'<button class="poster-launch" type="button" data-poster-play="'+esc(it.id)+'" aria-label="הפעל כאן באתר: '+esc(it.title)+'"></button>':'<a class="poster-launch" href="'+esc(validUrl(it.url))+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'" aria-label="צפייה באתר היוצר: '+esc(it.title)+'"></a>';
 return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
-'<div class="poster">'+poster+'<span class="poster-icon">'+(embed?'▶ נגן באתר':'↗ צפייה ביוצר')+'</span><span class="poster-label">'+esc(it.century)+'</span></div>'+
+'<div class="poster">'+poster+'<span class="poster-icon">'+(embed?'▶ נגן באתר':'↗ צפייה ביוצר')+'</span><span class="poster-label">'+esc(it.century)+'</span>'+posterLaunch+'</div>'+
 '<div class="card-body"><div class="meta"><span>'+esc(it.type)+'</span><span>'+esc(it.language)+'</span><span>'+esc(it.region)+'</span></div>'+
 '<h3 class="card-title">'+esc(it.title)+'</h3><p class="figure">'+esc(it.figure)+'</p><p class="desc">'+esc(it.description)+'</p><p class="source">'+esc(it.source)+' • '+esc(it.fiction)+'</p>'+
 '<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'" aria-pressed="false">▶ צפייה כאן באתר</button>':'<a class="play-btn external" href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ צפייה באתר היוצר</a>')+
@@ -513,6 +518,11 @@ elem=e.target.closest("[data-player-alt]");if(elem){
  var alternatePlayer=alternateItem&&playableSource(alternateItem);
  var alternateCard=elem.closest(".media-card");
  if(alternatePlayer&&alternatePlayer.provider==="youtube"&&alternateCard)switchYoutubePlayer(alternateCard.querySelector(".poster.playing iframe"),elem,alternatePlayer.id);
+ return;
+}
+elem=e.target.closest("[data-poster-play]");if(elem){
+ var card=elem.closest(".media-card"),mainPlay=card&&card.querySelector(".actions [data-play]");
+ if(mainPlay)playInCard(elem.getAttribute("data-poster-play"),mainPlay);
  return;
 }
 elem=e.target.closest("[data-play]");if(elem){playInCard(elem.getAttribute("data-play"),elem);return}
