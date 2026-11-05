@@ -109,10 +109,11 @@ h1 em{display:block;color:var(--gold);font-style:normal}
 .figure{color:var(--gold);font-size:12px}
 .desc{color:#bac9c6;font-size:13px;line-height:1.8;flex:1}
 .source{color:#829e9d;font-size:11px}
-.actions{display:flex;gap:8px;margin-top:8px;align-items:center}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:center}
 .source-access{margin-top:8px;min-height:19px;font-size:12px;line-height:1.5;color:var(--muted)}
 .source-access a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
-.source-access a:hover,.source-access a:focus-visible{color:#ffe2aa}
+.source-access a:hover,.source-access a:focus-visible,.source-access button:hover,.source-access button:focus-visible{color:#ffe2aa}
+.source-access button{border:0;background:transparent;color:var(--gold);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0;margin-inline-end:12px;font-size:inherit}
 .play-btn{border:0;background:var(--gold);color:#15242a;font-size:13px;font-weight:800;border-radius:9px;min-height:41px;flex:1;padding:8px 12px}
 .play-btn:hover{background:#f3d9ac}
 .play-btn.external{background:#294049;color:var(--ink);border:1px solid #42575d}
@@ -368,7 +369,7 @@ var isWatched=watched.has(it.id),isFav=favorites.has(it.id),player=playableSourc
 // Keep the legal, direct source one click away, including when an iframe is blocked.
 var fallbackUrl=embed&&player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);
 var fallbackLabel=embed&&player.provider==="youtube"?"צפייה ישירה ביוטיוב":"צפייה ישירה באתר היוצר";
-var sourceFallback=embed?'<div class="source-access"><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a></div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>';
+var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a></div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>';
 var poster=player&&player.provider==="youtube"?'<img loading="lazy" decoding="async" src="https://i.ytimg.com/vi/'+player.id+'/hqdefault.jpg" alt="" referrerpolicy="no-referrer">':'<span class="symbol" aria-hidden="true">'+(embed?'▶':'✦')+'</span>';
 // Clicking the thumbnail launches the same official player or legal source as the action button.
 var posterLaunch=embed?'<button class="poster-launch" type="button" data-poster-play="'+esc(it.id)+'" aria-label="הפעל כאן באתר: '+esc(it.title)+'"></button>':'<a class="poster-launch" href="'+esc(validUrl(it.url))+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'" aria-label="צפייה באתר היוצר: '+esc(it.title)+'"></a>';
@@ -520,6 +521,7 @@ elem=e.target.closest("[data-player-alt]");if(elem){
  if(alternatePlayer&&alternatePlayer.provider==="youtube"&&alternateCard)switchYoutubePlayer(alternateCard.querySelector(".poster.playing iframe"),elem,alternatePlayer.id);
  return;
 }
+elem=e.target.closest("[data-open-large]");if(elem){openItem(elem.getAttribute("data-open-large"));return}
 elem=e.target.closest("[data-poster-play]");if(elem){
  var card=elem.closest(".media-card"),mainPlay=card&&card.querySelector(".actions [data-play]");
  if(mainPlay)playInCard(elem.getAttribute("data-poster-play"),mainPlay);
