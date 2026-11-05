@@ -534,7 +534,10 @@ elem=e.target.closest("[data-watched]");if(elem){toggleWatched(elem.getAttribute
 elem=e.target.closest("[data-external],[data-player-original],#playerSource");
 if(elem){
  var sourceId=elem.getAttribute("data-external")||elem.getAttribute("data-player-original")||activeId;
- stopInlinePlayer();
+ // Keep the clicked fallback anchor attached until the browser handles its native navigation.
+ // Removing the active card's fallback link synchronously can cancel opening the source tab.
+ if(elem.hasAttribute("data-player-original"))window.setTimeout(stopInlinePlayer,0);
+ else stopInlinePlayer();
  if(!$("playerModal").hidden)closePlayer();
  if(sourceId)try{localStorage.setItem("sages-last-opened",sourceId)}catch(ex){}
 }
