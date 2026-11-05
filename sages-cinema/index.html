@@ -538,7 +538,12 @@ if(elem){
  // Removing the active card's fallback link synchronously can cancel opening the source tab.
  if(elem.hasAttribute("data-player-original"))window.setTimeout(stopInlinePlayer,0);
  else stopInlinePlayer();
- if(!$("playerModal").hidden)closePlayer();
+ // The original-source anchor in the modal must survive until native link navigation.
+ // Closing the modal synchronously can detach the clicked link before a new tab opens.
+ if(!$("playerModal").hidden){
+  if(elem.id==="playerSource")window.setTimeout(closePlayer,0);
+  else closePlayer();
+ }
  if(sourceId)try{localStorage.setItem("sages-last-opened",sourceId)}catch(ex){}
 }
 });
