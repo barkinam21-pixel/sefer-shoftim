@@ -395,8 +395,27 @@ $("continueButton").hidden=!next;
 $("continueButton").textContent=next?"המשך: "+(next.title.length>30?next.title.slice(0,30)+"…":next.title):"";
 }
 function refresh(){renderTimeline();renderCards()}
-function toggleWatched(id){if(watched.has(id))watched.delete(id);else watched.add(id);save("sages-watched-v1",watched);renderCards()}
-function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);save("sages-favorites-v1",favorites);renderCards()}
+// Update saved-status buttons without destroying an actively playing inline iframe.
+// Rebuild the list only when the changed status affects the current filter.
+function syncSavedActions(id){
+ var wasWatched=watched.has(id),isFav=favorites.has(id);
+ document.querySelectorAll("[data-watched]").forEach(function(b){
+  if(b.getAttribute("data-watched")!==id)return;
+  b.classList.toggle("chosen",wasWatched);b.classList.toggle("checked",wasWatched);
+  b.setAttribute("aria-pressed",String(wasWatched));
+  b.setAttribute("aria-label",wasWatched?"סמן שלא צפיתי":"סמן כצפיתי");
+ });
+ document.querySelectorAll("[data-favorite]").forEach(function(b){
+  if(b.getAttribute("data-favorite")!==id)return;
+  b.classList.toggle("chosen",isFav);b.setAttribute("aria-pressed",String(isFav));
+  b.setAttribute("aria-label",isFav?"הסר ממועדפים":"שמור במועדפים");
+  b.textContent=isFav?"★":"☆";
+ });
+ $("resultsLabel").innerHTML='נמצאו <b>'+selectedItems().length+'</b> יצירות'+(state.era?' בתקופה שנבחרה':'')+' · '+watched.size+' סומנו כצפיתי';
+ renderContinue();
+}
+function toggleWatched(id){if(watched.has(id))watched.delete(id);else watched.add(id);save("sages-watched-v1",watched);if(state.unwatched)renderCards();else syncSavedActions(id)}
+function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);save("sages-favorites-v1",favorites);if(state.favorites)renderCards();else syncSavedActions(id)}
 // If the privacy-enhanced YouTube player fails on a device, let the visitor
 // choose YouTube's normal official iframe. This does not bypass embed restrictions.
 function switchYoutubePlayer(frame,control,id){
@@ -460,6 +479,9 @@ function playInCard(id,button){
  poster.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
 }
 function openItem(id){var it=library.items.find(function(x){return x.id===id});if(!it)return;
+// Prevent two simultaneous soundtracks when opening the larger player or an external video.
+var activeInline=document.querySelector(".media-card .poster.playing");
+if(activeInline){var activeButton=activeInline.closest(".media-card").querySelector("[data-play]");if(activeButton)playInCard(activeButton.getAttribute("data-play"),activeButton)}
 var player=playableSource(it);if(!player){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
 lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר המקור";$("openLearning").hidden=!getProfiles(it).length;
 $("playerRetry").hidden=player.provider!=="youtube";
@@ -513,7 +535,7 @@ $("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly")
 var d=document.getElementById("learn-"+id);
 if(d){d.open=true;d.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
 });
-$("markWatched").addEventListener("click",function(){if(activeId){watched.add(activeId);save("sages-watched-v1",watched);$("markWatched").textContent="✓ כבר צפיתי";renderCards()}});
+$("markWatched").addEventListener("click",function(){if(activeId){watched.add(activeId);save("sages-watched-v1",watched);$("markWatched").textContent="✓ כבר צפיתי";if(state.unwatched)renderCards();else syncSavedActions(activeId)}});
 $("sizeButton").addEventListener("click",function(){var large=!document.body.classList.contains("large");document.body.classList.toggle("large",large);try{localStorage.setItem("sages-large",large?"1":"0")}catch(e){}});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closePlayer()});
 try{if(localStorage.getItem("sages-large")==="1")document.body.classList.add("large")}catch(e){}
