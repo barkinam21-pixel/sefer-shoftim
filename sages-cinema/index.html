@@ -478,10 +478,16 @@ function playInCard(id,button){
  button.setAttribute("aria-pressed","true");
  poster.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
 }
+// Close an inline iframe before the browser opens another video in a new tab.
+function stopInlinePlayer(){
+ var active=document.querySelector(".media-card .poster.playing");
+ if(!active)return;
+ var button=active.closest(".media-card").querySelector("[data-play]");
+ if(button)playInCard(button.getAttribute("data-play"),button);
+}
 function openItem(id){var it=library.items.find(function(x){return x.id===id});if(!it)return;
-// Prevent two simultaneous soundtracks when opening the larger player or an external video.
-var activeInline=document.querySelector(".media-card .poster.playing");
-if(activeInline){var activeButton=activeInline.closest(".media-card").querySelector("[data-play]");if(activeButton)playInCard(activeButton.getAttribute("data-play"),activeButton)}
+// Prevent two soundtracks when opening the larger player or an external video.
+stopInlinePlayer();
 var player=playableSource(it);if(!player){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
 lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר המקור";$("openLearning").hidden=!getProfiles(it).length;
 $("playerRetry").hidden=player.provider!=="youtube";
@@ -505,7 +511,14 @@ elem=e.target.closest("[data-player-alt]");if(elem){
 elem=e.target.closest("[data-play]");if(elem){playInCard(elem.getAttribute("data-play"),elem);return}
 elem=e.target.closest("[data-favorite]");if(elem){toggleFavorite(elem.getAttribute("data-favorite"));return}
 elem=e.target.closest("[data-watched]");if(elem){toggleWatched(elem.getAttribute("data-watched"));return}
-elem=e.target.closest("[data-external]");if(elem){var id=elem.getAttribute("data-external");try{localStorage.setItem("sages-last-opened",id)}catch(ex){}}
+// Opening a legal source or fallback link must silence the current player first.
+elem=e.target.closest("[data-external],[data-player-original],#playerSource");
+if(elem){
+ var sourceId=elem.getAttribute("data-external")||elem.getAttribute("data-player-original")||activeId;
+ stopInlinePlayer();
+ if(!$("playerModal").hidden)closePlayer();
+ if(sourceId)try{localStorage.setItem("sages-last-opened",sourceId)}catch(ex){}
+}
 });
 $("searchInput").addEventListener("input",function(e){state.query=e.target.value;renderCards()});
 $("genreSelect").addEventListener("change",function(e){state.genre=e.target.value;renderCards()});
