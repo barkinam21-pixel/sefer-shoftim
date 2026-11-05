@@ -107,6 +107,9 @@ h1 em{display:block;color:var(--gold);font-style:normal}
 .desc{color:#bac9c6;font-size:13px;line-height:1.8;flex:1}
 .source{color:#829e9d;font-size:11px}
 .actions{display:flex;gap:8px;margin-top:8px;align-items:center}
+.source-access{margin-top:8px;min-height:19px;font-size:12px;line-height:1.5;color:var(--muted)}
+.source-access a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+.source-access a:hover,.source-access a:focus-visible{color:#ffe2aa}
 .play-btn{border:0;background:var(--gold);color:#15242a;font-size:13px;font-weight:800;border-radius:9px;min-height:41px;flex:1;padding:8px 12px}
 .play-btn:hover{background:#f3d9ac}
 .play-btn.external{background:#294049;color:var(--ink);border:1px solid #42575d}
@@ -356,6 +359,8 @@ return '<details id="learn-'+esc(it.id)+'" class="study-details"><summary>📚 �
 
 function mediaCard(it){
 var isWatched=watched.has(it.id),isFav=favorites.has(it.id),player=playableSource(it),embed=!!player;
+// Keep the legal, direct source one click away, including when an iframe is blocked.
+var sourceFallback=embed?'<div class="source-access"><a href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? צפייה ישירה באתר היוצר</a></div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>';
 var poster=player&&player.provider==="youtube"?'<img loading="lazy" decoding="async" src="https://i.ytimg.com/vi/'+player.id+'/hqdefault.jpg" alt="" referrerpolicy="no-referrer">':'<span class="symbol" aria-hidden="true">'+(embed?'▶':'✦')+'</span>';
 return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
 '<div class="poster">'+poster+'<span class="poster-icon">'+(embed?'▶ נגן באתר':'↗ צפייה ביוצר')+'</span><span class="poster-label">'+esc(it.century)+'</span></div>'+
@@ -363,7 +368,7 @@ return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
 '<h3 class="card-title">'+esc(it.title)+'</h3><p class="figure">'+esc(it.figure)+'</p><p class="desc">'+esc(it.description)+'</p><p class="source">'+esc(it.source)+' • '+esc(it.fiction)+'</p>'+
 '<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'" aria-pressed="false">▶ צפייה כאן באתר</button>':'<a class="play-btn external" href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ צפייה באתר היוצר</a>')+
 '<button class="icon-btn'+(isFav?' chosen':'')+'" type="button" data-favorite="'+esc(it.id)+'" aria-label="'+(isFav?'הסר ממועדפים':'שמור במועדפים')+'" aria-pressed="'+isFav+'" title="מועדפים">'+(isFav?'★':'☆')+'</button>'+
-'<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div>'+renderStudyCard(it)+'</div></article>'}
+'<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div>'+sourceFallback+renderStudyCard(it)+'</div></article>'}
 function renderCards(){
 var selected=selectedItems(),parts=[];
 $("resultsLabel").innerHTML='נמצאו <b>'+selected.length+'</b> יצירות'+(state.era?' בתקופה שנבחרה':'')+' · '+watched.size+' סומנו כצפיתי';
@@ -438,11 +443,6 @@ function playInCard(id,button){
      alternative.textContent="↻ נסה נגן YouTube רגיל";
      actions.appendChild(alternative);
    }
-   var original=document.createElement("a");
-   original.className="player-fallback";original.dataset.playerOriginal=id;
-   original.textContent="↗ פתיחה אצל היוצר";original.href=validUrl(it.url);
-   original.target="_blank";original.rel="noopener noreferrer";
-   actions.appendChild(original);
  }
  button.textContent="✕ סגירת הסרט";
  button.setAttribute("aria-pressed","true");
