@@ -222,7 +222,7 @@ footer a{text-decoration:underline}
 <div id="timelineRail" class="timeline-rail" role="group" aria-label="סינון לפי תקופה"></div>
 </section>
 <section id="library" class="library container" aria-labelledby="libraryTitle">
-<div class="section-top"><div><div class="kicker">02 / ספריית הסרטים</div><h2 id="libraryTitle">צופים לפי הדורות</h2><p>לוחצים על ״▶ צפייה כאן באתר״ והסרט מתנגן בתוך הכרטיס שלו, בלי לעזוב את הדף. הסדר נקבע לפי תקופת החכם או האירוע.</p></div><button id="continueButton" class="secondary-btn" type="button" hidden>המשך מהמקום שלי</button></div>
+<div class="section-top"><div><div class="kicker">02 / ספריית הסרטים</div><h2 id="libraryTitle">צופים לפי הדורות</h2><p>לוחצים על ״▶ צפייה כאן באתר״ והסרט מתנגן בתוך הכרטיס שלו, בלי לעזוב את הדף. הסדר נקבע לפי תקופת החכם או האירוע.</p></div><a id="continueButton" class="secondary-btn" href="#" hidden>המשך מהמקום שלי</a></div>
 <div class="filters">
 <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="חפשו חכם, ספר, הלכה, אזור או סרט..." autocomplete="off" aria-label="חיפוש סרטים וחכמים"></label>
 <select id="genreSelect" aria-label="סוג היצירה"><option value="">כל סוגי הסרטים</option><option value="אנימציה עלילתית">אנימציה עלילתית</option><option value="דרמה עם שחקנים">דרמה עם שחקנים</option><option value="דוקומנטרי סיפורי">דוקומנטרי סיפורי</option></select>
@@ -394,8 +394,12 @@ renderContinue();
 }
 function renderContinue(){
 var next=itemsSorted().find(function(i){return !watched.has(i.id)&&(!state.siteOnly||playableSource(i))});
-$("continueButton").hidden=!next;
-$("continueButton").textContent=next?"המשך: "+(next.title.length>30?next.title.slice(0,30)+"…":next.title):"";
+var link=$("continueButton"),external=next&&!playableSource(next);
+link.hidden=!next;
+link.textContent=next?"המשך: "+(next.title.length>30?next.title.slice(0,30)+"…":next.title):"";
+link.href=external?validUrl(next.url):"#";
+if(external){link.target="_blank";link.rel="noopener noreferrer";link.setAttribute("data-external",next.id)}
+else{link.removeAttribute("target");link.removeAttribute("rel");link.removeAttribute("data-external")}
 }
 function refresh(){renderTimeline();renderCards()}
 // Update saved-status buttons without destroying an actively playing inline iframe.
@@ -531,7 +535,7 @@ $("favoritesOnly").addEventListener("change",function(e){state.favorites=e.targe
 $("unwatchedOnly").addEventListener("change",function(e){state.unwatched=e.target.checked;renderCards()});
 $("siteOnly").addEventListener("change",function(e){state.siteOnly=e.target.checked;renderCards()});
 $("clearFilters").addEventListener("click",function(){state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};$("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;$("siteOnly").checked=false;refresh()});
-$("continueButton").addEventListener("click",function(){var first=itemsSorted().find(function(i){return !watched.has(i.id)&&(!state.siteOnly||playableSource(i))});if(first)openItem(first.id)});
+$("continueButton").addEventListener("click",function(e){var first=itemsSorted().find(function(i){return !watched.has(i.id)&&(!state.siteOnly||playableSource(i))});if(!first||!playableSource(first))return;e.preventDefault();openItem(first.id)});
 $("playerRetry").addEventListener("click",function(){
  if(!activeId)return;
  var it=library.items.find(function(x){return x.id===activeId});
