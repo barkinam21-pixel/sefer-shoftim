@@ -211,7 +211,7 @@ footer a{text-decoration:underline}
 <h1>דורות <em>של אור.</em></h1>
 <p class="hero-text">לפגוש את גדולי ישראל דרך הסיפורים, האנשים והאירועים שעיצבו דורות של תורה. מסע צפייה כרונולוגי מהתנאים והאמוראים, דרך הראשונים והאחרונים ועד גדולי המזרח והחסידות — <strong>בלי שיעורים רגילים ובלי תשלום לצפייה בתכנים שבאוסף.</strong></p>
 <div class="hero-actions"><a class="primary-btn" href="#library">▶ התחילו במסע</a><a class="secondary-btn" href="#timeline">לגלות את התקופות ↓</a></div>
-<div class="hero-numbers" aria-label="נתוני האתר"><div class="metric"><strong id="movieCount">—</strong><span>סרטים וסיפורים</span></div><div class="metric"><strong id="eraCount">—</strong><span>תחנות בציר הזמן</span></div><div class="metric"><strong id="embeddedCount">—</strong><span>נגנים בתוך האתר</span></div></div>
+<div class="hero-numbers" aria-label="נתוני האתר"><div class="metric"><strong id="movieCount">—</strong><span>סרטים וסיפורים</span></div><div class="metric"><strong id="eraCount">—</strong><span>תחנות בציר הזמן</span></div><div class="metric"><strong id="embeddedCount">—</strong><span>נגנים מוגדרים (טרם אומתו כולם)</span></div></div>
 </div>
 <div class="hero-art" aria-hidden="true"><div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div><div class="art-center">אור</div><span class="orbit-tag tag-a">תנאים</span><span class="orbit-tag tag-b">ראשונים</span><span class="orbit-tag tag-c">חסידות</span><span class="orbit-tag tag-d">אמוראים</span></div>
 </div>
@@ -443,6 +443,15 @@ function playInCard(id,button){
      alternative.textContent="↻ נסה נגן YouTube רגיל";
      actions.appendChild(alternative);
    }
+   // A direct official watch link stays beside the active player when embedding fails.
+   var watchLink=document.createElement("a");
+   watchLink.className="player-fallback";
+   watchLink.dataset.playerOriginal=id;
+   watchLink.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);
+   watchLink.target="_blank";
+   watchLink.rel="noopener noreferrer";
+   watchLink.textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר היוצר";
+   actions.appendChild(watchLink);
  }
  button.textContent="✕ סגירת הסרט";
  button.setAttribute("aria-pressed","true");
