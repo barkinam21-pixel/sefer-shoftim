@@ -96,9 +96,9 @@ h1 em{display:block;color:var(--gold);font-style:normal}
 .poster-launch{position:absolute;inset:0;z-index:3;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:pointer}
 .poster-launch:focus-visible{outline:3px solid var(--gold);outline-offset:-4px}
 .poster .symbol{font-family:var(--serif);font-size:76px;color:rgba(245,204,148,.52);text-shadow:0 8px 40px #111}
-.poster.playing{height:auto;aspect-ratio:16/9;background:#05090a}
+.poster.playing{height:auto;min-height:200px;aspect-ratio:16/9;background:#05090a}
 .poster.playing:before,.poster.playing:after{display:none}
-.poster.playing iframe{width:100%;height:100%;aspect-ratio:16/9;border:0;display:block}
+.poster.playing iframe{width:100%;height:100%;min-height:200px;aspect-ratio:16/9;border:0;display:block}
 .poster.playing .poster-icon,.poster.playing .poster-label{display:none}
 /* Always-visible original watch link when an inline embed is blocked. */
 .poster.playing .quick-source{position:absolute;left:9px;top:9px;z-index:5;max-width:calc(100% - 18px);padding:5px 9px;background:rgba(13,28,33,.94);border:1px solid #d3b27b;border-radius:8px;color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4;text-decoration:none}
@@ -141,7 +141,7 @@ footer a{text-decoration:underline}
 .modal-top h3{font-size:17px;line-height:1.3}
 .modal-top p{font-size:12px;color:var(--muted)}
 .modal-close{width:40px;height:40px;background:#273a42;color:var(--ink);border:1px solid var(--line2);border-radius:10px;font-size:22px}
-.video-stage{position:relative;aspect-ratio:16/9;background:#05090a;max-height:75vh}
+.video-stage{position:relative;aspect-ratio:16/9;min-height:200px;background:#05090a;max-height:75vh}
 .video-stage iframe{width:100%;height:100%;border:0}
 .video-stage .quick-source{position:absolute;left:10px;top:10px;z-index:6;max-width:calc(100% - 20px);padding:6px 10px;background:rgba(13,28,33,.94);border:1px solid #d3b27b;border-radius:8px;color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4;text-decoration:none}
 .video-stage .quick-source:hover,.video-stage .quick-source:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
