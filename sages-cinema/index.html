@@ -401,8 +401,24 @@ if(!parts.length)parts.push('<div class="no-results"><strong>לא נמצאה י�
 $("mediaResults").innerHTML=parts.join("");
 renderContinue();
 }
+// Resume the last video the viewer actually opened, including external-only items.
+// A watched video advances to the next unwatched entry in chronological order.
+function getContinueItem(){
+ var seq=itemsSorted().filter(function(i){return !state.siteOnly||playableSource(i)}),last="";
+ try{last=localStorage.getItem("sages-last-opened")||""}catch(e){}
+ var index=seq.findIndex(function(i){return i.id===last});
+ if(index>=0){
+  if(!watched.has(seq[index].id))return seq[index];
+  for(var j=index+1;j<seq.length;j++)if(!watched.has(seq[j].id))return seq[j];
+ }
+ return seq.find(function(i){return !watched.has(i.id)});
+}
+function rememberLastOpened(id){
+ try{localStorage.setItem("sages-last-opened",id)}catch(e){}
+ renderContinue();
+}
 function renderContinue(){
-var next=itemsSorted().find(function(i){return !watched.has(i.id)&&(!state.siteOnly||playableSource(i))});
+var next=getContinueItem();
 var link=$("continueButton"),external=next&&!playableSource(next);
 link.hidden=!next;
 link.textContent=next?"המשך: "+(next.title.length>30?next.title.slice(0,30)+"…":next.title):"";
@@ -461,6 +477,7 @@ function playInCard(id,button){
    if(oldButton){oldButton.textContent="▶ צפייה כאן באתר";oldButton.setAttribute("aria-pressed","false")}
  }
  if(same)return;
+  rememberLastOpened(id);
  poster.dataset.originalPoster=poster.innerHTML;
  poster.classList.add("playing");
  var frame=document.createElement("iframe");
@@ -529,7 +546,7 @@ function openItem(id){var it=library.items.find(function(x){return x.id===id});i
 // Prevent two soundtracks when opening the larger player or an external video.
 stopInlinePlayer();
 var player=playableSource(it);if(!player){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
-lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר המקור";$("openLearning").hidden=!getProfiles(it).length;
+rememberLastOpened(id);lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר המקור";$("openLearning").hidden=!getProfiles(it).length;
 $("playerRetry").hidden=player.provider!=="youtube";
 $("playerRetry").dataset.mode="private";
 $("playerRetry").textContent="↻ נסה נגן YouTube רגיל";
@@ -571,7 +588,7 @@ if(elem){
   if(elem.id==="playerSource")window.setTimeout(closePlayer,0);
   else closePlayer();
  }
- if(sourceId)try{localStorage.setItem("sages-last-opened",sourceId)}catch(ex){}
+ if(sourceId)rememberLastOpened(sourceId);
 }
 });
 $("searchInput").addEventListener("input",function(e){state.query=e.target.value;renderCards()});
@@ -582,7 +599,7 @@ $("favoritesOnly").addEventListener("change",function(e){state.favorites=e.targe
 $("unwatchedOnly").addEventListener("change",function(e){state.unwatched=e.target.checked;renderCards()});
 $("siteOnly").addEventListener("change",function(e){state.siteOnly=e.target.checked;renderCards()});
 $("clearFilters").addEventListener("click",function(){state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};$("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;$("siteOnly").checked=false;refresh()});
-$("continueButton").addEventListener("click",function(e){var first=itemsSorted().find(function(i){return !watched.has(i.id)&&(!state.siteOnly||playableSource(i))});if(!first||!playableSource(first))return;e.preventDefault();openItem(first.id)});
+$("continueButton").addEventListener("click",function(e){var next=getContinueItem();if(!next||!playableSource(next))return;e.preventDefault();openItem(next.id)});
 $("playerRetry").addEventListener("click",function(){
  if(!activeId)return;
  var it=library.items.find(function(x){return x.id===activeId});
