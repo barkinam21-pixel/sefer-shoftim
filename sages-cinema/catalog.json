@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-06",
-  "updatedLabel": "עודכן סימון שקוף של יצירה קיימת שהפעלתה טרם אומתה; לא נוספו יצירות.",
+  "updatedLabel": "שמונה קישורי צפייה קיימים של Chabad Kids Videos סומנו לבדיקה: לא ניתן היה לאמת שהעמודים נגישים והסרטונים מתנגנים; לא נוספו יצירות.",
   "eras": [
     {
       "id": "second-temple",
@@ -3037,7 +3037,7 @@
       "region": "ברצלונה, כתר אראגון, ספרד",
       "type": "דרמה היסטורית מצולמת — חלק ראשון מתוך סרט באורך כ־65 דקות",
       "language": "אנגלית",
-            "description": "המלך מכנס ויכוח פומבי בין הרמב״ן לבין הנזיר פאבלו כריסטיאני. כשאנשי הכנסייה לוחצים והקהל דרוך, הרמב״ן ניצב מול הטענות ומגן על אמונתו. הסרט המלא מציג את הוויכוח בכיכובם של אלן דובי, בוב פק וכריסטופר לי, אך נגן YouTube המקושר כאן מציג את החלק הראשון בלבד מתוך חמישה חלקים; צפייה בכל הסרט לא אומתה.",
+      "description": "המלך מכנס ויכוח פומבי בין הרמב״ן לבין הנזיר פאבלו כריסטיאני. כשאנשי הכנסייה לוחצים והקהל דרוך, הרמב״ן ניצב מול הטענות ומגן על אמונתו. הסרט המלא מציג את הוויכוח בכיכובם של אלן דובי, בוב פק וכריסטופר לי, אך נגן YouTube המקושר כאן מציג את החלק הראשון בלבד מתוך חמישה חלקים; צפייה בכל הסרט לא אומתה.",
       "source": "Film4 / Channel 4, במאי ג׳פרי סאקס ותסריט היים מקובי (1986). בדף הסרט באתר הרשמי של השחקנית טויה וילקוקס מוטמע חלק 1 מתוך 5; לא אומתה זמינות הסרט השלם.",
       "url": "https://toyahwillcox.com/the-disputation/",
       "youtubeId": "VWeHBaHyoOY",
@@ -3740,7 +3740,9 @@
         "rayatz-schneersohn"
       ],
       "fiction": "סיפור חסידי שעובד לאנימציה חדשה. ספר הזיכרונות נמסר מפי הריי״צ ונערך ספרותית; אין לזהות את כל פרטי ההמחזה כעובדות היסטוריות.",
-      "verified": "2026-11-04"
+      "verified": "2026-11-04",
+      "watchStatus": "unverified",
+      "watchChecked": "2026-11-06"
     },
     {
       "id": "memoirs-2026-chabadkids-he-fiddler-maggid",
@@ -3759,7 +3761,9 @@
         "rayatz-schneersohn"
       ],
       "fiction": "סיפור חסידי שעובד לאנימציה חדשה. ספר הזיכרונות נמסר מפי הריי״צ ונערך ספרותית; אין לזהות את כל פרטי ההמחזה כעובדות היסטוריות.",
-      "verified": "2026-11-04"
+      "verified": "2026-11-04",
+      "watchStatus": "unverified",
+      "watchChecked": "2026-11-06"
     },
     {
       "id": "memoirs-2026-chabadkids-he-orphan-baruch",
@@ -3778,7 +3782,9 @@
         "rayatz-schneersohn"
       ],
       "fiction": "סיפור חסידי שעובד לאנימציה חדשה. ספר הזיכרונות נמסר מפי הריי״צ ונערך ספרותית; אין לזהות את כל פרטי ההמחזה כעובדות היסטוריות.",
-      "verified": "2026-11-04"
+      "verified": "2026-11-04",
+      "watchStatus": "unverified",
+      "watchChecked": "2026-11-06"
     },
     {
       "id": "besht-ruchnii-a-yid-young-orphan-animation",
@@ -5452,7 +5458,9 @@
       "year": 1870,
       "century": "ימי ילדותו במחצית השנייה של המאה ה־19",
       "description": "הפרק הראשון מספר על ילדותו של רבי שלום דובער שניאורסון בעיירת ליובאוויטש, הרקע המשפחתי ועולם החסידות שממנו צמח.",
-      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part1_HE"
+      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part1_HE",
+      "watchStatus": "unverified",
+      "watchChecked": "2026-11-06"
     },
     {
       "id": "maharash-tehillim-chabad-eilat-acted-drama-2025",
@@ -5705,7 +5713,9 @@
       "year": 1893,
       "century": "סביב 1893 — תחילת הנהגתו הרשמית",
       "description": "לאחר פטירת אביו ותקופת מעבר, רבי שלום דובער נושא בהדרגה באחריות להנהגת חב״ד. סיפור מונפש על מנהיגות וצמיחתה.",
-      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part2_HE"
+      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part2_HE",
+      "watchStatus": "unverified",
+      "watchChecked": "2026-11-06"
     },
     {
       "id": "rashab-four-points-radiance-chabad-documentary",
@@ -5743,7 +5753,9 @@
       "year": 1897,
       "century": "1897 — ייסוד הישיבה בליובאוויטש",
       "description": "מה עומד מאחורי ייסוד ישיבת תומכי תמימים? אנימציה על החלטת הרש״ב להקים בית מדרש המשלב לימוד תורה ולימוד חסידות.",
-      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part3_HE"
+      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part3_HE",
+      "watchStatus": "unverified",
+      "watchChecked": "2026-11-06"
     },
     {
       "id": "rashab-chabadkidsvideos-he-part4-stories-2026",
@@ -5762,7 +5774,9 @@
       "year": 1900,
       "century": "סיפורים מתקופת הנהגתו, סוף המאה ה־19 ותחילת ה־20",
       "description": "סיפורים ופתגמים ממסורת חב״ד המאירים את אישיותו של הרש״ב ואת היחס שבין לימוד, הנהגה ועבודת המידות.",
-      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part4_HE"
+      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part4_HE",
+      "watchStatus": "unverified",
+      "watchChecked": "2026-11-06"
     },
     {
       "id": "cheder-menachem-moscow-lochamei-haruach-acted-drama",
@@ -6100,7 +6114,9 @@
       "year": 1918,
       "century": "השנים האחרונות, עד פטירתו ב־1920",
       "description": "הפרק המסיים עוקב אחר השנים האחרונות בחיי הרש״ב, המעבר מרוסיה שלפני המהפכה אל התקופה הסוערת, והמורשת שנותרה.",
-      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part5_HE"
+      "url": "https://chabadkidsvideos.com/w/Rebbe_Rashab_Part5_HE",
+      "watchStatus": "unverified",
+      "watchChecked": "2026-11-06"
     },
     {
       "id": "rav-kook-life-philosophy-jfc-1971",
