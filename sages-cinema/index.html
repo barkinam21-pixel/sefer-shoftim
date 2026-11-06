@@ -253,7 +253,7 @@ footer a{text-decoration:underline}
 </main>
 <footer class="container"><span>© דורות של אור — אינדקס צפייה חינמי, ללא אירוח יצירות מוגנות. כל הזכויות לסרטים שמורות ליוצריהם.</span><span>אתר עצמאי • <a href="https://shoftim-v3.vercel.app/" target="_blank" rel="noopener">אתר שופטים</a></span></footer>
 <div id="playerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="playerTitle" hidden>
-<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="openLearning" type="button">📚 ספרים בקצרה</button><a id="playNext" class="next" href="#">הסרט הבא ←</a><button id="playerRetry" type="button" hidden>↻ נסה נגן YouTube רגיל</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם היוצר חוסם הטמעה, אפשר לפתוח את הסרט באתר הרשמי שלו.</span></div></div>
+<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="openLearning" type="button">📚 ספרים בקצרה</button><a id="playNext" class="next" href="#">הסרט הבא ←</a><button id="playerReload" type="button" hidden>↻ טען נגן מחדש</button><button id="playerRetry" type="button" hidden>↻ נסה נגן YouTube רגיל</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם היוצר חוסם הטמעה, אפשר לפתוח את הסרט באתר הרשמי שלו.</span></div></div>
 </div>
 <script>
 (function(){
@@ -515,19 +515,19 @@ function playInCard(id,button){
  poster.appendChild(quickSource);
  var actions=card.querySelector(".actions");
  if(actions){
+   // Retry the same official iframe after a transient failure without changing provider or mode.
+   var reload=document.createElement("button");
+   reload.type="button";reload.className="player-fallback";
+   reload.dataset.playerReload=id;
+   reload.textContent="↻ טען נגן מחדש";
+   actions.appendChild(reload);
    if(player.provider==="youtube"){
+     // Switching official YouTube modes remains an independent, optional fallback.
      var alternative=document.createElement("button");
      alternative.type="button";alternative.className="player-fallback";
      alternative.dataset.playerAlt=id;alternative.dataset.mode=youtubeEmbedMode;
      alternative.textContent=youtubeRetryLabel();
      actions.appendChild(alternative);
-   }else{
-     // Retry the same official Vimeo, RTVE or Internet Archive iframe without changing source.
-     var reload=document.createElement("button");
-     reload.type="button";reload.className="player-fallback";
-     reload.dataset.playerReload=id;
-     reload.textContent="↻ טען נגן מחדש";
-     actions.appendChild(reload);
    }
    // A direct official watch link stays beside the active player when embedding fails.
    var watchLink=document.createElement("a");
@@ -568,9 +568,10 @@ function openItem(id){var it=library.items.find(function(x){return x.id===id});i
 stopInlinePlayer();
 var player=playableSource(it);if(!player){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
 rememberLastOpened(id);lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר המקור";$("openLearning").hidden=!getProfiles(it).length;
-$("playerRetry").hidden=false;
+$("playerReload").hidden=false;
+$("playerRetry").hidden=player.provider!=="youtube";
 $("playerRetry").dataset.mode=youtubeEmbedMode;
-$("playerRetry").textContent=player.provider==="youtube"?youtubeRetryLabel():"↻ טען נגן מחדש";
+$("playerRetry").textContent=youtubeRetryLabel();
 $("playerModal").hidden=false;document.body.classList.add("locked");
 var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src=player.src;$("videoStage").replaceChildren(frame);
  // Keep the official watch-page exit visible without scrolling, even in the large player.
@@ -585,7 +586,7 @@ elem=e.target.closest("[data-player-reload]");if(elem){
  var retryItem=library.items.find(function(x){return x.id===elem.dataset.playerReload});
  var retryPlayer=retryItem&&playableSource(retryItem);
  var retryCard=elem.closest(".media-card"),retryFrame=retryCard&&retryCard.querySelector(".poster.playing iframe");
- if(retryFrame&&retryPlayer&&retryPlayer.provider!=="youtube")retryFrame.src=retryPlayer.src;
+ if(retryFrame&&retryPlayer)retryFrame.src=retryPlayer.src;
  return;
 }
 elem=e.target.closest("[data-player-alt]");if(elem){
@@ -630,13 +631,19 @@ $("unwatchedOnly").addEventListener("change",function(e){state.unwatched=e.targe
 $("siteOnly").addEventListener("change",function(e){state.siteOnly=e.target.checked;renderCards()});
 $("clearFilters").addEventListener("click",function(){state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};$("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;$("siteOnly").checked=false;refresh()});
 $("continueButton").addEventListener("click",function(e){var next=getContinueItem();if(!next||!playableSource(next))return;e.preventDefault();openItem(next.id)});
+$("playerReload").addEventListener("click",function(){
+ if(!activeId)return;
+ var it=library.items.find(function(x){return x.id===activeId});
+ var player=it&&playableSource(it);
+ var retryFrame=$("videoStage").querySelector("iframe");
+ if(player&&retryFrame)retryFrame.src=player.src;
+});
 $("playerRetry").addEventListener("click",function(){
  if(!activeId)return;
  var it=library.items.find(function(x){return x.id===activeId});
  var player=it&&playableSource(it);
  var retryFrame=$("videoStage").querySelector("iframe");
  if(player&&player.provider==="youtube")switchYoutubePlayer(retryFrame,this,player.id);
- else if(player&&retryFrame)retryFrame.src=player.src;
 });
 $("playerClose").addEventListener("click",closePlayer);
 $("playerModal").addEventListener("click",function(e){if(e.target===$("playerModal"))closePlayer()});
