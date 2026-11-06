@@ -248,7 +248,7 @@ footer a{text-decoration:underline}
 </main>
 <footer class="container"><span>© דורות של אור — אינדקס צפייה חינמי, ללא אירוח יצירות מוגנות. כל הזכויות לסרטים שמורות ליוצריהם.</span><span>אתר עצמאי • <a href="https://shoftim-v3.vercel.app/" target="_blank" rel="noopener">אתר שופטים</a></span></footer>
 <div id="playerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="playerTitle" hidden>
-<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="openLearning" type="button">📚 ספרים בקצרה</button><button id="playNext" class="next" type="button">הסרט הבא ←</button><button id="playerRetry" type="button" hidden>↻ נסה נגן YouTube רגיל</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם היוצר חוסם הטמעה, אפשר לפתוח את הסרט באתר הרשמי שלו.</span></div></div>
+<div class="modal-shell"><div class="modal-top"><div><h3 id="playerTitle"></h3><p id="playerSub"></p></div><button class="modal-close" id="playerClose" type="button" aria-label="סגור נגן">×</button></div><div id="videoStage" class="video-stage"></div><div class="modal-bottom"><button id="markWatched" type="button">✓ סמן כצפיתי</button><button id="openLearning" type="button">📚 ספרים בקצרה</button><a id="playNext" class="next" href="#">הסרט הבא ←</a><button id="playerRetry" type="button" hidden>↻ נסה נגן YouTube רגיל</button><a id="playerSource" target="_blank" rel="noopener noreferrer">צפה גם במקור ↗</a><span class="tip">אם היוצר חוסם הטמעה, אפשר לפתוח את הסרט באתר הרשמי שלו.</span></div></div>
 </div>
 <script>
 (function(){
@@ -498,6 +498,19 @@ function stopInlinePlayer(){
  var button=active.closest(".media-card").querySelector("[data-play]");
  if(button)playInCard(button.getAttribute("data-play"),button);
 }
+// The next-video control is a real link for external-only videos, not a popup.
+ // This ensures native navigation still works if popup windows are blocked.
+function configureNextLink(id){
+ var seq=itemsSorted().filter(function(i){return !state.siteOnly||playableSource(i)});
+ var n=seq.findIndex(function(i){return i.id===id}),following=n<0?null:seq[n+1];
+ var link=$("playNext"),external=!!following&&!playableSource(following);
+ link.hidden=!following;
+ link.dataset.nextId=following?following.id:"";
+ link.textContent=external?"↗ הסרט הבא — באתר היוצר":"הסרט הבא ←";
+ link.href=external?validUrl(following.url):"#";
+ if(external){link.target="_blank";link.rel="noopener noreferrer"}
+ else{link.removeAttribute("target");link.removeAttribute("rel")}
+}
 function openItem(id){var it=library.items.find(function(x){return x.id===id});if(!it)return;
 // Prevent two soundtracks when opening the larger player or an external video.
 stopInlinePlayer();
@@ -508,7 +521,7 @@ $("playerRetry").dataset.mode="private";
 $("playerRetry").textContent="↻ נסה נגן YouTube רגיל";
 $("playerModal").hidden=false;document.body.classList.add("locked");
 var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src=player.src;$("videoStage").replaceChildren(frame);
-$("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";$("playerClose").focus();
+$("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";configureNextLink(id);$("playerClose").focus();
 }
 function closePlayer(){if($("playerModal").hidden)return;$("playerModal").hidden=true;document.body.classList.remove("locked");$("videoStage").replaceChildren();activeId=null;if(lastFocus&&document.contains(lastFocus))lastFocus.focus()}
 function nextFromCurrent(){if(!activeId)return;var seq=itemsSorted().filter(function(i){return !state.siteOnly||playableSource(i)}),n=seq.findIndex(function(x){return x.id===activeId});if(n<0)return;watched.add(activeId);save("sages-watched-v1",watched);closePlayer();var following=seq[n+1];if(following)openItem(following.id);else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");renderCards()}
@@ -564,7 +577,17 @@ $("playerRetry").addEventListener("click",function(){
 });
 $("playerClose").addEventListener("click",closePlayer);
 $("playerModal").addEventListener("click",function(e){if(e.target===$("playerModal"))closePlayer()});
-$("playNext").addEventListener("click",nextFromCurrent);
+$("playNext").addEventListener("click",function(e){
+ if(!activeId||!this.dataset.nextId){e.preventDefault();return}
+ if(this.target==="_blank"){
+   // Preserve the native external link until the browser opens its tab.
+   watched.add(activeId);save("sages-watched-v1",watched);
+   try{localStorage.setItem("sages-last-opened",this.dataset.nextId)}catch(ex){}
+   window.setTimeout(function(){closePlayer();renderCards()},0);
+   return;
+ }
+ e.preventDefault();nextFromCurrent();
+});
 $("openLearning").addEventListener("click",function(){
 var id=activeId;closePlayer();if(!id)return;
 if(!document.getElementById("learn-"+id)){
