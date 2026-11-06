@@ -295,7 +295,7 @@ function playableSource(it){
    // Use the Internet Archive's public embed player only for catalogued archive.org/details items.
    if(vh==="archive.org"||vh==="www.archive.org"){
      var archiveMatch=parsed.pathname.match(/^\/details\/([A-Za-z0-9_.-]+)\/?$/);
-     if(archiveMatch)return {provider:"archive",id:archiveMatch[1],src:"https://archive.org/embed/"+archiveMatch[1]};
+     if(archiveMatch)return {provider:"archive",id:archiveMatch[1],src:"https://archive.org/embed/"+archiveMatch[1]+"?autoplay=1"};
    }
    // Use RTVE's official public embed endpoint, never an extracted video stream.
    if(vh==="rtve.es"||vh==="www.rtve.es"){
