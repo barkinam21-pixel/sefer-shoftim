@@ -100,6 +100,9 @@ h1 em{display:block;color:var(--gold);font-style:normal}
 .poster.playing:before,.poster.playing:after{display:none}
 .poster.playing iframe{width:100%;height:100%;aspect-ratio:16/9;border:0;display:block}
 .poster.playing .poster-icon,.poster.playing .poster-label{display:none}
+/* Always-visible original watch link when an inline embed is blocked. */
+.poster.playing .quick-source{position:absolute;left:9px;top:9px;z-index:5;max-width:calc(100% - 18px);padding:5px 9px;background:rgba(13,28,33,.94);border:1px solid #d3b27b;border-radius:8px;color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4;text-decoration:none}
+.poster.playing .quick-source:hover,.poster.playing .quick-source:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
 .poster-label{position:absolute;z-index:1;bottom:12px;right:13px;font-size:11px;color:#f1dab1;background:rgba(16,26,30,.85);border:1px solid rgba(236,196,138,.22);padding:4px 9px;border-radius:7px}
 .poster-icon{position:absolute;z-index:1;left:12px;top:12px;border:1px solid rgba(236,196,138,.5);color:var(--gold);background:#17262c;padding:4px 9px;border-radius:8px;font-size:11px}
 .card-body{padding:18px 17px 16px;display:flex;flex-direction:column;flex:1;gap:10px}
@@ -468,6 +471,17 @@ function playInCard(id,button){
  frame.loading="eager";
  frame.src=player.src;
  poster.replaceChildren(frame);
+ // Keep a working source exit immediately beside the player when an iframe is blank or blocked.
+ // data-player-original defers iframe cleanup until after native navigation opens the link.
+ var quickSource=document.createElement("a");
+ quickSource.className="quick-source";
+ quickSource.dataset.playerOriginal=id;
+ quickSource.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);
+ quickSource.target="_blank";
+ quickSource.rel="noopener noreferrer";
+ quickSource.textContent="↗ לא מתנגן? למקור";
+ quickSource.setAttribute("aria-label","הנגן לא עובד? צפייה במקור: "+it.title);
+ poster.appendChild(quickSource);
  var actions=card.querySelector(".actions");
  if(actions){
    if(player.provider==="youtube"){
