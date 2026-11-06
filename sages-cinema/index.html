@@ -320,6 +320,8 @@ function playableSource(it){
  return null;
 }
 function itemsSorted(){return library.items.slice().sort(function(a,b){return a.year-b.year||a.title.localeCompare(b.title,"he")})}
+// Unverified source pages stay listed in the catalog, but cannot auto-advance as playable videos.
+function navigationItems(){return itemsSorted().filter(function(it){return it.watchStatus!=="unverified"&&(!state.siteOnly||playableSource(it))})}
 function getProfiles(it){return (learning.profiles||[]).filter(function(p){return (p.mediaIds||[]).indexOf(it.id)!==-1||(it.sageIds||[]).indexOf(p.id)!==-1})}
 function selectedItems(){return itemsSorted().filter(function(it){
 if(state.era&&it.era!==state.era)return false;
@@ -416,7 +418,7 @@ renderContinue();
 // Resume the last video the viewer actually opened, including external-only items.
 // A watched video advances to the next unwatched entry in chronological order.
 function getContinueItem(){
- var seq=itemsSorted().filter(function(i){return !state.siteOnly||playableSource(i)}),last="";
+ var seq=navigationItems(),last="";
  try{last=localStorage.getItem("sages-last-opened")||""}catch(e){}
  var index=seq.findIndex(function(i){return i.id===last});
  if(index>=0){
@@ -433,7 +435,7 @@ function renderContinue(){
 var next=getContinueItem();
 var link=$("continueButton"),external=next&&!playableSource(next);
 link.hidden=!next;
-link.textContent=next?"המשך: "+(next.title.length>30?next.title.slice(0,30)+"…":next.title):"";
+link.textContent=next?(external?"↗ פתח באתר המקור: ":"▶ המשך באתר: ")+(next.title.length>30?next.title.slice(0,30)+"…":next.title):"";
 link.href=external?validUrl(next.url):"#";
 if(external){link.target="_blank";link.rel="noopener noreferrer";link.setAttribute("data-external",next.id)}
 else{link.removeAttribute("target");link.removeAttribute("rel");link.removeAttribute("data-external")}
@@ -553,7 +555,7 @@ function stopInlinePlayer(){
 // The next-video control is a real link for external-only videos, not a popup.
  // This ensures native navigation still works if popup windows are blocked.
 function configureNextLink(id){
- var seq=itemsSorted().filter(function(i){return !state.siteOnly||playableSource(i)});
+ var seq=navigationItems();
  var n=seq.findIndex(function(i){return i.id===id}),following=n<0?null:seq[n+1];
  var link=$("playNext"),external=!!following&&!playableSource(following);
  link.hidden=!following;
@@ -579,7 +581,7 @@ var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;f
 $("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";configureNextLink(id);$("playerClose").focus();
 }
 function closePlayer(){if($("playerModal").hidden)return;$("playerModal").hidden=true;document.body.classList.remove("locked");$("videoStage").replaceChildren();activeId=null;if(lastFocus&&document.contains(lastFocus))lastFocus.focus()}
-function nextFromCurrent(){if(!activeId)return;var seq=itemsSorted().filter(function(i){return !state.siteOnly||playableSource(i)}),n=seq.findIndex(function(x){return x.id===activeId});if(n<0)return;watched.add(activeId);save("sages-watched-v1",watched);closePlayer();var following=seq[n+1];if(following)openItem(following.id);else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");renderCards()}
+function nextFromCurrent(){if(!activeId)return;var seq=navigationItems(),n=seq.findIndex(function(x){return x.id===activeId});if(n<0)return;watched.add(activeId);save("sages-watched-v1",watched);closePlayer();var following=seq[n+1];if(following)openItem(following.id);else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");renderCards()}
 document.addEventListener("click",function(e){
 var elem=e.target.closest("[data-era]");if(elem){state.era=elem.getAttribute("data-era")||"";refresh();$("library").scrollIntoView({behavior:"smooth"});return}
 elem=e.target.closest("[data-player-reload]");if(elem){
