@@ -638,18 +638,27 @@ $("markWatched").addEventListener("click",function(){if(activeId){watched.add(ac
 $("sizeButton").addEventListener("click",function(){var large=!document.body.classList.contains("large");document.body.classList.toggle("large",large);try{localStorage.setItem("sages-large",large?"1":"0")}catch(e){}});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closePlayer()});
 try{if(localStorage.getItem("sages-large")==="1")document.body.classList.add("large")}catch(e){}
-Promise.all([
-fetch("./catalog.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("catalog HTTP "+r.status);return r.json()}),
-fetch("./sages.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("sages HTTP "+r.status);return r.json()}).catch(function(e){console.warn("Sages loading failed",e);return {profiles:[]}})
-]).then(function(parts){
-var data=parts[0];if(!data.eras||!Array.isArray(data.items))throw Error("bad catalog");
-library=data;learning=parts[1]&&Array.isArray(parts[1].profiles)?parts[1]:{profiles:[]};
+// Video browsing must not wait for optional sages metadata.
+var optionalSages=fetch("./sages.json",{cache:"no-store"})
+.then(function(r){if(!r.ok)throw Error("sages HTTP "+r.status);return r.json()})
+.catch(function(e){console.warn("Sages loading failed",e);return {profiles:[]};});
+fetch("./catalog.json",{cache:"no-store"})
+.then(function(r){if(!r.ok)throw Error("catalog HTTP "+r.status);return r.json()})
+.then(function(data){
+if(!data.eras||!Array.isArray(data.items))throw Error("bad catalog");
+library=data;
 $("movieCount").textContent=library.items.length;$("eraCount").textContent=library.eras.length;
 $("embeddedCount").textContent=library.items.filter(function(i){return !!playableSource(i)}).length;
-
-$("lastUpdated").textContent="עדכון הקטלוג: "+data.updatedAt+" · "+learning.profiles.length+" תיקי חכמים · ללא תכני צפייה בתשלום";
-refresh();
-}).catch(function(e){$("resultsLabel").textContent="הקטלוג לא נטען";$("mediaResults").innerHTML='<div class="no-results">תקלה בטעינת הספרייה. כדאי לנסות לרענן את הדף.</div>';console.error("Catalog load failure",e)});
+$("lastUpdated").textContent="עדכון הקטלוג: "+data.updatedAt+" · ללא תכני צפייה בתשלום";
+refresh(); // Show available films immediately, even if optional metadata is slow.
+optionalSages.then(function(studies){
+ learning=studies&&Array.isArray(studies.profiles)?studies:{profiles:[]};
+ $("lastUpdated").textContent="עדכון הקטלוג: "+data.updatedAt+" · "+learning.profiles.length+" תיקי חכמים · ללא תכני צפייה בתשלום";
+ // Never interrupt video playback to refresh optional detail cards.
+ if(!document.querySelector(".poster.playing")&&$("playerModal").hidden)renderCards();
+});
+})
+.catch(function(e){$("resultsLabel").textContent="הקטלוג לא נטען";$("mediaResults").innerHTML='<div class="no-results">תקלה בטעינת הספרייה. כדאי לנסות לרענן את הדף.</div>';console.error("Catalog load failure",e)});
 })();
 </script>
 </body>
