@@ -145,6 +145,8 @@ footer a{text-decoration:underline}
 .video-stage iframe{width:100%;height:100%;border:0}
 .video-stage .quick-source{position:absolute;left:10px;top:10px;z-index:6;max-width:calc(100% - 20px);padding:6px 10px;background:rgba(13,28,33,.94);border:1px solid #d3b27b;border-radius:8px;color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4;text-decoration:none}
 .video-stage .quick-source:hover,.video-stage .quick-source:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
+.youtube-player-warning{position:absolute;bottom:10px;right:10px;left:10px;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px 12px;background:#1d2e34;border:1px solid #e6b67f;border-radius:10px;color:#fff4de;font-size:13px;line-height:1.5;box-shadow:0 5px 20px #0009}
+.youtube-player-warning a{color:#ffe6ab;text-decoration:underline;font-weight:700}
 .player-fallback{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 10px;border:1px solid var(--line2);border-radius:9px;background:var(--shade);color:var(--gold);font-size:.82em;line-height:1.45}
 .player-fallback:hover,.player-fallback:focus-visible{border-color:var(--gold)}
 .actions [hidden],.modal-bottom [hidden]{display:none!important}
@@ -275,9 +277,66 @@ function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(
 var youtubeEmbedMode="private";
 try{if(localStorage.getItem("sages-youtube-embed-mode-v1")==="standard")youtubeEmbedMode="standard"}catch(e){}
 function youtubeEmbedSrc(id){
- return (youtubeEmbedMode==="standard"?"https://www.youtube.com/embed/":"https://www.youtube-nocookie.com/embed/")+id+"?autoplay=1&rel=0&playsinline=1";
+ return (youtubeEmbedMode==="standard"?"https://www.youtube.com/embed/":"https://www.youtube-nocookie.com/embed/")+id+"?autoplay=1&rel=0&playsinline=1&enablejsapi=1&origin="+encodeURIComponent(window.location.origin);
 }
 function youtubeRetryLabel(){return youtubeEmbedMode==="standard"?"↻ נסה נגן YouTube במצב פרטיות":"↻ נסה נגן YouTube רגיל"}
+
+// Optional official YouTube API monitoring reports actual player error events, not iframe load guesses.
+// Playback still works as a normal iframe when scripts are blocked or the API is unavailable.
+var youtubeApiRequested=false,youtubeApiCallbacks=[],youtubeFrameCounter=0;
+function withYoutubeApi(callback){
+ if(window.YT&&typeof window.YT.Player==="function"){callback(window.YT);return}
+ youtubeApiCallbacks.push(callback);
+ if(youtubeApiRequested)return;
+ youtubeApiRequested=true;
+ var previousReady=window.onYouTubeIframeAPIReady;
+ window.onYouTubeIframeAPIReady=function(){
+  if(typeof previousReady==="function")previousReady();
+  if(!window.YT||typeof window.YT.Player!=="function")return;
+  var queue=youtubeApiCallbacks.splice(0);
+  queue.forEach(function(fn){try{fn(window.YT)}catch(err){console.warn("YouTube diagnostics unavailable",err)}});
+ };
+ var script=document.createElement("script");
+ script.src="https://www.youtube.com/iframe_api";
+ script.async=true;
+ script.onerror=function(){youtubeApiCallbacks.length=0;console.warn("YouTube diagnostics could not load; player unchanged")};
+ document.head.appendChild(script);
+}
+function clearYoutubeWarning(frame){
+ var stage=frame&&frame.parentElement,notice=stage&&stage.querySelector(".youtube-player-warning");
+ if(notice)notice.remove();
+}
+function reportYoutubeError(frame,itemId,youtubeId,code){
+ if(!frame.isConnected)return;
+ var stage=frame.parentElement;
+ if(!stage||!stage.matches(".poster.playing,.video-stage"))return;
+ clearYoutubeWarning(frame);
+ var message=(code===101||code===150)?"בעל הסרטון אינו מתיר הטמעה כאן. אפשר לבדוק צפייה ביוטיוב.":
+  code===100?"YouTube מדווח שהסרטון אינו זמין לניגון. אפשר לבדוק את עמוד המקור.":
+  code===153?"YouTube לא הצליח לאמת את זהות האתר בנגן הזה. אפשר לנסות במקור.":
+  "התקבלה שגיאה בנגן YouTube. אפשר לנסות שוב או לפתוח את המקור.";
+ var notice=document.createElement("div");
+ notice.className="youtube-player-warning";
+ notice.setAttribute("role","status");
+ var text=document.createElement("span");text.textContent=message;
+ var link=document.createElement("a");
+ link.href="https://www.youtube.com/watch?v="+youtubeId;
+ link.target="_blank";link.rel="noopener noreferrer";
+ link.dataset.playerOriginal=itemId;
+ link.textContent="↗ עמוד הסרטון ביוטיוב";
+ notice.appendChild(text);notice.appendChild(link);stage.appendChild(notice);
+}
+function monitorYoutubeFrame(frame,itemId,youtubeId){
+ if(!frame||!validYoutube(youtubeId))return;
+ frame.id="sages-yt-frame-"+(++youtubeFrameCounter);
+ withYoutubeApi(function(yt){
+  if(!frame.isConnected)return;
+  new yt.Player(frame.id,{events:{
+   onError:function(event){reportYoutubeError(frame,itemId,youtubeId,Number(event.data))},
+   onStateChange:function(event){if(event.data===1)clearYoutubeWarning(frame)}
+  }});
+ });
+}
 // Use only the providers' official players; no videos are copied or proxied.
 function playableSource(it){
  if(it.externalOnly===true)return null; // This entry has only a verified official watch page, not a verified embed.
@@ -469,6 +528,7 @@ function switchYoutubePlayer(frame,control,id){
  var standard=control.dataset.mode!=="standard";
  youtubeEmbedMode=standard?"standard":"private";
  try{localStorage.setItem("sages-youtube-embed-mode-v1",youtubeEmbedMode)}catch(e){}
+ clearYoutubeWarning(frame);
  frame.src=youtubeEmbedSrc(id);
  control.dataset.mode=youtubeEmbedMode;
  control.textContent=youtubeRetryLabel();
@@ -515,6 +575,7 @@ function playInCard(id,button){
  quickSource.textContent="↗ לא מתנגן? למקור";
  quickSource.setAttribute("aria-label","הנגן לא עובד? צפייה במקור: "+it.title);
  poster.appendChild(quickSource);
+ if(player.provider==="youtube")monitorYoutubeFrame(frame,it.id,player.id);
  var actions=card.querySelector(".actions");
  if(actions){
    // Retry the same official iframe after a transient failure without changing provider or mode.
@@ -578,6 +639,7 @@ $("playerModal").hidden=false;document.body.classList.add("locked");
 var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src=player.src;$("videoStage").replaceChildren(frame);
  // Keep the official watch-page exit visible without scrolling, even in the large player.
  var modalExit=document.createElement("a");modalExit.className="quick-source";modalExit.dataset.playerOriginal=id;modalExit.href=$("playerSource").href;modalExit.target="_blank";modalExit.rel="noopener noreferrer";modalExit.textContent="↗ לא מתנגן? למקור";modalExit.setAttribute("aria-label","הנגן לא עובד? צפייה באתר היוצר: "+it.title);$("videoStage").appendChild(modalExit);
+ if(player.provider==="youtube")monitorYoutubeFrame(frame,it.id,player.id);
 $("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";configureNextLink(id);$("playerClose").focus();
 }
 function closePlayer(){if($("playerModal").hidden)return;$("playerModal").hidden=true;document.body.classList.remove("locked");$("videoStage").replaceChildren();activeId=null;if(lastFocus&&document.contains(lastFocus))lastFocus.focus()}
@@ -588,7 +650,7 @@ elem=e.target.closest("[data-player-reload]");if(elem){
  var retryItem=library.items.find(function(x){return x.id===elem.dataset.playerReload});
  var retryPlayer=retryItem&&playableSource(retryItem);
  var retryCard=elem.closest(".media-card"),retryFrame=retryCard&&retryCard.querySelector(".poster.playing iframe");
- if(retryFrame&&retryPlayer)retryFrame.src=retryPlayer.src;
+ if(retryFrame&&retryPlayer){clearYoutubeWarning(retryFrame);retryFrame.src=retryPlayer.src;}
  return;
 }
 elem=e.target.closest("[data-player-alt]");if(elem){
@@ -638,7 +700,7 @@ $("playerReload").addEventListener("click",function(){
  var it=library.items.find(function(x){return x.id===activeId});
  var player=it&&playableSource(it);
  var retryFrame=$("videoStage").querySelector("iframe");
- if(player&&retryFrame)retryFrame.src=player.src;
+ if(player&&retryFrame){clearYoutubeWarning(retryFrame);retryFrame.src=player.src;}
 });
 $("playerRetry").addEventListener("click",function(){
  if(!activeId)return;
