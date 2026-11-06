@@ -269,6 +269,15 @@ function save(k,set){try{localStorage.setItem(k,JSON.stringify(Array.from(set)))
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function validUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:"#"}catch(e){return "#"}}
 function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(s)}
+// Remember the user's official YouTube player choice across videos and visits.
+// This is only a choice between standard and privacy-enhanced YouTube embeds;
+// it never bypasses a publisher's embedding restrictions.
+var youtubeEmbedMode="private";
+try{if(localStorage.getItem("sages-youtube-embed-mode-v1")==="standard")youtubeEmbedMode="standard"}catch(e){}
+function youtubeEmbedSrc(id){
+ return (youtubeEmbedMode==="standard"?"https://www.youtube.com/embed/":"https://www.youtube-nocookie.com/embed/")+id+"?autoplay=1&rel=0&playsinline=1";
+}
+function youtubeRetryLabel(){return youtubeEmbedMode==="standard"?"↻ נסה נגן YouTube במצב פרטיות":"↻ נסה נגן YouTube רגיל"}
 // Use only the providers' official players; no videos are copied or proxied.
 function playableSource(it){
  if(it.externalOnly===true)return null; // This entry has only a verified official watch page, not a verified embed.
@@ -284,7 +293,7 @@ function playableSource(it){
    }
    if(validYoutube(candidate))youtubeId=candidate;
  }
- if(youtubeId)return {provider:"youtube",id:youtubeId,src:"https://www.youtube-nocookie.com/embed/"+youtubeId+"?autoplay=1&rel=0&playsinline=1"};
+ if(youtubeId)return {provider:"youtube",id:youtubeId,src:youtubeEmbedSrc(youtubeId)};
  // Use a Vimeo ID only when the original creator's page embeds this official Vimeo player.
  var vimeoId=/^\d{5,12}$/.test(String(it.vimeoId||""))?String(it.vimeoId):null;
  if(vimeoId)return {provider:"vimeo",id:vimeoId,src:"https://player.vimeo.com/video/"+vimeoId+"?autoplay=1&dnt=1"};
@@ -456,9 +465,11 @@ function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favor
 function switchYoutubePlayer(frame,control,id){
  if(!frame||!validYoutube(id))return;
  var standard=control.dataset.mode!=="standard";
- frame.src=(standard?"https://www.youtube.com/embed/":"https://www.youtube-nocookie.com/embed/")+id+"?autoplay=1&rel=0&playsinline=1";
- control.dataset.mode=standard?"standard":"private";
- control.textContent=standard?"↻ נסה שוב במצב פרטיות":"↻ נסה נגן YouTube רגיל";
+ youtubeEmbedMode=standard?"standard":"private";
+ try{localStorage.setItem("sages-youtube-embed-mode-v1",youtubeEmbedMode)}catch(e){}
+ frame.src=youtubeEmbedSrc(id);
+ control.dataset.mode=youtubeEmbedMode;
+ control.textContent=youtubeRetryLabel();
 }
 function clearInlinePlayerActions(card){
  if(!card)return;
@@ -507,8 +518,8 @@ function playInCard(id,button){
    if(player.provider==="youtube"){
      var alternative=document.createElement("button");
      alternative.type="button";alternative.className="player-fallback";
-     alternative.dataset.playerAlt=id;alternative.dataset.mode="private";
-     alternative.textContent="↻ נסה נגן YouTube רגיל";
+     alternative.dataset.playerAlt=id;alternative.dataset.mode=youtubeEmbedMode;
+     alternative.textContent=youtubeRetryLabel();
      actions.appendChild(alternative);
    }
    // A direct official watch link stays beside the active player when embedding fails.
@@ -551,8 +562,8 @@ stopInlinePlayer();
 var player=playableSource(it);if(!player){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
 rememberLastOpened(id);lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר המקור";$("openLearning").hidden=!getProfiles(it).length;
 $("playerRetry").hidden=player.provider!=="youtube";
-$("playerRetry").dataset.mode="private";
-$("playerRetry").textContent="↻ נסה נגן YouTube רגיל";
+$("playerRetry").dataset.mode=youtubeEmbedMode;
+$("playerRetry").textContent=youtubeRetryLabel();
 $("playerModal").hidden=false;document.body.classList.add("locked");
 var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src=player.src;$("videoStage").replaceChildren(frame);
  // Keep the official watch-page exit visible without scrolling, even in the large player.
