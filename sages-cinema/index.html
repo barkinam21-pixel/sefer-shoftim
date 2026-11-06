@@ -473,7 +473,7 @@ function switchYoutubePlayer(frame,control,id){
 }
 function clearInlinePlayerActions(card){
  if(!card)return;
- card.querySelectorAll("[data-player-alt],[data-player-original]").forEach(function(el){el.remove()});
+ card.querySelectorAll("[data-player-alt],[data-player-reload],[data-player-original]").forEach(function(el){el.remove()});
 }
 // Open the provider's actual player in the card on the page, not only in a modal.
 function playInCard(id,button){
@@ -521,6 +521,13 @@ function playInCard(id,button){
      alternative.dataset.playerAlt=id;alternative.dataset.mode=youtubeEmbedMode;
      alternative.textContent=youtubeRetryLabel();
      actions.appendChild(alternative);
+   }else{
+     // Retry the same official Vimeo, RTVE or Internet Archive iframe without changing source.
+     var reload=document.createElement("button");
+     reload.type="button";reload.className="player-fallback";
+     reload.dataset.playerReload=id;
+     reload.textContent="↻ טען נגן מחדש";
+     actions.appendChild(reload);
    }
    // A direct official watch link stays beside the active player when embedding fails.
    var watchLink=document.createElement("a");
@@ -561,9 +568,9 @@ function openItem(id){var it=library.items.find(function(x){return x.id===id});i
 stopInlinePlayer();
 var player=playableSource(it);if(!player){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
 rememberLastOpened(id);lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר המקור";$("openLearning").hidden=!getProfiles(it).length;
-$("playerRetry").hidden=player.provider!=="youtube";
+$("playerRetry").hidden=false;
 $("playerRetry").dataset.mode=youtubeEmbedMode;
-$("playerRetry").textContent=youtubeRetryLabel();
+$("playerRetry").textContent=player.provider==="youtube"?youtubeRetryLabel():"↻ טען נגן מחדש";
 $("playerModal").hidden=false;document.body.classList.add("locked");
 var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src=player.src;$("videoStage").replaceChildren(frame);
  // Keep the official watch-page exit visible without scrolling, even in the large player.
@@ -574,6 +581,13 @@ function closePlayer(){if($("playerModal").hidden)return;$("playerModal").hidden
 function nextFromCurrent(){if(!activeId)return;var seq=itemsSorted().filter(function(i){return !state.siteOnly||playableSource(i)}),n=seq.findIndex(function(x){return x.id===activeId});if(n<0)return;watched.add(activeId);save("sages-watched-v1",watched);closePlayer();var following=seq[n+1];if(following)openItem(following.id);else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");renderCards()}
 document.addEventListener("click",function(e){
 var elem=e.target.closest("[data-era]");if(elem){state.era=elem.getAttribute("data-era")||"";refresh();$("library").scrollIntoView({behavior:"smooth"});return}
+elem=e.target.closest("[data-player-reload]");if(elem){
+ var retryItem=library.items.find(function(x){return x.id===elem.dataset.playerReload});
+ var retryPlayer=retryItem&&playableSource(retryItem);
+ var retryCard=elem.closest(".media-card"),retryFrame=retryCard&&retryCard.querySelector(".poster.playing iframe");
+ if(retryFrame&&retryPlayer&&retryPlayer.provider!=="youtube")retryFrame.src=retryPlayer.src;
+ return;
+}
 elem=e.target.closest("[data-player-alt]");if(elem){
  var alternateItem=library.items.find(function(x){return x.id===elem.dataset.playerAlt});
  var alternatePlayer=alternateItem&&playableSource(alternateItem);
@@ -620,7 +634,9 @@ $("playerRetry").addEventListener("click",function(){
  if(!activeId)return;
  var it=library.items.find(function(x){return x.id===activeId});
  var player=it&&playableSource(it);
- if(player&&player.provider==="youtube")switchYoutubePlayer($("videoStage").querySelector("iframe"),this,player.id);
+ var retryFrame=$("videoStage").querySelector("iframe");
+ if(player&&player.provider==="youtube")switchYoutubePlayer(retryFrame,this,player.id);
+ else if(player&&retryFrame)retryFrame.src=player.src;
 });
 $("playerClose").addEventListener("click",closePlayer);
 $("playerModal").addEventListener("click",function(e){if(e.target===$("playerModal"))closePlayer()});
