@@ -397,6 +397,18 @@ function reportYoutubeError(frame,itemId,youtubeId,code){
    if(otherPublisher){modalSource.href=sourceUrl;modalSource.textContent="↗ דף היוצר — צפייה לא אומתה";}
    else modalSource.hidden=true;
   }
+  // The inline card also has links below its player; remove any now-known
+  // dead YouTube watch exits, while preserving a distinct publisher page.
+  if(stage.matches(".poster.playing")){
+   var card=stage.closest(".media-card");
+   if(card)card.querySelectorAll(".actions a,.source-access a").forEach(function(link){
+    var host="";
+    try{host=new URL(link.href).hostname.toLowerCase()}catch(e){}
+    if(["youtube.com","www.youtube.com","m.youtube.com","youtu.be","www.youtu.be"].indexOf(host)===-1)return;
+    if(otherPublisher){link.href=sourceUrl;link.textContent="↗ דף היוצר — צפייה לא אומתה";}
+    else link.remove();
+   });
+  }
  }
  stage.appendChild(notice);
 }
