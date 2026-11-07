@@ -299,6 +299,14 @@ function save(k,set){try{localStorage.setItem(k,JSON.stringify(Array.from(set)))
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function validUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:"#"}catch(e){return "#"}}
 function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(s)}
+// For blocked embeds, prefer the same official YouTube watch page when its ID
+// is already documented in the catalog. Keep the publisher's own page as a second exit.
+// An "unavailable video" error is not treated as proof that YouTube watch works.
+function blockedVideoWatchUrl(it){
+ if(runtimeEmbedBlocks[it.id]&&runtimeEmbedBlocks[it.id]!=="youtube-unavailable"&&validYoutube(it.youtubeId))
+  return "https://www.youtube.com/watch?v="+it.youtubeId;
+ return validUrl(it.url);
+}
 // Remember the user's official YouTube player choice across videos and visits.
 // This is only a choice between standard and privacy-enhanced YouTube embeds;
 // it never bypasses a publisher's embedding restrictions.
@@ -529,6 +537,8 @@ return '<details id="learn-'+esc(it.id)+'" class="study-details"><summary>📚 �
 function mediaCard(it){
 var isWatched=watched.has(it.id),isFav=favorites.has(it.id),player=playableSource(it),embed=!!player;
 var playbackUnverified=!embed&&(it.watchStatus==="unverified"||!!runtimeEmbedBlocks[it.id]);
+var blockedDirectYoutube=!embed&&runtimeEmbedBlocks[it.id]&&runtimeEmbedBlocks[it.id]!=="youtube-unavailable"&&validYoutube(it.youtubeId)?"https://www.youtube.com/watch?v="+it.youtubeId:"";
+var externalWatchUrl=blockedVideoWatchUrl(it);
 // Keep the legal, direct source one click away, including when an iframe is blocked.
 var fallbackUrl=embed&&player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);
 var fallbackLabel=embed&&player.provider==="youtube"?"צפייה ישירה ביוטיוב":"צפייה ישירה באתר היוצר";
@@ -536,14 +546,17 @@ var creatorPageLink=embed&&player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\
 var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a>'+creatorPageLink+'<button type="button" data-mark-embed-unavailable="'+esc(it.id)+'">⚠ הנגן לא עובד אצלי</button></div>':(playbackUnverified?'<div class="source-access">אין הטמעה מאומתת. לא אומתה צפייה בסרטון מתוך עמוד המקור, וגם זמינות העמוד עצמו אינה מובטחת.</div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>');
 if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
 if(!embed&&runtimeEmbedBlocks[it.id]==="viewer-failed")sourceFallback='<div class="source-access">הנגן לא פעל במכשיר הזה. ההטמעה הוסתרה לביקור הנוכחי בלבד; אפשר לבדוק צפייה בקישור המקורי, שזמינותו לא אומתה. <button type="button" data-retry-embed="'+esc(it.id)+'">↻ נסה שוב נגן באתר</button></div>';
+// A blocked in-site iframe must not hide a previously known direct YouTube watch URL.
+// When the film originated on a creator website, show BOTH official legal exits.
+if(blockedDirectYoutube&&validUrl(it.url)!==blockedDirectYoutube)sourceFallback+='<div class="source-access"><a href="'+blockedDirectYoutube+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ בדיקת צפייה ישירה ביוטיוב</a> · <a href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ לדף היוצר המקורי</a></div>';
 var poster=player&&player.provider==="youtube"?'<img loading="lazy" decoding="async" src="https://i.ytimg.com/vi/'+player.id+'/hqdefault.jpg" alt="" referrerpolicy="no-referrer">':'<span class="symbol" aria-hidden="true">'+(embed?'▶':'✦')+'</span>';
 // Clicking the thumbnail launches the same official player or legal source as the action button.
-var posterLaunch=embed?'<button class="poster-launch" type="button" data-poster-play="'+esc(it.id)+'" aria-label="הפעל כאן באתר: '+esc(it.title)+'"></button>':'<a class="poster-launch" href="'+esc(validUrl(it.url))+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'" aria-label="'+(playbackUnverified?'עמוד המקור — צפייה לא אומתה: ':'צפייה באתר היוצר: ')+esc(it.title)+'"></a>';
+var posterLaunch=embed?'<button class="poster-launch" type="button" data-poster-play="'+esc(it.id)+'" aria-label="הפעל כאן באתר: '+esc(it.title)+'"></button>':'<a class="poster-launch" href="'+esc(externalWatchUrl)+'"' target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'" aria-label="'+(playbackUnverified?'עמוד המקור — צפייה לא אומתה: ':'צפייה באתר היוצר: ')+esc(it.title)+'"></a>';
 return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
 '<div class="poster">'+poster+'<span class="poster-icon">'+(embed?'▶ נגן באתר':(playbackUnverified?'⚠ צפייה בבדיקה':'↗ צפייה ביוצר'))+'</span><span class="poster-label">'+esc(it.century)+'</span>'+posterLaunch+'</div>'+
 '<div class="card-body"><div class="meta"><span>'+esc(it.type)+'</span><span>'+esc(it.language)+'</span><span>'+esc(it.region)+'</span></div>'+
 '<h3 class="card-title">'+esc(it.title)+'</h3><p class="figure">'+esc(it.figure)+'</p><p class="desc">'+esc(it.description)+'</p><p class="source">'+esc(it.source)+' • '+esc(it.fiction)+'</p>'+
-'<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'" aria-pressed="false">▶ צפייה כאן באתר</button>':'<a class="play-btn external" href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">'+(playbackUnverified?'↗ עמוד המקור — צפייה לא אומתה':'↗ צפייה באתר היוצר')+'</a>')+
+'<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'" aria-pressed="false">▶ צפייה כאן באתר</button>':'<a class="play-btn external" href="'+externalWatchUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">'+(blockedDirectYoutube?'↗ בדיקת צפייה ישירה ביוטיוב':playbackUnverified?'↗ עמוד המקור — צפייה לא אומתה':'↗ צפייה באתר היוצר')+'</a>')+
 '<button class="icon-btn'+(isFav?' chosen':'')+'" type="button" data-favorite="'+esc(it.id)+'" aria-label="'+(isFav?'הסר ממועדפים':'שמור במועדפים')+'" aria-pressed="'+isFav+'" title="מועדפים">'+(isFav?'★':'☆')+'</button>'+
 '<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div>'+sourceFallback+renderStudyCard(it)+'</div></article>'}
 function renderCards(){
@@ -726,7 +739,7 @@ function configureNextLink(id){
 function openItem(id){var it=library.items.find(function(x){return x.id===id});if(!it)return;
 // Prevent two soundtracks when opening the larger player or an external video.
 stopInlinePlayer();
-var player=playableSource(it);if(!player){window.open(validUrl(it.url),"_blank","noopener,noreferrer");return}
+var player=playableSource(it);if(!player){window.open(blockedVideoWatchUrl(it),"_blank","noopener,noreferrer");return}
 rememberLastOpened(id);lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר המקור";$("playerCreator").href=validUrl(it.url);$("playerCreator").hidden=!(player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i.test(it.url));$("playerCreator").dataset.playerOriginal=it.id;$("openLearning").hidden=!getProfiles(it).length;
 $("playerReload").hidden=false;
 $("playerRetry").hidden=player.provider!=="youtube";
