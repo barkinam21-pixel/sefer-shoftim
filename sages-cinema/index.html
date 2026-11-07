@@ -291,6 +291,8 @@ function recordEmbedBlock(itemId,reason,stage){
  if(runtimeEmbedBlocks[itemId])return;
  runtimeEmbedBlocks[itemId]=reason;
  if(library.items.length)$("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
+ // Refresh resume suggestions after a provider confirms the video is gone.
+ if(reason==="youtube-unavailable")renderContinue();
  if(stage.matches(".video-stage")){$("playerReload").hidden=true;$("playerRetry").hidden=true;}
  else{
   var card=stage.closest(".media-card");
@@ -530,8 +532,9 @@ function playableSource(it){
 function itemsSorted(){return library.items.slice().sort(function(a,b){return a.year-b.year||a.title.localeCompare(b.title,"he")})}
 // Unverified source pages stay listed in the catalog, but cannot auto-advance as playable videos.
 function navigationItems(){return itemsSorted().filter(function(it){
- // Never auto-advance into a video already confirmed unavailable by the player.
- return it.watchStatus!=="unverified"&&(!!playableSource(it)||blockedVideoWatchUrl(it)!=="#")&&(!state.siteOnly||!!playableSource(it));
+ // Never auto-advance into a YouTube video confirmed unavailable (error 100),
+ // even if a separate publisher page remains accessible but its video is unverified.
+ return it.watchStatus!=="unverified"&&runtimeEmbedBlocks[it.id]!=="youtube-unavailable"&&(!!playableSource(it)||blockedVideoWatchUrl(it)!=="#")&&(!state.siteOnly||!!playableSource(it));
 })}
 function getProfiles(it){return (learning.profiles||[]).filter(function(p){return (p.mediaIds||[]).indexOf(it.id)!==-1||(it.sageIds||[]).indexOf(p.id)!==-1})}
 function selectedItems(){return itemsSorted().filter(function(it){
