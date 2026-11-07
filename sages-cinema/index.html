@@ -614,7 +614,13 @@ function clearInlinePlayerActions(card){
 // Open the provider's actual player in the card on the page, not only in a modal.
 function playInCard(id,button){
  var it=library.items.find(function(x){return x.id===id}),player=it&&playableSource(it);
- if(!player)return openItem(id);
+ if(!player){
+  // A provider error can mark an already-open inline player as blocked.
+  // Close it in place rather than recursing through openItem -> stopInlinePlayer.
+  var blockedCard=button&&button.closest(".media-card");
+  if(blockedCard&&blockedCard.querySelector(".poster.playing")){renderCards();return;}
+  return openItem(id);
+ }
  var card=button.closest(".media-card"),poster=card&&card.querySelector(".poster");
  if(!poster)return openItem(id);
  var previous=document.querySelector(".media-card .poster.playing"),same=previous===poster;
