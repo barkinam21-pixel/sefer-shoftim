@@ -336,7 +336,7 @@ var youtubeApiRequested=false,youtubeApiCallbacks=[],youtubeFrameCounter=0,youtu
 function withYoutubeApi(callback){
  if(window.YT&&typeof window.YT.Player==="function"){callback(window.YT);return}
  // Allow one retry after a transient diagnostics-script failure; never retry indefinitely.
- if(youtubeApiAttempts>=2)return;
+ if(youtubeApiAttempts>=2&&!youtubeApiRequested)return;
  youtubeApiCallbacks.push(callback);
  if(youtubeApiRequested)return;
  youtubeApiRequested=true;
@@ -434,7 +434,7 @@ var vimeoApiRequested=false,vimeoApiCallbacks=[],vimeoApiAttempts=0;
 function withVimeoApi(callback){
  if(window.Vimeo&&typeof window.Vimeo.Player==="function"){callback(window.Vimeo);return}
  // If the diagnostics SDK failed to load, allow one bounded retry on a later player.
- if(vimeoApiAttempts>=2)return;
+ if(vimeoApiAttempts>=2&&!vimeoApiRequested)return;
  vimeoApiCallbacks.push(callback);
  if(vimeoApiRequested)return;
  vimeoApiRequested=true;
