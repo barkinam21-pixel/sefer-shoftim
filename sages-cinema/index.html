@@ -274,7 +274,9 @@ var runtimeEmbedBlocks=Object.create(null);
 // This is a device-specific choice for this visit, never a claim that the publisher blocked embedding.
 function disableEmbedForVisit(itemId){
  if(!library.items.some(function(it){return it.id===itemId}))return;
- runtimeEmbedBlocks[itemId]="viewer-failed";
+ // Preserve a provider-confirmed failure (especially YouTube error 100).
+ // A manual fallback must never revive a watch URL already known to be dead.
+ if(!runtimeEmbedBlocks[itemId])runtimeEmbedBlocks[itemId]="viewer-failed";
  $("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
  if(activeId===itemId&&!$("playerModal").hidden)closePlayer();
  else renderCards();
