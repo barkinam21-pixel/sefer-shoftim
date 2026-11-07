@@ -641,12 +641,19 @@ renderContinue();
 function getContinueItem(){
  var seq=navigationItems(),last="";
  try{last=localStorage.getItem("sages-last-opened")||""}catch(e){}
- var index=seq.findIndex(function(i){return i.id===last});
- if(index>=0){
-  if(!watched.has(seq[index].id))return seq[index];
-  for(var j=index+1;j<seq.length;j++)if(!watched.has(seq[j].id))return seq[j];
+ // The last film may vanish from the navigable list after a confirmed playback error.
+ // Resume after its original chronological position instead of jumping to the first film.
+ if(last){
+  var ordered=itemsSorted(),position=ordered.findIndex(function(it){return it.id===last});
+  if(position>=0){
+   var available=new Set(seq.map(function(it){return it.id}));
+   for(var i=position;i<ordered.length;i++){
+    var candidate=ordered[i];
+    if(available.has(candidate.id)&&!watched.has(candidate.id))return candidate;
+   }
+  }
  }
- return seq.find(function(i){return !watched.has(i.id)});
+ return seq.find(function(it){return !watched.has(it.id)});
 }
 function rememberLastOpened(id){
  try{localStorage.setItem("sages-last-opened",id)}catch(e){}
@@ -657,7 +664,7 @@ var next=getContinueItem();
 var link=$("continueButton"),external=next&&!playableSource(next);
 link.hidden=!next;
 link.textContent=next?(external?"↗ פתח באתר המקור: ":"▶ המשך באתר: ")+(next.title.length>30?next.title.slice(0,30)+"…":next.title):"";
-link.href=external?validUrl(next.url):"#";
+link.href=external?blockedVideoWatchUrl(next):"#";
 if(external){link.target="_blank";link.rel="noopener noreferrer";link.setAttribute("data-external",next.id)}
 else{link.removeAttribute("target");link.removeAttribute("rel");link.removeAttribute("data-external")}
 }
