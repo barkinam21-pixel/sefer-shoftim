@@ -776,14 +776,23 @@ function stopInlinePlayer(){
 }
 // The next-video control is a real link for external-only videos, not a popup.
  // This ensures native navigation still works if popup windows are blocked.
+// Find the next playable or legal external entry by its full chronological position.
+// An embed error can remove the CURRENT item from navigationItems() while its modal is open.
+// Never let that make "next" jump to the beginning or stop responding.
+function nextNavigableItem(id){
+ var ordered=itemsSorted(),position=ordered.findIndex(function(it){return it.id===id});
+ if(position<0)return null;
+ var available=new Set(navigationItems().map(function(it){return it.id}));
+ for(var i=position+1;i<ordered.length;i++)if(available.has(ordered[i].id))return ordered[i];
+ return null;
+}
 function configureNextLink(id){
- var seq=navigationItems();
- var n=seq.findIndex(function(i){return i.id===id}),following=n<0?null:seq[n+1];
+ var following=nextNavigableItem(id);
  var link=$("playNext"),external=!!following&&!playableSource(following);
  link.hidden=!following;
  link.dataset.nextId=following?following.id:"";
  link.textContent=external?"↗ הסרט הבא — באתר היוצר":"הסרט הבא ←";
- link.href=external?validUrl(following.url):"#";
+ link.href=external?blockedVideoWatchUrl(following):"#";
  if(external){link.target="_blank";link.rel="noopener noreferrer"}
  else{link.removeAttribute("target");link.removeAttribute("rel")}
 }
@@ -805,7 +814,15 @@ var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;f
 $("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";configureNextLink(id);$("playerClose").focus();
 }
 function closePlayer(){if($("playerModal").hidden)return;var wasBlocked=!!runtimeEmbedBlocks[activeId];$("playerModal").hidden=true;document.body.classList.remove("locked");$("videoStage").replaceChildren();activeId=null;if(wasBlocked)renderCards();if(lastFocus&&document.contains(lastFocus))lastFocus.focus()}
-function nextFromCurrent(){if(!activeId)return;var seq=navigationItems(),n=seq.findIndex(function(x){return x.id===activeId});if(n<0)return;watched.add(activeId);save("sages-watched-v1",watched);closePlayer();var following=seq[n+1];if(following)openItem(following.id);else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");renderCards()}
+function nextFromCurrent(){
+ if(!activeId)return;
+ var following=nextNavigableItem(activeId);
+ watched.add(activeId);save("sages-watched-v1",watched);
+ closePlayer();
+ if(following)openItem(following.id);
+ else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");
+ renderCards();
+}
 document.addEventListener("click",function(e){
 var elem=e.target.closest("[data-era]");if(elem){state.era=elem.getAttribute("data-era")||"";refresh();$("library").scrollIntoView({behavior:"smooth"});return}
 elem=e.target.closest("[data-mark-embed-unavailable]");if(elem){disableEmbedForVisit(elem.getAttribute("data-mark-embed-unavailable"));return}
