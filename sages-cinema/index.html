@@ -295,8 +295,10 @@ function recordEmbedBlock(itemId,reason,stage){
  if(reason==="youtube-unavailable")renderContinue();
  if(stage.matches(".video-stage")){$("playerReload").hidden=true;$("playerRetry").hidden=true;}
  else{
-  var card=stage.closest(".media-card");
-  if(card)card.querySelectorAll("[data-player-reload],[data-player-alt]").forEach(function(button){button.hidden=true});
+  // Replace the confirmed blocked inline iframe immediately with a clearly
+  // labeled legal external fallback (or unavailable status). Do not leave
+  // a broken player presented as a working in-site play control.
+  renderCards();
  }
 }
 function $(id){return document.getElementById(id)}
@@ -369,6 +371,9 @@ function reportYoutubeError(frame,itemId,youtubeId,code){
  // Error 100 means YouTube cannot play this video; do not offer the same failed embed repeatedly.
  // Session-only observation: the publisher URL has not been verified as playable.
  if(code===100)recordEmbedBlock(itemId,"youtube-unavailable",stage);
+ // recordEmbedBlock may have replaced an inline card; do not add an error
+ // notice to its detached iframe container. The new card shows the fallback.
+ if(!stage.isConnected)return;
  var message=(code===101||code===150)?"בעל הסרטון אינו מתיר הטמעה כאן. אפשר לבדוק צפייה ביוטיוב.":
   code===100?"YouTube מדווח שהסרטון אינו זמין לניגון. אפשר לבדוק את עמוד המקור.":
   code===153?"YouTube לא הצליח לאמת את זהות האתר בנגן הזה. אפשר לנסות במקור.":
@@ -462,6 +467,7 @@ function reportVimeoError(frame,itemId,name){
  if(!stage||!stage.matches(".poster.playing,.video-stage"))return;
  clearVimeoWarning(frame);
  if(name==="PrivacyError"||name==="PasswordError")recordEmbedBlock(itemId,name==="PasswordError"?"vimeo-password":"vimeo-privacy",stage);
+ if(!stage.isConnected)return;
  var it=library.items.find(function(x){return x.id===itemId});
  var url=it&&validUrl(it.url);
  var notice=document.createElement("div");
