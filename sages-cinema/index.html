@@ -147,6 +147,7 @@ footer a{text-decoration:underline}
 .video-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .video-stage .quick-source{position:absolute;left:10px;top:10px;z-index:6;max-width:calc(100% - 20px);padding:6px 10px;background:rgba(13,28,33,.94);border:1px solid #d3b27b;border-radius:8px;color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4;text-decoration:none}
 .video-stage .quick-source:hover,.video-stage .quick-source:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
+.blocked-embed-status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:35px 20px 85px;color:#f0d4ad;text-align:center;font-size:15px;line-height:1.7;background:#101c21}
 .youtube-player-warning,.vimeo-player-warning{position:absolute;bottom:10px;right:10px;left:10px;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px 12px;background:#1d2e34;border:1px solid #e6b67f;border-radius:10px;color:#fff4de;font-size:13px;line-height:1.5;box-shadow:0 5px 20px #0009}
 .youtube-player-warning a,.vimeo-player-warning a{color:#ffe6ab;text-decoration:underline;font-weight:700}
 .player-fallback{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 10px;border:1px solid var(--line2);border-radius:9px;background:var(--shade);color:var(--gold);font-size:.82em;line-height:1.45}
@@ -293,7 +294,19 @@ function recordEmbedBlock(itemId,reason,stage){
  if(library.items.length)$("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
  // Refresh resume suggestions after a provider confirms the video is gone.
  if(reason==="youtube-unavailable")renderContinue();
- if(stage.matches(".video-stage")){$("playerReload").hidden=true;$("playerRetry").hidden=true;}
+ if(stage.matches(".video-stage")){
+   // A confirmed provider refusal must not leave a dead iframe on screen.
+   // Keep the legal source link and the next-film control accessible.
+   var failedFrame=stage.querySelector("iframe");
+   if(failedFrame)failedFrame.remove();
+   if(!stage.querySelector(".blocked-embed-status")){
+    var status=document.createElement("div");
+    status.className="blocked-embed-status";status.setAttribute("role","status");
+    status.textContent="אין הטמעה זמינה לסרט הזה. אפשר לבדוק צפייה באתר המקור, אם הסרט זמין שם.";
+    stage.appendChild(status);
+   }
+   $("playerReload").hidden=true;$("playerRetry").hidden=true;
+  }
  else{
   // Replace the confirmed blocked inline iframe immediately with a clearly
   // labeled legal external fallback (or unavailable status). Do not leave
@@ -478,9 +491,14 @@ function reportVimeoError(frame,itemId,name){
   "נגן Vimeo דיווח על תקלה. אפשר לנסות לטעון אותו מחדש או לעבור למקור.";
  notice.appendChild(label);
  if(url&&url!=="#"){
+  if(stage.matches(".video-stage")){
+   $("playerSource").textContent="↗ בדיקת צפייה באתר המקור — זמינות לא אומתה";
+   var quick=stage.querySelector(".quick-source");
+   if(quick)quick.textContent="↗ בדיקת צפייה במקור";
+  }
   var link=document.createElement("a");link.href=url;link.target="_blank";
   link.rel="noopener noreferrer";link.dataset.playerOriginal=itemId;
-  link.textContent="↗ צפייה באתר היוצר";notice.appendChild(link);
+  link.textContent="↗ בדיקת צפייה באתר היוצר — זמינות לא אומתה";notice.appendChild(link);
  }
  stage.appendChild(notice);
 }
