@@ -145,8 +145,8 @@ footer a{text-decoration:underline}
 .video-stage iframe{width:100%;height:100%;border:0}
 .video-stage .quick-source{position:absolute;left:10px;top:10px;z-index:6;max-width:calc(100% - 20px);padding:6px 10px;background:rgba(13,28,33,.94);border:1px solid #d3b27b;border-radius:8px;color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4;text-decoration:none}
 .video-stage .quick-source:hover,.video-stage .quick-source:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
-.youtube-player-warning{position:absolute;bottom:10px;right:10px;left:10px;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px 12px;background:#1d2e34;border:1px solid #e6b67f;border-radius:10px;color:#fff4de;font-size:13px;line-height:1.5;box-shadow:0 5px 20px #0009}
-.youtube-player-warning a{color:#ffe6ab;text-decoration:underline;font-weight:700}
+.youtube-player-warning,.vimeo-player-warning{position:absolute;bottom:10px;right:10px;left:10px;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px 12px;background:#1d2e34;border:1px solid #e6b67f;border-radius:10px;color:#fff4de;font-size:13px;line-height:1.5;box-shadow:0 5px 20px #0009}
+.youtube-player-warning a,.vimeo-player-warning a{color:#ffe6ab;text-decoration:underline;font-weight:700}
 .player-fallback{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 10px;border:1px solid var(--line2);border-radius:9px;background:var(--shade);color:var(--gold);font-size:.82em;line-height:1.45}
 .player-fallback:hover,.player-fallback:focus-visible{border-color:var(--gold)}
 .actions [hidden],.modal-bottom [hidden]{display:none!important}
@@ -335,6 +335,60 @@ function monitorYoutubeFrame(frame,itemId,youtubeId){
    onError:function(event){reportYoutubeError(frame,itemId,youtubeId,Number(event.data))},
    onStateChange:function(event){if(event.data===1)clearYoutubeWarning(frame)}
   }});
+ });
+}
+// Use the official Vimeo SDK only when a Vimeo iframe is open.
+// If the SDK is blocked, the ordinary video iframe and legal source link still work.
+var vimeoApiRequested=false,vimeoApiCallbacks=[];
+function withVimeoApi(callback){
+ if(window.Vimeo&&typeof window.Vimeo.Player==="function"){callback(window.Vimeo);return}
+ vimeoApiCallbacks.push(callback);
+ if(vimeoApiRequested)return;
+ vimeoApiRequested=true;
+ var script=document.createElement("script");
+ script.src="https://player.vimeo.com/api/player.js";
+ script.async=true;
+ script.onload=function(){
+  if(!window.Vimeo||typeof window.Vimeo.Player!=="function"){vimeoApiCallbacks.length=0;return}
+  var queue=vimeoApiCallbacks.splice(0);
+  queue.forEach(function(fn){try{fn(window.Vimeo)}catch(err){console.warn("Vimeo diagnostics unavailable",err)}});
+ };
+ script.onerror=function(){vimeoApiCallbacks.length=0;console.warn("Vimeo diagnostics could not load; player unchanged")};
+ document.head.appendChild(script);
+}
+function clearVimeoWarning(frame){
+ var stage=frame&&frame.parentElement,notice=stage&&stage.querySelector(".vimeo-player-warning");
+ if(notice)notice.remove();
+}
+function reportVimeoError(frame,itemId,name){
+ if(!frame.isConnected)return;
+ var stage=frame.parentElement;
+ if(!stage||!stage.matches(".poster.playing,.video-stage"))return;
+ clearVimeoWarning(frame);
+ var it=library.items.find(function(x){return x.id===itemId});
+ var url=it&&validUrl(it.url);
+ var notice=document.createElement("div");
+ notice.className="vimeo-player-warning";notice.setAttribute("role","status");
+ var label=document.createElement("span");
+ label.textContent=name==="PrivacyError"?"Vimeo מדווח על הגבלת פרטיות או הטמעה בסרטון הזה.":
+  name==="PasswordError"?"Vimeo מדווח שהסרטון דורש סיסמה לצפייה.":
+  "נגן Vimeo דיווח על תקלה. אפשר לנסות לטעון אותו מחדש או לעבור למקור.";
+ notice.appendChild(label);
+ if(url&&url!=="#"){
+  var link=document.createElement("a");link.href=url;link.target="_blank";
+  link.rel="noopener noreferrer";link.dataset.playerOriginal=itemId;
+  link.textContent="↗ צפייה באתר היוצר";notice.appendChild(link);
+ }
+ stage.appendChild(notice);
+}
+function monitorVimeoFrame(frame,itemId){
+ if(!frame)return;
+ withVimeoApi(function(api){
+  if(!frame.isConnected)return;
+  var player=new api.Player(frame);
+  player.on("error",function(e){reportVimeoError(frame,itemId,e&&e.name)});
+  player.on("play",function(){clearVimeoWarning(frame)});
+  player.ready().catch(function(e){reportVimeoError(frame,itemId,e&&e.name)});
  });
 }
 // Use only the providers' official players; no videos are copied or proxied.
@@ -576,6 +630,7 @@ function playInCard(id,button){
  quickSource.setAttribute("aria-label","הנגן לא עובד? צפייה במקור: "+it.title);
  poster.appendChild(quickSource);
  if(player.provider==="youtube")monitorYoutubeFrame(frame,it.id,player.id);
+ else if(player.provider==="vimeo")monitorVimeoFrame(frame,it.id);
  var actions=card.querySelector(".actions");
  if(actions){
    // Retry the same official iframe after a transient failure without changing provider or mode.
@@ -640,6 +695,7 @@ var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;f
  // Keep the official watch-page exit visible without scrolling, even in the large player.
  var modalExit=document.createElement("a");modalExit.className="quick-source";modalExit.dataset.playerOriginal=id;modalExit.href=$("playerSource").href;modalExit.target="_blank";modalExit.rel="noopener noreferrer";modalExit.textContent="↗ לא מתנגן? למקור";modalExit.setAttribute("aria-label","הנגן לא עובד? צפייה באתר היוצר: "+it.title);$("videoStage").appendChild(modalExit);
  if(player.provider==="youtube")monitorYoutubeFrame(frame,it.id,player.id);
+ else if(player.provider==="vimeo")monitorVimeoFrame(frame,it.id);
 $("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";configureNextLink(id);$("playerClose").focus();
 }
 function closePlayer(){if($("playerModal").hidden)return;$("playerModal").hidden=true;document.body.classList.remove("locked");$("videoStage").replaceChildren();activeId=null;if(lastFocus&&document.contains(lastFocus))lastFocus.focus()}
@@ -650,7 +706,7 @@ elem=e.target.closest("[data-player-reload]");if(elem){
  var retryItem=library.items.find(function(x){return x.id===elem.dataset.playerReload});
  var retryPlayer=retryItem&&playableSource(retryItem);
  var retryCard=elem.closest(".media-card"),retryFrame=retryCard&&retryCard.querySelector(".poster.playing iframe");
- if(retryFrame&&retryPlayer){clearYoutubeWarning(retryFrame);retryFrame.src=retryPlayer.src;}
+ if(retryFrame&&retryPlayer){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);retryFrame.src=retryPlayer.src;}
  return;
 }
 elem=e.target.closest("[data-player-alt]");if(elem){
@@ -700,7 +756,7 @@ $("playerReload").addEventListener("click",function(){
  var it=library.items.find(function(x){return x.id===activeId});
  var player=it&&playableSource(it);
  var retryFrame=$("videoStage").querySelector("iframe");
- if(player&&retryFrame){clearYoutubeWarning(retryFrame);retryFrame.src=player.src;}
+ if(player&&retryFrame){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);retryFrame.src=player.src;}
 });
 $("playerRetry").addEventListener("click",function(){
  if(!activeId)return;
