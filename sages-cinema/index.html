@@ -332,12 +332,15 @@ function youtubeRetryLabel(){return youtubeEmbedMode==="standard"?"↻ נסה נ
 
 // Optional official YouTube API monitoring reports actual player error events, not iframe load guesses.
 // Playback still works as a normal iframe when scripts are blocked or the API is unavailable.
-var youtubeApiRequested=false,youtubeApiCallbacks=[],youtubeFrameCounter=0;
+var youtubeApiRequested=false,youtubeApiCallbacks=[],youtubeFrameCounter=0,youtubeApiAttempts=0;
 function withYoutubeApi(callback){
  if(window.YT&&typeof window.YT.Player==="function"){callback(window.YT);return}
+ // Allow one retry after a transient diagnostics-script failure; never retry indefinitely.
+ if(youtubeApiAttempts>=2)return;
  youtubeApiCallbacks.push(callback);
  if(youtubeApiRequested)return;
  youtubeApiRequested=true;
+ youtubeApiAttempts++;
  var previousReady=window.onYouTubeIframeAPIReady;
  window.onYouTubeIframeAPIReady=function(){
   if(typeof previousReady==="function")previousReady();
@@ -348,7 +351,7 @@ function withYoutubeApi(callback){
  var script=document.createElement("script");
  script.src="https://www.youtube.com/iframe_api";
  script.async=true;
- script.onerror=function(){youtubeApiCallbacks.length=0;console.warn("YouTube diagnostics could not load; player unchanged")};
+ script.onerror=function(){youtubeApiRequested=false;youtubeApiCallbacks.length=0;console.warn("YouTube diagnostics could not load; player unchanged")};
  document.head.appendChild(script);
 }
 function clearYoutubeWarning(frame){
@@ -427,21 +430,24 @@ function monitorYoutubeFrame(frame,itemId,youtubeId){
 }
 // Use the official Vimeo SDK only when a Vimeo iframe is open.
 // If the SDK is blocked, the ordinary video iframe and legal source link still work.
-var vimeoApiRequested=false,vimeoApiCallbacks=[];
+var vimeoApiRequested=false,vimeoApiCallbacks=[],vimeoApiAttempts=0;
 function withVimeoApi(callback){
  if(window.Vimeo&&typeof window.Vimeo.Player==="function"){callback(window.Vimeo);return}
+ // If the diagnostics SDK failed to load, allow one bounded retry on a later player.
+ if(vimeoApiAttempts>=2)return;
  vimeoApiCallbacks.push(callback);
  if(vimeoApiRequested)return;
  vimeoApiRequested=true;
+ vimeoApiAttempts++;
  var script=document.createElement("script");
  script.src="https://player.vimeo.com/api/player.js";
  script.async=true;
  script.onload=function(){
-  if(!window.Vimeo||typeof window.Vimeo.Player!=="function"){vimeoApiCallbacks.length=0;return}
+  if(!window.Vimeo||typeof window.Vimeo.Player!=="function"){vimeoApiRequested=false;vimeoApiCallbacks.length=0;return}
   var queue=vimeoApiCallbacks.splice(0);
   queue.forEach(function(fn){try{fn(window.Vimeo)}catch(err){console.warn("Vimeo diagnostics unavailable",err)}});
  };
- script.onerror=function(){vimeoApiCallbacks.length=0;console.warn("Vimeo diagnostics could not load; player unchanged")};
+ script.onerror=function(){vimeoApiRequested=false;vimeoApiCallbacks.length=0;console.warn("Vimeo diagnostics could not load; player unchanged")};
  document.head.appendChild(script);
 }
 function clearVimeoWarning(frame){
