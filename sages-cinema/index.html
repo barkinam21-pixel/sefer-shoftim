@@ -306,7 +306,7 @@ function recordEmbedBlock(itemId,reason,stage){
     var legalExit=blockedItem?blockedVideoWatchUrl(blockedItem):"#";
     status.textContent=reason==="youtube-unavailable"
      ?(legalExit==="#"?"YouTube מדווח שהסרטון אינו זמין. אין הטמעה או קישור צפייה חלופי מאומת בביקור זה.":"YouTube מדווח שהסרטון אינו זמין. ניתן לבדוק את דף היוצר, אך לא אומתה בו צפייה.")
-     :"הנגן הרשמי חסם את ההטמעה. אפשר לבדוק צפייה במקור החוקי, אך זמינות הסרט שם לא אומתה.";
+     :(legalExit==="#"?"הנגן הרשמי חסם את ההטמעה. אין קישור צפייה חלופי מאומת לסרטון הזה.":"הנגן הרשמי חסם את ההטמעה. אפשר לבדוק צפייה במקור החוקי, אך זמינות הסרט שם לא אומתה.");
     stage.appendChild(status);
    }
    $("playerReload").hidden=true;$("playerRetry").hidden=true;
@@ -329,6 +329,10 @@ function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(
 // An "unavailable video" error is not treated as proof that YouTube watch works.
 function blockedVideoWatchUrl(it){
  var source=validUrl(it.url);
+ // A blocked Vimeo player iframe is not a separate, verified watch page.
+ // Never offer the same already-failed iframe as an external fallback.
+ if((runtimeEmbedBlocks[it.id]==="vimeo-privacy"||runtimeEmbedBlocks[it.id]==="vimeo-password")&&
+    /^https:\/\/player\.vimeo\.com\/video\//i.test(source))return "#";
  // A YouTube "video not found" error is not a working watch link.
  // If the original source is also YouTube, do not offer that same failed video.
  if(runtimeEmbedBlocks[it.id]==="youtube-unavailable"){
@@ -486,7 +490,13 @@ function reportVimeoError(frame,itemId,name){
  if(name==="PrivacyError"||name==="PasswordError")recordEmbedBlock(itemId,name==="PasswordError"?"vimeo-password":"vimeo-privacy",stage);
  if(!stage.isConnected)return;
  var it=library.items.find(function(x){return x.id===itemId});
- var url=it&&validUrl(it.url);
+ var url=it?blockedVideoWatchUrl(it):"#";
+ // A blocked player.vimeo.com iframe is not a usable source link.
+ if(url==="#"&&stage.matches(".video-stage")){
+  $("playerSource").hidden=true;
+  var deadQuick=stage.querySelector(".quick-source");
+  if(deadQuick)deadQuick.remove();
+ }
  var notice=document.createElement("div");
  notice.className="vimeo-player-warning";notice.setAttribute("role","status");
  var label=document.createElement("span");
@@ -634,7 +644,7 @@ var fallbackLabel=embed&&player.provider==="youtube"?"צפייה ישירה בי
 var creatorPageLink=embed&&player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i.test(it.url)?'<a href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ לדף המקור של היצירה</a>':"";
 var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a>'+creatorPageLink+'<button type="button" data-mark-embed-unavailable="'+esc(it.id)+'">⚠ הנגן לא עובד אצלי</button></div>':(playbackUnverified?'<div class="source-access">אין הטמעה מאומתת. לא אומתה צפייה בסרטון מתוך עמוד המקור, וגם זמינות העמוד עצמו אינה מובטחת.</div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>');
 if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
-if(noWatchLink)sourceFallback='<div class="source-access">YouTube דיווח שהסרטון אינו זמין. אין הטמעה או קישור צפייה חלופי שאומתו. היצירה נשמרת בקטלוג ומסומנת כלא זמינה בביקור זה.</div>';
+if(noWatchLink)sourceFallback='<div class="source-access">'+(runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'YouTube דיווח שהסרטון אינו זמין. ':'')+'אין הטמעה או קישור צפייה חלופי שאומתו. היצירה נשמרת בקטלוג ומסומנת כלא זמינה בביקור זה.</div>';
 if(!embed&&runtimeEmbedBlocks[it.id]==="viewer-failed")sourceFallback='<div class="source-access">הנגן לא פעל במכשיר הזה. ההטמעה הוסתרה לביקור הנוכחי בלבד; אפשר לבדוק צפייה בקישור המקורי, שזמינותו לא אומתה. <button type="button" data-retry-embed="'+esc(it.id)+'">↻ נסה שוב נגן באתר</button></div>';
 // A blocked in-site iframe must not hide a previously known direct YouTube watch URL.
 // When the film originated on a creator website, show BOTH official legal exits.
