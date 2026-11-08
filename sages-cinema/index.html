@@ -147,7 +147,7 @@ footer a{text-decoration:underline}
 .video-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .video-stage .quick-source{position:absolute;left:10px;top:10px;z-index:6;max-width:calc(100% - 20px);padding:6px 10px;background:rgba(13,28,33,.94);border:1px solid #d3b27b;border-radius:8px;color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4;text-decoration:none}
 .video-stage .quick-source:hover,.video-stage .quick-source:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
-.blocked-embed-status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:35px 20px 85px;color:#f0d4ad;text-align:center;font-size:15px;line-height:1.7;background:#101c21}
+.blocked-embed-status{position:absolute;inset:0;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;padding:35px 20px 85px;color:#f0d4ad;text-align:center;font-size:15px;line-height:1.7;background:#101c21}
 .youtube-player-warning,.vimeo-player-warning{position:absolute;bottom:10px;right:10px;left:10px;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px 12px;background:#1d2e34;border:1px solid #e6b67f;border-radius:10px;color:#fff4de;font-size:13px;line-height:1.5;box-shadow:0 5px 20px #0009}
 .youtube-player-warning a,.vimeo-player-warning a{color:#ffe6ab;text-decoration:underline;font-weight:700}
 .player-fallback{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 10px;border:1px solid var(--line2);border-radius:9px;background:var(--shade);color:var(--gold);font-size:.82em;line-height:1.45}
@@ -292,10 +292,15 @@ function disableEmbedForVisit(itemId){
  else renderCards();
 }
 function retryManualEmbed(itemId){
- if(runtimeEmbedBlocks[itemId]!=="viewer-failed")return;
+ // Errors 5 / 153 are client-side YouTube playback problems, not publisher bans.
+ // Only retry on a viewer action; never re-enable unavailable, forbidden or private videos.
+ var reason=runtimeEmbedBlocks[itemId];
+ if(reason!=="viewer-failed"&&reason!=="youtube-player-failed")return;
+ var reopenLarge=activeId===itemId&&!$("playerModal").hidden;
  delete runtimeEmbedBlocks[itemId];
  $("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
- renderCards();
+ if(reopenLarge){closePlayer();openItem(itemId);}
+ else renderCards();
 }
 function recordEmbedBlock(itemId,reason,stage){
  if(runtimeEmbedBlocks[itemId])return;
@@ -320,6 +325,13 @@ function recordEmbedBlock(itemId,reason,stage){
      :reason==="youtube-player-failed"
      ?(legalExit==="#"?"YouTube דיווח על תקלה בהפעלת הנגן באתר זה. אין קישור חלופי מאומת בביקור זה.":"YouTube דיווח על תקלה בהפעלת הנגן באתר זה. אפשר לבדוק צפייה ישירה במקור החוקי, שלא אומתה.")
      :(legalExit==="#"?"הנגן הרשמי חסם את ההטמעה. אין קישור צפייה חלופי מאומת לסרטון הזה.":"הנגן הרשמי חסם את ההטמעה. אפשר לבדוק צפייה במקור החוקי, אך זמינות הסרט שם לא אומתה.");
+    if(reason==="youtube-player-failed"){
+     var retry=document.createElement("button");
+     retry.type="button";retry.className="player-fallback";
+     retry.dataset.retryEmbed=itemId;
+     retry.textContent="↻ נסה שוב נגן YouTube רשמי";
+     status.appendChild(retry);
+    }
     stage.appendChild(status);
    }
    $("playerReload").hidden=true;$("playerRetry").hidden=true;
@@ -660,7 +672,7 @@ var fallbackUrl=embed&&player.provider==="youtube"?"https://www.youtube.com/watc
 var fallbackLabel=embed&&player.provider==="youtube"?"צפייה ישירה ביוטיוב":"צפייה ישירה באתר היוצר";
 var creatorPageLink=embed&&player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i.test(it.url)?'<a href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ לדף המקור של היצירה</a>':"";
 var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a>'+creatorPageLink+'<button type="button" data-mark-embed-unavailable="'+esc(it.id)+'">⚠ הנגן לא עובד אצלי</button></div>':(playbackUnverified?'<div class="source-access">אין הטמעה מאומתת. לא אומתה צפייה בסרטון מתוך עמוד המקור, וגם זמינות העמוד עצמו אינה מובטחת.</div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>');
-if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':runtimeEmbedBlocks[it.id]==="youtube-player-failed"?'<div class="source-access">הנגן של YouTube נכשל במכשיר זה (שגיאת HTML5 או זיהוי האתר). ההטמעה הוסתרה לביקור הנוכחי; אפשר לבדוק צפייה במקור החוקי, ללא הבטחה שהסרט זמין.</div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
+if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':runtimeEmbedBlocks[it.id]==="youtube-player-failed"?'<div class="source-access">הנגן של YouTube נכשל במכשיר זה (שגיאת HTML5 או זיהוי האתר). ההטמעה הוסתרה לביקור הנוכחי; אפשר לבדוק צפייה במקור החוקי, ללא הבטחה שהסרט זמין. <button type="button" data-retry-embed="'+esc(it.id)+'">↻ נסה שוב נגן YouTube רשמי</button></div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
 if(noWatchLink)sourceFallback='<div class="source-access">'+(runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'YouTube דיווח שהסרטון אינו זמין. ':'')+'אין הטמעה או קישור צפייה חלופי שאומתו. היצירה נשמרת בקטלוג ומסומנת כלא זמינה בביקור זה.</div>';
 if(!embed&&runtimeEmbedBlocks[it.id]==="viewer-failed")sourceFallback='<div class="source-access">הנגן לא פעל במכשיר הזה. ההטמעה הוסתרה לביקור הנוכחי בלבד; אפשר לבדוק צפייה בקישור המקורי, שזמינותו לא אומתה. <button type="button" data-retry-embed="'+esc(it.id)+'">↻ נסה שוב נגן באתר</button></div>';
 // A blocked in-site iframe must not hide a previously known direct YouTube watch URL.
