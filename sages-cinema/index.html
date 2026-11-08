@@ -654,11 +654,20 @@ function navigationItems(){return itemsSorted().filter(function(it){
  return it.watchStatus!=="unverified"&&runtimeEmbedBlocks[it.id]!=="youtube-unavailable"&&runtimeEmbedBlocks[it.id]!=="vimeo-password"&&(!!playableSource(it)||blockedVideoWatchUrl(it)!=="#")&&(!state.siteOnly||!!playableSource(it));
 })}
 function getProfiles(it){return (learning.profiles||[]).filter(function(p){return (p.mediaIds||[]).indexOf(it.id)!==-1||(it.sageIds||[]).indexOf(p.id)!==-1})}
+// Catalog video types contain descriptive suffixes, so exact-string genre filters
+// hid most existing films. These labels select videos by production format only.
+function matchesVideoGenre(it,genre){
+ var kind=String(it.type||"");
+ if(genre==="אנימציה עלילתית")return /אנימציה|מונפש|בובות|פלסטלינה|סטופ.מושן/.test(kind);
+ if(genre==="דרמה עם שחקנים")return /שחקנים|דרמה|עלילתי מצולם/.test(kind);
+ if(genre==="דוקומנטרי סיפורי")return /דוקומנטרי|תיעודי|תעודה|מסע מצולם/.test(kind);
+ return kind===genre;
+}
 function selectedItems(){return itemsSorted().filter(function(it){
 if(state.era&&it.era!==state.era)return false;
-if(state.genre&&it.type!==state.genre)return false;
+if(state.genre&&!matchesVideoGenre(it,state.genre))return false;
 if(state.language&&it.language!==state.language)return false;
-if(state.story&&it.type==="דוקומנטרי סיפורי")return false;
+if(state.story&&matchesVideoGenre(it,"דוקומנטרי סיפורי"))return false;
 if(state.favorites&&!favorites.has(it.id))return false;
 if(state.unwatched&&watched.has(it.id))return false;
 if(state.siteOnly&&!playableSource(it))return false;
