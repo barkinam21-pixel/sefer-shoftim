@@ -273,11 +273,20 @@ var activeId=null,lastFocus=null;
 var runtimeEmbedBlocks=Object.create(null);
 // A viewer can manually disable an iframe that stays blank even when a provider SDK reports no error.
 // This is a device-specific choice for this visit, never a claim that the publisher blocked embedding.
+// When the visitor is filtering for in-site playback only, a failed player would
+// otherwise make the current film vanish before its legal external fallback appears.
+// Reveal that fallback while preserving the other search and era filters.
+function revealExternalFallbackAfterFailure(){
+ if(!state.siteOnly)return;
+ state.siteOnly=false;
+ $("siteOnly").checked=false;
+}
 function disableEmbedForVisit(itemId){
  if(!library.items.some(function(it){return it.id===itemId}))return;
  // Preserve a provider-confirmed failure (especially YouTube error 100).
  // A manual fallback must never revive a watch URL already known to be dead.
  if(!runtimeEmbedBlocks[itemId])runtimeEmbedBlocks[itemId]="viewer-failed";
+ revealExternalFallbackAfterFailure();
  $("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
  if(activeId===itemId&&!$("playerModal").hidden)closePlayer();
  else renderCards();
@@ -291,6 +300,7 @@ function retryManualEmbed(itemId){
 function recordEmbedBlock(itemId,reason,stage){
  if(runtimeEmbedBlocks[itemId])return;
  runtimeEmbedBlocks[itemId]=reason;
+ revealExternalFallbackAfterFailure();
  if(library.items.length)$("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
  // A newly blocked iframe changes whether Resume should open an in-site player
  // or a legal external link. Refresh it for every provider-confirmed refusal.
