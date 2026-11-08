@@ -302,7 +302,11 @@ function recordEmbedBlock(itemId,reason,stage){
    if(!stage.querySelector(".blocked-embed-status")){
     var status=document.createElement("div");
     status.className="blocked-embed-status";status.setAttribute("role","status");
-    status.textContent="אין הטמעה זמינה לסרט הזה. אפשר לבדוק צפייה באתר המקור, אם הסרט זמין שם.";
+    var blockedItem=library.items.find(function(it){return it.id===itemId});
+    var legalExit=blockedItem?blockedVideoWatchUrl(blockedItem):"#";
+    status.textContent=reason==="youtube-unavailable"
+     ?(legalExit==="#"?"YouTube מדווח שהסרטון אינו זמין. אין הטמעה או קישור צפייה חלופי מאומת בביקור זה.":"YouTube מדווח שהסרטון אינו זמין. ניתן לבדוק את דף היוצר, אך לא אומתה בו צפייה.")
+     :"הנגן הרשמי חסם את ההטמעה. אפשר לבדוק צפייה במקור החוקי, אך זמינות הסרט שם לא אומתה.";
     stage.appendChild(status);
    }
    $("playerReload").hidden=true;$("playerRetry").hidden=true;
@@ -387,8 +391,9 @@ function reportYoutubeError(frame,itemId,youtubeId,code){
  // recordEmbedBlock may have replaced an inline card; do not add an error
  // notice to its detached iframe container. The new card shows the fallback.
  if(!stage.isConnected)return;
+ var sourceItem=library.items.find(function(it){return it.id===itemId});
  var message=(code===101||code===150)?"בעל הסרטון אינו מתיר הטמעה כאן. אפשר לבדוק צפייה ביוטיוב.":
-  code===100?"YouTube מדווח שהסרטון אינו זמין לניגון. אפשר לבדוק את עמוד המקור.":
+  code===100?(sourceItem&&blockedVideoWatchUrl(sourceItem)!=="#"?"YouTube מדווח שהסרטון אינו זמין לניגון. אפשר לבדוק את עמוד היוצר, אך הצפייה בו לא אומתה.":"YouTube מדווח שהסרטון אינו זמין לניגון. אין קישור צפייה חלופי מאומת."):
   code===153?"YouTube לא הצליח לאמת את זהות האתר בנגן הזה. אפשר לנסות במקור.":
   "התקבלה שגיאה בנגן YouTube. אפשר לנסות שוב או לפתוח את המקור.";
  var notice=document.createElement("div");
@@ -398,7 +403,6 @@ function reportYoutubeError(frame,itemId,youtubeId,code){
  // Offer the original publisher page only when it differs from the failed YouTube URL.
  var text=document.createElement("span");text.textContent=message;
  notice.appendChild(text);
- var sourceItem=library.items.find(function(it){return it.id===itemId});
  var sourceUrl=sourceItem?validUrl(sourceItem.url):"#";
  var sourceHost=sourceUrl!=="#"?new URL(sourceUrl).hostname.toLowerCase():"";
  var otherPublisher=sourceUrl!=="#"&&["youtube.com","www.youtube.com","m.youtube.com","youtu.be","www.youtu.be"].indexOf(sourceHost)===-1;
