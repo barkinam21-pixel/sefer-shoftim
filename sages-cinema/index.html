@@ -456,6 +456,9 @@ function reportYoutubeError(frame,itemId,youtubeId,code){
  // Player errors 5 (HTML5) and 153 (client identity) are not publisher embed refusals.
  // Hide a known-failing iframe for this visit, but preserve legal watch-page exits.
  if(code===5||code===153)recordEmbedBlock(itemId,"youtube-player-failed",stage);
+ // Known provider failures already display a safe fallback in recordEmbedBlock.
+ // Do not overlay a duplicate warning above the only legal watch link.
+ if(code===101||code===150||code===100||code===5||code===153)return;
  // recordEmbedBlock may have replaced an inline card; do not add an error
  // notice to its detached iframe container. The new card shows the fallback.
  if(!stage.isConnected)return;
@@ -552,7 +555,12 @@ function reportVimeoError(frame,itemId,name){
  var stage=frame.parentElement;
  if(!stage||!stage.matches(".poster.playing,.video-stage"))return;
  clearVimeoWarning(frame);
- if(name==="PrivacyError"||name==="PasswordError")recordEmbedBlock(itemId,name==="PasswordError"?"vimeo-password":"vimeo-privacy",stage);
+ if(name==="PrivacyError"||name==="PasswordError"){
+  recordEmbedBlock(itemId,name==="PasswordError"?"vimeo-password":"vimeo-privacy",stage);
+  // The blocked iframe is removed and the legal external fallback is displayed there.
+  // Do not add a second warning with a potentially misleading source link.
+  return;
+ }
  if(!stage.isConnected)return;
  var it=library.items.find(function(x){return x.id===itemId});
  var url=it?blockedVideoWatchUrl(it):"#";
