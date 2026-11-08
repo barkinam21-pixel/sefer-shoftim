@@ -320,6 +320,19 @@ function recordEmbedBlock(itemId,reason,stage){
     status.className="blocked-embed-status";status.setAttribute("role","status");
     var blockedItem=library.items.find(function(it){return it.id===itemId});
     var legalExit=blockedItem?blockedVideoWatchUrl(blockedItem):"#";
+    // Replace the modal's original exit links after a confirmed playback error.
+    // An unavailable YouTube video or privacy-blocked Vimeo iframe must not
+    // remain clickable as though the failed player were a working watch page.
+    var modalSource=$("playerSource"),quickExit=stage.querySelector(".quick-source");
+    if(legalExit==="#"){
+     modalSource.hidden=true;
+     if(quickExit)quickExit.remove();
+    }else{
+     modalSource.href=legalExit;
+     modalSource.textContent="↗ בדיקת צפייה במקור החוקי — זמינות לא אומתה";
+     modalSource.hidden=false;
+     if(quickExit){quickExit.href=legalExit;quickExit.textContent="↗ בדיקת צפייה במקור";}
+    }
     status.textContent=reason==="youtube-unavailable"
      ?(legalExit==="#"?"YouTube מדווח שהסרטון אינו זמין. אין הטמעה או קישור צפייה חלופי מאומת בביקור זה.":"YouTube מדווח שהסרטון אינו זמין. ניתן לבדוק את דף היוצר, אך לא אומתה בו צפייה.")
      :reason==="youtube-player-failed"
