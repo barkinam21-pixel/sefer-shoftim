@@ -299,8 +299,14 @@ function retryManualEmbed(itemId){
  var reopenLarge=activeId===itemId&&!$("playerModal").hidden;
  delete runtimeEmbedBlocks[itemId];
  $("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
- if(reopenLarge){closePlayer();openItem(itemId);}
- else renderCards();
+ if(reopenLarge){closePlayer();openItem(itemId);return;}
+ // The retry button must launch the official player in the card in one click.
+ // Merely rebuilding the cards would require another painful click on Play.
+ renderCards();
+ var playButton=Array.from(document.querySelectorAll("[data-play]")).find(function(btn){
+  return btn.getAttribute("data-play")===itemId;
+ });
+ if(playButton)playInCard(itemId,playButton);
 }
 function recordEmbedBlock(itemId,reason,stage){
  if(runtimeEmbedBlocks[itemId])return;
