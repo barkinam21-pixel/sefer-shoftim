@@ -349,15 +349,32 @@ function save(k,set){try{localStorage.setItem(k,JSON.stringify(Array.from(set)))
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function validUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:"#"}catch(e){return "#"}}
 function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(s)}
+// player.vimeo.com is an iframe endpoint, not Vimeo's normal watch page.
+// When the catalog only has an official iframe URL, offer the publisher's
+// canonical watch page as an explicitly UNVERIFIED legal fallback.
+// Never confuse this with proof that the video is publicly playable.
+function publisherWatchUrl(it){
+ var source=validUrl(it.url);
+ if(source==="#")return source;
+ try{
+  var u=new URL(source);
+  if(u.hostname!=="player.vimeo.com")return source;
+  var m=u.pathname.match(/^\/video\/(\d{5,12})\/?$/);
+  if(!m)return source;
+  var privacy=u.searchParams.get("h");
+  return "https://vimeo.com/"+m[1]+(privacy&&/^[a-fA-F0-9]{6,64}$/.test(privacy)?"/"+privacy:"");
+ }catch(e){return source}
+}
+function isVimeoIframeSource(it){return publisherWatchUrl(it)!==validUrl(it.url)}
 // For blocked embeds, prefer the same official YouTube watch page when its ID
 // is already documented in the catalog. Keep the publisher's own page as a second exit.
 // An "unavailable video" error is not treated as proof that YouTube watch works.
 function blockedVideoWatchUrl(it){
- var source=validUrl(it.url);
+ var source=publisherWatchUrl(it);
  // A blocked Vimeo player iframe is not a separate, verified watch page.
  // Never offer the same already-failed iframe as an external fallback.
  if((runtimeEmbedBlocks[it.id]==="vimeo-privacy"||runtimeEmbedBlocks[it.id]==="vimeo-password")&&
-    /^https:\/\/player\.vimeo\.com\/video\//i.test(source))return "#";
+    /^https:\/\/player\.vimeo\.com\/video\//i.test(validUrl(it.url)))return "#";
  // A YouTube "video not found" error is not a working watch link.
  // If the original source is also YouTube, do not offer that same failed video.
  if(runtimeEmbedBlocks[it.id]==="youtube-unavailable"){
@@ -668,8 +685,8 @@ var blockedDirectYoutube=!embed&&runtimeEmbedBlocks[it.id]&&runtimeEmbedBlocks[i
 var externalWatchUrl=blockedVideoWatchUrl(it);
 var noWatchLink=!embed&&externalWatchUrl==="#";
 // Keep the legal, direct source one click away, including when an iframe is blocked.
-var fallbackUrl=embed&&player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);
-var fallbackLabel=embed&&player.provider==="youtube"?"צפייה ישירה ביוטיוב":"צפייה ישירה באתר היוצר";
+var fallbackUrl=embed&&player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);
+var fallbackLabel=embed&&player.provider==="youtube"?"צפייה ישירה ביוטיוב":(isVimeoIframeSource(it)?"בדיקת צפייה ב־Vimeo (לא אומתה)":"צפייה ישירה באתר היוצר");
 var creatorPageLink=embed&&player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i.test(it.url)?'<a href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ לדף המקור של היצירה</a>':"";
 var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a>'+creatorPageLink+'<button type="button" data-mark-embed-unavailable="'+esc(it.id)+'">⚠ הנגן לא עובד אצלי</button></div>':(playbackUnverified?'<div class="source-access">אין הטמעה מאומתת. לא אומתה צפייה בסרטון מתוך עמוד המקור, וגם זמינות העמוד עצמו אינה מובטחת.</div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>');
 if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':runtimeEmbedBlocks[it.id]==="youtube-player-failed"?'<div class="source-access">הנגן של YouTube נכשל במכשיר זה (שגיאת HTML5 או זיהוי האתר). ההטמעה הוסתרה לביקור הנוכחי; אפשר לבדוק צפייה במקור החוקי, ללא הבטחה שהסרט זמין. <button type="button" data-retry-embed="'+esc(it.id)+'">↻ נסה שוב נגן YouTube רשמי</button></div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
@@ -814,7 +831,7 @@ function playInCard(id,button){
  var quickSource=document.createElement("a");
  quickSource.className="quick-source";
  quickSource.dataset.playerOriginal=id;
- quickSource.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);
+ quickSource.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);
  quickSource.target="_blank";
  quickSource.rel="noopener noreferrer";
  quickSource.textContent="↗ לא מתנגן? למקור";
@@ -842,10 +859,10 @@ function playInCard(id,button){
    var watchLink=document.createElement("a");
    watchLink.className="player-fallback";
    watchLink.dataset.playerOriginal=id;
-   watchLink.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);
+   watchLink.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);
    watchLink.target="_blank";
    watchLink.rel="noopener noreferrer";
-   watchLink.textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר היוצר";
+   watchLink.textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":(isVimeoIframeSource(it)?"↗ בדיקת צפייה ב־Vimeo — לא אומתה":"↗ צפייה באתר היוצר");
    actions.appendChild(watchLink);
  }
  button.textContent="✕ סגירת הסרט";
@@ -885,7 +902,7 @@ function openItem(id){var it=library.items.find(function(x){return x.id===id});i
 // Prevent two soundtracks when opening the larger player or an external video.
 stopInlinePlayer();
 var player=playableSource(it);if(!player){var watchUrl=blockedVideoWatchUrl(it);if(watchUrl!=="#")window.open(watchUrl,"_blank","noopener,noreferrer");return}
-rememberLastOpened(id);lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:validUrl(it.url);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":"↗ צפייה באתר המקור";$("playerSource").hidden=false;$("playerCreator").href=validUrl(it.url);$("playerCreator").hidden=!(player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i.test(it.url));$("playerCreator").dataset.playerOriginal=it.id;$("openLearning").hidden=!getProfiles(it).length;
+rememberLastOpened(id);lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":(isVimeoIframeSource(it)?"↗ בדיקת צפייה ב־Vimeo — לא אומתה":"↗ צפייה באתר המקור");$("playerSource").hidden=false;$("playerCreator").href=validUrl(it.url);$("playerCreator").hidden=!(player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i.test(it.url));$("playerCreator").dataset.playerOriginal=it.id;$("openLearning").hidden=!getProfiles(it).length;
 $("playerReload").hidden=false;
 $("playerRetry").hidden=player.provider!=="youtube";
 $("playerRetry").dataset.mode=youtubeEmbedMode;
