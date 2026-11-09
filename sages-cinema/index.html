@@ -162,6 +162,11 @@ footer a{text-decoration:underline}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 
 .media-grid{align-items:start}
+/* Render off-screen catalog cards only when needed, keeping active players visible. */
+@supports (content-visibility:auto){
+ .media-card{content-visibility:auto;contain-intrinsic-size:auto 540px}
+ .media-card:has(.poster.playing),.media-card:focus-within{content-visibility:visible}
+}
 .study-details{border-top:1px solid rgba(236,196,138,.18);margin-top:11px;padding-top:11px}
 .study-details>summary{min-height:49px;list-style:none;cursor:pointer;border:1px solid rgba(236,196,138,.4);color:#f3d6a8;background:rgba(236,196,138,.08);border-radius:11px;padding:10px 13px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:750;font-size:13px}
 .study-details>summary::-webkit-details-marker{display:none}
