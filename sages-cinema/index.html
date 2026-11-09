@@ -848,7 +848,7 @@ function switchYoutubePlayer(frame,control,id){
 }
 function clearInlinePlayerActions(card){
  if(!card)return;
- card.querySelectorAll("[data-player-alt],[data-player-reload],[data-player-original]").forEach(function(el){el.remove()});
+ card.querySelectorAll("[data-player-alt],[data-player-reload],[data-player-original],[data-player-next]").forEach(function(el){el.remove()});
 }
 // Open the provider's actual player in the card on the page, not only in a modal.
 function playInCard(id,button){
@@ -929,6 +929,26 @@ function playInCard(id,button){
    watchLink.rel="noopener noreferrer";
    watchLink.textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":(isVimeoIframeSource(it)?"↗ בדיקת צפייה ב־Vimeo — לא אומתה":"↗ צפייה באתר היוצר");
    actions.appendChild(watchLink);
+   // Offer the next EXISTING catalog film directly from the active inline player.
+   // A public official embed stays on this site; external-only videos keep a native legal source link.
+   var following=nextNavigableItem(id);
+   if(following){
+     var nextEmbedded=!!playableSource(following);
+     var nextControl=document.createElement(nextEmbedded?"button":"a");
+     nextControl.className="player-fallback";
+     nextControl.dataset.playerNext=following.id;
+     if(nextEmbedded){
+       nextControl.type="button";
+       nextControl.textContent="⏭ הפעל את הסרט הבא";
+     }else{
+       nextControl.href=blockedVideoWatchUrl(following);
+       nextControl.target="_blank";
+       nextControl.rel="noopener noreferrer";
+       nextControl.dataset.external=following.id;
+       nextControl.textContent="↗ הסרט הבא באתר היוצר";
+     }
+     actions.appendChild(nextControl);
+   }
  }
  button.textContent="✕ סגירת הסרט";
  button.setAttribute("aria-pressed","true");
@@ -1006,6 +1026,16 @@ elem=e.target.closest("[data-player-alt]");if(elem){
  var alternatePlayer=alternateItem&&playableSource(alternateItem);
  var alternateCard=elem.closest(".media-card");
  if(alternatePlayer&&alternatePlayer.provider==="youtube"&&alternateCard)switchYoutubePlayer(alternateCard.querySelector(".poster.playing iframe"),elem,alternatePlayer.id);
+ return;
+}
+elem=e.target.closest("button[data-player-next]");
+if(elem){
+ var nextId=elem.dataset.playerNext;
+ // If the next video is already on screen, start it inline in one click.
+ // A hidden-by-filter film opens in the existing large player instead.
+ var targetPlay=Array.from(document.querySelectorAll(".media-card [data-play]")).find(function(b){return b.dataset.play===nextId});
+ if(targetPlay)playInCard(nextId,targetPlay);
+ else openItem(nextId);
  return;
 }
 elem=e.target.closest("[data-open-large]");if(elem){openItem(elem.getAttribute("data-open-large"));return}
