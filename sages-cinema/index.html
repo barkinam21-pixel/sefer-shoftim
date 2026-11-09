@@ -1005,16 +1005,11 @@ elem=e.target.closest("[data-watched]");if(elem){toggleWatched(elem.getAttribute
 elem=e.target.closest("[data-external],[data-player-original],#playerSource");
 if(elem){
  var sourceId=elem.getAttribute("data-external")||elem.getAttribute("data-player-original")||activeId;
- // Keep the clicked fallback anchor attached until the browser handles its native navigation.
- // Removing the active card's fallback link synchronously can cancel opening the source tab.
- if(elem.hasAttribute("data-player-original"))window.setTimeout(stopInlinePlayer,0);
- else stopInlinePlayer();
- // The original-source anchor in the modal must survive until native link navigation.
- // Closing the modal synchronously can detach the clicked link before a new tab opens.
- if(!$("playerModal").hidden){
-  if(elem.id==="playerSource"||elem.hasAttribute("data-player-original"))window.setTimeout(closePlayer,0);
-  else closePlayer();
- }
+ // Keep every legal external link attached until the browser handles its native navigation.
+ // Synchronously stopping the player or closing the modal may detach an anchor before
+ // the new tab opens, especially when a fallback is clicked during inline playback.
+ window.setTimeout(stopInlinePlayer,0);
+ if(!$("playerModal").hidden)window.setTimeout(closePlayer,0);
  if(sourceId)rememberLastOpened(sourceId);
 }
 });
