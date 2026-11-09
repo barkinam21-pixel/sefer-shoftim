@@ -405,9 +405,13 @@ function isVimeoIframeSource(it){return publisherWatchUrl(it)!==validUrl(it.url)
 // An "unavailable video" error is not treated as proof that YouTube watch works.
 function blockedVideoWatchUrl(it){
  var source=publisherWatchUrl(it);
- // A blocked Vimeo player iframe is not a separate, verified watch page.
- // Never offer the same already-failed iframe as an external fallback.
- if((runtimeEmbedBlocks[it.id]==="vimeo-privacy"||runtimeEmbedBlocks[it.id]==="vimeo-password")&&
+ // A Vimeo embedding privacy refusal does not prove its public watch page
+ // is unavailable. publisherWatchUrl() turns documented player.vimeo.com
+ // iframe addresses into canonical vimeo.com links, never into failed frames.
+ // The user interface labels this official watch-page fallback UNVERIFIED.
+ // A password-required video is different: when only an iframe is known,
+ // do not advertise it as a working public watch page.
+ if(runtimeEmbedBlocks[it.id]==="vimeo-password"&&
     /^https:\/\/player\.vimeo\.com\/video\//i.test(validUrl(it.url)))return "#";
  // A YouTube "video not found" error is not a working watch link.
  // If the original source is also YouTube, do not offer that same failed video.
