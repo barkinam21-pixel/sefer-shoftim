@@ -1067,7 +1067,13 @@ if(d){d.open=true;d.scrollIntoView({behavior:window.matchMedia("(prefers-reduced
 });
 $("markWatched").addEventListener("click",function(){if(activeId){watched.add(activeId);save("sages-watched-v1",watched);$("markWatched").textContent="✓ כבר צפיתי";if(state.unwatched)renderCards();else syncSavedActions(activeId)}});
 $("sizeButton").addEventListener("click",function(){var large=!document.body.classList.contains("large");document.body.classList.toggle("large",large);try{localStorage.setItem("sages-large",large?"1":"0")}catch(e){}});
-document.addEventListener("keydown",function(e){if(e.key==="Escape")closePlayer()});
+// Escape closes either the large player or the inline movie currently playing.
+// This lets keyboard users stop playback without locating a distant card button.
+document.addEventListener("keydown",function(e){
+ if(e.key!=="Escape")return;
+ if(!$("playerModal").hidden){closePlayer();return;}
+ stopInlinePlayer();
+});
 try{if(localStorage.getItem("sages-large")==="1")document.body.classList.add("large")}catch(e){}
 // Video browsing must not wait for optional sages metadata.
 var optionalSages=fetch("./sages.json",{cache:"no-store"})
