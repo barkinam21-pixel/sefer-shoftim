@@ -292,6 +292,13 @@ function revealExternalFallbackAfterFailure(){
 }
 function disableEmbedForVisit(itemId){
  if(!library.items.some(function(it){return it.id===itemId}))return;
+ // When a viewer reports failure in the large player, keep the legal source
+ // and retry inside the dialog rather than closing it unexpectedly.
+ // Device-specific failures are not evidence of a publisher embedding ban.
+ if(activeId===itemId&&!$("playerModal").hidden&&!runtimeEmbedBlocks[itemId]){
+  recordEmbedBlock(itemId,"viewer-failed",$("videoStage"));
+  return;
+ }
  // Preserve a provider-confirmed failure (especially YouTube error 100).
  // A manual fallback must never revive a watch URL already known to be dead.
  if(!runtimeEmbedBlocks[itemId])runtimeEmbedBlocks[itemId]="viewer-failed";
@@ -357,13 +364,15 @@ function recordEmbedBlock(itemId,reason,stage){
      ?(legalExit==="#"?"YouTube מדווח שהסרטון אינו זמין. אין הטמעה או קישור צפייה חלופי מאומת בביקור זה.":"YouTube מדווח שהסרטון אינו זמין. ניתן לבדוק את דף היוצר, אך לא אומתה בו צפייה.")
      :reason==="youtube-player-failed"
      ?(legalExit==="#"?"YouTube דיווח על תקלה בהפעלת הנגן באתר זה. אין קישור חלופי מאומת בביקור זה.":"YouTube דיווח על תקלה בהפעלת הנגן באתר זה. אפשר לבדוק צפייה ישירה במקור החוקי, שלא אומתה.")
+     :reason==="viewer-failed"
+     ?(legalExit==="#"?"הנגן לא פעל במכשיר הזה. אין קישור צפייה חלופי מאומת; אפשר לנסות שוב כאן.":"הנגן לא פעל במכשיר הזה. אפשר לבדוק צפייה במקור החוקי או לנסות שוב כאן; לא ידוע על חסימת הטמעה מצד היוצר.")
      :(legalExit==="#"?"הנגן הרשמי חסם את ההטמעה. אין קישור צפייה חלופי מאומת לסרטון הזה.":"הנגן הרשמי חסם את ההטמעה. אפשר לבדוק צפייה במקור החוקי, אך זמינות הסרט שם לא אומתה.");
-    if(reason==="youtube-player-failed"){
+    if(reason==="youtube-player-failed"||reason==="viewer-failed"){
      var retry=document.createElement("button");
      retry.type="button";retry.className="player-fallback";
      retry.dataset.retryEmbed=itemId;
-     if(youtubeEmbedMode!=="standard")retry.dataset.retryMode="standard";
-     retry.textContent=youtubeEmbedMode!=="standard"?"↻ נסה נגן YouTube רגיל":"↻ נסה שוב נגן YouTube רשמי";
+     if(reason==="youtube-player-failed"&&youtubeEmbedMode!=="standard")retry.dataset.retryMode="standard";
+     retry.textContent=reason==="viewer-failed"?"↻ נסה שוב נגן באתר":(youtubeEmbedMode!=="standard"?"↻ נסה נגן YouTube רגיל":"↻ נסה שוב נגן YouTube רשמי");
      status.appendChild(retry);
     }
     stage.appendChild(status);
