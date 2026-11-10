@@ -394,6 +394,21 @@ function save(k,set){try{localStorage.setItem(k,JSON.stringify(Array.from(set)))
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function validUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:"#"}catch(e){return "#"}}
 function validYoutube(s){return typeof s==="string"&&/^[A-Za-z0-9_-]{11}$/.test(s)}
+
+// Existing HidabrootTube publisher URLs expose an official YouTube watch identifier.
+// Offer a separate unverified direct-watch exit, never an unapproved automatic embed.
+function hidabrootTubeDirectWatchUrl(it){
+ if(it.youtubeId||it.watchStatus==="unverified")return "#";
+ var source=validUrl(it.url);
+ if(source==="#")return "#";
+ try{
+  var u=new URL(source);
+  if(u.hostname!=="www.hidabroot.org"&&u.hostname!=="hidabroot.org")return "#";
+  var match=u.pathname.match(/^\/tube\/watch\/([A-Za-z0-9_-]{11})\/?$/);
+  return match?"https://www.youtube.com/watch?v="+match[1]:"#";
+ }catch(e){return "#"}
+}
+
 // player.vimeo.com is an iframe endpoint, not Vimeo's normal watch page.
 // When the catalog only has an official iframe URL, offer the publisher's
 // canonical watch page as an explicitly UNVERIFIED legal fallback.
@@ -759,6 +774,12 @@ var clientRetryText=youtubeEmbedMode!=="standard"?"↻ נסה נגן YouTube ר�
 var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a>'+creatorPageLink+'<button type="button" data-mark-embed-unavailable="'+esc(it.id)+'">⚠ הנגן לא עובד אצלי</button></div>':(playbackUnverified?'<div class="source-access">אין הטמעה מאומתת. לא אומתה צפייה בסרטון מתוך עמוד המקור, וגם זמינות העמוד עצמו אינה מובטחת.</div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>');
 if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':runtimeEmbedBlocks[it.id]==="youtube-player-failed"?'<div class="source-access">הנגן של YouTube דיווח על שגיאת ניגון או פרמטרים. ההטמעה הוסתרה לביקור הנוכחי; אפשר לבדוק צפייה במקור החוקי, ללא הבטחה שהסרט זמין. <button type="button" data-retry-embed="'+esc(it.id)+'"'+clientRetryMode+'>'+clientRetryText+'</button></div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
 if(noWatchLink)sourceFallback='<div class="source-access">'+(runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'YouTube דיווח שהסרטון אינו זמין. ':'')+'אין הטמעה או קישור צפייה חלופי שאומתו. היצירה נשמרת בקטלוג ומסומנת כלא זמינה בביקור זה.</div>';
+// Preserve the publisher link as the primary exit, but offer a convenient
+// official YouTube watch-page alternative where HidabrootTube identifies one.
+if(!embed&&!noWatchLink){
+ var directOfficial=hidabrootTubeDirectWatchUrl(it);
+ if(directOfficial!=="#")sourceFallback+='<div class="source-access"><a href="'+directOfficial+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ בדיקת צפייה ישירה ב־YouTube — זמינות לא אומתה</a></div>';
+}
 if(!embed&&runtimeEmbedBlocks[it.id]==="viewer-failed")sourceFallback='<div class="source-access">הנגן לא פעל במכשיר הזה. ההטמעה הוסתרה לביקור הנוכחי בלבד; אפשר לבדוק צפייה בקישור המקורי, שזמינותו לא אומתה. <button type="button" data-retry-embed="'+esc(it.id)+'">↻ נסה שוב נגן באתר</button></div>';
 // A blocked in-site iframe must not hide a previously known direct YouTube watch URL.
 // When the film originated on a creator website, show BOTH official legal exits.
