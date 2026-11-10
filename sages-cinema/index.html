@@ -108,6 +108,9 @@ h1 em{display:block;color:var(--gold);font-style:normal}
 .poster.playing .quick-source{max-width:calc(100% - 115px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .poster.playing .stop-inline{position:absolute;right:9px;top:9px;z-index:6;min-height:32px;padding:5px 10px;border:1px solid #d3b27b;border-radius:8px;background:rgba(13,28,33,.94);color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4}
 .poster.playing .stop-inline:hover,.poster.playing .stop-inline:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
+/* One-click large-view shortcut on the playing card, never over the provider bottom controls. */
+.poster.playing .expand-inline{position:absolute;top:9px;left:50%;transform:translateX(-50%);z-index:6;min-height:32px;padding:5px 9px;border:1px solid #d3b27b;border-radius:8px;background:rgba(13,28,33,.94);color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4;white-space:nowrap}
+.poster.playing .expand-inline:hover,.poster.playing .expand-inline:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
 .poster-label{position:absolute;z-index:1;bottom:12px;right:13px;font-size:11px;color:#f1dab1;background:rgba(16,26,30,.85);border:1px solid rgba(236,196,138,.22);padding:4px 9px;border-radius:7px}
 .poster-icon{position:absolute;z-index:1;left:12px;top:12px;border:1px solid rgba(236,196,138,.5);color:var(--gold);background:#17262c;padding:4px 9px;border-radius:8px;font-size:11px}
 .card-body{padding:18px 17px 16px;display:flex;flex-direction:column;flex:1;gap:10px}
@@ -935,7 +938,7 @@ function playInCard(id,button){
  quickSource.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);
  quickSource.target="_blank";
  quickSource.rel="noopener noreferrer";
- quickSource.textContent="↗ לא מתנגן? למקור";
+ quickSource.textContent="↗ למקור";
  quickSource.setAttribute("aria-label","הנגן לא עובד? צפייה במקור: "+it.title);
  poster.appendChild(quickSource);
  // Keep a one-click stop button on the video itself, independent of iframe focus.
@@ -946,6 +949,13 @@ function playInCard(id,button){
  stopControl.textContent="✕ עצור";
  stopControl.setAttribute("aria-label","עצור וסגור את הסרט: "+it.title);
  poster.appendChild(stopControl);
+ // A direct, keyboard-accessible large-player control avoids scrolling past long descriptions.
+ var expandControl=document.createElement("button");
+ expandControl.type="button";expandControl.className="expand-inline";
+ expandControl.dataset.openLarge=id;
+ expandControl.textContent="⛶ הגדל";
+ expandControl.setAttribute("aria-label","פתח נגן גדול: "+it.title);
+ poster.appendChild(expandControl);
  if(player.provider==="youtube")monitorYoutubeFrame(frame,it.id,player.id);
  else if(player.provider==="vimeo")monitorVimeoFrame(frame,it.id);
  var actions=card.querySelector(".actions");
