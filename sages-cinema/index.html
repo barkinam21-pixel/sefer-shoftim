@@ -472,12 +472,12 @@ function reportYoutubeError(frame,itemId,youtubeId,code){
  // Error 100 means YouTube cannot play this video; do not offer the same failed embed repeatedly.
  // Session-only observation: the publisher URL has not been verified as playable.
  if(code===100)recordEmbedBlock(itemId,"youtube-unavailable",stage);
- // Player errors 5 (HTML5) and 153 (client identity) are not publisher embed refusals.
+ // Player errors 2 (invalid parameter), 5 (HTML5) and 153 (client identity) are not publisher embedding refusals.
  // Hide a known-failing iframe for this visit, but preserve legal watch-page exits.
- if(code===5||code===153)recordEmbedBlock(itemId,"youtube-player-failed",stage);
+ if(code===2||code===5||code===153)recordEmbedBlock(itemId,"youtube-player-failed",stage);
  // Known provider failures already display a safe fallback in recordEmbedBlock.
  // Do not overlay a duplicate warning above the only legal watch link.
- if(code===101||code===150||code===100||code===5||code===153)return;
+ if(code===101||code===150||code===100||code===2||code===5||code===153)return;
  // recordEmbedBlock may have replaced an inline card; do not add an error
  // notice to its detached iframe container. The new card shows the fallback.
  if(!stage.isConnected)return;
@@ -746,7 +746,7 @@ var creatorPageLink=embed&&player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\
 var clientRetryMode=youtubeEmbedMode!=="standard"?' data-retry-mode="standard"':"";
 var clientRetryText=youtubeEmbedMode!=="standard"?"↻ נסה נגן YouTube רגיל":"↻ נסה שוב נגן YouTube רשמי";
 var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a>'+creatorPageLink+'<button type="button" data-mark-embed-unavailable="'+esc(it.id)+'">⚠ הנגן לא עובד אצלי</button></div>':(playbackUnverified?'<div class="source-access">אין הטמעה מאומתת. לא אומתה צפייה בסרטון מתוך עמוד המקור, וגם זמינות העמוד עצמו אינה מובטחת.</div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>');
-if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':runtimeEmbedBlocks[it.id]==="youtube-player-failed"?'<div class="source-access">הנגן של YouTube נכשל במכשיר זה (שגיאת HTML5 או זיהוי האתר). ההטמעה הוסתרה לביקור הנוכחי; אפשר לבדוק צפייה במקור החוקי, ללא הבטחה שהסרט זמין. <button type="button" data-retry-embed="'+esc(it.id)+'"'+clientRetryMode+'>'+clientRetryText+'</button></div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
+if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':runtimeEmbedBlocks[it.id]==="youtube-player-failed"?'<div class="source-access">הנגן של YouTube דיווח על שגיאת ניגון או פרמטרים. ההטמעה הוסתרה לביקור הנוכחי; אפשר לבדוק צפייה במקור החוקי, ללא הבטחה שהסרט זמין. <button type="button" data-retry-embed="'+esc(it.id)+'"'+clientRetryMode+'>'+clientRetryText+'</button></div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
 if(noWatchLink)sourceFallback='<div class="source-access">'+(runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'YouTube דיווח שהסרטון אינו זמין. ':'')+'אין הטמעה או קישור צפייה חלופי שאומתו. היצירה נשמרת בקטלוג ומסומנת כלא זמינה בביקור זה.</div>';
 if(!embed&&runtimeEmbedBlocks[it.id]==="viewer-failed")sourceFallback='<div class="source-access">הנגן לא פעל במכשיר הזה. ההטמעה הוסתרה לביקור הנוכחי בלבד; אפשר לבדוק צפייה בקישור המקורי, שזמינותו לא אומתה. <button type="button" data-retry-embed="'+esc(it.id)+'">↻ נסה שוב נגן באתר</button></div>';
 // A blocked in-site iframe must not hide a previously known direct YouTube watch URL.
