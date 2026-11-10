@@ -331,6 +331,9 @@ function retryManualEmbed(itemId,preferStandard){
 }
 function recordEmbedBlock(itemId,reason,stage){
  if(runtimeEmbedBlocks[itemId])return;
+ // Remember the active site-only filter before revealing blocked films.
+ // A failed in-site video must refresh all results if that filter was active.
+ var wasSiteOnly=state.siteOnly;
  runtimeEmbedBlocks[itemId]=reason;
  revealExternalFallbackAfterFailure();
  if(library.items.length)$("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
@@ -388,7 +391,7 @@ function recordEmbedBlock(itemId,reason,stage){
   // from that filtered view, so the filtered list needs a full refresh.
   var failedCard=stage.closest(".media-card");
   var failedItem=library.items.find(function(it){return it.id===itemId});
-  if(failedCard&&failedItem&&!state.siteOnly){
+  if(failedCard&&failedItem&&!wasSiteOnly){
    var replacement=document.createElement("div");
    replacement.innerHTML=mediaCard(failedItem);
    var newCard=replacement.firstElementChild;
