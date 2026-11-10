@@ -378,6 +378,8 @@ function recordEmbedBlock(itemId,reason,stage){
     stage.appendChild(status);
    }
    $("playerReload").hidden=true;$("playerRetry").hidden=true;
+   // After a player failure, the same report button must not close the working legal fallback.
+   $("playerDisableEmbed").hidden=true;
   }
  else{
   // Replace the confirmed blocked inline iframe immediately with a clearly
@@ -998,6 +1000,7 @@ stopInlinePlayer();
 var player=playableSource(it);if(!player){var watchUrl=blockedVideoWatchUrl(it);if(watchUrl!=="#")window.open(watchUrl,"_blank","noopener,noreferrer");return}
 rememberLastOpened(id);lastFocus=document.activeElement;activeId=id;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":(isVimeoIframeSource(it)?"↗ בדיקת צפייה ב־Vimeo — לא אומתה":"↗ צפייה באתר המקור");$("playerSource").hidden=false;$("playerCreator").href=validUrl(it.url);$("playerCreator").hidden=!(player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i.test(it.url));$("playerCreator").dataset.playerOriginal=it.id;$("openLearning").hidden=!getProfiles(it).length;
 $("playerReload").hidden=false;
+$("playerDisableEmbed").hidden=false; // Restore the report action for a freshly opened player.
 $("playerRetry").hidden=player.provider!=="youtube";
 $("playerRetry").dataset.mode=youtubeEmbedMode;
 $("playerRetry").textContent=youtubeRetryLabel();
