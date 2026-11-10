@@ -382,10 +382,19 @@ function recordEmbedBlock(itemId,reason,stage){
    $("playerDisableEmbed").hidden=true;
   }
  else{
-  // Replace the confirmed blocked inline iframe immediately with a clearly
-  // labeled legal external fallback (or unavailable status). Do not leave
-  // a broken player presented as a working in-site play control.
-  renderCards();
+  // Replace only the failed card, without destroying every other card or
+  // resetting the reader's position among hundreds of existing films.
+  // The site-only filter is the exception: a now-blocked film must disappear
+  // from that filtered view, so the filtered list needs a full refresh.
+  var failedCard=stage.closest(".media-card");
+  var failedItem=library.items.find(function(it){return it.id===itemId});
+  if(failedCard&&failedItem&&!state.siteOnly){
+   var replacement=document.createElement("div");
+   replacement.innerHTML=mediaCard(failedItem);
+   var newCard=replacement.firstElementChild;
+   if(newCard)failedCard.replaceWith(newCard);
+   else renderCards();
+  }else renderCards();
  }
 }
 function $(id){return document.getElementById(id)}
