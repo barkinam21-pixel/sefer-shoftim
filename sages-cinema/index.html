@@ -973,6 +973,18 @@ function toggleWatched(id){if(watched.has(id))watched.delete(id);else watched.ad
 function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);save("sages-favorites-v1",favorites);if(state.favorites)renderCards();else syncSavedActions(id)}
 // If the privacy-enhanced YouTube player fails on a device, let the visitor
 // choose YouTube's normal official iframe. This does not bypass embed restrictions.
+// Replacing an iframe on a viewer-triggered retry resets stale provider SDK
+// event handlers. Reattach official play/error diagnostics to the fresh frame.
+// This never copies media or treats an iframe load as playback proof.
+function rebuildOfficialIframe(frame,source,itemId){
+ if(!frame||!frame.parentElement||!source)return;
+ var replacement=frame.cloneNode(false);
+ replacement.removeAttribute("id");
+ replacement.src=source.src;
+ frame.replaceWith(replacement);
+ if(source.provider==="youtube")monitorYoutubeFrame(replacement,itemId,source.id);
+ else if(source.provider==="vimeo")monitorVimeoFrame(replacement,itemId);
+}
 function switchYoutubePlayer(frame,control,id){
  if(!frame||!validYoutube(id))return;
  var standard=control.dataset.mode!=="standard";
@@ -980,7 +992,7 @@ function switchYoutubePlayer(frame,control,id){
  try{localStorage.setItem("sages-youtube-embed-mode-v1",youtubeEmbedMode)}catch(e){}
  clearYoutubeWarning(frame);
  clearPlaybackConfirmation(frame);
- frame.src=youtubeEmbedSrc(id);
+ rebuildOfficialIframe(frame,{provider:"youtube",id:id,src:youtubeEmbedSrc(id)},control.dataset.playerAlt||activeId);
  control.dataset.mode=youtubeEmbedMode;
  control.textContent=youtubeRetryLabel();
 }
@@ -1174,7 +1186,7 @@ elem=e.target.closest("[data-player-reload]");if(elem){
  var retryItem=library.items.find(function(x){return x.id===elem.dataset.playerReload});
  var retryPlayer=retryItem&&playableSource(retryItem);
  var retryCard=elem.closest(".media-card"),retryFrame=retryCard&&retryCard.querySelector(".poster.playing iframe");
- if(retryFrame&&retryPlayer){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);clearPlaybackConfirmation(retryFrame);retryFrame.src=retryPlayer.src;}
+ if(retryFrame&&retryPlayer){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);clearPlaybackConfirmation(retryFrame);rebuildOfficialIframe(retryFrame,retryPlayer,retryItem.id);}
  return;
 }
 elem=e.target.closest("[data-player-alt]");if(elem){
@@ -1235,7 +1247,7 @@ $("playerReload").addEventListener("click",function(){
  var it=library.items.find(function(x){return x.id===activeId});
  var player=it&&playableSource(it);
  var retryFrame=$("videoStage").querySelector("iframe");
- if(player&&retryFrame){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);clearPlaybackConfirmation(retryFrame);retryFrame.src=player.src;}
+ if(player&&retryFrame){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);clearPlaybackConfirmation(retryFrame);rebuildOfficialIframe(retryFrame,player,it.id);}
 });
 $("playerRetry").addEventListener("click",function(){
  if(!activeId)return;
