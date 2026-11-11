@@ -485,6 +485,17 @@ function publisherWatchUrl(it){
  }catch(e){return source}
 }
 function isVimeoIframeSource(it){return publisherWatchUrl(it)!==validUrl(it.url)}
+// Direct Vimeo listings are optional legal exits only for existing catalog entries
+// whose publisher pages embed the same official Vimeo IDs. Public playback there
+// has NOT been confirmed; iframe load is not counted as a played video.
+function knownVimeoWatchPage(it){
+ var listings={
+  "avihen-shel-yisrael-mordechai-eliyahu-ep1-childhood-2020":"430303113",
+  "yosef-mashash-land-dream-mashav":"1177294298"
+ };
+ var id=it&&it.id&&listings[it.id];
+ return id&&String(it.vimeoId||"")===id?"https://vimeo.com/"+id:"#";
+}
 // For blocked embeds, prefer the same official YouTube watch page when its ID
 // is already documented in the catalog. Keep the publisher's own page as a second exit.
 // An "unavailable video" error is not treated as proof that YouTube watch works.
@@ -850,9 +861,11 @@ var noWatchLink=!embed&&externalWatchUrl==="#";
 var fallbackUrl=embed&&player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);
 var fallbackLabel=embed&&player.provider==="youtube"?"צפייה ישירה ביוטיוב":(isVimeoIframeSource(it)?"בדיקת צפייה ב־Vimeo (לא אומתה)":"צפייה ישירה באתר היוצר");
 var creatorPageLink=embed&&player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i.test(it.url)?'<a href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ לדף המקור של היצירה</a>':"";
+var vimeoPage=embed&&player.provider==="vimeo"?knownVimeoWatchPage(it):"#";
+var vimeoPageLink=vimeoPage!=="#"?'<a href="'+vimeoPage+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ דף היצירה ב־Vimeo (ניגון לא אומת)</a>':"";
 var clientRetryMode=youtubeEmbedMode!=="standard"?' data-retry-mode="standard"':"";
 var clientRetryText=youtubeEmbedMode!=="standard"?"↻ נסה נגן YouTube רגיל":"↻ נסה שוב נגן YouTube רשמי";
-var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a>'+creatorPageLink+'<button type="button" data-mark-embed-unavailable="'+esc(it.id)+'">⚠ הנגן לא עובד אצלי</button></div>':(playbackUnverified?'<div class="source-access">אין הטמעה מאומתת. לא אומתה צפייה בסרטון מתוך עמוד המקור, וגם זמינות העמוד עצמו אינה מובטחת.</div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>');
+var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a>'+creatorPageLink+vimeoPageLink+'<button type="button" data-mark-embed-unavailable="'+esc(it.id)+'">⚠ הנגן לא עובד אצלי</button></div>':(playbackUnverified?'<div class="source-access">אין הטמעה מאומתת. לא אומתה צפייה בסרטון מתוך עמוד המקור, וגם זמינות העמוד עצמו אינה מובטחת.</div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>');
 if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':runtimeEmbedBlocks[it.id]==="youtube-player-failed"?'<div class="source-access">הנגן של YouTube דיווח על שגיאת ניגון או פרמטרים. ההטמעה הוסתרה לביקור הנוכחי; אפשר לבדוק צפייה במקור החוקי, ללא הבטחה שהסרט זמין. <button type="button" data-retry-embed="'+esc(it.id)+'"'+clientRetryMode+'>'+clientRetryText+'</button></div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
 if(noWatchLink)sourceFallback='<div class="source-access">'+(runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'YouTube דיווח שהסרטון אינו זמין. ':'')+'אין הטמעה או קישור צפייה חלופי שאומתו. היצירה נשמרת בקטלוג ומסומנת כלא זמינה בביקור זה.</div>';
 // Preserve the publisher link as the primary exit, but offer a convenient
@@ -1002,10 +1015,11 @@ function playInCard(id,button){
  var quickSource=document.createElement("a");
  quickSource.className="quick-source";
  quickSource.dataset.playerOriginal=id;
- quickSource.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);
+ var directVimeoPage=player.provider==="vimeo"?knownVimeoWatchPage(it):"#";
+  quickSource.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:(directVimeoPage!=="#"?directVimeoPage:publisherWatchUrl(it));
  quickSource.target="_blank";
  quickSource.rel="noopener noreferrer";
- quickSource.textContent="↗ למקור";
+ quickSource.textContent=directVimeoPage!=="#"?"↗ דף Vimeo (ניגון לא אומת)":"↗ למקור";
  quickSource.setAttribute("aria-label","הנגן לא עובד? צפייה במקור: "+it.title);
  poster.appendChild(quickSource);
  // Keep a one-click stop button on the video itself, independent of iframe focus.
@@ -1054,10 +1068,10 @@ function playInCard(id,button){
    var watchLink=document.createElement("a");
    watchLink.className="player-fallback";
    watchLink.dataset.playerOriginal=id;
-   watchLink.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);
+   watchLink.href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:(directVimeoPage!=="#"?directVimeoPage:publisherWatchUrl(it));
    watchLink.target="_blank";
    watchLink.rel="noopener noreferrer";
-   watchLink.textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":(isVimeoIframeSource(it)?"↗ בדיקת צפייה ב־Vimeo — לא אומתה":"↗ צפייה באתר היוצר");
+   watchLink.textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":(directVimeoPage!=="#"?"↗ דף Vimeo — ניגון לא אומת":(isVimeoIframeSource(it)?"↗ בדיקת צפייה ב־Vimeo — לא אומתה":"↗ צפייה באתר היוצר"));
    actions.appendChild(watchLink);
    // Offer the next EXISTING catalog film directly from the active inline player.
    // A public official embed stays on this site; external-only videos keep a native legal source link.
@@ -1126,7 +1140,7 @@ $("playerRetry").textContent=youtubeRetryLabel();
 $("playerModal").hidden=false;document.body.classList.add("locked");
 var frame=document.createElement("iframe");frame.title="וידאו: "+it.title;frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allowFullscreen=true;frame.src=player.src;$("videoStage").replaceChildren(frame);
  // Keep the official watch-page exit visible without scrolling, even in the large player.
- var modalExit=document.createElement("a");modalExit.className="quick-source";modalExit.dataset.playerOriginal=id;modalExit.href=$("playerSource").href;modalExit.target="_blank";modalExit.rel="noopener noreferrer";modalExit.textContent="↗ לא מתנגן? למקור";modalExit.setAttribute("aria-label","הנגן לא עובד? צפייה באתר היוצר: "+it.title);$("videoStage").appendChild(modalExit);
+ var modalExit=document.createElement("a");modalExit.className="quick-source";modalExit.dataset.playerOriginal=id;var modalVimeoPage=player.provider==="vimeo"?knownVimeoWatchPage(it):"#";modalExit.href=modalVimeoPage!=="#"?modalVimeoPage:$("playerSource").href;modalExit.target="_blank";modalExit.rel="noopener noreferrer";modalExit.textContent=modalVimeoPage!=="#"?"↗ דף Vimeo — ניגון לא אומת":"↗ לא מתנגן? למקור";modalExit.setAttribute("aria-label","הנגן לא עובד? צפייה באתר היוצר: "+it.title);$("videoStage").appendChild(modalExit);
  if(player.provider==="youtube")monitorYoutubeFrame(frame,it.id,player.id);
  else if(player.provider==="vimeo")monitorVimeoFrame(frame,it.id);
 $("markWatched").textContent=watched.has(id)?"✓ כבר צפיתי":"✓ סמן כצפיתי";configureNextLink(id);$("playerClose").focus();
