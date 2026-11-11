@@ -877,6 +877,13 @@ if(!embed&&!noWatchLink){
  var directOfficial=hidabrootTubeDirectWatchUrl(it);
  if(directOfficial!=="#")sourceFallback+='<div class="source-access"><a href="'+directOfficial+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ בדיקת צפייה ישירה ב־YouTube — זמינות לא אומתה</a></div>';
 }
+// For the eight existing ChabadKidsVideos entries whose direct watch URLs
+// remain unverified, preserve each original film link and offer the publisher's
+// Hebrew directory as a separate way to locate it. This is NOT a video player,
+// not a claim that the specific episode works, and never an automatic embed.
+if(!embed&&it.watchStatus==="unverified"&&/^https:\/\/chabadkidsvideos\.com\/w\//i.test(validUrl(it.url))){
+ sourceFallback+='<div class="source-access"><a href="https://chabadkidsvideos.com/ivrit/" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ מדור הווידאו בעברית של היוצר — לא קישור ישיר לפרק; זמינות לא אומתה</a></div>';
+}
 if(!embed&&runtimeEmbedBlocks[it.id]==="viewer-failed")sourceFallback='<div class="source-access">הנגן לא פעל במכשיר הזה. ההטמעה הוסתרה לביקור הנוכחי בלבד; אפשר לבדוק צפייה בקישור המקורי, שזמינותו לא אומתה. <button type="button" data-retry-embed="'+esc(it.id)+'">↻ נסה שוב נגן באתר</button></div>';
 // A blocked in-site iframe must not hide a previously known direct YouTube watch URL.
 // When the film originated on a creator website, show BOTH official legal exits.
