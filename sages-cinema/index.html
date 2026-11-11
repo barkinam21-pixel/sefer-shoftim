@@ -324,7 +324,7 @@ function disableEmbedForVisit(itemId){
   else renderCards();
  }else renderCards();
 }
-function retryManualEmbed(itemId,preferStandard){
+function retryManualEmbed(itemId,preferStandard,control){
  // Errors 5 / 153 are client-side YouTube playback problems, not publisher bans.
  // Only retry on a viewer action; never re-enable unavailable, forbidden or private videos.
  var reason=runtimeEmbedBlocks[itemId];
@@ -338,9 +338,18 @@ function retryManualEmbed(itemId,preferStandard){
  delete runtimeEmbedBlocks[itemId];
  $("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
  if(reopenLarge){closePlayer();openItem(itemId);return;}
- // The retry button must launch the official player in the card in one click.
- // Merely rebuilding the cards would require another painful click on Play.
- renderCards();
+ // Rebuild only the failed card: re-rendering hundreds of other entries
+ // would stop an unrelated playing video and reset the viewer's position.
+ // A retry still launches the official player immediately, in one click.
+ var card=control&&control.closest(".media-card");
+ var failedItem=library.items.find(function(it){return it.id===itemId});
+ if(card&&failedItem){
+  var replacement=document.createElement("div");
+  replacement.innerHTML=mediaCard(failedItem);
+  if(replacement.firstElementChild)card.replaceWith(replacement.firstElementChild);
+  else renderCards();
+ }else renderCards();
+ renderContinue();
  var playButton=Array.from(document.querySelectorAll("[data-play]")).find(function(btn){
   return btn.getAttribute("data-play")===itemId;
  });
@@ -1082,7 +1091,7 @@ function nextFromCurrent(){
 document.addEventListener("click",function(e){
 var elem=e.target.closest("[data-era]");if(elem){state.era=elem.getAttribute("data-era")||"";refresh();$("library").scrollIntoView({behavior:"smooth"});return}
 elem=e.target.closest("[data-mark-embed-unavailable]");if(elem){disableEmbedForVisit(elem.getAttribute("data-mark-embed-unavailable"));return}
-elem=e.target.closest("[data-retry-embed]");if(elem){retryManualEmbed(elem.getAttribute("data-retry-embed"),elem.getAttribute("data-retry-mode")==="standard");return}
+elem=e.target.closest("[data-retry-embed]");if(elem){retryManualEmbed(elem.getAttribute("data-retry-embed"),elem.getAttribute("data-retry-mode")==="standard",elem);return}
 elem=e.target.closest("[data-player-reload]");if(elem){
  var retryItem=library.items.find(function(x){return x.id===elem.dataset.playerReload});
  var retryPlayer=retryItem&&playableSource(retryItem);
