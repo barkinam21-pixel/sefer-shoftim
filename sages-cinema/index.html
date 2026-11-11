@@ -111,6 +111,9 @@ h1 em{display:block;color:var(--gold);font-style:normal}
 /* One-click large-view shortcut on the playing card, never over the provider bottom controls. */
 .poster.playing .expand-inline{position:absolute;top:9px;left:50%;transform:translateX(-50%);z-index:6;min-height:32px;padding:5px 9px;border:1px solid #d3b27b;border-radius:8px;background:rgba(13,28,33,.94);color:#fff0ca;font-size:12px;font-weight:700;line-height:1.4;white-space:nowrap}
 .poster.playing .expand-inline:hover,.poster.playing .expand-inline:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
+/* When an inline player fails on this device, offer a visible one-click legal fallback. */
+.poster.playing .fail-inline{position:absolute;left:9px;top:48px;z-index:6;min-height:28px;padding:3px 7px;border:1px solid #d3b27b;border-radius:8px;background:rgba(13,28,33,.94);color:#fff0ca;font-size:11px;font-weight:700;line-height:1.4}
+.poster.playing .fail-inline:hover,.poster.playing .fail-inline:focus-visible{background:#2a3f46;outline:2px solid #edc98e;outline-offset:2px}
 .poster-label{position:absolute;z-index:1;bottom:12px;right:13px;font-size:11px;color:#f1dab1;background:rgba(16,26,30,.85);border:1px solid rgba(236,196,138,.22);padding:4px 9px;border-radius:7px}
 .poster-icon{position:absolute;z-index:1;left:12px;top:12px;border:1px solid rgba(236,196,138,.5);color:var(--gold);background:#17262c;padding:4px 9px;border-radius:8px;font-size:11px}
 .card-body{padding:18px 17px 16px;display:flex;flex-direction:column;flex:1;gap:10px}
@@ -979,6 +982,15 @@ function playInCard(id,button){
  expandControl.textContent="⛶ הגדל";
  expandControl.setAttribute("aria-label","פתח נגן גדול: "+it.title);
  poster.appendChild(expandControl);
+ // Give viewers an immediate fallback next to the playing iframe, even when
+ // the provider has no error-reporting SDK (RTVE / Internet Archive).
+ // The existing delegated handler hides this iframe for this visit only.
+ var failControl=document.createElement("button");
+ failControl.type="button";failControl.className="fail-inline";
+ failControl.dataset.markEmbedUnavailable=id;
+ failControl.textContent="⚠ לא עובד?";
+ failControl.setAttribute("aria-label","הנגן לא עובד במכשיר הזה? פתח אפשרות צפייה חוקית במקור: "+it.title);
+ poster.appendChild(failControl);
  if(player.provider==="youtube")monitorYoutubeFrame(frame,it.id,player.id);
  else if(player.provider==="vimeo")monitorVimeoFrame(frame,it.id);
  var actions=card.querySelector(".actions");
