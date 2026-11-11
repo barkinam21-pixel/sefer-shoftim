@@ -91,6 +91,8 @@ const $=function(s){return document.querySelector(s)};
 let playerMode='drive';
 let nativeLoadTimeout=null;
 let loadVersion=0;
+let nativeTrial=0;
+let nativeAutostart=false;
 let brightness=Math.max(65,Math.min(105,Number(localStorage.getItem('mishnah-film-brightness')||84)));
 function saveCurrent(){
   localStorage.setItem('mishnah-current',String(current));
@@ -115,6 +117,7 @@ window.addEventListener('resize',fitMobilePlayer,{passive:true});
 window.addEventListener('orientationchange',fitMobilePlayer);
 function driveLink(id){return 'https://drive.google.com/file/d/'+encodeURIComponent(id)+'/view'}
 function rawLink(id){return 'https://drive.google.com/uc?export=download&id='+encodeURIComponent(id)}
+function alternateRawLink(id){return 'https://drive.usercontent.google.com/download?id='+encodeURIComponent(id)+'&export=download&confirm=t'}
 function cancelLoadTimer(){if(nativeLoadTimeout!==null){clearTimeout(nativeLoadTimeout);nativeLoadTimeout=null;}}
 function setModeButton(){
   $('#nativeMode').setAttribute('aria-pressed',String(playerMode==='native'));
@@ -133,8 +136,18 @@ function armNativeTimeout(video){
   cancelLoadTimer();
   const check=++loadVersion;
   nativeLoadTimeout=setTimeout(function(){
-    if(playerMode==='native'&&check===loadVersion&&$('#screen video')===video&&video.readyState<1)nativeFailed();
-  },17000);
+    if(playerMode==='native'&&check===loadVersion&&$('#screen video')===video&&video.readyState<1)tryAlternate(video);
+  },13500);
+}
+function tryAlternate(video){
+  if(playerMode!=='native')return;
+  if(nativeTrial>0){nativeFailed();return;}
+  nativeTrial=1;
+  video.src=alternateRawLink(videos[current].id);
+  video.load();
+  armNativeTimeout(video);
+  status('בודקים קישור ישיר נוסף. אם גם הוא לא יתמוך בניגון, נחזור לבד לנגן Drive.');
+  if(nativeAutostart)attemptPlay(video);
 }
 function attemptPlay(video){
   try{
@@ -164,7 +177,7 @@ function showNative(id,autostart){
       cancelLoadTimer();
       if(playerMode==='native')status('הנגן הרציף מחובר. בתום הסרטון הוא ינסה להפעיל את הפרק הבא.');
     });
-    video.addEventListener('error',nativeFailed);
+    video.addEventListener('error',function(){tryAlternate(video)});
     video.addEventListener('ended',function(){
       if(playerMode!=='native')return;
       if(current+1<videos.length){
@@ -176,6 +189,8 @@ function showNative(id,autostart){
     });
     $('#screen').append(video);
   }
+  nativeTrial=0;
+  nativeAutostart=!!autostart;
   armNativeTimeout(video);
   video.src=rawLink(id);
   video.load();
