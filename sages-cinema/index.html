@@ -285,6 +285,22 @@ var learning={profiles:[]};
 var state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};
 var watched=new Set(readArray("sages-watched-v1")),favorites=new Set(readArray("sages-favorites-v1"));
 var activeId=null,lastFocus=null;
+// Local proof requires an official YouTube/Vimeo play event, not merely an iframe load.
+// Store dates only on this device; past success does not guarantee availability today.
+var localPlaybackProof=Object.create(null);
+try{
+ var savedProof=JSON.parse(localStorage.getItem("sages-playback-proof-v1")||"{}");
+ if(savedProof&&typeof savedProof==="object"&&!Array.isArray(savedProof)){
+  Object.keys(savedProof).forEach(function(id){
+   if(/^\d{4}-\d{2}-\d{2}$/.test(savedProof[id]))localPlaybackProof[id]=savedProof[id];
+  });
+ }
+}catch(e){}
+function saveLocalPlaybackProof(itemId){
+ if(!itemId||!library.items.some(function(it){return it.id===itemId}))return;
+ localPlaybackProof[itemId]=new Date().toISOString().slice(0,10);
+ try{localStorage.setItem("sages-playback-proof-v1",JSON.stringify(localPlaybackProof))}catch(e){}
+}
 // A provider's explicit embedding refusal is remembered only during this visit.
 // Never turn an inaccessible iframe into a claimed successful playback.
 var runtimeEmbedBlocks=Object.create(null);
@@ -530,7 +546,7 @@ function withYoutubeApi(callback){
 }
 // Only the official provider's actual play event confirms a working video.
 // A loaded iframe or its play button alone is not evidence of playback.
-function confirmPlaybackStarted(frame){
+function confirmPlaybackStarted(frame,itemId){
  if(!frame||!frame.isConnected)return;
  var stage=frame.parentElement;
  if(!stage||!stage.matches(".poster.playing,.video-stage"))return;
@@ -539,6 +555,8 @@ function confirmPlaybackStarted(frame){
  label.className="playback-confirmed";label.setAttribute("role","status");
  label.textContent="✓ הניגון התחיל במכשיר זה";
  stage.appendChild(label);
+ // Persist only a genuine provider play event for this exact catalog entry.
+ saveLocalPlaybackProof(itemId);
 }
 function clearPlaybackConfirmation(frame){
  var stage=frame&&frame.parentElement,notice=stage&&stage.querySelector(".playback-confirmed");
@@ -625,7 +643,7 @@ function monitorYoutubeFrame(frame,itemId,youtubeId){
   if(!frame.isConnected)return;
   new yt.Player(frame.id,{events:{
    onError:function(event){reportYoutubeError(frame,itemId,youtubeId,Number(event.data))},
-   onStateChange:function(event){if(event.data===1){clearYoutubeWarning(frame);confirmPlaybackStarted(frame)}}
+   onStateChange:function(event){if(event.data===1){clearYoutubeWarning(frame);confirmPlaybackStarted(frame,itemId)}}
   }});
  });
 }
@@ -701,7 +719,7 @@ function monitorVimeoFrame(frame,itemId){
   if(!frame.isConnected)return;
   var player=new api.Player(frame);
   player.on("error",function(e){reportVimeoError(frame,itemId,e&&e.name)});
-  player.on("play",function(){clearVimeoWarning(frame);confirmPlaybackStarted(frame)});
+  player.on("play",function(){clearVimeoWarning(frame);confirmPlaybackStarted(frame,itemId)});
   player.ready().catch(function(e){reportVimeoError(frame,itemId,e&&e.name)});
  });
 }
@@ -823,6 +841,8 @@ return '<details id="learn-'+esc(it.id)+'" class="study-details"><summary>📚 �
 function mediaCard(it){
 var isWatched=watched.has(it.id),isFav=favorites.has(it.id),player=playableSource(it),embed=!!player;
 var playbackUnverified=!embed&&(it.watchStatus==="unverified"||!!runtimeEmbedBlocks[it.id]);
+var proofDate=embed&&localPlaybackProof[it.id];
+var proofNote=proofDate?'<div class="source-access">✓ הסרטון התחיל להתנגן במכשיר הזה ב־'+esc(proofDate)+' (אימות מקומי קודם, לא בדיקת זמינות נוכחית).</div>':"";
 var blockedDirectYoutube=!embed&&runtimeEmbedBlocks[it.id]&&runtimeEmbedBlocks[it.id]!=="youtube-unavailable"&&validYoutube(it.youtubeId)?"https://www.youtube.com/watch?v="+it.youtubeId:"";
 var externalWatchUrl=blockedVideoWatchUrl(it);
 var noWatchLink=!embed&&externalWatchUrl==="#";
@@ -854,7 +874,7 @@ return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
 '<h3 class="card-title">'+esc(it.title)+'</h3><p class="figure">'+esc(it.figure)+'</p><p class="desc">'+esc(it.description)+'</p><p class="source">'+esc(it.source)+' • '+esc(it.fiction)+'</p>'+
 '<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'" aria-pressed="false">▶ צפייה כאן באתר</button>':(noWatchLink?'<span class="play-btn unavailable" role="status">⚠ הסרטון אינו זמין</span>':'<a class="play-btn external" href="'+externalWatchUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">'+(blockedDirectYoutube?'↗ בדיקת צפייה ישירה ביוטיוב':playbackUnverified?'↗ עמוד המקור — צפייה לא אומתה':'↗ צפייה באתר היוצר')+'</a>'))+
 '<button class="icon-btn'+(isFav?' chosen':'')+'" type="button" data-favorite="'+esc(it.id)+'" aria-label="'+(isFav?'הסר ממועדפים':'שמור במועדפים')+'" aria-pressed="'+isFav+'" title="מועדפים">'+(isFav?'★':'☆')+'</button>'+
-'<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div>'+sourceFallback+renderStudyCard(it)+'</div></article>'}
+'<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div>' +sourceFallback+proofNote+renderStudyCard(it)+'</div></article>'}
 function renderCards(){
 var selected=selectedItems(),parts=[];
 $("resultsLabel").innerHTML='נמצאו <b>'+selected.length+'</b> יצירות'+(state.era?' בתקופה שנבחרה':'')+' · '+watched.size+' סומנו כצפיתי';
