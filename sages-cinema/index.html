@@ -262,6 +262,7 @@ footer a{text-decoration:underline}
 <label class="check-label"><input id="favoritesOnly" type="checkbox">מועדפים בלבד</label>
 <label class="check-label"><input id="unwatchedOnly" type="checkbox">טרם צפיתי</label>
 <label class="check-label"><input id="siteOnly" type="checkbox">▶ צפייה בתוך האתר בלבד</label>
+<label class="check-label"><input id="externalOnly" type="checkbox">↗ צפייה באתר היוצר בלבד</label>
 </div>
 <div class="results-row"><span id="resultsLabel" aria-live="polite">טוען את הספרייה…</span><button id="clearFilters" type="button">נקה סינון</button></div>
 <div id="mediaResults"></div>
@@ -282,7 +283,7 @@ footer a{text-decoration:underline}
 "use strict";
 var library={eras:[],items:[]};
 var learning={profiles:[]};
-var state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};
+var state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false,externalOnly:false};
 var watched=new Set(readArray("sages-watched-v1")),favorites=new Set(readArray("sages-favorites-v1"));
 var activeId=null,lastFocus=null;
 // Local proof requires an official YouTube/Vimeo play event, not merely an iframe load.
@@ -781,7 +782,7 @@ function itemsSorted(){return library.items.slice().sort(function(a,b){return a.
 function navigationItems(){return itemsSorted().filter(function(it){
  // Never auto-advance into a YouTube video confirmed unavailable (error 100),
  // even if a separate publisher page remains accessible but its video is unverified.
- return it.watchStatus!=="unverified"&&runtimeEmbedBlocks[it.id]!=="youtube-unavailable"&&runtimeEmbedBlocks[it.id]!=="vimeo-password"&&(!!playableSource(it)||blockedVideoWatchUrl(it)!=="#")&&(!state.siteOnly||!!playableSource(it));
+ return it.watchStatus!=="unverified"&&runtimeEmbedBlocks[it.id]!=="youtube-unavailable"&&runtimeEmbedBlocks[it.id]!=="vimeo-password"&&(!!playableSource(it)||blockedVideoWatchUrl(it)!=="#")&&(!state.siteOnly||!!playableSource(it))&&(!state.externalOnly||!playableSource(it));
 })}
 function getProfiles(it){return (learning.profiles||[]).filter(function(p){return (p.mediaIds||[]).indexOf(it.id)!==-1||(it.sageIds||[]).indexOf(p.id)!==-1})}
 // Catalog video types contain descriptive suffixes, so exact-string genre filters
@@ -801,6 +802,7 @@ if(state.story&&matchesVideoGenre(it,"דוקומנטרי סיפורי"))return f
 if(state.favorites&&!favorites.has(it.id))return false;
 if(state.unwatched&&watched.has(it.id))return false;
 if(state.siteOnly&&!playableSource(it))return false;
+if(state.externalOnly&&playableSource(it))return false;
 if(state.query){var q=state.query.toLocaleLowerCase("he").trim();var extras=getProfiles(it).map(function(p){return [p.name,p.hook,p.authorship].concat((p.works||[]).map(function(w){return w.title+" "+w.description})).join(" ")}).join(" ");var s=[it.title,it.figure,it.description,it.region,it.century,it.source,it.type,extras].join(" ").toLocaleLowerCase("he");if(!s.includes(q))return false}
 return true;
 })}
@@ -1217,8 +1219,9 @@ $("languageSelect").addEventListener("change",function(e){state.language=e.targe
 $("storyOnly").addEventListener("change",function(e){state.story=e.target.checked;renderCards()});
 $("favoritesOnly").addEventListener("change",function(e){state.favorites=e.target.checked;renderCards()});
 $("unwatchedOnly").addEventListener("change",function(e){state.unwatched=e.target.checked;renderCards()});
-$("siteOnly").addEventListener("change",function(e){state.siteOnly=e.target.checked;renderCards()});
-$("clearFilters").addEventListener("click",function(){state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};$("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;$("siteOnly").checked=false;refresh()});
+$("siteOnly").addEventListener("change",function(e){state.siteOnly=e.target.checked;if(state.siteOnly){state.externalOnly=false;$("externalOnly").checked=false;}renderCards();renderContinue()});
+$("externalOnly").addEventListener("change",function(e){state.externalOnly=e.target.checked;if(state.externalOnly){state.siteOnly=false;$("siteOnly").checked=false;}renderCards();renderContinue()});
+$("clearFilters").addEventListener("click",function(){state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false,externalOnly:false};$("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;$("siteOnly").checked=false;$("externalOnly").checked=false;refresh()});
 $("continueButton").addEventListener("click",function(e){var next=getContinueItem();if(!next||!playableSource(next))return;e.preventDefault();openItem(next.id)});
 $("playerReload").addEventListener("click",function(){
  if(!activeId)return;
@@ -1251,9 +1254,9 @@ $("playNext").addEventListener("click",function(e){
 $("openLearning").addEventListener("click",function(){
 var id=activeId;closePlayer();if(!id)return;
 if(!document.getElementById("learn-"+id)){
-state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false};
+state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false,externalOnly:false};
 $("searchInput").value="";$("genreSelect").value="";$("languageSelect").value="";
-$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;$("siteOnly").checked=false;refresh();
+$("storyOnly").checked=false;$("favoritesOnly").checked=false;$("unwatchedOnly").checked=false;$("siteOnly").checked=false;$("externalOnly").checked=false;refresh();
 }
 var d=document.getElementById("learn-"+id);
 if(d){d.open=true;d.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
