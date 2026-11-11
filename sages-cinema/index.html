@@ -491,7 +491,8 @@ function isVimeoIframeSource(it){return publisherWatchUrl(it)!==validUrl(it.url)
 function knownVimeoWatchPage(it){
  var listings={
   "avihen-shel-yisrael-mordechai-eliyahu-ep1-childhood-2020":"430303113",
-  "yosef-mashash-land-dream-mashav":"1177294298"
+  "yosef-mashash-land-dream-mashav":"1177294298",
+  "yosef-mashash-art-heart-mashav":"1193558215"
  };
  var id=it&&it.id&&listings[it.id];
  return id&&String(it.vimeoId||"")===id?"https://vimeo.com/"+id:"#";
