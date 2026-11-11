@@ -294,21 +294,35 @@ function revealExternalFallbackAfterFailure(){
  $("siteOnly").checked=false;
 }
 function disableEmbedForVisit(itemId){
- if(!library.items.some(function(it){return it.id===itemId}))return;
- // When a viewer reports failure in the large player, keep the legal source
- // and retry inside the dialog rather than closing it unexpectedly.
- // Device-specific failures are not evidence of a publisher embedding ban.
- if(activeId===itemId&&!$("playerModal").hidden&&!runtimeEmbedBlocks[itemId]){
+ var failedItem=library.items.find(function(it){return it.id===itemId});
+ if(!failedItem)return;
+ // In the large player, display the legal fallback in the dialog without
+ // closing it or detaching the visitor's one-click source link.
+ var inModal=activeId===itemId&&!$("playerModal").hidden;
+ if(inModal&&!runtimeEmbedBlocks[itemId]){
   recordEmbedBlock(itemId,"viewer-failed",$("videoStage"));
   return;
  }
- // Preserve a provider-confirmed failure (especially YouTube error 100).
- // A manual fallback must never revive a watch URL already known to be dead.
+ // Do not override a provider-confirmed failure (in particular error 100).
  if(!runtimeEmbedBlocks[itemId])runtimeEmbedBlocks[itemId]="viewer-failed";
+ var wasSiteOnly=state.siteOnly;
  revealExternalFallbackAfterFailure();
  $("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
- if(activeId===itemId&&!$("playerModal").hidden)closePlayer();
- else renderCards();
+ renderContinue();
+ if(inModal){closePlayer();return;}
+ // Changing one broken player must not destroy an unrelated playing iframe,
+ // the reader's scroll position, or hundreds of unaffected catalog cards.
+ // Only a changed site-only filter requires rebuilding the whole list.
+ var control=Array.from(document.querySelectorAll("[data-mark-embed-unavailable]")).find(function(el){
+  return el.getAttribute("data-mark-embed-unavailable")===itemId;
+ });
+ var card=control&&control.closest(".media-card");
+ if(card&&!wasSiteOnly){
+  var wrapper=document.createElement("div");
+  wrapper.innerHTML=mediaCard(failedItem);
+  if(wrapper.firstElementChild)card.replaceWith(wrapper.firstElementChild);
+  else renderCards();
+ }else renderCards();
 }
 function retryManualEmbed(itemId,preferStandard){
  // Errors 5 / 153 are client-side YouTube playback problems, not publisher bans.
