@@ -160,6 +160,8 @@ footer a{text-decoration:underline}
 .blocked-embed-status{position:absolute;inset:0;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;padding:35px 20px 85px;color:#f0d4ad;text-align:center;font-size:15px;line-height:1.7;background:#101c21}
 .youtube-player-warning,.vimeo-player-warning{position:absolute;bottom:10px;right:10px;left:10px;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px 12px;background:#1d2e34;border:1px solid #e6b67f;border-radius:10px;color:#fff4de;font-size:13px;line-height:1.5;box-shadow:0 5px 20px #0009}
 .youtube-player-warning a,.vimeo-player-warning a{color:#ffe6ab;text-decoration:underline;font-weight:700}
+/* Confirmed by the provider's play event, never by an iframe load alone. */
+.playback-confirmed{position:absolute;right:8px;bottom:8px;z-index:7;pointer-events:none;padding:4px 8px;border-radius:7px;border:1px solid #83bba4;background:rgba(10,47,38,.94);color:#e7fff3;font-size:11px;line-height:1.35;font-weight:700}
 .player-fallback{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 10px;border:1px solid var(--line2);border-radius:9px;background:var(--shade);color:var(--gold);font-size:.82em;line-height:1.45}
 .player-fallback:hover,.player-fallback:focus-visible{border-color:var(--gold)}
 .actions [hidden],.modal-bottom [hidden]{display:none!important}
@@ -526,12 +528,29 @@ function withYoutubeApi(callback){
  script.onerror=function(){youtubeApiRequested=false;youtubeApiCallbacks.length=0;console.warn("YouTube diagnostics could not load; player unchanged")};
  document.head.appendChild(script);
 }
+// Only the official provider's actual play event confirms a working video.
+// A loaded iframe or its play button alone is not evidence of playback.
+function confirmPlaybackStarted(frame){
+ if(!frame||!frame.isConnected)return;
+ var stage=frame.parentElement;
+ if(!stage||!stage.matches(".poster.playing,.video-stage"))return;
+ if(stage.querySelector(".playback-confirmed"))return;
+ var label=document.createElement("span");
+ label.className="playback-confirmed";label.setAttribute("role","status");
+ label.textContent="✓ הניגון התחיל במכשיר זה";
+ stage.appendChild(label);
+}
+function clearPlaybackConfirmation(frame){
+ var stage=frame&&frame.parentElement,notice=stage&&stage.querySelector(".playback-confirmed");
+ if(notice)notice.remove();
+}
 function clearYoutubeWarning(frame){
  var stage=frame&&frame.parentElement,notice=stage&&stage.querySelector(".youtube-player-warning");
  if(notice)notice.remove();
 }
 function reportYoutubeError(frame,itemId,youtubeId,code){
  if(!frame.isConnected)return;
+ clearPlaybackConfirmation(frame);
  var stage=frame.parentElement;
  if(!stage||!stage.matches(".poster.playing,.video-stage"))return;
  clearYoutubeWarning(frame);
@@ -606,7 +625,7 @@ function monitorYoutubeFrame(frame,itemId,youtubeId){
   if(!frame.isConnected)return;
   new yt.Player(frame.id,{events:{
    onError:function(event){reportYoutubeError(frame,itemId,youtubeId,Number(event.data))},
-   onStateChange:function(event){if(event.data===1)clearYoutubeWarning(frame)}
+   onStateChange:function(event){if(event.data===1){clearYoutubeWarning(frame);confirmPlaybackStarted(frame)}}
   }});
  });
 }
@@ -638,6 +657,7 @@ function clearVimeoWarning(frame){
 }
 function reportVimeoError(frame,itemId,name){
  if(!frame.isConnected)return;
+ clearPlaybackConfirmation(frame);
  var stage=frame.parentElement;
  if(!stage||!stage.matches(".poster.playing,.video-stage"))return;
  clearVimeoWarning(frame);
@@ -681,7 +701,7 @@ function monitorVimeoFrame(frame,itemId){
   if(!frame.isConnected)return;
   var player=new api.Player(frame);
   player.on("error",function(e){reportVimeoError(frame,itemId,e&&e.name)});
-  player.on("play",function(){clearVimeoWarning(frame)});
+  player.on("play",function(){clearVimeoWarning(frame);confirmPlaybackStarted(frame)});
   player.ready().catch(function(e){reportVimeoError(frame,itemId,e&&e.name)});
  });
 }
@@ -915,6 +935,7 @@ function switchYoutubePlayer(frame,control,id){
  youtubeEmbedMode=standard?"standard":"private";
  try{localStorage.setItem("sages-youtube-embed-mode-v1",youtubeEmbedMode)}catch(e){}
  clearYoutubeWarning(frame);
+ clearPlaybackConfirmation(frame);
  frame.src=youtubeEmbedSrc(id);
  control.dataset.mode=youtubeEmbedMode;
  control.textContent=youtubeRetryLabel();
@@ -1108,7 +1129,7 @@ elem=e.target.closest("[data-player-reload]");if(elem){
  var retryItem=library.items.find(function(x){return x.id===elem.dataset.playerReload});
  var retryPlayer=retryItem&&playableSource(retryItem);
  var retryCard=elem.closest(".media-card"),retryFrame=retryCard&&retryCard.querySelector(".poster.playing iframe");
- if(retryFrame&&retryPlayer){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);retryFrame.src=retryPlayer.src;}
+ if(retryFrame&&retryPlayer){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);clearPlaybackConfirmation(retryFrame);retryFrame.src=retryPlayer.src;}
  return;
 }
 elem=e.target.closest("[data-player-alt]");if(elem){
@@ -1168,7 +1189,7 @@ $("playerReload").addEventListener("click",function(){
  var it=library.items.find(function(x){return x.id===activeId});
  var player=it&&playableSource(it);
  var retryFrame=$("videoStage").querySelector("iframe");
- if(player&&retryFrame){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);retryFrame.src=player.src;}
+ if(player&&retryFrame){clearYoutubeWarning(retryFrame);clearVimeoWarning(retryFrame);clearPlaybackConfirmation(retryFrame);retryFrame.src=player.src;}
 });
 $("playerRetry").addEventListener("click",function(){
  if(!activeId)return;
