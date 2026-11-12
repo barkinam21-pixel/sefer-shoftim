@@ -43,6 +43,8 @@ jobs:
           if size<1_000_000:
               raise SystemExit('Downloaded file is not the expected MP4')
           PY
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
           ffprobe -v error -show_entries format=duration,size -of json /tmp/mishnah-probe/mishnah-01.mp4 > /tmp/mishnah-probe/probe.json
           cat /tmp/mishnah-probe/probe.json
           python3 - <<'PY'
