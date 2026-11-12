@@ -1,0 +1,91 @@
+name: End-to-end two-film autoplay on existing Mishnah site
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/test-mishnah-autoplay.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Test real two-video handoff in Chrome, desktop and mobile
+        id: playback
+        run: |
+          set -euo pipefail
+          npm install --no-save playwright-core@1.56.1
+          cat > ./autoplay-e2e.mjs <<'JS'
+          import fs from 'node:fs';
+          import {chromium} from 'playwright-core';
+          const result={scenarios:[],timestampUtc:new Date().toISOString(),website:'https://mishnah-cinema-journey.vercel.app/films-gold.html'};
+          let browser;
+          try{
+            browser=await chromium.launch({channel:'chrome',headless:true});
+            for(const kind of ['mobile','desktop']){
+              const context=await browser.newContext({viewport:kind==='mobile'?{width:390,height:844}:{width:1200,height:800},isMobile:kind==='mobile',hasTouch:kind==='mobile'});
+              const page=await context.newPage();
+              const run={kind,siteLoaded:false,metadata:false,firstPlaying:false,advanced:false,secondPlaying:false,error:null};
+              try{
+                await page.goto(result.website,{waitUntil:'domcontentloaded',timeout:30000});
+                await page.waitForFunction(()=>document.querySelector('video[data-native-library]')&&document.querySelector('#nativeMode')?.getAttribute('aria-pressed')==='true',null,{timeout:45000});
+                run.siteLoaded=true;
+                const before=await page.evaluate(()=>({id:videos[current].id,src:document.querySelector('video')?.src}));
+                if(current!==0)throw Error('First episode not selected');
+                if(!before.src.includes('mishnah-01.mp4'))throw Error('Release native player not selected');
+                await page.locator('#resume').click();
+                await page.waitForFunction(()=>{
+                  const v=document.querySelector('video[data-native-library]');
+                  return v&&Number.isFinite(v.duration)&&v.duration>300&&v.readyState>=2;
+                },null,{timeout:45000});
+                run.metadata=true;
+                run.firstPlaying=await page.evaluate(()=>!document.querySelector('video[data-native-library]').paused);
+                await page.evaluate(()=>{const v=document.querySelector('video[data-native-library]');v.currentTime=v.duration-2.3});
+                await page.waitForFunction(()=>current===1&&document.querySelector('video[data-native-library]')?.src?.includes('mishnah-02.mp4'),null,{timeout:35000});
+                run.advanced=true;
+                await page.waitForFunction(()=>{
+                  const v=document.querySelector('video[data-native-library]');
+                  return v&&v.src.includes('mishnah-02.mp4')&&v.readyState>=2&&!v.paused;
+                },null,{timeout:25000});
+                run.secondPlaying=true;
+              }catch(e){run.error=String(e).slice(0,350)}
+              console.log('AUTOPLAY_E2E',JSON.stringify(run));
+              result.scenarios.push(run);
+              await context.close();
+            }
+          }catch(e){result.error=String(e)}
+          finally{if(browser)await browser.close()}
+          result.success=result.scenarios.length===2&&result.scenarios.every(r=>r.siteLoaded&&r.firstPlaying&&r.advanced&&r.secondPlaying);
+          fs.writeFileSync('/tmp/mishnah-autoplay-e2e.json',JSON.stringify(result,null,2));
+          console.log('AUTOPLAY_FINAL',JSON.stringify(result));
+          if(!result.success)process.exitCode=1;
+          JS
+          node ./autoplay-e2e.mjs
+      - name: Preserve factual playback result
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.run_id }}
+          RESULT: ${{ steps.playback.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          path='/tmp/mishnah-autoplay-e2e.json'
+          try:r=json.load(open(path))
+          except Exception as e:r={'success':False,'error':'no test artifact: '+str(e)}
+          r['run_id']=os.environ.get('RUN_ID','')
+          r['result']=os.environ.get('RESULT','')
+          with open(path,'w') as f:json.dump(r,f,ensure_ascii=False,indent=2)
+          PY
+          ENCODED="$(base64 -w0 /tmp/mishnah-autoplay-e2e.json)"
+          ITEM='mishnah/autoplay-e2e.json'
+          SHA="$(gh api "repos/$GITHUB_REPOSITORY/contents/$ITEM" --jq '.sha' 2>/dev/null || true)"
+          if [ -n "$SHA" ]; then
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$ITEM" -f message="Update Mishnah two-video autoplay end-to-end result" -f sha="$SHA" -f content="$ENCODED" >/dev/null
+          else
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$ITEM" -f message="Record Mishnah two-video autoplay end-to-end result" -f content="$ENCODED" >/dev/null
+          fi
