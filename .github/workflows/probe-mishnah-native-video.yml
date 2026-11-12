@@ -26,6 +26,7 @@ jobs:
         id: get
         run: |
           set -euo pipefail
+          exec > >(tee -a /tmp/mishnah-probe/download.log) 2>&1
           python3 -m pip install --disable-pip-version-check 'gdown==5.2.0'
           mkdir -p /tmp/mishnah-probe
           python3 - <<'PY'
@@ -95,6 +96,8 @@ jobs:
           if os.path.exists(path):
               try: info=json.load(open(path))
               except Exception: pass
+          logfile='/tmp/mishnah-probe/download.log'
+          diagnostics=open(logfile,encoding='utf-8',errors='replace').read()[-4500:] if os.path.exists(logfile) else 'download step did not reach logging'
           result={
              'timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
              'status':'range_verified' if os.environ.get('RANGE_OK')=='true' else 'incomplete',
@@ -103,6 +106,7 @@ jobs:
              'duration_seconds':float(info.get('format',{}).get('duration') or 0),
              'size_bytes':int(info.get('format',{}).get('size') or 0),
              'asset_url':os.environ.get('RELEASE_URL',''),
+             'error_diagnostics':diagnostics,
              'note':'A byte-range probe is not proof of browser playback. Never report playback success until the video actually plays.'
           }
           with open('/tmp/mishnah-probe/status.json','w') as out:
