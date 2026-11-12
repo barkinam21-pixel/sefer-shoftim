@@ -406,6 +406,10 @@ function recordEmbedBlock(itemId,reason,stage){
  // A newly blocked iframe changes whether Resume should open an in-site player
  // or a legal external link. Refresh it for every provider-confirmed refusal.
  renderContinue();
+ // An in-site-only filter may have skipped external films when Next was first built.
+ // A failed embed clears that filter, so update the still-open modal's NEXT link
+ // to the next existing legal film in chronological order (without marking it watched).
+ if(stage&&stage.matches(".video-stage")&&activeId===itemId)configureNextLink(itemId);
  if(stage.matches(".video-stage")){
    // A confirmed provider refusal must not leave a dead iframe on screen.
    // Keep the legal source link and the next-film control accessible.
