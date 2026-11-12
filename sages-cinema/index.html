@@ -516,6 +516,13 @@ function knownVimeoWatchPage(it){
 // An "unavailable video" error is not treated as proof that YouTube watch works.
 function blockedVideoWatchUrl(it){
  var source=publisherWatchUrl(it);
+ // This existing HidabrootTube page reports its own player failed and offers
+ // a YouTube exit. Prefer the official WATCH page, NOT an iframe. A watch-page
+ // link is neither playback proof nor permission to embed this video here.
+ if(it.id==="yosef-mashash-hidabroot-biography-liran-levi-2026"){
+  var officialYoutubeExit=hidabrootTubeDirectWatchUrl(it);
+  if(officialYoutubeExit!=="#")return officialYoutubeExit;
+ }
  // A Vimeo embedding privacy refusal does not prove its public watch page
  // is unavailable. publisherWatchUrl() turns documented player.vimeo.com
  // iframe addresses into canonical vimeo.com links, never into failed frames.
@@ -873,6 +880,7 @@ var proofDate=embed&&localPlaybackProof[it.id];
 var proofNote=proofDate?'<div class="source-access">✓ הסרטון התחיל להתנגן במכשיר הזה ב־'+esc(proofDate)+' (אימות מקומי קודם, לא בדיקת זמינות נוכחית).</div>':"";
 var blockedDirectYoutube=!embed&&runtimeEmbedBlocks[it.id]&&runtimeEmbedBlocks[it.id]!=="youtube-unavailable"&&validYoutube(it.youtubeId)?"https://www.youtube.com/watch?v="+it.youtubeId:"";
 var externalWatchUrl=blockedVideoWatchUrl(it);
+var officialExternalYoutube=!embed&&it.id==="yosef-mashash-hidabroot-biography-liran-levi-2026"&&externalWatchUrl==="https://www.youtube.com/watch?v=9IC3SO-TA_Y";
 var noWatchLink=!embed&&externalWatchUrl==="#";
 // Keep the legal, direct source one click away, including when an iframe is blocked.
 var fallbackUrl=embed&&player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);
@@ -883,13 +891,14 @@ var vimeoPageLink=vimeoPage!=="#"?'<a href="'+vimeoPage+'" target="_blank" rel="
 var clientRetryMode=youtubeEmbedMode!=="standard"?' data-retry-mode="standard"':"";
 var clientRetryText=youtubeEmbedMode!=="standard"?"↻ נסה נגן YouTube רגיל":"↻ נסה שוב נגן YouTube רשמי";
 var sourceFallback=embed?'<div class="source-access"><button type="button" data-open-large="'+esc(it.id)+'" aria-label="פתיחת נגן גדול: '+esc(it.title)+'">⛶ נגן גדול</button><a href="'+fallbackUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ הנגן לא עובד? '+fallbackLabel+'</a>'+creatorPageLink+vimeoPageLink+'<button type="button" data-mark-embed-unavailable="'+esc(it.id)+'">⚠ הנגן לא עובד אצלי</button></div>':(playbackUnverified?'<div class="source-access">אין הטמעה מאומתת. לא אומתה צפייה בסרטון מתוך עמוד המקור, וגם זמינות העמוד עצמו אינה מובטחת.</div>':'<div class="source-access">אין נגן מוטמע מאומת — הצפייה נפתחת באתר היוצר.</div>');
+if(officialExternalYoutube)sourceFallback='<div class="source-access">אין הטמעה מאומתת. דף הידברות מפנה ל־YouTube לאחר כשל בנגן שלו; תחילת ניגון ב־YouTube טרם אומתה.</div><div class="source-access"><a href="'+validUrl(it.url)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ דף היצירה המקורי בהידברות</a></div>';
 if(!embed&&runtimeEmbedBlocks[it.id])sourceFallback=runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'<div class="source-access">YouTube דיווח שהסרטון אינו זמין בנגן. אין הטמעה זמינה; אפשר לבדוק את עמוד המקור, אך לא אומתה בו צפייה.</div>':runtimeEmbedBlocks[it.id]==="youtube-player-failed"?'<div class="source-access">הנגן של YouTube דיווח על שגיאת ניגון או פרמטרים. ההטמעה הוסתרה לביקור הנוכחי; אפשר לבדוק צפייה במקור החוקי, ללא הבטחה שהסרט זמין. <button type="button" data-retry-embed="'+esc(it.id)+'"'+clientRetryMode+'>'+clientRetryText+'</button></div>':'<div class="source-access">הנגן הרשמי דיווח שאי אפשר להציג את הסרט כאן עקב מגבלת הטמעה, פרטיות או סיסמה. אין הטמעה; אפשר לבדוק את המקור החוקי, שזמינות הצפייה בו טרם אומתה.</div>';
 if(noWatchLink)sourceFallback='<div class="source-access">'+(runtimeEmbedBlocks[it.id]==="youtube-unavailable"?'YouTube דיווח שהסרטון אינו זמין. ':'')+'אין הטמעה או קישור צפייה חלופי שאומתו. היצירה נשמרת בקטלוג ומסומנת כלא זמינה בביקור זה.</div>';
 // Preserve the publisher link as the primary exit, but offer a convenient
 // official YouTube watch-page alternative where HidabrootTube identifies one.
 if(!embed&&!noWatchLink){
  var directOfficial=hidabrootTubeDirectWatchUrl(it);
- if(directOfficial!=="#")sourceFallback+='<div class="source-access"><a href="'+directOfficial+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ בדיקת צפייה ישירה ב־YouTube — זמינות לא אומתה</a></div>';
+ if(directOfficial!=="#"&&directOfficial!==externalWatchUrl)sourceFallback+='<div class="source-access"><a href="'+directOfficial+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">↗ בדיקת צפייה ישירה ב־YouTube — זמינות לא אומתה</a></div>';
 }
 // For the eight existing ChabadKidsVideos entries whose direct watch URLs
 // remain unverified, preserve each original film link and offer the publisher's
@@ -907,10 +916,10 @@ var poster=player&&player.provider==="youtube"?'<img loading="lazy" decoding="as
 // Clicking the thumbnail launches the same official player or legal source as the action button.
 var posterLaunch=embed?'<button class="poster-launch" type="button" data-poster-play="'+esc(it.id)+'" aria-label="הפעל כאן באתר: '+esc(it.title)+'"></button>':(noWatchLink?'<span class="poster-launch unavailable-poster" title="הווידאו אינו זמין לניגון כרגע"></span>':'<a class="poster-launch" href="'+esc(externalWatchUrl)+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'" aria-label="'+(playbackUnverified?'עמוד המקור — צפייה לא אומתה: ':'צפייה באתר היוצר: ')+esc(it.title)+'"></a>');
 return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
-'<div class="poster">'+poster+'<span class="poster-icon">'+(embed?'▶ נגן באתר':(noWatchLink?'⚠ אינו זמין':(playbackUnverified?'⚠ צפייה בבדיקה':'↗ צפייה ביוצר')))+'</span><span class="poster-label">'+esc(it.century)+'</span>'+posterLaunch+'</div>'+
+'<div class="poster">'+poster+'<span class="poster-icon">'+(embed?'▶ נגן באתר':(noWatchLink?'⚠ אינו זמין':(playbackUnverified?'⚠ צפייה בבדיקה':(officialExternalYoutube?'↗ נסה YouTube':'↗ צפייה ביוצר'))))+'</span><span class="poster-label">'+esc(it.century)+'</span>'+posterLaunch+'</div>'+
 '<div class="card-body"><div class="meta"><span>'+esc(it.type)+'</span><span>'+esc(it.language)+'</span><span>'+esc(it.region)+'</span></div>'+
 '<h3 class="card-title">'+esc(it.title)+'</h3><p class="figure">'+esc(it.figure)+'</p><p class="desc">'+esc(it.description)+'</p><p class="source">'+esc(it.source)+' • '+esc(it.fiction)+'</p>'+
-'<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'" aria-pressed="false">▶ צפייה כאן באתר</button>':(noWatchLink?'<span class="play-btn unavailable" role="status">⚠ הסרטון אינו זמין</span>':'<a class="play-btn external" href="'+externalWatchUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">'+(blockedDirectYoutube?'↗ בדיקת צפייה ישירה ביוטיוב':playbackUnverified?'↗ עמוד המקור — צפייה לא אומתה':'↗ צפייה באתר היוצר')+'</a>'))+
+'<div class="actions">'+(embed?'<button class="play-btn" type="button" data-play="'+esc(it.id)+'" aria-pressed="false">▶ צפייה כאן באתר</button>':(noWatchLink?'<span class="play-btn unavailable" role="status">⚠ הסרטון אינו זמין</span>':'<a class="play-btn external" href="'+externalWatchUrl+'" target="_blank" rel="noopener noreferrer" data-external="'+esc(it.id)+'">'+(blockedDirectYoutube?'↗ בדיקת צפייה ישירה ביוטיוב':officialExternalYoutube?'↗ בדיקת צפייה ב־YouTube — לא אומתה':playbackUnverified?'↗ עמוד המקור — צפייה לא אומתה':'↗ צפייה באתר היוצר')+'</a>'))+
 '<button class="icon-btn'+(isFav?' chosen':'')+'" type="button" data-favorite="'+esc(it.id)+'" aria-label="'+(isFav?'הסר ממועדפים':'שמור במועדפים')+'" aria-pressed="'+isFav+'" title="מועדפים">'+(isFav?'★':'☆')+'</button>'+
 '<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div>' +sourceFallback+proofNote+renderStudyCard(it)+'</div></article>'}
 function renderCards(){
