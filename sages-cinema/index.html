@@ -392,6 +392,11 @@ function retryManualEmbed(itemId,preferStandard,control){
 }
 function recordEmbedBlock(itemId,reason,stage){
  if(runtimeEmbedBlocks[itemId])return;
+ // A manual failure report invalidates earlier play confirmation for this session.
+ // Otherwise Next could mark a failed modal video as watched after its iframe is removed.
+ var failingFrame=stage&&stage.querySelector("iframe");
+ if(failingFrame)clearPlaybackConfirmation(failingFrame);
+ else if(stage&&stage.matches(".video-stage"))activeModalPlaybackStarted=false;
  // Remember the active site-only filter before revealing blocked films.
  // A failed in-site video must refresh all results if that filter was active.
  var wasSiteOnly=state.siteOnly;
