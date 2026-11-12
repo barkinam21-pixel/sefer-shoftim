@@ -114,4 +114,9 @@ jobs:
           print(json.dumps(result,indent=2))
           PY
           ENCODED="$(base64 -w0 /tmp/mishnah-probe/status.json)"
-          gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/mishnah/native-video-probe.json" -f message="Record one-film Drive-to-GitHub streaming probe" -f content="$ENCODED" >/dev/null
+          STATUS_SHA="$(gh api "repos/$GITHUB_REPOSITORY/contents/mishnah/native-video-probe.json" --jq '.sha' 2>/dev/null || true)"
+          if [ -n "$STATUS_SHA" ]; then
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/mishnah/native-video-probe.json" -f message="Update one-film streaming probe diagnostics" -f sha="$STATUS_SHA" -f content="$ENCODED" >/dev/null
+          else
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/mishnah/native-video-probe.json" -f message="Record one-film Drive-to-GitHub streaming probe" -f content="$ENCODED" >/dev/null
+          fi
