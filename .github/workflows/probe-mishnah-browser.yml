@@ -1,0 +1,108 @@
+name: Verify native Mishnah video end event in mobile browser
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/probe-mishnah-browser.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mishnah-browser-playback-probe
+  cancel-in-progress: false
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Probe HTML5 video in full Chrome, both mobile and desktop
+        id: browser
+        run: |
+          set -euo pipefail
+          npm install --no-save playwright-core@1.56.1
+          cat > /tmp/probe.mjs <<'JS'
+          import fs from 'node:fs';
+          import { chromium } from 'playwright-core';
+          const src='https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-video-proof-v1/mishnah-01.mp4';
+          const result={source:src,scenarios:[],timestampUtc:new Date().toISOString()};
+          let browser;
+          try{
+            browser=await chromium.launch({channel:'chrome',headless:true,args:['--autoplay-policy=no-user-gesture-required']});
+            for(const kind of ['mobile','desktop']){
+              const context=await browser.newContext({viewport:kind==='mobile'?{width:390,height:844}:{width:1280,height:800},isMobile:kind==='mobile',hasTouch:kind==='mobile'});
+              const page=await context.newPage();
+              page.on('console',msg=>{if(msg.type()==='error')console.log('PAGE_ERROR',kind,msg.text().slice(0,200))});
+              let one={kind,loaded:false,ended:false,duration:null,error:null};
+              try{
+                await page.goto('https://mishnah-cinema-journey.vercel.app/films-gold.html',{waitUntil:'domcontentloaded',timeout:30000});
+                one=await page.evaluate(async(src,kind)=>{
+                  const result={kind,loaded:false,ended:false,duration:null,error:null};
+                  const screen=document.querySelector('#screen');
+                  if(!screen){result.error='screen missing';return result}
+                  screen.replaceChildren();
+                  const video=document.createElement('video');
+                  video.playsInline=true;video.controls=true;video.preload='metadata';
+                  screen.append(video);
+                  const loaded=new Promise(resolve=>{
+                    const t=setTimeout(()=>resolve('metadata timeout'),35000);
+                    video.addEventListener('loadedmetadata',()=>{clearTimeout(t);resolve('ok')},{once:true});
+                    video.addEventListener('error',()=>{clearTimeout(t);resolve('video error '+video.error?.code)},{once:true});
+                  });
+                  video.src=src;
+                  video.load();
+                  const status=await loaded;
+                  if(status!=='ok'){result.error=status;return result}
+                  result.loaded=true;
+                  result.duration=video.duration;
+                  if(!Number.isFinite(video.duration)||video.duration<30){result.error='invalid duration';return result}
+                  const done=new Promise(resolve=>{
+                    const t=setTimeout(()=>resolve('ended timeout; ready='+video.readyState+', network='+video.networkState+', time='+video.currentTime.toFixed(2)),25000);
+                    video.addEventListener('ended',()=>{clearTimeout(t);resolve('ok')},{once:true});
+                    video.addEventListener('error',()=>{clearTimeout(t);resolve('error '+video.error?.code)},{once:true});
+                  });
+                  try{video.currentTime=Math.max(0,video.duration-2.5);await video.play()}
+                  catch(e){result.error='play blocked: '+String(e).slice(0,120);return result}
+                  const ended=await done;
+                  result.ended=ended==='ok';
+                  if(!result.ended)result.error=ended;
+                  return result;
+                },src,kind);
+              }catch(e){one.error=String(e).slice(0,250)}
+              result.scenarios.push(one);
+              console.log('PROBE_SCENARIO',JSON.stringify(one));
+              await context.close();
+            }
+          }catch(e){result.error=String(e)}
+          finally{if(browser)await browser.close()}
+          result.success=result.scenarios.length===2&&result.scenarios.every(s=>s.loaded&&s.ended);
+          fs.writeFileSync('/tmp/mishnah-browser-result.json',JSON.stringify(result,null,2));
+          console.log('BROWSER_RESULT',JSON.stringify(result));
+          if(!result.success)process.exitCode=1;
+          JS
+          node /tmp/probe.mjs
+      - name: Record browser probe with run ID for inspection
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.run_id }}
+          PROBE_OUTCOME: ${{ steps.browser.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          path='/tmp/mishnah-browser-result.json'
+          try: result=json.load(open(path))
+          except Exception as e: result={'success':False,'error':'Result unavailable: '+str(e)}
+          result['run_id']=os.environ.get('RUN_ID')
+          result['action_outcome']=os.environ.get('PROBE_OUTCOME')
+          with open('/tmp/mishnah-browser-result.json','w') as file:json.dump(result,file,ensure_ascii=False,indent=2)
+          PY
+          ENCODED="$(base64 -w0 /tmp/mishnah-browser-result.json)"
+          STATUS_SHA="$(gh api "repos/$GITHUB_REPOSITORY/contents/mishnah/native-playback-browser.json" --jq '.sha' 2>/dev/null || true)"
+          if [ -n "$STATUS_SHA" ]; then
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/mishnah/native-playback-browser.json" -f message="Update actual browser media playback diagnostic" -f sha="$STATUS_SHA" -f content="$ENCODED" >/dev/null
+          else
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/mishnah/native-playback-browser.json" -f message="Record actual browser media playback diagnostic" -f content="$ENCODED" >/dev/null
+          fi
