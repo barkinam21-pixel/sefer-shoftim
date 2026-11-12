@@ -1,0 +1,113 @@
+name: Verify Mishnah MP4 playback from existing GitHub
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/probe-mishnah-native-video.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mishnah-single-video-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch one publicly shared Mishnah MP4 (non-destructive)
+        id: get
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check 'gdown==5.2.0'
+          mkdir -p /tmp/mishnah-probe
+          python3 - <<'PY'
+          import gdown
+          from pathlib import Path
+          ident='1ijwpySle41xZVjTIv0XVwowJel46zigT'
+          dest='/tmp/mishnah-probe/mishnah-01.mp4'
+          result=gdown.download(id=ident,output=dest,quiet=False)
+          if not result or not Path(dest).exists():
+              raise SystemExit('Google Drive download did not provide a media file')
+          size=Path(dest).stat().st_size
+          print('Downloaded bytes:',size)
+          if size<1_000_000:
+              raise SystemExit('Downloaded file is not the expected MP4')
+          PY
+          ffprobe -v error -show_entries format=duration,size -of json /tmp/mishnah-probe/mishnah-01.mp4 > /tmp/mishnah-probe/probe.json
+          cat /tmp/mishnah-probe/probe.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/mishnah-probe/probe.json'))
+          assert float(d['format']['duration'])>30, 'unexpected duration'
+          PY
+          echo 'media_ok=true' >> "$GITHUB_OUTPUT"
+      - name: Publish a single test film in this same GitHub repository
+        id: publish
+        if: steps.get.outputs.media_ok == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG='mishnah-video-proof-v1'
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --target "$GITHUB_SHA" --title "Mishnah native video playback probe" --notes "Proof of video playback for the existing Mishnah website; only one already shared film." --prerelease
+          gh release upload "$TAG" /tmp/mishnah-probe/mishnah-01.mp4 --clobber
+          URL="https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/mishnah-01.mp4"
+          echo "asset_url=$URL" >> "$GITHUB_OUTPUT"
+          echo "$URL" > /tmp/mishnah-probe/asset-url.txt
+      - name: Test anonymous HTTP Range and MIME
+        id: range
+        if: steps.publish.outcome == 'success'
+        run: |
+          set -euo pipefail
+          URL="$(cat /tmp/mishnah-probe/asset-url.txt)"
+          curl -fLsS -r 0-1023 --max-time 35 -D /tmp/mishnah-probe/headers.txt -o /tmp/mishnah-probe/first-byte.bin "$URL"
+          wc -c /tmp/mishnah-probe/first-byte.bin
+          tail -n 24 /tmp/mishnah-probe/headers.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          data=Path('/tmp/mishnah-probe/first-byte.bin').read_bytes()
+          print('FIRST_BYTES',repr(data[:80]))
+          assert 3<len(data)<=1024
+          assert b'ftyp' in data[:32], 'The release asset did not return MP4 bytes'
+          PY
+          echo 'range_ok=true' >> "$GITHUB_OUTPUT"
+      - name: Record probe in repository for automated inspection
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DOWNLOAD_OK: ${{ steps.get.outputs.media_ok }}
+          RANGE_OK: ${{ steps.range.outputs.range_ok }}
+          RELEASE_URL: ${{ steps.publish.outputs.asset_url }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os,json,datetime
+          path='/tmp/mishnah-probe/probe.json'
+          info={}
+          if os.path.exists(path):
+              try: info=json.load(open(path))
+              except Exception: pass
+          result={
+             'timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+             'status':'range_verified' if os.environ.get('RANGE_OK')=='true' else 'incomplete',
+             'download_ok':os.environ.get('DOWNLOAD_OK')=='true',
+             'range_ok':os.environ.get('RANGE_OK')=='true',
+             'duration_seconds':float(info.get('format',{}).get('duration') or 0),
+             'size_bytes':int(info.get('format',{}).get('size') or 0),
+             'asset_url':os.environ.get('RELEASE_URL',''),
+             'note':'A byte-range probe is not proof of browser playback. Never report playback success until the video actually plays.'
+          }
+          with open('/tmp/mishnah-probe/status.json','w') as out:
+              json.dump(result,out,ensure_ascii=False,indent=2)
+          print(json.dumps(result,indent=2))
+          PY
+          ENCODED="$(base64 -w0 /tmp/mishnah-probe/status.json)"
+          gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/mishnah/native-video-probe.json" -f message="Record one-film Drive-to-GitHub streaming probe" -f content="$ENCODED" >/dev/null
