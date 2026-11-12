@@ -1,14 +1,14 @@
 {
-  "timestamp_utc": "2026-11-12T10:14:22.543803+00:00",
-  "run_id": "43198550542",
+  "timestamp_utc": "2026-11-12T10:15:37.287461+00:00",
+  "run_id": "43198688842",
   "checkout_outcome": "success",
-  "download_outcome": "failure",
-  "status": "incomplete",
-  "download_ok": false,
-  "range_ok": false,
-  "duration_seconds": 0.0,
-  "size_bytes": 0,
-  "asset_url": "",
+  "download_outcome": "success",
+  "status": "range_verified",
+  "download_ok": true,
+  "range_ok": true,
+  "duration_seconds": 302.13805,
+  "size_bytes": 35463413,
+  "asset_url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-video-proof-v1/mishnah-01.mp4",
   "error_diagnostics": "download step did not reach logging",
   "note": "A byte-range probe is not proof of browser playback. Never report playback success until the video actually plays."
 }
