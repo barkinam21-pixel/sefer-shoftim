@@ -1,6 +1,23 @@
 {
-  "success": false,
-  "error": "Result unavailable: [Errno 2] No such file or directory: '/tmp/mishnah-browser-result.json'",
-  "run_id": "43198924383",
-  "action_outcome": "failure"
+  "source": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-video-proof-v1/mishnah-01.mp4",
+  "scenarios": [
+    {
+      "kind": "mobile",
+      "loaded": true,
+      "ended": true,
+      "duration": 302.13805,
+      "error": null
+    },
+    {
+      "kind": "desktop",
+      "loaded": true,
+      "ended": true,
+      "duration": 302.13805,
+      "error": null
+    }
+  ],
+  "timestampUtc": "2026-11-12T10:17:26.497Z",
+  "success": true,
+  "run_id": "43199017822",
+  "action_outcome": "success"
 }
