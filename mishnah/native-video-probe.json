@@ -1,0 +1,10 @@
+{
+  "timestamp_utc": "2026-11-12T10:12:22.393415+00:00",
+  "status": "incomplete",
+  "download_ok": false,
+  "range_ok": false,
+  "duration_seconds": 0.0,
+  "size_bytes": 0,
+  "asset_url": "",
+  "note": "A byte-range probe is not proof of browser playback. Never report playback success until the video actually plays."
+}
