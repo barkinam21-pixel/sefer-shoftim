@@ -23,7 +23,7 @@ jobs:
         run: |
           set -euo pipefail
           npm install --no-save playwright-core@1.56.1
-          cat > /tmp/probe.mjs <<'JS'
+          cat > ./probe.mjs <<'JS'
           import fs from 'node:fs';
           import { chromium } from 'playwright-core';
           const src='https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-video-proof-v1/mishnah-01.mp4';
@@ -38,7 +38,7 @@ jobs:
               let one={kind,loaded:false,ended:false,duration:null,error:null};
               try{
                 await page.goto('https://mishnah-cinema-journey.vercel.app/films-gold.html',{waitUntil:'domcontentloaded',timeout:30000});
-                one=await page.evaluate(async(src,kind)=>{
+                one=await page.evaluate(async({src,kind})=>{
                   const result={kind,loaded:false,ended:false,duration:null,error:null};
                   const screen=document.querySelector('#screen');
                   if(!screen){result.error='screen missing';return result}
@@ -69,7 +69,7 @@ jobs:
                   result.ended=ended==='ok';
                   if(!result.ended)result.error=ended;
                   return result;
-                },src,kind);
+                },{src,kind});
               }catch(e){one.error=String(e).slice(0,250)}
               result.scenarios.push(one);
               console.log('PROBE_SCENARIO',JSON.stringify(one));
@@ -82,7 +82,7 @@ jobs:
           console.log('BROWSER_RESULT',JSON.stringify(result));
           if(!result.success)process.exitCode=1;
           JS
-          node /tmp/probe.mjs
+          node ./probe.mjs
       - name: Record browser probe with run ID for inspection
         if: always()
         env:
