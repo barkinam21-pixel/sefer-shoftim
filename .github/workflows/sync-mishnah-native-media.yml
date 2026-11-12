@@ -1,0 +1,119 @@
+name: Sync original Mishnah films to native video playback
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/sync-mishnah-native-media.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-original-mishnah-films
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - name: Checkout the existing series
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install media tools (no paid services)
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check 'gdown==5.2.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+      - name: Download original 39 MP4 videos and measure exact lengths
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/mishnah-films
+          cat > /tmp/mishnah-download.py <<'PY'
+          import re,json,os,time,subprocess,concurrent.futures
+          from pathlib import Path
+          import gdown
+          page=Path('mishnah/films.html').read_text(encoding='utf-8')
+          match=re.search(r'const videos=(\[[\s\S]*?\]);const savedId=',page)
+          if not match:raise SystemExit('Cannot locate existing film catalog')
+          films=json.loads(match.group(1))
+          assert len(films)==39, 'Expected all 39 videos from the existing library'
+          root=Path('/tmp/mishnah-films')
+          def get(entry):
+              n,film=entry
+              output=root / f'mishnah-{n:02}.mp4'
+              errors=[]
+              for attempt in range(1,4):
+                  try:
+                      if output.exists():output.unlink()
+                      got=gdown.download(id=film['id'],output=str(output),quiet=True)
+                      if got is None:raise RuntimeError('gdown returned no file')
+                      size=output.stat().st_size
+                      if size<1000000:raise RuntimeError('unexpectedly small file')
+                      probe=subprocess.run(['ffprobe','-v','error','-show_entries','format=duration','-of','default=noprint_wrappers=1:nokey=1',str(output)],text=True,capture_output=True,timeout=25,check=True)
+                      duration=float(probe.stdout.strip())
+                      if duration<20 or duration>14400:raise RuntimeError('implausible duration')
+                      print('DOWNLOAD_OK',n,size,round(duration,2),flush=True)
+                      return dict(n=n,id=film['id'],title=film['title'],durationSeconds=round(duration,3),sizeBytes=size,path=str(output))
+                  except Exception as e:
+                      errors.append(str(e)[:240])
+                      if output.exists():output.unlink()
+                      time.sleep(attempt*2)
+              print('DOWNLOAD_FAIL',n,errors[-1],flush=True)
+              return dict(n=n,id=film['id'],error=errors[-1])
+          with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+              results=sorted(pool.map(get,enumerate(films,start=1)),key=lambda x:x['n'])
+          (root/'results.json').write_text(json.dumps(results,ensure_ascii=False,indent=2))
+          ok=[x for x in results if 'path' in x]
+          print('DOWNLOAD_SUMMARY',len(ok),len(films),'bytes',sum(x['sizeBytes'] for x in ok),flush=True)
+          if not ok:raise SystemExit('All public Google Drive downloads failed; leave existing site unchanged')
+          PY
+          python3 /tmp/mishnah-download.py
+      - name: Publish safely in the existing GitHub series release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG='mishnah-native-39-v1'
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --target "$GITHUB_SHA" --title "Mishnah Berakhot 39 episode video files" --notes "Media assets for the existing Mishnah cinema website. Source: owner's previously public Google Drive film library." --prerelease
+          cat > /tmp/mishnah-upload.py <<'PY'
+          import json,subprocess,os
+          from pathlib import Path
+          folder=Path('/tmp/mishnah-films')
+          data=json.loads((folder/'results.json').read_text())
+          ready=[]
+          for v in data:
+              if 'path' not in v:continue
+              asset=Path(v['path'])
+              cmd=['gh','release','upload','mishnah-native-39-v1',str(asset),'--clobber']
+              attempt=subprocess.run(cmd,capture_output=True,text=True,timeout=150)
+              if attempt.returncode!=0:
+                  print('UPLOAD_FAILED',v['n'],(attempt.stderr or '')[:240],flush=True)
+                  continue
+              v.pop('path')
+              v['url']='https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/releases/download/mishnah-native-39-v1/'+asset.name
+              ready.append(v)
+              print('UPLOAD_OK',v['n'],v['sizeBytes'],flush=True)
+          manifest=dict(version=1,releaseTag='mishnah-native-39-v1',total=len(data),available=len(ready),complete=len(ready)==len(data),items=ready,unavailable=[x['n'] for x in data if x['n'] not in {v['n'] for v in ready}])
+          (folder/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+          print('MANIFEST_SUMMARY',manifest['available'],'of',manifest['total'],flush=True)
+          if len(ready)<2:raise SystemExit('Not enough playable files; do not switch site')
+          PY
+          python3 /tmp/mishnah-upload.py
+      - name: Commit media address manifest to the existing site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          CONTENT="$(base64 -w0 /tmp/mishnah-films/manifest.json)"
+          PATH_IN_REPO='mishnah/native-media-manifest.json'
+          OLD_SHA="$(gh api "repos/$GITHUB_REPOSITORY/contents/$PATH_IN_REPO" --jq '.sha' 2>/dev/null || true)"
+          if [ -n "$OLD_SHA" ]; then
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$PATH_IN_REPO" -f message="Update verified original Mishnah MP4 playback URLs" -f sha="$OLD_SHA" -f content="$CONTENT" >/dev/null
+          else
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$PATH_IN_REPO" -f message="Add verified original Mishnah MP4 playback URLs" -f content="$CONTENT" >/dev/null
+          fi
+          echo 'Native film manifest written to mishnah/native-media-manifest.json'
