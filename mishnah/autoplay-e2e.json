@@ -3,25 +3,25 @@
     {
       "kind": "mobile",
       "siteLoaded": true,
-      "metadata": false,
-      "firstPlaying": false,
-      "advanced": false,
-      "secondPlaying": false,
-      "error": "ReferenceError: current is not defined"
+      "metadata": true,
+      "firstPlaying": true,
+      "advanced": true,
+      "secondPlaying": true,
+      "error": null
     },
     {
       "kind": "desktop",
       "siteLoaded": true,
-      "metadata": false,
-      "firstPlaying": false,
-      "advanced": false,
-      "secondPlaying": false,
-      "error": "ReferenceError: current is not defined"
+      "metadata": true,
+      "firstPlaying": true,
+      "advanced": true,
+      "secondPlaying": true,
+      "error": null
     }
   ],
-  "timestampUtc": "2026-11-12T10:24:46.812Z",
+  "timestampUtc": "2026-11-12T10:25:24.473Z",
   "website": "https://mishnah-cinema-journey.vercel.app/films-gold.html",
-  "success": false,
-  "run_id": "43200119901",
-  "result": "failure"
+  "success": true,
+  "run_id": "43200208492",
+  "result": "success"
 }
