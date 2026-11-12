@@ -1,5 +1,8 @@
 {
-  "timestamp_utc": "2026-11-12T10:13:41.556178+00:00",
+  "timestamp_utc": "2026-11-12T10:14:22.543803+00:00",
+  "run_id": "43198550542",
+  "checkout_outcome": "success",
+  "download_outcome": "failure",
   "status": "incomplete",
   "download_ok": false,
   "range_ok": false,
