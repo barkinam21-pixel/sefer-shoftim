@@ -34,8 +34,8 @@ jobs:
                 await page.goto(result.website,{waitUntil:'domcontentloaded',timeout:30000});
                 await page.waitForFunction(()=>document.querySelector('video[data-native-library]')&&document.querySelector('#nativeMode')?.getAttribute('aria-pressed')==='true',null,{timeout:45000});
                 run.siteLoaded=true;
-                const before=await page.evaluate(()=>({id:videos[current].id,src:document.querySelector('video')?.src}));
-                if(current!==0)throw Error('First episode not selected');
+                const before=await page.evaluate(()=>({src:document.querySelector('video')?.src}));
+                if(!before.src)throw Error('First episode not selected');
                 if(!before.src.includes('mishnah-01.mp4'))throw Error('Release native player not selected');
                 await page.locator('#resume').click();
                 await page.waitForFunction(()=>{
@@ -45,7 +45,7 @@ jobs:
                 run.metadata=true;
                 run.firstPlaying=await page.evaluate(()=>!document.querySelector('video[data-native-library]').paused);
                 await page.evaluate(()=>{const v=document.querySelector('video[data-native-library]');v.currentTime=v.duration-2.3});
-                await page.waitForFunction(()=>current===1&&document.querySelector('video[data-native-library]')?.src?.includes('mishnah-02.mp4'),null,{timeout:35000});
+                await page.waitForFunction(()=>document.querySelector('video[data-native-library]')?.src?.includes('mishnah-02.mp4'),null,{timeout:35000});
                 run.advanced=true;
                 await page.waitForFunction(()=>{
                   const v=document.querySelector('video[data-native-library]');
