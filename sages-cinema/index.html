@@ -595,6 +595,9 @@ function confirmPlaybackStarted(frame,itemId){
 function clearPlaybackConfirmation(frame){
  var stage=frame&&frame.parentElement,notice=stage&&stage.querySelector(".playback-confirmed");
  if(notice)notice.remove();
+ // Reloads, mode changes and provider errors invalidate the previous play event.
+ // The next-film action may auto-mark only after the CURRENT iframe starts again.
+ if(stage&&stage.matches(".video-stage"))activeModalPlaybackStarted=false;
 }
 function clearYoutubeWarning(frame){
  var stage=frame&&frame.parentElement,notice=stage&&stage.querySelector(".youtube-player-warning");
