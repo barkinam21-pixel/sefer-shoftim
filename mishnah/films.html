@@ -18,7 +18,7 @@
 #playerStatus{color:#cbc6b6;font-size:12px;line-height:1.6;width:100%;margin:0}
 .screen video:focus-visible{outline:3px solid #dfc186;outline-offset:-4px}
 @media(max-width:620px){.watch-options{align-items:stretch;gap:11px}.watch-options .brightness{width:100%;justify-content:space-between}.watch-options input[type=range]{flex:1;max-width:180px}.watch-options button{flex:1;padding:12px}.screen video{max-width:100%}}
-</style><header><a href="/" style="color:#e5c58c;text-decoration:none;font-weight:bold">✦ מסע אל המשנה · חזרה לאתר הראשי</a><span class="muted">39 סרטונים • מסכת ברכות</span></header><nav class="theme-switch" aria-label="בחירת גרסת עיצוב"><span class="theme-label">בחר סגנון לצפייה</span><a href="./films.html" aria-current="page">המקורי</a><a href="./films-red-blue.html">אדום וכחול</a><a href="./films-gold.html">זהב ויער</a></nav><main><section class="hero"><div class="eyebrow">מילים עתיקות · סיפורים חיים</div><h1>המשנה קמה לתחייה.</h1><p>מסע מצולם אל עולם המשנה: הסיפורים, הרעיונות, ההלכה והאנשים שמאחורי המילים. בחר פרק, התמקם בנוחות, והמשך מאיפה שעצרת.</p><div class="actions"><button class="gold" id="resume">▶ המשך צפייה</button><button class="ghost" onclick="document.querySelector('.library').scrollIntoView({behavior:'smooth'})">גלו את הספרייה ↓</button></div></section><section class="viewer" id="watch"><div><div class="screen" id="screen"></div><div class="details"><div class="pill" id="counter"></div><div class="watch-options"><label class="brightness" for="filmBrightness">☀ בהירות הסרטון <input type="range" id="filmBrightness" min="65" max="105" value="84" step="1" aria-label="בהירות הסרטון"><output id="filmBrightnessValue" for="filmBrightness">84%</output></label><button type="button" id="nativeMode" aria-pressed="false">▶ נסה מצב צפייה רציפה</button><p id="playerStatus" role="status" aria-live="polite">בנגן Drive המעבר לסרטון הבא מתבצע בלחיצה. אפשר לנסות נגן רציף.</p></div><h2 id="now"></h2><div class="controls"><button id="prev">→ הקודם</button><button id="next">הבא ←</button><button id="open">פתיחה ב־Drive ↗</button><button id="mobileWatch" aria-label="צפייה ישירה בנגן Google Drive בטלפון">▣ צפייה ישירה בטלפון</button></div><div class="notice">הבהירות הונמכה ואפשר להתאים אותה מעל הנגן. <strong>ניסיון צפייה רציפה:</strong> במצב הניסיוני הסרטון הבא נפתח אוטומטית בסיום <em>רק אם</em> Google Drive מאפשר ניגון וידאו ישיר. אם הניסוי לא עובד, האתר חוזר לנגן Drive המקורי בלי למחוק את ההתקדמות.</div></div></div><aside class="side"><h3>המשך המסע</h3><div id="queue"></div></aside></section><section class="library"><div class="eyebrow">ארכיון הסדרה</div><h2>כל הפרקים במקום אחד</h2><div class="toolbar"><input id="search" placeholder="חיפוש פרק או נושא..." aria-label="חיפוש"><select id="filter"><option value="all">כל הסרטונים</option><option value="intro">מבוא</option><option value="a">פרק א׳</option><option value="b">פרק ב׳</option><option value="c">פרק ג׳</option><option value="prayer">פרק ד׳ ותפילה</option><option value="f">פרק ו׳</option><option value="extra">העשרה</option></select><span class="muted" id="count"></span></div><div class="cards" id="cards"></div></section></main><footer>מסע אל המשנה • אתר סטטי ללא שירותי AI או מסד נתונים</footer><script>const videos=[{"id":"1ijwpySle41xZVjTIv0XVwowJel46zigT","title":"01 · מבוא — שער למסכת ברכות","section":"intro","label":"מבוא"},{"id":"15OV-SK9BUIP5Nhmau21g7fvABvUrfPh-","title":"02 · מבוא — יסודות קריאת שמע ותפילה","section":"intro","label":"מבוא"},{"id":"1kXC_KhcIbyr5umUUfKTkHAhAxX9lYN1R","title":"03 · מבוא — זמן, גוף ונפש במסכת ברכות","section":"intro","label":"מבוא"},{"id":"155uZxJeCShm_33gdPD25x15tfcXWYyja","title":"04 · פרק א׳, משנה א׳ — פתיחה למשנה הראשונה","section":"a","label":"פרק א׳"},{"id":"1EsXOYrL15pDtKCTWFlqRY8TefuyzKgmV","title":"05 · פרק א׳, משנה א׳ — חידת הזמן","section":"a","label":"פרק א׳"},{"id":"1nFi0IKF8I20xlXf1-K2x5EepBIOUqA6Y","title":"06 · פרק א׳, משנה א׳ — מפצחים את המשנה","section":"a","label":"פרק א׳"},{"id":"1agDtADGIH0jsNLQhUOSt79m2SpFLPl5L","title":"07 · פרק א׳, משנה א׳ — החוק מול טבע האדם","section":"a","label":"פרק א׳"},{"id":"151ZhO4eyvlHZX5LDAyx9eCInyW0OS_0E","title":"08 · פרק א׳ — כללי קריאת שמע | סקירה","section":"a","label":"פרק א׳"},{"id":"1RMQKxV3OyxkwbqoolP5ILp_DnFL75h6h","title":"09 · פרק א׳, משנה ב׳ — מלילה לשחר","section":"a","label":"פרק א׳"},{"id":"1vx22XlnZolOF9x_pKPbYAHsBWceZtpV8","title":"10 · פרק א׳, משנה ג׳ — סכנה בדרך","section":"a","label":"פרק א׳"},{"id":"1ySfMm-V95uk2TgIPZJKlKhsNRc3dzP1e","title":"11 · פרק א׳, משנה ג׳ — בית שמאי ובית הלל: ארכיטקטורת הקשר","section":"a","label":"פרק א׳"},{"id":"1c-59tbjaTLPDo_Au4PgSLS93b1ugkcd6","title":"12 · פרק א׳, משנה ד׳ — הלכות קריאת שמע","section":"a","label":"פרק א׳"},{"id":"17braP419oH4wvcxkSU_XRmfK5XuuI8kj","title":"13 · פרק א׳, משנה ה׳ — זכירת יציאת מצרים","section":"a","label":"פרק א׳"},{"id":"1y0SSH_s6E55qY0AsSgLn6NOpZARdXw-C","title":"14 · פרקים א׳–ב׳ — זמן ומסורת | סקירה","section":"b","label":"פרק ב׳"},{"id":"1KQjLLZUP-lHi1YO51slBYQV4AAqjrhah","title":"15 · פרק ב׳, משנה ג׳ — ביצוע קריאת שמע","section":"b","label":"פרק ב׳"},{"id":"1O96H3Myl6c2W8jy9VH8XqoXy93fRDQqF","title":"16 · פרק ב׳, משנה ד׳ — תקריב הלכתי","section":"b","label":"פרק ב׳"},{"id":"1kmMsKgMBGSniTL9bWcH_2MJf_cG70D4c","title":"17 · פרק ב׳, משניות ו׳–ז׳ — יגונו של רבן גמליאל","section":"b","label":"פרק ב׳"},{"id":"194FlQbSPJcJ27vTf9gSwDRh0FF7h4eL6","title":"18 · פרק ג׳, משנה א׳ — קצוות החיים","section":"c","label":"פרק ג׳"},{"id":"1ajZ_TOMgLOdJ6F0IbLWIqCeo34YqxM1o","title":"19 · פרק ג׳, משניות ד׳–ה׳ — תפילה: מהלכה לפנימיות","section":"c","label":"פרק ג׳"},{"id":"1ID3BW7xB453iykuYAxtGTGbpLznxTQsQ","title":"20 · פרק ג׳, משנה ה׳ — מקדש הגוף והנפש","section":"c","label":"פרק ג׳"},{"id":"1GLbg81z_PC8jpq3Kpv5OFtbxHZXYGgtT","title":"21 · פרק ד׳ — המעבר לתפילה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1_6cuKyCgzN6EGN8MT3K4xZGFjIycT735","title":"22 · תפילה | מקורות — שורשי התפילה היהודית","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1P9I-ANlGNKqm1FYsX_L5J70-vfAufU_k","title":"23 · תפילה | היסטוריה — התפתחות התפילה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1all76cV0sZ_5j4bG6XwDEQOMFUYQH2ia","title":"24 · תפילה | מבנה — ארכיטקטורת התפילה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1HMD4nbafGGaFC9spLzUQW2NCfVDItdTu","title":"25 · תפילה | הלכה — זמנים, צורה ורוח","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1M5SZxe-FpN5VKXjPgP5TT99hOjRK5wb3","title":"26 · תפילה | קהילה — היחיד והקהילה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1KRnxosMJTgfSEeffFNM2Qbt-GUEfgph6","title":"27 · תפילה | נפש — ארכיטקטורת הנפש","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1ix423ETzyxnNj6hMz_o2OLGbBFd9LH7L","title":"28 · תפילה | משמעות — הטבע הכפול","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1AHDWa337g1a8rfIm3TiTqwlgSqTDhNnN","title":"29 · תפילה | כוונה — הדיאלקטיקה של הכוונה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1FZKYA1Ey8Qb0wvcitVuUVysHTpJHI8xc","title":"30 · תפילה | עיון — פרדוקס התפילה היהודית","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1mW-UEl4hADrZUm5n-m5sOWo4fOjy4qxI","title":"31 · תפילה | עיון — צורה מול רגש: מכניקה וכוונה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1LTg6ZnuHQEfmqS835jj1-gAjA-jBH58d","title":"32 · פרק ו׳, משנה א׳ — מסע הפרי: מהאדמה אל הרוח","section":"f","label":"פרק ו׳"},{"id":"1A_Ox9oR8Z5YdvUPgzxekRBDHayigvVmW","title":"33 · פרק ו׳, משנה ב׳ — ברכות בטעות: העץ והאדמה","section":"f","label":"פרק ו׳"},{"id":"1gcJpwiwRK72zeHyWrsKJeD8sRia6EwNE","title":"34 · פרק ו׳, משנה ג׳ — הברכה הכוללת","section":"f","label":"פרק ו׳"},{"id":"1WRSBNzfo6bfp0QwyBiCeSxoRgCHM8ZWB","title":"35 · פרק ו׳, משנה ד׳ — יסודות ברכות הנהנין","section":"f","label":"פרק ו׳"},{"id":"1o4cOH1XqKfCSoyYSICTM5JRj1Gg8Asp6","title":"36 · פרק ו׳, משנה ה׳ — הלכות סעודה","section":"f","label":"פרק ו׳"},{"id":"1INPIRaA3M6NCc1VqgtufDQT_qQky0niT","title":"37 · פרק ו׳, משנה ו׳ — מיחידים לחבורה","section":"f","label":"פרק ו׳"},{"id":"15BRS9ZGVmlHGPFQfaKPLhp5jRWH-ve6_","title":"38 · פרק ו׳ | העשרה — השולחן, השדה וקריאת שמע","section":"f","label":"פרק ו׳"},{"id":"1VytVtMF6ROq5wJ5ZLnZHhndgypLzU3mi","title":"39 · העשרה — פתיחת הגמרא ושאלת חצות","section":"extra","label":"העשרה"}];const savedId=localStorage.getItem('mishnah-current-id');
+#nativeMode:disabled{opacity:.55;cursor:not-allowed}</style><header><a href="/" style="color:#e5c58c;text-decoration:none;font-weight:bold">✦ מסע אל המשנה · חזרה לאתר הראשי</a><span class="muted">39 סרטונים • מסכת ברכות</span></header><nav class="theme-switch" aria-label="בחירת גרסת עיצוב"><span class="theme-label">בחר סגנון לצפייה</span><a href="./films.html" aria-current="page">המקורי</a><a href="./films-red-blue.html">אדום וכחול</a><a href="./films-gold.html">זהב ויער</a></nav><main><section class="hero"><div class="eyebrow">מילים עתיקות · סיפורים חיים</div><h1>המשנה קמה לתחייה.</h1><p>מסע מצולם אל עולם המשנה: הסיפורים, הרעיונות, ההלכה והאנשים שמאחורי המילים. בחר פרק, התמקם בנוחות, והמשך מאיפה שעצרת.</p><div class="actions"><button class="gold" id="resume">▶ המשך צפייה</button><button class="ghost" onclick="document.querySelector('.library').scrollIntoView({behavior:'smooth'})">גלו את הספרייה ↓</button></div></section><section class="viewer" id="watch"><div><div class="screen" id="screen"></div><div class="details"><div class="pill" id="counter"></div><div class="watch-options"><label class="brightness" for="filmBrightness">☀ בהירות הסרטון <input type="range" id="filmBrightness" min="65" max="105" value="84" step="1" aria-label="בהירות הסרטון"><output id="filmBrightnessValue" for="filmBrightness">84%</output></label><button type="button" id="nativeMode" aria-pressed="false" disabled>⌛ מכין נגן רציף</button><p id="playerStatus" role="status" aria-live="polite">בודקים זמינות של ניגון רציף.</p></div><h2 id="now"></h2><div class="controls"><button id="prev">→ הקודם</button><button id="next">הבא ←</button><button id="open">פתיחה ב־Drive ↗</button><button id="mobileWatch" aria-label="צפייה ישירה בנגן Google Drive בטלפון">▣ צפייה ישירה בטלפון</button></div><div class="notice">בנגן הרציף אפשר להמשיך אוטומטית לסרט הבא אחרי סיום הסרטון. נדרשת לחיצה ▶ בתחילת הצפייה. נגן Google Drive המקורי נשאר כגיבוי, ואפשר להתאים את הבהירות.</div></div></div><aside class="side"><h3>המשך המסע</h3><div id="queue"></div></aside></section><section class="library"><div class="eyebrow">ארכיון הסדרה</div><h2>כל הפרקים במקום אחד</h2><div class="toolbar"><input id="search" placeholder="חיפוש פרק או נושא..." aria-label="חיפוש"><select id="filter"><option value="all">כל הסרטונים</option><option value="intro">מבוא</option><option value="a">פרק א׳</option><option value="b">פרק ב׳</option><option value="c">פרק ג׳</option><option value="prayer">פרק ד׳ ותפילה</option><option value="f">פרק ו׳</option><option value="extra">העשרה</option></select><span class="muted" id="count"></span></div><div class="cards" id="cards"></div></section></main><footer>מסע אל המשנה • אתר סטטי ללא שירותי AI או מסד נתונים</footer><script>const videos=[{"id":"1ijwpySle41xZVjTIv0XVwowJel46zigT","title":"01 · מבוא — שער למסכת ברכות","section":"intro","label":"מבוא"},{"id":"15OV-SK9BUIP5Nhmau21g7fvABvUrfPh-","title":"02 · מבוא — יסודות קריאת שמע ותפילה","section":"intro","label":"מבוא"},{"id":"1kXC_KhcIbyr5umUUfKTkHAhAxX9lYN1R","title":"03 · מבוא — זמן, גוף ונפש במסכת ברכות","section":"intro","label":"מבוא"},{"id":"155uZxJeCShm_33gdPD25x15tfcXWYyja","title":"04 · פרק א׳, משנה א׳ — פתיחה למשנה הראשונה","section":"a","label":"פרק א׳"},{"id":"1EsXOYrL15pDtKCTWFlqRY8TefuyzKgmV","title":"05 · פרק א׳, משנה א׳ — חידת הזמן","section":"a","label":"פרק א׳"},{"id":"1nFi0IKF8I20xlXf1-K2x5EepBIOUqA6Y","title":"06 · פרק א׳, משנה א׳ — מפצחים את המשנה","section":"a","label":"פרק א׳"},{"id":"1agDtADGIH0jsNLQhUOSt79m2SpFLPl5L","title":"07 · פרק א׳, משנה א׳ — החוק מול טבע האדם","section":"a","label":"פרק א׳"},{"id":"151ZhO4eyvlHZX5LDAyx9eCInyW0OS_0E","title":"08 · פרק א׳ — כללי קריאת שמע | סקירה","section":"a","label":"פרק א׳"},{"id":"1RMQKxV3OyxkwbqoolP5ILp_DnFL75h6h","title":"09 · פרק א׳, משנה ב׳ — מלילה לשחר","section":"a","label":"פרק א׳"},{"id":"1vx22XlnZolOF9x_pKPbYAHsBWceZtpV8","title":"10 · פרק א׳, משנה ג׳ — סכנה בדרך","section":"a","label":"פרק א׳"},{"id":"1ySfMm-V95uk2TgIPZJKlKhsNRc3dzP1e","title":"11 · פרק א׳, משנה ג׳ — בית שמאי ובית הלל: ארכיטקטורת הקשר","section":"a","label":"פרק א׳"},{"id":"1c-59tbjaTLPDo_Au4PgSLS93b1ugkcd6","title":"12 · פרק א׳, משנה ד׳ — הלכות קריאת שמע","section":"a","label":"פרק א׳"},{"id":"17braP419oH4wvcxkSU_XRmfK5XuuI8kj","title":"13 · פרק א׳, משנה ה׳ — זכירת יציאת מצרים","section":"a","label":"פרק א׳"},{"id":"1y0SSH_s6E55qY0AsSgLn6NOpZARdXw-C","title":"14 · פרקים א׳–ב׳ — זמן ומסורת | סקירה","section":"b","label":"פרק ב׳"},{"id":"1KQjLLZUP-lHi1YO51slBYQV4AAqjrhah","title":"15 · פרק ב׳, משנה ג׳ — ביצוע קריאת שמע","section":"b","label":"פרק ב׳"},{"id":"1O96H3Myl6c2W8jy9VH8XqoXy93fRDQqF","title":"16 · פרק ב׳, משנה ד׳ — תקריב הלכתי","section":"b","label":"פרק ב׳"},{"id":"1kmMsKgMBGSniTL9bWcH_2MJf_cG70D4c","title":"17 · פרק ב׳, משניות ו׳–ז׳ — יגונו של רבן גמליאל","section":"b","label":"פרק ב׳"},{"id":"194FlQbSPJcJ27vTf9gSwDRh0FF7h4eL6","title":"18 · פרק ג׳, משנה א׳ — קצוות החיים","section":"c","label":"פרק ג׳"},{"id":"1ajZ_TOMgLOdJ6F0IbLWIqCeo34YqxM1o","title":"19 · פרק ג׳, משניות ד׳–ה׳ — תפילה: מהלכה לפנימיות","section":"c","label":"פרק ג׳"},{"id":"1ID3BW7xB453iykuYAxtGTGbpLznxTQsQ","title":"20 · פרק ג׳, משנה ה׳ — מקדש הגוף והנפש","section":"c","label":"פרק ג׳"},{"id":"1GLbg81z_PC8jpq3Kpv5OFtbxHZXYGgtT","title":"21 · פרק ד׳ — המעבר לתפילה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1_6cuKyCgzN6EGN8MT3K4xZGFjIycT735","title":"22 · תפילה | מקורות — שורשי התפילה היהודית","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1P9I-ANlGNKqm1FYsX_L5J70-vfAufU_k","title":"23 · תפילה | היסטוריה — התפתחות התפילה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1all76cV0sZ_5j4bG6XwDEQOMFUYQH2ia","title":"24 · תפילה | מבנה — ארכיטקטורת התפילה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1HMD4nbafGGaFC9spLzUQW2NCfVDItdTu","title":"25 · תפילה | הלכה — זמנים, צורה ורוח","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1M5SZxe-FpN5VKXjPgP5TT99hOjRK5wb3","title":"26 · תפילה | קהילה — היחיד והקהילה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1KRnxosMJTgfSEeffFNM2Qbt-GUEfgph6","title":"27 · תפילה | נפש — ארכיטקטורת הנפש","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1ix423ETzyxnNj6hMz_o2OLGbBFd9LH7L","title":"28 · תפילה | משמעות — הטבע הכפול","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1AHDWa337g1a8rfIm3TiTqwlgSqTDhNnN","title":"29 · תפילה | כוונה — הדיאלקטיקה של הכוונה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1FZKYA1Ey8Qb0wvcitVuUVysHTpJHI8xc","title":"30 · תפילה | עיון — פרדוקס התפילה היהודית","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1mW-UEl4hADrZUm5n-m5sOWo4fOjy4qxI","title":"31 · תפילה | עיון — צורה מול רגש: מכניקה וכוונה","section":"prayer","label":"פרק ד׳ ותפילה"},{"id":"1LTg6ZnuHQEfmqS835jj1-gAjA-jBH58d","title":"32 · פרק ו׳, משנה א׳ — מסע הפרי: מהאדמה אל הרוח","section":"f","label":"פרק ו׳"},{"id":"1A_Ox9oR8Z5YdvUPgzxekRBDHayigvVmW","title":"33 · פרק ו׳, משנה ב׳ — ברכות בטעות: העץ והאדמה","section":"f","label":"פרק ו׳"},{"id":"1gcJpwiwRK72zeHyWrsKJeD8sRia6EwNE","title":"34 · פרק ו׳, משנה ג׳ — הברכה הכוללת","section":"f","label":"פרק ו׳"},{"id":"1WRSBNzfo6bfp0QwyBiCeSxoRgCHM8ZWB","title":"35 · פרק ו׳, משנה ד׳ — יסודות ברכות הנהנין","section":"f","label":"פרק ו׳"},{"id":"1o4cOH1XqKfCSoyYSICTM5JRj1Gg8Asp6","title":"36 · פרק ו׳, משנה ה׳ — הלכות סעודה","section":"f","label":"פרק ו׳"},{"id":"1INPIRaA3M6NCc1VqgtufDQT_qQky0niT","title":"37 · פרק ו׳, משנה ו׳ — מיחידים לחבורה","section":"f","label":"פרק ו׳"},{"id":"15BRS9ZGVmlHGPFQfaKPLhp5jRWH-ve6_","title":"38 · פרק ו׳ | העשרה — השולחן, השדה וקריאת שמע","section":"f","label":"פרק ו׳"},{"id":"1VytVtMF6ROq5wJ5ZLnZHhndgypLzU3mi","title":"39 · העשרה — פתיחת הגמרא ושאלת חצות","section":"extra","label":"העשרה"}];const savedId=localStorage.getItem('mishnah-current-id');
 let current=savedId?Math.max(0,videos.findIndex(function(v){return v.id===savedId})):Math.max(0,Math.min(videos.length-1,Number(localStorage.getItem('mishnah-current')||0)));
 const $=function(s){return document.querySelector(s)};
 let playerMode='drive';
@@ -162,7 +162,7 @@ function renderQueue(){
     b.textContent=v.title;
     const small=document.createElement('small');small.textContent=i===current?'▶ צופה כעת':v.label;
     b.append(small);
-    b.onclick=function(){choose(i,false)};
+    b.onclick=function(){choose(i,true)};
     q.append(b);
   });
 }
@@ -187,9 +187,9 @@ function renderCards(){
     box.append(b);
   });
 }
-$('#prev').onclick=function(){choose(current-1,false)};
-$('#next').onclick=function(){choose(current+1,false)};
-$('#resume').onclick=function(){$('#watch').scrollIntoView({behavior:'smooth'});choose(current,false)};
+$('#prev').onclick=function(){choose(current-1,true)};
+$('#next').onclick=function(){choose(current+1,true)};
+$('#resume').onclick=function(){$('#watch').scrollIntoView({behavior:'smooth'});choose(current,true)};
 $('#filmBrightness').oninput=function(){applyBrightness($('#filmBrightness').value)};
 $('#nativeMode').onclick=function(){
   if(playerMode==='native'){
@@ -209,10 +209,100 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight')choose(current-1,false);
 });
 applyBrightness(brightness);
-if(localStorage.getItem('mishnah-player-mode')==='native'){
+if(false){
   playerMode='native';
   status('מצב רציף ניסיוני מופעל. אם התוכן לא נטען נחליף לנגן היציב.');
 }
 setModeButton();
 choose(current,false);
-renderCards();</script></html>
+renderCards();</script><script id="mishnah-reliable-playlist">
+(function(){
+  'use strict';
+  const nativeMedia=new Map();
+  const preferenceKey='mishnah-autoplay-choice-v2';
+  let timeoutVersion=0;
+  function setStatus(s){status(s);}
+  function fallback(s){
+    playerMode='drive';setModeButton();choose(current,false);
+    setStatus(s||'הסרטון לא נטען בנגן הרציף, וחזרנו לנגן Drive.');
+  }
+  setModeButton=function(){
+    const b=$('#nativeMode');
+    b.disabled=nativeMedia.size===0;
+    b.setAttribute('aria-pressed',String(playerMode==='native'));
+    b.textContent=!nativeMedia.size?'⌛ מכין נגן רציף':playerMode==='native'?'↩ נגן Drive':'▶ צפייה רציפה אוטומטית';
+  };
+  showNative=function(id,auto){
+    const media=nativeMedia.get(id);
+    if(!media){fallback('קובץ הסרטון עדיין לא מוכן לניגון רציף; ממשיכים ב־Drive.');return;}
+    const host=$('#screen');
+    let video=host.querySelector('video[data-native-library]');
+    if(!video){
+      host.replaceChildren();
+      video=document.createElement('video');
+      video.dataset.nativeLibrary='1';
+      video.controls=true;video.playsInline=true;video.preload='metadata';
+      video.setAttribute('playsinline','');
+      video.setAttribute('aria-label','נגן המשנה עם מעבר אוטומטי בין הסרטונים');
+      video.addEventListener('ended',function(){
+        if(playerMode!=='native')return;
+        if(current+1<videos.length){
+          choose(current+1,true);
+          setStatus('הסרטון הסתיים, ממשיכים לסרט '+(current+1)+' מתוך '+videos.length+'.');
+        }else setStatus('סיימת את כל סרטוני הסדרה!');
+      });
+      video.addEventListener('error',function(){
+        if(playerMode==='native'&&host.querySelector('video[data-native-library]')===video){
+          fallback('שגיאת טעינה בסרטון הרציף. החזרנו את נגן Drive היציב.');
+        }
+      });
+      video.addEventListener('loadedmetadata',function(){
+        if(playerMode==='native')setStatus('הנגן מוכן. לחץ ▶ פעם אחת; בהמשך נעבור לסרט הבא בסיום.');
+      });
+      host.append(video);
+    }
+    const currentToken=++timeoutVersion;
+    video.src=media.url;
+    video.load();
+    if(auto)attemptPlay(video);
+    setTimeout(function(){
+      if(timeoutVersion===currentToken&&playerMode==='native'&&host.querySelector('video[data-native-library]')===video&&video.readyState===0){
+        fallback('הנגן הרציף לא הצליח להיטען; חזרנו ל־Drive.');
+      }
+    },20000);
+  };
+  $('#nativeMode').onclick=function(){
+    if(!nativeMedia.size)return;
+    playerMode=playerMode==='native'?'drive':'native';
+    localStorage.setItem(preferenceKey,playerMode);
+    setModeButton();choose(current,playerMode==='native');
+    if(playerMode==='drive')setStatus('נגן Drive פעיל, עם מעבר ידני לסרט הבא.');
+  };
+  setModeButton();
+  setStatus('נגן Drive פעיל. בודקים האם הנגן הרציף כבר זמין.');
+  fetch('./native-media-manifest.json',{cache:'no-store'}).then(function(r){
+    if(!r.ok)throw new Error('manifest not ready');
+    return r.json();
+  }).then(function(m){
+    if(!Array.isArray(m.items))throw new Error('invalid manifest');
+    for(const v of m.items){
+      if(videos.some(x=>x.id===v.id)&&typeof v.url==='string'&&v.url.startsWith('https://github.com/')){
+        nativeMedia.set(v.id,v);
+      }
+    }
+    if(!nativeMedia.size)throw new Error('no available media');
+    const ready=m.complete===true&&nativeMedia.size===videos.length;
+    const pref=localStorage.getItem(preferenceKey);
+    playerMode=pref==='drive'?'drive':pref==='native'?'native':ready?'native':'drive';
+    setModeButton();$('#screen').replaceChildren();choose(current,false);
+    if(ready){
+      setStatus(playerMode==='native'?'כל 39 הסרטונים זמינים. לחץ ▶ פעם אחת והסרטונים הבאים יופעלו אוטומטית.':'39 הסרטונים מוכנים בנגן הרציף. לחצו על ״צפייה רציפה אוטומטית״.');
+    }else{
+      setStatus('מוכנים '+nativeMedia.size+' מתוך 39 סרטונים לניגון רציף. שאר הסרטונים נשארו ב־Drive.');
+    }
+  }).catch(function(){
+    playerMode='drive';setModeButton();choose(current,false);
+    setStatus('נגן Drive הרגיל ממשיך לפעול. מצב הניגון הרציף יופיע כשהקבצים יהיו מוכנים.');
+  });
+})();
+</script></html>
