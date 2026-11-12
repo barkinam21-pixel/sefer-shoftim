@@ -75,7 +75,7 @@ footer{border-top:1px solid #23476b;color:#91a5c3}
 
 /* Film light is slightly reduced; the original Drive viewer remains available. */
 .screen iframe,.screen video{filter:brightness(var(--film-brightness,.84))}
-.screen video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;background:#05090c;direction:ltr}
+.screen video{position:absolute;inset:4px;display:block;width:calc(100% - 8px);height:calc(100% - 8px);object-fit:contain;background:#05090c;direction:ltr;border-radius:8px}
 .watch-options{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 0 3px}
 .watch-options .brightness{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:inherit}
 .watch-options input[type=range]{width:95px;accent-color:#d7b47d;cursor:pointer}
