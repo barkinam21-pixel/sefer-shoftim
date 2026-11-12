@@ -19,6 +19,7 @@ jobs:
     timeout-minutes: 14
     steps:
       - name: Checkout current repository
+        id: checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: false
@@ -85,6 +86,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           DOWNLOAD_OK: ${{ steps.get.outputs.media_ok }}
+          CHECKOUT_OUTCOME: ${{ steps.checkout.outcome }}
+          DOWNLOAD_OUTCOME: ${{ steps.get.outcome }}
+          GH_RUN_ID: ${{ github.run_id }}
           RANGE_OK: ${{ steps.range.outputs.range_ok }}
           RELEASE_URL: ${{ steps.publish.outputs.asset_url }}
         run: |
@@ -100,6 +104,9 @@ jobs:
           diagnostics=open(logfile,encoding='utf-8',errors='replace').read()[-4500:] if os.path.exists(logfile) else 'download step did not reach logging'
           result={
              'timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+             'run_id':os.environ.get('GH_RUN_ID',''),
+             'checkout_outcome':os.environ.get('CHECKOUT_OUTCOME',''),
+             'download_outcome':os.environ.get('DOWNLOAD_OUTCOME',''),
              'status':'range_verified' if os.environ.get('RANGE_OK')=='true' else 'incomplete',
              'download_ok':os.environ.get('DOWNLOAD_OK')=='true',
              'range_ok':os.environ.get('RANGE_OK')=='true',
