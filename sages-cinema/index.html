@@ -289,6 +289,9 @@ var learning={profiles:[]};
 var state={era:"",query:"",genre:"",language:"",story:false,favorites:false,unwatched:false,siteOnly:false,externalOnly:false};
 var watched=new Set(readArray("sages-watched-v1")),favorites=new Set(readArray("sages-favorites-v1"));
 var activeId=null,lastFocus=null;
+// Auto-mark a film as watched on Next only after its provider reports actual playback.
+// For providers without play events, the viewer can still use the explicit Watched control.
+var sessionPlaybackStarted=new Set();
 // Local proof requires an official YouTube/Vimeo play event, not merely an iframe load.
 // Store dates only on this device; past success does not guarantee availability today.
 var localPlaybackProof=Object.create(null);
@@ -579,6 +582,7 @@ function confirmPlaybackStarted(frame,itemId){
  label.textContent="✓ הניגון התחיל במכשיר זה";
  stage.appendChild(label);
  // Persist only a genuine provider play event for this exact catalog entry.
+ sessionPlaybackStarted.add(itemId);
  saveLocalPlaybackProof(itemId);
 }
 function clearPlaybackConfirmation(frame){
@@ -1203,7 +1207,10 @@ function closePlayer(){if($("playerModal").hidden)return;var wasBlocked=!!runtim
 function nextFromCurrent(){
  if(!activeId)return;
  var following=nextNavigableItem(activeId);
- watched.add(activeId);save("sages-watched-v1",watched);
+ // A failed/blocked embed or unopened iframe is NOT a watched film.
+ if(sessionPlaybackStarted.has(activeId)){
+  watched.add(activeId);save("sages-watched-v1",watched);
+ }
  closePlayer();
  if(following)openItem(following.id);
  else alert("כל הכבוד! הגעת לסוף הסיפורים שבקטלוג הנוכחי.");
@@ -1294,7 +1301,10 @@ $("playNext").addEventListener("click",function(e){
  if(!activeId||!this.dataset.nextId){e.preventDefault();return}
  if(this.target==="_blank"){
    // Preserve the native external link until the browser opens its tab.
-   watched.add(activeId);save("sages-watched-v1",watched);
+   // Moving to an external film must not mark a failed embed as watched.
+   if(sessionPlaybackStarted.has(activeId)){
+    watched.add(activeId);save("sages-watched-v1",watched);
+   }
    try{localStorage.setItem("sages-last-opened",this.dataset.nextId)}catch(ex){}
    window.setTimeout(function(){closePlayer();renderCards()},0);
    return;
