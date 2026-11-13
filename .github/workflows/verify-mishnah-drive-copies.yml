@@ -1,0 +1,93 @@
+name: Verify 12 new Drive names against already cataloged videos
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/verify-mishnah-drive-copies.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: verify-mishnah-drive-duplicates
+  cancel-in-progress: false
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Compare complete original and newly named MP4 files with SHA256
+        id: verify
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check 'gdown==5.2.0'
+          mkdir -p /tmp/drive-compare
+          cat > /tmp/drive-compare/verify.py <<'PY'
+          import concurrent.futures,hashlib,json,tempfile,time
+          from pathlib import Path
+          import gdown
+          pairs=json.loads("[[\"1p3uKrsUqMZJ5EgZ4nlkoU__C25OtIHPF\",\"1o4cOH1XqKfCSoyYSICTM5JRj1Gg8Asp6\",36],[\"1aTQLc7lcX2Uut_xdLr89kuhC1qjqG5aX\",\"15BRS9ZGVmlHGPFQfaKPLhp5jRWH-ve6_\",38],[\"1i8gUI0Zh5z6CtbUHxet876MPf5Z6E4wb\",\"1A_Ox9oR8Z5YdvUPgzxekRBDHayigvVmW\",33],[\"14xL4CdIEK02moidg8xxuM307CGTgu06X\",\"1INPIRaA3M6NCc1VqgtufDQT_qQky0niT\",37],[\"1pi_otxwhf79BpbHL_EqL7nua__bd59qU\",\"1FZKYA1Ey8Qb0wvcitVuUVysHTpJHI8xc\",30],[\"1S2zxKVxixTU5OAkqXG9Wd_tfpvr5XBHc\",\"1gcJpwiwRK72zeHyWrsKJeD8sRia6EwNE\",34],[\"1D1qnMEtiCexY_tJr8VyGJpo4m7EjZD2y\",\"1LTg6ZnuHQEfmqS835jj1-gAjA-jBH58d\",32],[\"1eJR_Z3Y3xCJFGbP8LgVi3eUlHuzgoCsn\",\"1WRSBNzfo6bfp0QwyBiCeSxoRgCHM8ZWB\",35],[\"1k64f6al44_1TGYACs5KkVE_VBQ8yYroC\",\"1ySfMm-V95uk2TgIPZJKlKhsNRc3dzP1e\",11],[\"18nlJDJsEo_g6738WfpOkZ4sb8znQRCOA\",\"1ySfMm-V95uk2TgIPZJKlKhsNRc3dzP1e\",11],[\"1TZSmO_WWPoQfo2LKT1TM8V85eClJ4u1D\",\"1ix423ETzyxnNj6hMz_o2OLGbBFd9LH7L\",28],[\"1ORUInyBpZLI9JEAA14L_nf1ObjLdRcU_\",\"1all76cV0sZ_5j4bG6XwDEQOMFUYQH2ia\",24]]")
+          def digest(identifier):
+              destination=Path(tempfile.gettempdir()) / f'mishnah-hash-{identifier}.mp4'
+              try:
+                  for attempt in range(3):
+                      try:
+                          if destination.exists():destination.unlink()
+                          result=gdown.download(id=identifier,output=str(destination),quiet=True)
+                          if result is None or destination.stat().st_size<1_000_000:
+                              raise RuntimeError('No valid MP4 downloaded')
+                          h=hashlib.sha256()
+                          with destination.open('rb') as f:
+                              for chunk in iter(lambda:f.read(1024*1024),b''):h.update(chunk)
+                          return {'sha256':h.hexdigest(),'size':destination.stat().st_size}
+                      except Exception:
+                          if attempt==2:raise
+                          time.sleep(2*(attempt+1))
+              finally:
+                  if destination.exists():destination.unlink()
+          def compare(entry):
+              extra,original,episode=entry
+              try:
+                  new=digest(extra)
+                  old=digest(original)
+                  same=new==old
+                  print('COMPARED',episode,'same',same,'bytes',new['size'],flush=True)
+                  return {'extra_id':extra,'original_id':original,'episode':episode,'identical':same,'new_sha256':new['sha256'],'original_sha256':old['sha256'],'bytes':new['size']}
+              except Exception as e:
+                  print('FAILED',episode,str(e)[:180],flush=True)
+                  return {'extra_id':extra,'original_id':original,'episode':episode,'error':str(e)[:180],'identical':None}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+              records=list(pool.map(compare,pairs))
+          result={'checked':len(records),'identical':sum(r['identical'] is True for r in records),'different':sum(r['identical'] is False for r in records),'errors':sum(r['identical'] is None for r in records),'records':records,'status':'verified' if all(r['identical'] is True for r in records) else 'review_needed'}
+          Path('/tmp/drive-compare/result.json').write_text(json.dumps(result,indent=2,ensure_ascii=False))
+          print('SUMMARY',result['status'],result['identical'],'of',len(records),flush=True)
+          if result['status']!='verified':raise SystemExit('Do not add uncertain or duplicate files without review')
+          PY
+          python3 /tmp/drive-compare/verify.py
+      - name: Record comparison to project without modifying video media
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.run_id }}
+          OUTCOME: ${{ steps.verify.outcome }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          path=Path('/tmp/drive-compare/result.json')
+          data=json.loads(path.read_text()) if path.exists() else {'status':'failed_before_comparison'}
+          data['workflow_run_id']=os.environ.get('RUN_ID')
+          data['workflow_outcome']=os.environ.get('OUTCOME')
+          path.write_text(json.dumps(data,ensure_ascii=False,indent=2))
+          PY
+          CONTENT="$(base64 -w0 /tmp/drive-compare/result.json)"
+          ITEM='mishnah/drive-duplicates-audit.json'
+          SHA="$(gh api "repos/$GITHUB_REPOSITORY/contents/$ITEM" --jq '.sha' 2>/dev/null || true)"
+          if [ -n "$SHA" ]; then
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$ITEM" -f message="Update Mishnah Drive copies hash comparison" -f sha="$SHA" -f content="$CONTENT" >/dev/null
+          else
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$ITEM" -f message="Record Mishnah Drive copies hash comparison" -f content="$CONTENT" >/dev/null
+          fi
