@@ -885,7 +885,7 @@ briefFeature("הסיפור",p.story)+briefFeature("רעיון או הלכה",p.i
 return '<details id="learn-'+esc(it.id)+'" class="study-details"><summary>📚 עוד על החכם — בקצרה</summary><div class="study-inner">'+cards+'</div></details>';
 }
 
-function mediaCard(it){
+function mediaCard(it,nextChoiceFromList){
 var isWatched=watched.has(it.id),isFav=favorites.has(it.id),player=playableSource(it),embed=!!player;
 var playbackUnverified=!embed&&(it.watchStatus==="unverified"||!!runtimeEmbedBlocks[it.id]);
 var proofDate=embed&&localPlaybackProof[it.id];
@@ -927,7 +927,7 @@ if(blockedDirectYoutube&&validUrl(it.url)!==blockedDirectYoutube)sourceFallback+
 if(!embed&&vimeoPage!=="#"&&vimeoPage!==externalWatchUrl)sourceFallback+='<div class="source-access">'+vimeoPageLink+'</div>';
 // A viewer returning from an external publisher can skip to the next EXISTING
 // navigable video. Preserve native legal exits and never invent an iframe.
-var nextChoice=!embed?nextNavigableItem(it.id):null;
+var nextChoice=!embed?(typeof nextChoiceFromList==="undefined"?nextNavigableItem(it.id):nextChoiceFromList):null;
 var nextShortcut="";
 if(nextChoice){
  var nextInline=!!playableSource(nextChoice);
@@ -948,6 +948,15 @@ return '<article class="media-card" aria-label="'+esc(it.title)+'">'+
 '<button class="icon-btn'+(isWatched?' chosen checked':'')+'" type="button" data-watched="'+esc(it.id)+'" aria-label="'+(isWatched?'סמן שלא צפיתי':'סמן כצפיתי')+'" aria-pressed="'+isWatched+'" title="סמן כצפיתי">✓</button></div>' +sourceFallback+nextShortcut+proofNote+renderStudyCard(it)+'</div></article>'}
 function renderCards(){
 var selected=selectedItems(),parts=[];
+// Build external-film shortcuts once per render, instead of resorting all 440 films
+// for each of the 151 non-embedded cards. Preserve the same navigable sequence.
+var orderedForNext=itemsSorted(),navigableIds=new Set(navigationItems().map(function(it){return it.id}));
+var nextById=Object.create(null),following=null;
+for(var k=orderedForNext.length-1;k>=0;k--){
+ var candidate=orderedForNext[k];
+ nextById[candidate.id]=following;
+ if(navigableIds.has(candidate.id))following=candidate;
+}
 $("resultsLabel").innerHTML='נמצאו <b>'+selected.length+'</b> יצירות'+(state.era?' בתקופה שנבחרה':'')+' · '+watched.size+' סומנו כצפיתי';
 library.eras.forEach(function(era){
 if(state.era&&era.id!==state.era)return;
@@ -957,7 +966,7 @@ if(state.era&&!state.query&&!state.genre&&!state.story&&!state.favorites&&!state
 return;
 }
 parts.push('<section class="era-section"><div class="era-heading"><div class="era-line"></div><div><h3>'+esc(era.label)+'</h3><p>'+esc(era.range)+' · '+esc(era.lead)+'</p></div></div><div class="media-grid">');
-sub.forEach(function(item){parts.push(mediaCard(item))});
+sub.forEach(function(item){parts.push(mediaCard(item,nextById[item.id]))});
 parts.push('</div></section>');
 });
 if(!parts.length)parts.push('<div class="no-results"><strong>לא נמצאה יצירה מתאימה.</strong><p>אפשר להרחיב את הסינון או לבחור תקופה אחרת. לא נוסיף תכנים לא בדוקים רק כדי למלא את הרשימה.</p></div>');
