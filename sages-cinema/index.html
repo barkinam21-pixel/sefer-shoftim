@@ -260,7 +260,7 @@ footer a{text-decoration:underline}
 <div class="filters">
 <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="חפשו חכם, ספר, הלכה, אזור או סרט..." autocomplete="off" aria-label="חיפוש סרטים וחכמים"></label>
 <select id="genreSelect" aria-label="סוג היצירה"><option value="">כל סוגי הסרטים</option><option value="אנימציה עלילתית">אנימציה עלילתית</option><option value="דרמה עם שחקנים">דרמה עם שחקנים</option><option value="דוקומנטרי סיפורי">דוקומנטרי סיפורי</option></select>
-<select id="languageSelect" aria-label="שפת הסרט"><option value="">כל השפות</option><option value="עברית">עברית</option><option value="אנגלית">אנגלית</option></select>
+<select id="languageSelect" aria-label="שפה עיקרית של היצירה"><option value="">כל השפות</option><option value="עברית">עברית</option><option value="אנגלית">אנגלית</option><option value="צרפתית">צרפתית</option><option value="ספרדית">ספרדית</option><option value="יידיש">יידיש</option><option value="other">שפה אחרת / לא צוינה</option></select>
 <label class="check-label"><input id="storyOnly" type="checkbox">עלילה בלבד</label>
 <label class="check-label"><input id="favoritesOnly" type="checkbox">מועדפים בלבד</label>
 <label class="check-label"><input id="unwatchedOnly" type="checkbox">טרם צפיתי</label>
@@ -856,10 +856,21 @@ function matchesVideoGenre(it,genre){
  if(genre==="דוקומנטרי סיפורי")return /דוקומנטרי|תיעודי|תעודה|מסע מצולם/.test(kind);
  return kind===genre;
 }
+// Filter ALL existing catalog films by their main recorded language, including
+// entries with subtitle notes. Keep unverified/unspecified languages accessible.
+function catalogLanguageFamily(it){
+ var raw=String(it.language||"").trim();
+ var names=["עברית","אנגלית","צרפתית","ספרדית","יידיש"];
+ for(var i=0;i<names.length;i++){
+  var name=names[i];
+  if(raw===name||raw.indexOf(name+" ")===0||raw.indexOf(name+",")===0||raw.indexOf(name+";")===0||raw.indexOf(name+"(")===0||raw.indexOf(name+"/")===0)return name;
+ }
+ return "other";
+}
 function selectedItems(){return itemsSorted().filter(function(it){
 if(state.era&&it.era!==state.era)return false;
 if(state.genre&&!matchesVideoGenre(it,state.genre))return false;
-if(state.language&&it.language!==state.language)return false;
+if(state.language&&catalogLanguageFamily(it)!==state.language)return false;
 if(state.story&&matchesVideoGenre(it,"דוקומנטרי סיפורי"))return false;
 if(state.favorites&&!favorites.has(it.id))return false;
 if(state.unwatched&&watched.has(it.id))return false;
