@@ -812,11 +812,22 @@ function playableSource(it){
 }
 function itemsSorted(){return library.items.slice().sort(function(a,b){return a.year-b.year||a.title.localeCompare(b.title,"he")})}
 // Unverified source pages stay listed in the catalog, but cannot auto-advance as playable videos.
-function navigationItems(){return itemsSorted().filter(function(it){
- // Never auto-advance into a YouTube video confirmed unavailable (error 100),
- // even if a separate publisher page remains accessible but its video is unverified.
- return it.watchStatus!=="unverified"&&runtimeEmbedBlocks[it.id]!=="youtube-unavailable"&&runtimeEmbedBlocks[it.id]!=="vimeo-password"&&(!!playableSource(it)||blockedVideoWatchUrl(it)!=="#")&&(!state.siteOnly||!!playableSource(it))&&(!state.externalOnly||!playableSource(it));
-})}
+function navigationItems(){
+ // The same official video can be indexed under two publisher pages.
+ // Keep both existing catalog cards, but never auto-advance into the same playback twice.
+ var seenOfficialPlayers=new Set();
+ return itemsSorted().filter(function(it){
+  // Never auto-advance into unverified or provider-confirmed unavailable videos.
+  var player=playableSource(it);
+  if(it.watchStatus==="unverified"||runtimeEmbedBlocks[it.id]==="youtube-unavailable"||runtimeEmbedBlocks[it.id]==="vimeo-password"||(!player&&blockedVideoWatchUrl(it)==="#")||(state.siteOnly&&!player)||(state.externalOnly&&!!player))return false;
+  if(player){
+   var key=player.provider+":"+player.id;
+   if(seenOfficialPlayers.has(key))return false;
+   seenOfficialPlayers.add(key);
+  }
+  return true;
+ });
+}
 function getProfiles(it){return (learning.profiles||[]).filter(function(p){return (p.mediaIds||[]).indexOf(it.id)!==-1||(it.sageIds||[]).indexOf(p.id)!==-1})}
 // Catalog video types contain descriptive suffixes, so exact-string genre filters
 // hid most existing films. These labels select videos by production format only.
