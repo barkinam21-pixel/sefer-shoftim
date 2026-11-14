@@ -1,0 +1,35 @@
+{
+  "time": "2026-11-14T02:24:35.687Z",
+  "checks": [
+    {
+      "file": "films.html",
+      "kind": "desktop",
+      "catalog": true,
+      "native": true,
+      "handoff39to40": false,
+      "final53to54": false,
+      "error": null
+    },
+    {
+      "file": "films-red-blue.html",
+      "kind": "desktop",
+      "catalog": true,
+      "native": true,
+      "handoff39to40": true,
+      "final53to54": true,
+      "error": null
+    },
+    {
+      "file": "films-gold.html",
+      "kind": "mobile",
+      "catalog": true,
+      "native": true,
+      "handoff39to40": true,
+      "final53to54": true,
+      "error": null
+    }
+  ],
+  "success": true,
+  "runId": "43546126155",
+  "result": "success"
+}
