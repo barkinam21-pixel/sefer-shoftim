@@ -1270,7 +1270,16 @@ function configureNextLink(id){
 function openItem(id){var it=library.items.find(function(x){return x.id===id});if(!it)return;
 // Prevent two soundtracks when opening the larger player or an external video.
 stopInlinePlayer();
-var player=playableSource(it);if(!player){var watchUrl=blockedVideoWatchUrl(it);if(watchUrl!=="#")window.open(watchUrl,"_blank","noopener,noreferrer");return}
+var player=playableSource(it);if(!player){
+ // External-only videos opened from Next or a playback fallback must update Resume too.
+ // Record progress only when a legal watch-page exit actually exists.
+ var watchUrl=blockedVideoWatchUrl(it);
+ if(watchUrl!=="#"){
+  rememberLastOpened(id);
+  window.open(watchUrl,"_blank","noopener,noreferrer");
+ }
+ return;
+}
 rememberLastOpened(id);lastFocus=document.activeElement;activeId=id;activeModalPlaybackStarted=false;$("playerTitle").textContent=it.title;$("playerSub").textContent=it.figure+" · "+it.source;$("playerSource").href=player.provider==="youtube"?"https://www.youtube.com/watch?v="+player.id:publisherWatchUrl(it);$("playerSource").textContent=player.provider==="youtube"?"↗ צפייה ישירה ביוטיוב":(isVimeoIframeSource(it)?"↗ בדיקת צפייה ב־Vimeo — לא אומתה":"↗ צפייה באתר המקור");$("playerSource").hidden=false;var directVimeoExit=player.provider==="vimeo"?knownVimeoWatchPage(it):"#";$("playerCreator").href=directVimeoExit!=="#"?directVimeoExit:validUrl(it.url);$("playerCreator").textContent=directVimeoExit!=="#"?"↗ דף Vimeo רשמי — ניגון לא אומת":"↗ לדף המקור של היצירה";$("playerCreator").hidden=!(directVimeoExit!=="#"||(player.provider==="youtube"&&!/^https:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i.test(it.url)));$("playerCreator").dataset.playerOriginal=it.id;$("openLearning").hidden=!getProfiles(it).length;
 $("playerReload").hidden=false;
 $("playerDisableEmbed").hidden=false; // Restore the report action for a freshly opened player.
