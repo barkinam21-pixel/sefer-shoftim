@@ -1,0 +1,213 @@
+{
+  "status": "ready",
+  "count": 15,
+  "duplicates": [
+    {
+      "ids": [
+        "18_lr1auPXmiQDNTSmvwh7q32_NIgcLEm",
+        "1A32NWGDxGBF6VHPa3JT4cXcFGJPRj5WP"
+      ],
+      "identical": true,
+      "sha256": [
+        "b05430390fad56161b6e2b5849922fb5db6d2db5c10bdbc638c05e59e0ad4d98",
+        "b05430390fad56161b6e2b5849922fb5db6d2db5c10bdbc638c05e59e0ad4d98"
+      ]
+    },
+    {
+      "ids": [
+        "1spgo0cb0m-EWhWGl3ReLYWC2YPEjYM_d",
+        "1eOYGKGk3IGgODZWApjp-iZLb_0vZ31k_"
+      ],
+      "identical": true,
+      "sha256": [
+        "6bb21871b9240bb4c1e9016cb490231df3859ef14a0e743ed3ca276d82402f64",
+        "6bb21871b9240bb4c1e9016cb490231df3859ef14a0e743ed3ca276d82402f64"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "n": 1,
+      "id": "1nkMF_74aZiqghElgY3vSYCClHh_chWlN",
+      "title": "פרק ז׳ | פתיחה — מן הלחם אל הזימון",
+      "section": "g",
+      "label": "פרק ז׳",
+      "sizeBytes": 48095565,
+      "durationSeconds": 420.815,
+      "sha256": "8390c61c6f6d5cb96d378f5662a70deab700c4daa248cd4658b02fe41ac73081",
+      "filename": "mishnah-added-01.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-01.mp4"
+    },
+    {
+      "n": 2,
+      "id": "1toQeuX-HALXrIKRbf8Mzbw_Oo96iTir0",
+      "title": "פרק ז׳, משנה ג׳ — כיצד מתחלק הזימון?",
+      "section": "g",
+      "label": "פרק ז׳",
+      "sizeBytes": 33157607,
+      "durationSeconds": 414.801,
+      "sha256": "e50183f08cbab0a9e2a06c53a117bba31a46855bd4f94bd92e8dd0577ecf59ca",
+      "filename": "mishnah-added-02.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-02.mp4"
+    },
+    {
+      "n": 3,
+      "id": "1d2Q1RZbd89NxJeVlG_-AqBKUxmni5cmX",
+      "title": "פרק ז׳ | עיון — בין הראייה לכוס היין",
+      "section": "g",
+      "label": "פרק ז׳",
+      "sizeBytes": 47089904,
+      "durationSeconds": 393.764,
+      "sha256": "63535d8bda13c7a77f50c0606fdc258067ada22562f04a61ce619d16f3e2e3f1",
+      "filename": "mishnah-added-03.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-03.mp4"
+    },
+    {
+      "n": 4,
+      "id": "1g88R5cllx7kImSiTZeULLLRPqNEmZazX",
+      "title": "פרק ז׳ | העשרה — רוממות הברכה בארץ ישראל",
+      "section": "g",
+      "label": "פרק ז׳",
+      "sizeBytes": 49456977,
+      "durationSeconds": 396.109,
+      "sha256": "f60918227fa24ef405f6dad8eb8a3ac24b700b7513df605851ad7a9ab24af4e7",
+      "filename": "mishnah-added-04.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-04.mp4"
+    },
+    {
+      "n": 5,
+      "id": "1Pb4CIOcZLVplyArxb513kikMP4ZN1DZ_",
+      "title": "פרק ח׳, משנה א׳ — זמן או חומר? סדר הברכות",
+      "section": "h",
+      "label": "פרק ח׳",
+      "sizeBytes": 38670525,
+      "durationSeconds": 320.644,
+      "sha256": "06fa66127111627ae5f0fe83fd6b8f1c7ec9bbae62934e5dab449f27348f475c",
+      "filename": "mishnah-added-05.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-05.mp4"
+    },
+    {
+      "n": 6,
+      "id": "1Xea8ij9wgmLh9KENucThRnTfRJPrn0iq",
+      "title": "פרק ח׳ | השולחן התנאי — טהרה וסעודה",
+      "section": "h",
+      "label": "פרק ח׳",
+      "sizeBytes": 31950331,
+      "durationSeconds": 436.442,
+      "sha256": "dab9a6a996472350a4edb1357562f0f2ca3881fed9eed6dbbf7af7fa19a7881f",
+      "filename": "mishnah-added-06.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-06.mp4"
+    },
+    {
+      "n": 7,
+      "id": "19gSjowpSd0uYMmrE9IVE8plR70O5eo7T",
+      "title": "פרק ח׳, משנה ד׳ — הפולמוס הגדול על הברכות",
+      "section": "h",
+      "label": "פרק ח׳",
+      "sizeBytes": 35247115,
+      "durationSeconds": 317.486,
+      "sha256": "1e1d2bacbdf19e5578e5889b00a6e17f87407adff1589919c118836b5eef07a3",
+      "filename": "mishnah-added-07.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-07.mp4"
+    },
+    {
+      "n": 8,
+      "id": "1eOYGKGk3IGgODZWApjp-iZLb_0vZ31k_",
+      "title": "פרק ח׳, משנה ה׳ — מקודש לחול",
+      "section": "h",
+      "label": "פרק ח׳",
+      "sizeBytes": 49848867,
+      "durationSeconds": 389.979,
+      "sha256": "6bb21871b9240bb4c1e9016cb490231df3859ef14a0e743ed3ca276d82402f64",
+      "filename": "mishnah-added-08.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-08.mp4"
+    },
+    {
+      "n": 9,
+      "id": "1A32NWGDxGBF6VHPa3JT4cXcFGJPRj5WP",
+      "title": "פרק ח׳, משנה ו׳ — אור ובשמים: חושי ההבדלה",
+      "section": "h",
+      "label": "פרק ח׳",
+      "sizeBytes": 38107103,
+      "durationSeconds": 319.901,
+      "sha256": "b05430390fad56161b6e2b5849922fb5db6d2db5c10bdbc638c05e59e0ad4d98",
+      "filename": "mishnah-added-09.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-09.mp4"
+    },
+    {
+      "n": 10,
+      "id": "1jLlCsKCV5TJrlgov1ow3UmzKMj3IAtKk",
+      "title": "פרק ח׳, משנה ז׳ — הברכה שנשכחה",
+      "section": "h",
+      "label": "פרק ח׳",
+      "sizeBytes": 31487688,
+      "durationSeconds": 250.984,
+      "sha256": "4cbd0a068a43207adcfb78847bd2757d2bbacf4d71fc90c48e1da75060278952",
+      "filename": "mishnah-added-10.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-10.mp4"
+    },
+    {
+      "n": 11,
+      "id": "1pdBa8Lpg3rEKb7enP_skQ4h8NnmgE3Gm",
+      "title": "פרק ח׳ | סיום — דילמת הכוס היחידה",
+      "section": "h",
+      "label": "פרק ח׳",
+      "sizeBytes": 37124056,
+      "durationSeconds": 329.677,
+      "sha256": "e535f556f9b36ecdb83f2ed4ff08330ae86eccdebf0d32d156eaca014b7b9965",
+      "filename": "mishnah-added-11.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-11.mp4"
+    },
+    {
+      "n": 12,
+      "id": "1APkq7x1rarE1EFLQPdNVfyMv6UXmESFV",
+      "title": "מבט מסכם — הארכיטקטורה של הברכה",
+      "section": "extra",
+      "label": "מבט מסכם",
+      "sizeBytes": 30159740,
+      "durationSeconds": 330.513,
+      "sha256": "13c675f51a09afe9a5be9ec50e002cb0ea6eff857ec5c46b2a136349d81aa83a",
+      "filename": "mishnah-added-12.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-12.mp4"
+    },
+    {
+      "n": 13,
+      "id": "1pLukYNtPf98fO1Z8uPIyrSk2d2jP84vu",
+      "title": "מבט מסכם — זמן, מרחב וסכנה במשנה",
+      "section": "extra",
+      "label": "מבט מסכם",
+      "sizeBytes": 27758204,
+      "durationSeconds": 350.389,
+      "sha256": "322d5ad2ba3822a738d2140b3bd3520a4e67ddce9dc65f5841963149cc6a7fb8",
+      "filename": "mishnah-added-13.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-13.mp4"
+    },
+    {
+      "n": 14,
+      "id": "1AECOYqTuWbfxoHqAR-cMnZkdA0OYe2ke",
+      "title": "מבט מסכם — המשנה כמנגנון של מודעות",
+      "section": "extra",
+      "label": "מבט מסכם",
+      "sizeBytes": 32953065,
+      "durationSeconds": 397.897,
+      "sha256": "b1250b99ebce7e0f5fee88c9509368c2e3408dc862f2e9086dd73d81ff4be1f7",
+      "filename": "mishnah-added-14.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-14.mp4"
+    },
+    {
+      "n": 15,
+      "id": "1gfSZ5Q9bvykq3O0bCkO2jdmLXvgC7IG8",
+      "title": "מבט מסכם — זמן, תודעה וקהילה",
+      "section": "extra",
+      "label": "מבט מסכם",
+      "sizeBytes": 37229097,
+      "durationSeconds": 421.86,
+      "sha256": "b5ee8bfdb2ab010029027cd3ae6341d06254d09508c92c11d99f25bc54c27cc8",
+      "filename": "mishnah-added-15.mp4",
+      "url": "https://github.com/barkinam21-pixel/sefer-shoftim/releases/download/mishnah-native-additions-20261114-v1/mishnah-added-15.mp4"
+    }
+  ],
+  "workflowRunId": "43545791040",
+  "verifyOutcome": "success",
+  "uploadOutcome": "success"
+}
