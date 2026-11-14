@@ -1,0 +1,106 @@
+name: Verify 54 Mishnah films and live handoff
+on:
+  push:
+    branches: [feat/mishnah-films-54-20261114]
+    paths: [".github/workflows/verify-mishnah-54-browser.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Open pages and play chapter-7 videos on mobile and desktop
+        id: browser
+        run: |
+          set -euo pipefail
+          npm install --no-save playwright-core@1.56.1
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory mishnah > /tmp/mishnah-server.log 2>&1 &
+          for n in $(seq 1 30); do curl -fsS http://127.0.0.1:8765/native-media-manifest.json >/dev/null && break; sleep 1; done
+          cat > ./verify-54.mjs <<'JS'
+          import fs from 'node:fs';
+          import {chromium} from 'playwright-core';
+          const result={time:new Date().toISOString(),checks:[]};
+          let b;
+          try{
+            b=await chromium.launch({channel:'chrome',headless:true});
+            const cases=[
+              {file:'films.html',kind:'desktop',play:false},
+              {file:'films-red-blue.html',kind:'desktop',play:true},
+              {file:'films-gold.html',kind:'mobile',play:true}
+            ];
+            for(const test of cases){
+              const ctx=await b.newContext({viewport:test.kind==='mobile'?{width:390,height:844}:{width:1280,height:800},isMobile:test.kind==='mobile',hasTouch:test.kind==='mobile'});
+              const page=await ctx.newPage();
+              const record={file:test.file,kind:test.kind,catalog:false,native:false,handoff39to40:false,final53to54:false,error:null};
+              try{
+                await page.goto('http://127.0.0.1:8765/'+test.file,{waitUntil:'domcontentloaded',timeout:30000});
+                await page.waitForFunction(()=>document.querySelector('video[data-native-library]')&&document.querySelector('#nativeMode')?.getAttribute('aria-pressed')==='true',null,{timeout:45000});
+                const data=await page.evaluate(()=>({
+                  total:document.querySelectorAll('#queue .item').length,
+                  cards:document.querySelectorAll('#cards .card').length,
+                  titles:Array.from(document.querySelectorAll('#queue .item')).map(e=>e.textContent),
+                  filters:Array.from(document.querySelector('#filter').options).map(x=>x.value),
+                  filmSize:document.querySelector('.screen video')?.getBoundingClientRect().width,
+                  screenSize:document.querySelector('.screen')?.getBoundingClientRect().width
+                }));
+                if(data.total!==54||data.cards!==54||!data.filters.includes('g')||!data.filters.includes('h')||!data.titles[38].includes('פרק ז׳')||!data.titles[53].includes('54 · העשרה'))throw Error('Catalogue order or counts invalid '+JSON.stringify({total:data.total,cards:data.cards,filters:data.filters,ep39:data.titles[38],last:data.titles[53]}));
+                if(data.filmSize>data.screenSize+1.5)throw Error('Video overflowing the preferred screen frame');
+                record.catalog=true;record.native=true;
+                if(test.play){
+                  await page.locator('#queue .item').nth(38).click();
+                  await page.waitForFunction(()=>document.querySelector('video[data-native-library]')?.src?.includes('mishnah-added-01.mp4'),null,{timeout:15000});
+                  await page.waitForFunction(()=>{const v=document.querySelector('video[data-native-library]');return v&&Number.isFinite(v.duration)&&v.duration>30&&v.readyState>=2},null,{timeout:45000});
+                  await page.evaluate(()=>{const v=document.querySelector('video');v.currentTime=v.duration-2});
+                  await page.waitForFunction(()=>document.querySelector('video[data-native-library]')?.src?.includes('mishnah-added-02.mp4'),null,{timeout:25000});
+                  await page.waitForFunction(()=>{const v=document.querySelector('video');return v?.src.includes('mishnah-added-02.mp4')&&v.readyState>=2&&!v.paused},null,{timeout:30000});
+                  record.handoff39to40=true;
+                  await page.locator('#queue .item').nth(52).click();
+                  await page.waitForFunction(()=>document.querySelector('video[data-native-library]')?.src?.includes('mishnah-added-15.mp4'),null,{timeout:15000});
+                  await page.waitForFunction(()=>{const v=document.querySelector('video');return v&&Number.isFinite(v.duration)&&v.duration>30&&v.readyState>=2},null,{timeout:45000});
+                  await page.evaluate(()=>{const v=document.querySelector('video');v.currentTime=v.duration-2});
+                  await page.waitForFunction(()=>document.querySelector('video[data-native-library]')?.src?.includes('mishnah-39.mp4'),null,{timeout:30000});
+                  await page.waitForFunction(()=>{const v=document.querySelector('video');return v?.src.includes('mishnah-39.mp4')&&v.readyState>=2&&!v.paused},null,{timeout:30000});
+                  record.final53to54=true;
+                }
+              }catch(e){record.error=String(e).slice(0,650)}
+              result.checks.push(record);
+              console.log('CHECK',JSON.stringify(record));
+              await ctx.close();
+            }
+          }catch(e){result.error=String(e)}
+          finally{if(b)await b.close()}
+          result.success=result.checks.length===3&&result.checks.every(x=>x.catalog&&x.native&&!x.error&&(x.file==='films.html'||x.handoff39to40&&x.final53to54));
+          fs.writeFileSync('/tmp/mishnah-54-tests.json',JSON.stringify(result,null,2));
+          console.log('FINAL',JSON.stringify(result));
+          if(!result.success)process.exitCode=1;
+          JS
+          node ./verify-54.mjs
+      - name: Save test outcome on the PR branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.run_id }}
+          TEST_RESULT: ${{ steps.browser.outcome }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          source=Path('/tmp/mishnah-54-tests.json')
+          record=json.loads(source.read_text()) if source.exists() else {'success':False,'error':'Failed before test result'}
+          record['runId']=os.environ['RUN_ID'];record['result']=os.environ['TEST_RESULT']
+          source.write_text(json.dumps(record,ensure_ascii=False,indent=2))
+          PY
+          CONTENT="$(base64 -w0 /tmp/mishnah-54-tests.json)"
+          ITEM='mishnah/verify-54-browser-result.json'
+          OLD="$(gh api "repos/$GITHUB_REPOSITORY/contents/$ITEM?ref=$GITHUB_REF_NAME" --jq '.sha' 2>/dev/null || true)"
+          if [ -n "$OLD" ]; then
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$ITEM" -f branch="$GITHUB_REF_NAME" -f message="Update 54-film browser test proof" -f sha="$OLD" -f content="$CONTENT" >/dev/null
+          else
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$ITEM" -f branch="$GITHUB_REF_NAME" -f message="Record 54-film browser test proof" -f content="$CONTENT" >/dev/null
+          fi
