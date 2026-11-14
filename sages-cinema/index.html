@@ -400,7 +400,23 @@ function recordEmbedBlock(itemId,reason,stage){
  // Remember the active site-only filter before revealing blocked films.
  // A failed in-site video must refresh all results if that filter was active.
  var wasSiteOnly=state.siteOnly;
+ // A confirmed YouTube ban or missing video applies to its player ID,
+ // even when the same film is indexed under two different creator pages.
+ // Preserve each entry's own legal source link; do not share device-only failures.
+ var siblingVideoIds=[];
+ if(reason==="youtube-forbidden"||reason==="youtube-unavailable"){
+  var reportedItem=library.items.find(function(it){return it.id===itemId});
+  var reportedPlayer=reportedItem&&playableSource(reportedItem);
+  if(reportedPlayer&&reportedPlayer.provider==="youtube"){
+   library.items.forEach(function(it){
+    if(it.id===itemId||runtimeEmbedBlocks[it.id])return;
+    var other=playableSource(it);
+    if(other&&other.provider==="youtube"&&other.id===reportedPlayer.id)siblingVideoIds.push(it.id);
+   });
+  }
+ }
  runtimeEmbedBlocks[itemId]=reason;
+ siblingVideoIds.forEach(function(id){runtimeEmbedBlocks[id]=reason});
  revealExternalFallbackAfterFailure();
  if(library.items.length)$("embeddedCount").textContent=library.items.filter(function(it){return !!playableSource(it)}).length;
  // A newly blocked iframe changes whether Resume should open an in-site player
@@ -453,6 +469,8 @@ function recordEmbedBlock(itemId,reason,stage){
    $("playerReload").hidden=true;$("playerRetry").hidden=true;
    // After a player failure, the same report button must not close the working legal fallback.
    $("playerDisableEmbed").hidden=true;
+   // A modal refusal must also refresh other cards using that same video.
+   if(siblingVideoIds.length)renderCards();
   }
  else{
   // Replace only the failed card, without destroying every other card or
@@ -461,7 +479,7 @@ function recordEmbedBlock(itemId,reason,stage){
   // from that filtered view, so the filtered list needs a full refresh.
   var failedCard=stage.closest(".media-card");
   var failedItem=library.items.find(function(it){return it.id===itemId});
-  if(failedCard&&failedItem&&!wasSiteOnly){
+  if(failedCard&&failedItem&&!wasSiteOnly&&!siblingVideoIds.length){
    var replacement=document.createElement("div");
    replacement.innerHTML=mediaCard(failedItem);
    var newCard=replacement.firstElementChild;
