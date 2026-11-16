@@ -163,7 +163,7 @@ function setupTractateNavigation(){
     const wasOpen=unit.classList.contains('open');
     nav.querySelectorAll('.tractate-unit').forEach(function(x){x.classList.remove('open');x.querySelector('.tractate-main').setAttribute('aria-expanded','false')});
     if(!wasOpen){unit.classList.add('open');trigger.setAttribute('aria-expanded','true')}
-    if(activeTractate!==name){navigateToTractate(name,'all');unit.classList.add('open');trigger.setAttribute('aria-expanded','true')}
+    if(activeTractate!==name){const idx=videos.findIndex(function(v){return v.tractate===name});if(idx>=0){choose(idx,false);$('#search').value='';$('#filter').value='all';renderCards()}unit.classList.add('open');trigger.setAttribute('aria-expanded','true')}
   };
   unit.append(trigger,menu);nav.append(unit);
  });
