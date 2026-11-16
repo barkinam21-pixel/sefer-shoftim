@@ -1,0 +1,27 @@
+{
+  "rewrites": [
+    {
+      "source": "/mishnah",
+      "destination": "/"
+    },
+    {
+      "source": "/mishnah/",
+      "destination": "/"
+    },
+    {
+      "source": "/mishnah/:path*",
+      "destination": "/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}
