@@ -71,7 +71,7 @@ function navigateToTractate(name,section){
  const selected=section||'all';
  const idx=videos.findIndex(function(v){return v.tractate===name&&(selected==='all'||v.section===selected)});
  if(idx<0)return;
- choose(idx,false);$('#filter').value=selected;renderCards();
+ choose(idx,false);$('#search').value='';$('#filter').value=selected;renderCards();
  document.querySelectorAll('.tractate-unit.open').forEach(function(el){el.classList.remove('open');el.querySelector('.tractate-main').setAttribute('aria-expanded','false')});
  const destination=document.querySelector('.library');if(destination)destination.scrollIntoView({behavior:'smooth',block:'start'});
 }
@@ -96,7 +96,7 @@ function setupTractateNavigation(){
     const wasOpen=unit.classList.contains('open');
     nav.querySelectorAll('.tractate-unit').forEach(function(x){x.classList.remove('open');x.querySelector('.tractate-main').setAttribute('aria-expanded','false')});
     if(!wasOpen){unit.classList.add('open');trigger.setAttribute('aria-expanded','true')}
-    if(activeTractate!==name)navigateToTractate(name,'all');
+    if(activeTractate!==name){navigateToTractate(name,'all');unit.classList.add('open');trigger.setAttribute('aria-expanded','true')}
   };
   unit.append(trigger,menu);nav.append(unit);
  });
@@ -246,6 +246,7 @@ function choose(i,autostart){
   $('#open').onclick=function(){window.open(driveLink(v.id),'_blank','noopener')};
   $('#mobileWatch').onclick=function(){window.open(driveLink(v.id),'_blank','noopener')};
   renderQueue();
+  setModeButton();
 }
 function renderQueue(){
   const q=$('#queue');q.replaceChildren();
@@ -262,7 +263,7 @@ function renderQueue(){
 function renderCards(){
   const query=$('#search').value.trim(),filter=$('#filter').value;
   const list=videos.map(function(v,i){return Object.assign({},v,{i:i})})
-    .filter(function(v){return v.tractate===activeTractate&&(filter==='all'||v.section===filter)&&v.title.includes(query)});
+    .filter(function(v){return v.tractate===activeTractate&&(filter==='all'||v.section===filter)&&(v.title.includes(query)||tractateNames[v.tractate].includes(query))});
   $('#count').textContent=String(list.length)+' סרטונים';
   const box=$('#cards');box.replaceChildren();
   list.forEach(function(v){
