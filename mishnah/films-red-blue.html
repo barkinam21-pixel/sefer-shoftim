@@ -370,6 +370,13 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight')choose(current-1,false);
 });
 setupTractateNavigation();
+const requestedParams=new URLSearchParams(window.location.search);
+const requestedTractate=requestedParams.get('tractate');
+const requestedChapter=requestedParams.get('chapter');
+if(Object.prototype.hasOwnProperty.call(chapterOptions,requestedTractate)){
+ const wanted=chapterOptions[requestedTractate].some(function(v){return v[0]===requestedChapter})?requestedChapter:'all';
+ navigateToTractate(requestedTractate,wanted);
+}
 applyBrightness(brightness);
 if(false){
   playerMode='native';
@@ -456,6 +463,7 @@ renderCards();</script><script id="mishnah-reliable-playlist">
     const ready=m.complete===true&&nativeMedia.size===m.total;
     const pref=localStorage.getItem(preferenceKey);
     playerMode=pref==='drive'?'drive':pref==='native'?'native':ready?'native':'drive';
+    if(!nativeMedia.has(videos[current].id))playerMode='drive';
     setModeButton();$('#screen').replaceChildren();choose(current,false);setModeButton();
     if(ready){
       setStatus('ניגון רציף זמין ל־'+nativeMedia.size+' מסרטוני ברכות. סרטוני פאה והסרטונים החדשים זמינים דרך Drive.');
