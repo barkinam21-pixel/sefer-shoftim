@@ -1,0 +1,174 @@
+{
+  "date": "2026-11-17",
+  "sourceFolder": "1HDQ_wAlsCitAxY5ddxxBNGAgUtbNchlO",
+  "destination": "mishnah/films*.html",
+  "existingBerakhot": 54,
+  "addedBerakhot": [
+    {
+      "id": "1NhEtgw8qKun_gJ9xFt_YiN-cAUVhyjFC",
+      "title": "גבולות הזמן — חוקרים את המשנה",
+      "section": "a",
+      "label": "פרק א׳",
+      "tractate": "berakhot"
+    },
+    {
+      "id": "15MLNM7xdVRUEMv6pxr7TQS2MtU0TXlh3",
+      "title": "המסגרת והכוונה של התפילה",
+      "section": "prayer",
+      "label": "פרקים ד׳–ה׳",
+      "tractate": "berakhot"
+    }
+  ],
+  "addedPeah": [
+    {
+      "id": "1Zc7Jhzqx1R33MDFmaB4lG0dBFJfrZ6wS",
+      "title": "01 · יסודות מצוות הפאה",
+      "section": "p-intro",
+      "label": "מבוא",
+      "tractate": "peah"
+    },
+    {
+      "id": "1vmDPeOCOEBEkvVucYY7T8wsBsLA-X0q4",
+      "title": "02 · חקלאות והלכה קדומה",
+      "section": "p-intro",
+      "label": "מבוא",
+      "tractate": "peah"
+    },
+    {
+      "id": "1tc91HJHM2P40e0yVPI2NhGZUwAqh2ct7",
+      "title": "03 · חקלאות עתיקה — אידיאל ומציאות",
+      "section": "p-intro",
+      "label": "מבוא",
+      "tractate": "peah"
+    },
+    {
+      "id": "1GS1L_ueraSPEwWQMPNEqZFBf-hJfKsAI",
+      "title": "04 · כלכלת החסד — משנה פאה",
+      "section": "p-intro",
+      "label": "מבוא",
+      "tractate": "peah"
+    },
+    {
+      "id": "1SE0Bel5l5IXUR7fmA8rghV13nS-2a2RY",
+      "title": "05 · חוקי הפאה — עיקרון ומעשה",
+      "section": "p-intro",
+      "label": "מבוא",
+      "tractate": "peah"
+    },
+    {
+      "id": "1GNl6D22DI2X0xJT3v_263JBw4Zbctf-E",
+      "title": "06 · משנה פאה — השפע חסר הגבולות",
+      "section": "p-intro",
+      "label": "מבוא",
+      "tractate": "peah"
+    },
+    {
+      "id": "1rtWWkxRWrOVXAXWlQIca8URWAe7ZP-gW",
+      "title": "07 · מסכת פאה — רשת ביטחון חקלאית",
+      "section": "p-intro",
+      "label": "מבוא",
+      "tractate": "peah"
+    },
+    {
+      "id": "1wVEp0zrhMrZ05L_lMx8E-0XZqBluhRhZ",
+      "title": "08 · מסע הקציר — מהשדה אל הנפש",
+      "section": "p-intro",
+      "label": "מבוא",
+      "tractate": "peah"
+    },
+    {
+      "id": "1RjKqNuaTuihq36hQ9j0Uw8tF1-tmS9IV",
+      "title": "09 · פרק א׳ — הלכות קציר",
+      "section": "p-a",
+      "label": "פרק א׳",
+      "tractate": "peah"
+    },
+    {
+      "id": "1d0g0WSOYHEOBxh4NGGkqvMVQ0u7_QJUN",
+      "title": "10 · פרק א׳, משנה ב׳ — מצוות פאה",
+      "section": "p-a",
+      "label": "פרק א׳",
+      "tractate": "peah"
+    },
+    {
+      "id": "1PZoIc-Jvo7-Y9Ka2FpGRYC-lcYCqCtQ-",
+      "title": "11 · פרק א׳, משנה ו׳ — מבט לעומק",
+      "section": "p-a",
+      "label": "פרק א׳",
+      "tractate": "peah"
+    },
+    {
+      "id": "1jE37VCEdeyO0GyJUvV3gUkbHxM3sj7y3",
+      "title": "12 · פרק ב׳ — נוטל מאמצע השדה",
+      "section": "p-b",
+      "label": "פרק ב׳",
+      "tractate": "peah"
+    },
+    {
+      "id": "1p-OD5eD7pIW811V5sCBZhhW3IXjTe9sE",
+      "title": "13 · פרק ב׳, משנה ה׳ — כלאים וגבולות הנתינה",
+      "section": "p-b",
+      "label": "פרק ב׳",
+      "tractate": "peah"
+    },
+    {
+      "id": "1hBfhjUe6AjIuSw3cQSYU48dWs_r1A7sk",
+      "title": "14 · פרק ב׳, משנה ח׳ — השדה החרב",
+      "section": "p-b",
+      "label": "פרק ב׳",
+      "tractate": "peah"
+    },
+    {
+      "id": "1aj7irFaYRWsRzI1_4Tg_J3wnQrBJF-g-",
+      "title": "15 · פרק ג׳ — מלבנות תבואה",
+      "section": "p-c",
+      "label": "פרק ג׳",
+      "tractate": "peah"
+    },
+    {
+      "id": "1DZQsvRPHLwnUhK8Cr2JjIU3ASK8i2GSx",
+      "title": "16 · ארכיטקטורת הגבולות — הלכות השדה",
+      "section": "p-extra",
+      "label": "העשרה",
+      "tractate": "peah"
+    }
+  ],
+  "unpublishedNativeMedia": [
+    "1NhEtgw8qKun_gJ9xFt_YiN-cAUVhyjFC",
+    "15MLNM7xdVRUEMv6pxr7TQS2MtU0TXlh3",
+    "1Zc7Jhzqx1R33MDFmaB4lG0dBFJfrZ6wS",
+    "1vmDPeOCOEBEkvVucYY7T8wsBsLA-X0q4",
+    "1tc91HJHM2P40e0yVPI2NhGZUwAqh2ct7",
+    "1GS1L_ueraSPEwWQMPNEqZFBf-hJfKsAI",
+    "1SE0Bel5l5IXUR7fmA8rghV13nS-2a2RY",
+    "1GNl6D22DI2X0xJT3v_263JBw4Zbctf-E",
+    "1rtWWkxRWrOVXAXWlQIca8URWAe7ZP-gW",
+    "1wVEp0zrhMrZ05L_lMx8E-0XZqBluhRhZ",
+    "1RjKqNuaTuihq36hQ9j0Uw8tF1-tmS9IV",
+    "1d0g0WSOYHEOBxh4NGGkqvMVQ0u7_QJUN",
+    "1PZoIc-Jvo7-Y9Ka2FpGRYC-lcYCqCtQ-",
+    "1jE37VCEdeyO0GyJUvV3gUkbHxM3sj7y3",
+    "1p-OD5eD7pIW811V5sCBZhhW3IXjTe9sE",
+    "1hBfhjUe6AjIuSw3cQSYU48dWs_r1A7sk",
+    "1aj7irFaYRWsRzI1_4Tg_J3wnQrBJF-g-",
+    "1DZQsvRPHLwnUhK8Cr2JjIU3ASK8i2GSx"
+  ],
+  "duplicateFilenameAndSizePairs": [
+    [
+      "1W7cyiypk-AP07vYYMHJbRJ5pnS9_VCx6",
+      "1SE0Bel5l5IXUR7fmA8rghV13nS-2a2RY"
+    ],
+    [
+      "14Y4e9hEuu0Nl884qo5YNVbLVtaal3R-K",
+      "1d0g0WSOYHEOBxh4NGGkqvMVQ0u7_QJUN"
+    ]
+  ],
+  "notes": [
+    "Drive originals were not altered or deleted.",
+    "Selected Berakhot videos 14/18/19 and Peah 3 inspected visually from actual video frames.",
+    "New 'גבולות הזמן' and 'המסגרת והכוונה של התפילה' inspected from video frames and correctly assigned to Berakhot.",
+    "Both duplicate pairs have matching title and byte size; identical content hash not verified; only one of each pair shown in the website.",
+    "Peah files use Drive embeds; public anonymous playback has not been verified.",
+    "Preserves existing 54 native release assets and does not introduce new publication or billing."
+  ]
+}
